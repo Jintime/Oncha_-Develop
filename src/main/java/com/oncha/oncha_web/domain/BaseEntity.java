@@ -1,6 +1,5 @@
 package com.oncha.oncha_web.domain;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
