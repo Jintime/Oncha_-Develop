@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.domain.productReview.model;
 
+import com.oncha.oncha_web.domain.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "product_review")
-public class ProductReview {
+public class ProductReview extends BaseEntity {
 
     @Id
     private Long id;
@@ -22,7 +23,7 @@ public class ProductReview {
     private String content;
 
     private int like;
-    private int product_start;
+    private int product_star;
 
 
 }
