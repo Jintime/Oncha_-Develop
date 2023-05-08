@@ -1,0 +1,55 @@
+button{
+    border: none;
+    background-color: unset;
+}
+.nav_barContainer{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav_barContainer button{
+    width: 150px;
+}
+.nav_barContainer .left{
+    margin-left: 150px;
+}
+.nav_barContainer .top_logo{
+    height: 50px;
+}
+.nav_barContainer .right{
+    margin-right: 150px;
+}
+.Top_viewContainer{
+    margin-top: 70px;
+    display: flex;
+}
+#login{
+    display: flex;
+    margin-left: auto;
+    margin-right: 150px;
+}
+.Top_viewContainer .main_view{
+    margin: auto;
+    width: 1000px;
+    height: 580px;
+}
+.Top_viewContainer .banner{
+    margin: auto;
+    width: 580px;
+    height: 580px;
+}
+.product_Container{
+    width: 100%;
+    margin-top: 70px;
+
+}
+.product_Container ul{
+    margin: auto;
+    display: flex;
+    list-style:none;
+}
+.product_Container li{
+    margin: auto;
+    width: 380px;
+    height: 580px;
+}
