@@ -1,19 +1,19 @@
-
 #database 연동
 spring:
   datasource:
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://login-lecture.cindj3n0yfz1.ap-northeast-2.rds.amazonaws.com:3306/login_lecture
-  username: admin
-  password: vksek7827391
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://login-lecture.cindj3n0yfz1.ap-northeast-2.rds.amazonaws.com:3306/login_lecture
+    username: admin
+    password: vksek7827391
   thymeleaf:
     cache: false
   profiles:
     include: social, jwt
+
 #jpa database 설정
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     open-in-view: false
     show-sql: true
 
