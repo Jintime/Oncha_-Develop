@@ -1,14 +1,13 @@
 package com.oncha.oncha_web.domain.productBoard.model;
 
 import com.oncha.oncha_web.domain.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -50,6 +49,9 @@ public class ProductBoard extends BaseEntity {
 
     private boolean blended;
     private boolean caffeine;
+
+    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
+    private List<ProductFile> productFileList= new ArrayList<>();
 
 
     @Builder

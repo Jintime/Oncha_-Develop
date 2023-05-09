@@ -25,7 +25,7 @@ public class ProductBoardService {
         Long saveId = productRepository.save(productBoard).getId();
         ProductBoard byId = productRepository.findById(saveId).get();
 
-       /* for(MultipartFile MultiparProductFile:productBoardDTO.getProductFile()) {
+        /*for(MultipartFile MultiparProductFile:productBoardDTO.getProductFile()) {
             String originalFileName = MultiparProductFile.getOriginalFilename();
             String storedFileName = System.currentTimeMillis() + "" + originalFileName;
             String savePath = System.getProperty("user.dir")+ "\\src\\main\\resources\\static\\file\\" + storedFileName;

@@ -3,6 +3,7 @@ package com.oncha.oncha_web.feature.productBoard.model;
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
 import com.oncha.oncha_web.domain.productBoard.model.RequestProductBoard;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -29,6 +30,10 @@ public class ProductBoardDTO implements RequestProductBoard {
 
     private boolean blended;
     private boolean caffeine;
+
+    private MultipartFile productFile;
+    private String originFileName;
+    private String storedFileName;
 
     public static ProductBoardDTO toProductBoardDTO(ProductBoard productBoard){
         ProductBoardDTO productBoardDTO = new ProductBoardDTO();
