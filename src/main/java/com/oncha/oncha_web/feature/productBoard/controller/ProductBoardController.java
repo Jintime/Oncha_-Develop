@@ -18,7 +18,7 @@ public class ProductBoardController {
     private final ProductBoardService productBoardService;
 
     @GetMapping("write")
-    public String productWrite(){return "product/wirte";}
+    public String productWrite(){return "product/write";}
     @GetMapping("/list")
     public String productList(){
         return "product/list";

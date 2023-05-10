@@ -24,4 +24,9 @@ public class ProductFile extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private ProductBoard productBoard;
+
+    public static ProductFile toProductFile(ProductBoard productBoard,String originalFileName,String storedFileName){
+        return new ProductFile(null,originalFileName,storedFileName,productBoard);
+
+    }
 }
