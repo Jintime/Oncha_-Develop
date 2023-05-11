@@ -30,7 +30,7 @@ import java.util.Map;
 @RequestMapping("/order")
 public class PaymentController {
 
-    private PaymentService paymentService;
+  /*  private PaymentService paymentService;
 
     @RequestMapping("/payment/callback_receive")
     public ResponseEntity<?> callback_receive(@RequestBody Map<String, Object> model) throws JSONException {
@@ -74,7 +74,7 @@ public class PaymentController {
 
     }
 
-
+*/
 
 
 }

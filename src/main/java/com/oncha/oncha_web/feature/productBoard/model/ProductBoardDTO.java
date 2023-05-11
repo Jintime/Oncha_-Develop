@@ -1,9 +1,13 @@
 package com.oncha.oncha_web.feature.productBoard.model;
 
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
+import com.oncha.oncha_web.domain.productBoard.model.ProductFile;
 import com.oncha.oncha_web.domain.productBoard.model.RequestProductBoard;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +35,9 @@ public class ProductBoardDTO implements RequestProductBoard {
     private boolean blended;
     private boolean caffeine;
 
-    private MultipartFile productFile;
-    private String originFileName;
-    private String storedFileName;
+    private List<MultipartFile> productFile;
+    private List<String> originFileName;
+    private List<String> storedFileName;
 
     public static ProductBoardDTO toProductBoardDTO(ProductBoard productBoard){
         ProductBoardDTO productBoardDTO = new ProductBoardDTO();
@@ -52,6 +56,15 @@ public class ProductBoardDTO implements RequestProductBoard {
         productBoardDTO.setLike(productBoard.getLike());
         productBoardDTO.setBlended(productBoard.isBlended());
         productBoardDTO.setCaffeine(productBoard.isCaffeine());
+
+       List<String> originFileNameList =new ArrayList<>();
+        List<String> storedFileNameList =new ArrayList<>();
+        for(ProductFile productFile:productBoard.getProductFileList()) {
+            originFileNameList.add(productFile.getOriginalFileName());
+            storedFileNameList.add(productFile.getStoredFileName());
+        }
+        productBoardDTO.setOriginFileName(originFileNameList);
+        productBoardDTO.setStoredFileName(originFileNameList);
         return productBoardDTO;
     }
 
