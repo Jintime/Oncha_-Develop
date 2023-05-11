@@ -45,6 +45,7 @@ public class Member extends BaseTimeEntity {
         this.email = email;
         this.name = name;
         this.role = role;
+        this.grade = "normal";
         this.allow = false;
         this.disable = false;
         this.provider = provider;

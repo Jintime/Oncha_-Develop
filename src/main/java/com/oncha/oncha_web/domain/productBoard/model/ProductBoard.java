@@ -45,7 +45,7 @@ public class ProductBoard extends BaseEntity {
     private int price;
     private int product_count;
     private int view;
-    private int like;
+    private int love;
 
     private boolean blended;
     private boolean caffeine;
@@ -55,9 +55,9 @@ public class ProductBoard extends BaseEntity {
 
 
     @Builder
-    public ProductBoard(Long id,String title,String detail,String product_name,String origin_nation,
-                        String type,String flavor,String category,int weight,int price,int product_count,
-                        int view,int like, boolean blended, boolean caffeine){
+    public ProductBoard(Long id, String title, String detail, String product_name, String origin_nation,
+                        String type, String flavor, String category, int weight, int price, int product_count,
+                        int view, int love, boolean blended, boolean caffeine){
         this.id =id;
         this.title = title;
         this.detail = detail;
@@ -70,7 +70,7 @@ public class ProductBoard extends BaseEntity {
         this.price =price;
         this.product_count = product_count;
         this.view = view;
-        this.like = like;
+        this.love = love;
         this.blended =blended;
         this.caffeine = caffeine;
     }
@@ -89,7 +89,7 @@ public class ProductBoard extends BaseEntity {
                 .price(requestProductBoard.getPrice())
                 .product_count(requestProductBoard.getProduct_count())
                 .view(requestProductBoard.getView())
-                .like(requestProductBoard.getLike())
+                .love(requestProductBoard.getLike())
                 .blended(requestProductBoard.isBlended())
                 .caffeine(requestProductBoard.isCaffeine())
                 .build();

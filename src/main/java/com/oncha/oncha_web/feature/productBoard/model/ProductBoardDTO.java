@@ -53,7 +53,7 @@ public class ProductBoardDTO implements RequestProductBoard {
         productBoardDTO.setPrice(productBoard.getPrice());
         productBoardDTO.setProduct_count(productBoard.getProduct_count());
         productBoardDTO.setView(productBoard.getView());
-        productBoardDTO.setLike(productBoard.getLike());
+        productBoardDTO.setLike(productBoard.getLove());
         productBoardDTO.setBlended(productBoard.isBlended());
         productBoardDTO.setCaffeine(productBoard.isCaffeine());
 
