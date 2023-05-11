@@ -17,6 +17,7 @@ import java.util.List;
 public class ProductBoard extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 200)
