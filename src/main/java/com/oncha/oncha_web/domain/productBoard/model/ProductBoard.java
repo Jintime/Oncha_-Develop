@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class ProductBoard extends BaseEntity {
     private String type;
 
     @Column(length = 30)
-    private  String flavor;
+    private String flavor;
 
     @Column(length = 30)
     private String category;
