@@ -2,6 +2,9 @@ button{
     border: none;
     background-color: unset;
 }
+a:hover{
+background-color : gray;
+}
 .nav_barContainer{
     margin-top: 100px;
     display: flex;
@@ -28,14 +31,17 @@ button{
     margin-left: auto;
     margin-right: 150px;
 }
+.box{
+    width: 1024px;
+
+}
 .Top_viewContainer .main_view{
     margin: auto;
-    width: 1000px;
+    width: 500px;
     height: 580px;
 }
 .Top_viewContainer .banner{
-    margin: auto;
-    width: 580px;
+    width: 380px;
     height: 580px;
 }
 .product_Container{
@@ -44,12 +50,12 @@ button{
 
 }
 .product_Container ul{
-    margin: auto;
+
     display: flex;
     list-style:none;
 }
 .product_Container li{
-    margin: auto;
+
     width: 380px;
     height: 580px;
 }

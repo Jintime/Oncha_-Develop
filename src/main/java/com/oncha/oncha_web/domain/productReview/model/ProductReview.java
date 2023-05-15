@@ -20,7 +20,7 @@ public class ProductReview extends BaseEntity {
     @Column(length = 1000)
     private String content;
 
-    private int like;
+    private int love;
     private int product_star;
 
 
