@@ -52,7 +52,7 @@ public class ProductBoardController {
     @GetMapping("/admin/{id}")
     public String findById(@PathVariable Long id, Model model){
         // productService.updateHits(index);
-        ProductBoardDTO productDTO=productBoardService.findById(id);
+        ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
         return "product/view";
     }
@@ -60,7 +60,7 @@ public class ProductBoardController {
     @GetMapping("/odertest/{id}")
     public String findById2(@PathVariable Long id,Model model){
         // productService.updateHits(index);
-        ProductBoardDTO productDTO=productBoardService.findById(id);
+        ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
         return "testorder";
     }

@@ -20,13 +20,14 @@ public class ProductFile extends BaseEntity {
     private String originalFileName;
     @Column
     private String storedFileName;
-
+    @Column
+    private String url;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private ProductBoard productBoard;
 
-    public static ProductFile toProductFile(ProductBoard productBoard,String originalFileName,String storedFileName){
-        return new ProductFile(null,originalFileName,storedFileName,productBoard);
+    public static ProductFile toProductFile(String originalFileName,String storedFileName, String url, ProductBoard productBoard){
+        return new ProductFile(null,originalFileName,storedFileName,url, productBoard);
 
     }
 }

@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductFileDTO {
     private String originFileName;
-    private String storedFileName;
+    private String url;
 }
