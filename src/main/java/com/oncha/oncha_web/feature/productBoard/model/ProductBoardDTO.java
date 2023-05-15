@@ -36,8 +36,8 @@ public class ProductBoardDTO implements RequestProductBoard {
     private boolean caffeine;
 
     private List<MultipartFile> productFile;
-    private List<String> originFileName;
-    private List<String> storedFileName;
+    private List<String>  originFileName;
+    private List<String>  storedFileName;
 
     public static ProductBoardDTO toProductBoardDTO(ProductBoard productBoard){
         ProductBoardDTO productBoardDTO = new ProductBoardDTO();
@@ -53,18 +53,18 @@ public class ProductBoardDTO implements RequestProductBoard {
         productBoardDTO.setPrice(productBoard.getPrice());
         productBoardDTO.setProduct_count(productBoard.getProduct_count());
         productBoardDTO.setView(productBoard.getView());
-        productBoardDTO.setLike(productBoard.getLike());
+        productBoardDTO.setLike(productBoard.getLove());
         productBoardDTO.setBlended(productBoard.isBlended());
         productBoardDTO.setCaffeine(productBoard.isCaffeine());
 
-       List<String> originFileNameList =new ArrayList<>();
+        List<String> originalFileNameList =new ArrayList<>();
         List<String> storedFileNameList =new ArrayList<>();
-        for(ProductFile productFile:productBoard.getProductFileList()) {
-            originFileNameList.add(productFile.getOriginalFileName());
+        for(ProductFile productFile: productBoard.getProductFileList()) {
+            originalFileNameList.add(productFile.getOriginalFileName());
             storedFileNameList.add(productFile.getStoredFileName());
         }
-        productBoardDTO.setOriginFileName(originFileNameList);
-        productBoardDTO.setStoredFileName(originFileNameList);
+        productBoardDTO.setOriginFileName(originalFileNameList);
+        productBoardDTO.setStoredFileName(storedFileNameList);
         return productBoardDTO;
     }
 

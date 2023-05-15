@@ -20,13 +20,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
-    private final PasswordEncoder passwordEncoder;
-
     private final MemberRepository memberRepository;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        System.out.println("a");
         OAuth2User oAuth2User = super.loadUser(userRequest);
         System.out.println(oAuth2User.getAttributes());
         OAuth2UserInfo oAuth2UserInfo = UserInfoProvider.getOAuthUserInfo(userRequest, oAuth2User);
@@ -39,9 +36,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String role = "ROLE_USER";
 
         Optional<Member> oMember = memberRepository.findByUserId(userId);
-        Member member = oMember.orElseGet(() -> memberRepository.save(
-                new Member(userId, username,email, role, provider, providerId)));
-
+        Member member;
+        if (oMember.isPresent()) {
+            member = oMember.get();
+        } else {
+            member = new Member(userId, username, email, role, provider, providerId);
+            member = memberRepository.save(member);
+        }
         return new PrincipalDetails(member.getId(), member.getRole(), oAuth2User.getAttributes());
     }
 }
