@@ -14,7 +14,7 @@
 <div class="view">
     <div class="order_main_info">
         <div class="main_img">
-            <td th:each="fileName : ${product.storedFileName}">
+            <td th:each="fileName : ${product.list.get(0).storedFileName}">
             <img th:src="@{|/upload/${fileName}|}" alt="">></div>
         </td>
         <div class=" inner_info">

@@ -1,20 +1,17 @@
 package com.oncha.oncha_web.feature.productBoard.model;
 
-import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
-import com.oncha.oncha_web.domain.productBoard.model.ProductFile;
 import com.oncha.oncha_web.domain.productBoard.model.RequestProductBoard;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class ProductBoardDTO implements RequestProductBoard {
+public class ProductBoardRequest implements RequestProductBoard {
 
     private Long id;
 
@@ -35,6 +32,8 @@ public class ProductBoardDTO implements RequestProductBoard {
     private boolean blended;
     private boolean caffeine;
 
-    private List<ProductFileDTO> list;
+    private List<MultipartFile> productFile;
+    private List<String> originFileName;
+    private List<String> storedFileName;
 
 }
