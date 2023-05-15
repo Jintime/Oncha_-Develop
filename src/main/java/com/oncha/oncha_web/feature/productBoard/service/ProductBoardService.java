@@ -8,6 +8,8 @@ import com.oncha.oncha_web.domain.productBoard.repository.ProductFileRepository;
 import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.productBoard.model.ProductBoardRequest;
 import com.oncha.oncha_web.feature.productBoard.repository.ProductBoardQueryRepository;
+import com.oncha.oncha_web.s3.AmazonS3Service;
+import com.oncha.oncha_web.s3.S3FileDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,18 +29,15 @@ public class ProductBoardService {
     private final ProductBoardRepository productBoardRepository;
     private final ProductFileRepository productFileRepository;
     private final ProductBoardQueryRepository productBoardQueryRepository;
+    private final AmazonS3Service amazonS3Service;
 
     @Transactional
-    public void save(ProductBoardRequest productBoardRequest) throws IOException{
+    public void save(ProductBoardRequest productBoardRequest) throws IOException {
         ProductBoard productBoard  = productBoardRepository.save(ProductBoard.toProductBoard(productBoardRequest));
 
-        for(MultipartFile multipartProductFile : productBoardRequest.getProductFile()) {
-            String originalFileName = multipartProductFile.getOriginalFilename();
-            String storedFileName = System.currentTimeMillis() + "" + originalFileName;
-            String savePath = System.getProperty("user.dir")+ "\\src\\main\\resources\\static\\file\\" + storedFileName;
-            multipartProductFile.transferTo(new File(savePath));
-
-            ProductFile productFile = ProductFile.toProductFile(productBoard, originalFileName, storedFileName);
+        List<S3FileDto> s3FileDtoList = amazonS3Service.uploadFiles(productBoardRequest.getProductFile());
+        for(S3FileDto s3FileDto : s3FileDtoList) {
+            ProductFile productFile = ProductFile.toProductFile(s3FileDto.getOriginalFileName(), s3FileDto.getUploadFilePath(),s3FileDto.getUploadFileUrl(), productBoard);
             productFileRepository.save(productFile);
         }
     }

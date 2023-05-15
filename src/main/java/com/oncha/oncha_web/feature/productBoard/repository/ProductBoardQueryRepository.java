@@ -68,11 +68,11 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
                 Projections.list(Projections.constructor(
                         ProductFileDTO.class,
                         productFile.originalFileName,
-                        productFile.storedFileName
+                        productFile.url
                 ))
         )).from(productBoard)
                 .leftJoin(productFile).on(productFile.productBoard.eq(productBoard))
-                .where(productFile.id.eq(id))
+                .where(productBoard.id.eq(id))
                 .fetchJoin().fetchOne();
 
     }
