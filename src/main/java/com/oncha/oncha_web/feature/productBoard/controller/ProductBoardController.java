@@ -1,8 +1,11 @@
 package com.oncha.oncha_web.feature.productBoard.controller;
 
 import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
+import com.oncha.oncha_web.feature.productBoard.model.ProductBoardRequest;
 import com.oncha.oncha_web.feature.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,14 +37,14 @@ public class ProductBoardController {
 
 
     @PostMapping("/write")
-    public String saveWrite(@ModelAttribute ProductBoardDTO productBoardDTO) throws IOException {
-        productBoardService.save(productBoardDTO);
+    public String saveWrite(@ModelAttribute ProductBoardRequest productBoardRequest) throws IOException {
+        productBoardService.save(productBoardRequest);
         return "index";
     }
 
     @GetMapping("/admin")
-    public String findAll(Model model){
-        List<ProductBoardDTO> productDTOList = productBoardService.findAll();
+    public String findAll(Model model, @PageableDefault Pageable pageable){
+        List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("productList",productDTOList);
         return "product/list";
     }

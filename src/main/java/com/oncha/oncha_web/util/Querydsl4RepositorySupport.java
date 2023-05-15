@@ -34,19 +34,24 @@ public abstract class Querydsl4RepositorySupport {
 
     private final Class domainClass;
     private Querydsl querydsl;
-    @PersistenceContext
     private EntityManager entityManager;
     private JPAQueryFactory queryFactory;
 
     public Querydsl4RepositorySupport(Class<?> domainClass) {
         Assert.notNull(domainClass, "Domain class must not be null!");
-        Assert.notNull(entityManager, "EntityManager must not be null!");
         this.domainClass = domainClass;
+    }
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        Assert.notNull(entityManager, "EntityManager must not be null!");
+
         JpaEntityInformation entityInformation =
                 JpaEntityInformationSupport.getEntityInformation(domainClass, entityManager);
 
         SimpleEntityPathResolver resolver = SimpleEntityPathResolver.INSTANCE;
         EntityPath path = resolver.createPath(entityInformation.getJavaType());
+        this.entityManager = entityManager;
         this.querydsl = new Querydsl(entityManager, new
                 PathBuilder<>(path.getType(), path.getMetadata()));
         this.queryFactory = new JPAQueryFactory(entityManager);

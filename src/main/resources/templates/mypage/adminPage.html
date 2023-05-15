@@ -52,20 +52,20 @@
           <th>상세조회</th>
           <th>삭제</th>
         </tr>
-        <tr th:each="member: ${memberList}">
-          <td th:text="${member.user_id}"></td>
-          <td th:text="${member.email}"></td>
-          <td th:text="${member.password}"></td>
-          <td th:text="${member.name}"></td>
-          <td>
-            <!-- query string /member?id=1
-                rest api /member/1 -->
-            <a th:href="@{|/member/${member.id}|}">조회</a>
-          </td>
-          <td>
-            <a th:href="@{|/member/delete/${member.id}|}">삭제</a>
-          </td>
-        </tr>
+<!--        <tr th:each="member: ${memberList}">-->
+<!--          <td th:text="${member.user_id}"></td>-->
+<!--          <td th:text="${member.email}"></td>-->
+<!--          <td th:text="${member.password}"></td>-->
+<!--          <td th:text="${member.name}"></td>-->
+<!--          <td>-->
+<!--            &lt;!&ndash; query string /member?id=1-->
+<!--                rest api /member/1 &ndash;&gt;-->
+<!--            <a th:href="@{|/member/${member.id}|}">조회</a>-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <a th:href="@{|/member/delete/${member.id}|}">삭제</a>-->
+<!--          </td>-->
+<!--        </tr>-->
       </table>
 
 
