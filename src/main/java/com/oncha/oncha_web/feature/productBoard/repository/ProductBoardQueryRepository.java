@@ -44,7 +44,8 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
                         productFile.storedFileName
                 ))
         )).from(productBoard)
-                .leftJoin(productFile).on(productFile.productBoard.eq(productBoard)).fetchJoin());
+                .leftJoin(productFile).on(productFile.productBoard.
+                        eq(productBoard)).fetchJoin());
 
     }
     public ProductBoardDTO findById(Long id) {
@@ -71,7 +72,8 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
                         productFile.url
                 ))
         )).from(productBoard)
-                .leftJoin(productFile).on(productFile.productBoard.eq(productBoard))
+                .leftJoin(productFile).on(productFile.productBoard.
+                        eq(productBoard))
                 .where(productBoard.id.eq(id))
                 .fetchJoin().fetchOne();
 
