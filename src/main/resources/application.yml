@@ -1,7 +1,12 @@
 #database 연동
 spring:
   profiles:
-    active: dev
+    group:
+      local:
+        - dev
+        - oauth2
+        - aws
+    active: local
   thymeleaf:
     cache: false
 
