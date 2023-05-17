@@ -60,8 +60,8 @@ public class TokenProvider implements InitializingBean {
             RefreshTokenRepository refreshTokenRepository) {
         this.secretKey = secretKey;
         this.refreshKey = refreshKey;
-        this.refreshValidityInSeconds = refreshValidityInSeconds; //redis 저장기한고 별도.. 항상 redis 보다는 클것! - 크게 의미없음
-        this.tokenValidityInMilliSeconds = tokenValidityInSeconds;
+        this.refreshValidityInSeconds = refreshValidityInSeconds * 1000; //redis 저장기한고 별도.. 항상 redis 보다는 클것! - 크게 의미없음
+        this.tokenValidityInMilliSeconds = tokenValidityInSeconds * 1000;
         this.refreshTokenRepository = refreshTokenRepository;
     }
 
