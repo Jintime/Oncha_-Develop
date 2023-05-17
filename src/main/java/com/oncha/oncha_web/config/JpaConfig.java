@@ -1,6 +1,10 @@
 package com.oncha.oncha_web.config;
 
+import com.oncha.oncha_web.feature.productBoard.repository.ProductBoardQueryRepository;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +18,10 @@ import java.util.Optional;
 @Configuration
 @Slf4j
 public class JpaConfig {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Bean
     public AuditorAware<Long> auditorProvider() {
 

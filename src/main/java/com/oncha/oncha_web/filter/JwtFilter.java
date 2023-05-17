@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.config.filter;
+package com.oncha.oncha_web.filter;
 
 
 import com.oncha.oncha_web.security.jwt.TokenProvider;
@@ -29,9 +29,10 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwt = resolveTokenByCookie(request);
+        String refresh = resolveRefreshByCookie(request);
 
         String requestURI = request.getRequestURI();
-        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt, refresh, response)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             logger.debug("Security Context에 '{}' 인증정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
@@ -45,6 +46,11 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
     //request header에서 토큰정보를 꺼내오기 위한 메소드
     private String resolveTokenByCookie (HttpServletRequest request) {
         Cookie cookie = CookieUtil.getCookie(request, TokenProvider.ACCESS_TOKEN_KEY).orElse(null);
+        return cookie == null ? null : cookie.getValue();
+    }
+
+    private String resolveRefreshByCookie (HttpServletRequest request) {
+        Cookie cookie = CookieUtil.getCookie(request, TokenProvider.REFRESH_TOKEN_KEY).orElse(null);
         return cookie == null ? null : cookie.getValue();
     }
 

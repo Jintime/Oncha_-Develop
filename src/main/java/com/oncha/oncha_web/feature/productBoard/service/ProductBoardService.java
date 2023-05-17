@@ -6,9 +6,15 @@ import com.oncha.oncha_web.domain.productBoard.model.RequestProductBoard;
 import com.oncha.oncha_web.domain.productBoard.repository.ProductBoardRepository;
 import com.oncha.oncha_web.domain.productBoard.repository.ProductFileRepository;
 import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
-import jakarta.transaction.Transactional;
+import com.oncha.oncha_web.feature.productBoard.model.ProductBoardRequest;
+import com.oncha.oncha_web.feature.productBoard.repository.ProductBoardQueryRepository;
+import com.oncha.oncha_web.s3.AmazonS3Service;
+import com.oncha.oncha_web.s3.S3FileDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -22,40 +28,28 @@ import java.util.Optional;
 public class ProductBoardService {
     private final ProductBoardRepository productBoardRepository;
     private final ProductFileRepository productFileRepository;
+    private final ProductBoardQueryRepository productBoardQueryRepository;
+    private final AmazonS3Service amazonS3Service;
 
-    public void save(ProductBoardDTO productBoardDTO) throws IOException{
-        ProductBoard productBoard = ProductBoard.toProductBoard((RequestProductBoard)productBoardDTO);
-        Long saveId = productBoardRepository.save(productBoard).getId();
-        ProductBoard byId = productBoardRepository.findById(saveId).get();
+    @Transactional
+    public void save(ProductBoardRequest productBoardRequest) throws IOException {
+        ProductBoard productBoard  = productBoardRepository.save(ProductBoard.toProductBoard(productBoardRequest));
 
-        for(MultipartFile MultiparProductFile:productBoardDTO.getProductFile()) {
-            String originalFileName = MultiparProductFile.getOriginalFilename();
-            String storedFileName = System.currentTimeMillis() + "" + originalFileName;
-            String savePath = System.getProperty("user.dir")+ "\\src\\main\\resources\\static\\file\\" + storedFileName;
-            MultiparProductFile.transferTo(new File(savePath));
-
-            ProductFile productFile = ProductFile.toProductFile(byId, originalFileName, storedFileName);
+        List<S3FileDto> s3FileDtoList = amazonS3Service.uploadFiles(productBoardRequest.getProductFile());
+        for(S3FileDto s3FileDto : s3FileDtoList) {
+            ProductFile productFile = ProductFile.toProductFile(s3FileDto.getOriginalFileName(), s3FileDto.getUploadFilePath(),s3FileDto.getUploadFileUrl(), productBoard);
             productFileRepository.save(productFile);
         }
     }
 
-    @Transactional
-    public List<ProductBoardDTO> findAll() {
-        List<ProductBoard> productList = productBoardRepository.findAll();
-        List<ProductBoardDTO> productDTOList =new ArrayList<>();
-        for(ProductBoard product : productList){
-            productDTOList.add(ProductBoardDTO.toProductBoardDTO(product));
-        }
-        return productDTOList;
+    @Transactional(readOnly = true)
+    public List<ProductBoardDTO> findAll(Pageable pageable) {
+        return productBoardQueryRepository.findAllByPageable(pageable).getContent();
     }
-    @Transactional
+
+    @Transactional(readOnly = true)
     public ProductBoardDTO findById(Long id) {
-        Optional<ProductBoard> optionalProductEntity = productBoardRepository.findById(id);
-        if(optionalProductEntity.isPresent()){
-            ProductBoard product =optionalProductEntity.get();
-            ProductBoardDTO productDTO = ProductBoardDTO.toProductBoardDTO(product);
-            return productDTO;
-        }return null;
+        return productBoardQueryRepository.findById(id);
     }
 
 
