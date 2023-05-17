@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 
-
 import static com.oncha.oncha_web.domain.payment.model.QPayment.payment;
 
 @Repository
