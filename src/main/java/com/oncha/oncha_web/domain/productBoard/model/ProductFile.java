@@ -22,6 +22,7 @@ public class ProductFile extends BaseEntity {
     private String storedFileName;
     @Column
     private String url;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private ProductBoard productBoard;

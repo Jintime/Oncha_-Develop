@@ -13,9 +13,9 @@
 
 <div class="view">
     <div class="order_main_info">
-        <div class="main_img">
+       <!-- <div class="main_img">
             <td th:each="fileName : ${product.list.get(0).storedFileName}">
-            <img th:src="@{|/upload/${fileName}|}" alt="">></div>
+            <img th:src="@{|/upload/${fileName}|}" alt="">></div>-->
         </td>
         <div class=" inner_info">
             <ul>
@@ -112,7 +112,7 @@
         //가맹점 식별코드
         IMP.init("imp85443833");
         IMP.request_pay({
-            pg : 'tosspayments',
+            pg : 'nice.nictest04m',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name :  productName,
@@ -121,11 +121,11 @@
             buyer_name : "name",
             buyer_tel : "phone",
             buyer_addr : "address",
-            buyer_postcode : "postcode"
+            buyer_postcode : "postcode",
+            m_redirect_url : 'http://localhost:8080//orderComplete'
         }, function(res) {
 
             // 결제검증
-
 
             $.ajax({
                 type : "POST",
