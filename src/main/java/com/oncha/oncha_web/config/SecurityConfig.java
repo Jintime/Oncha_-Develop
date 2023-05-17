@@ -1,5 +1,5 @@
 package com.oncha.oncha_web.config;
-import com.oncha.oncha_web.filter.JwtFilter;
+import com.oncha.oncha_web.config.filter.JwtFilter;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.security.oauth.OAuthLoginFailureHandler;
 import com.oncha.oncha_web.security.oauth.OAuthLoginSuccessHandler;

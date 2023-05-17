@@ -1,14 +1,14 @@
 #database 연동
 spring:
-  profiles:
-    group:
-      local:
-        - dev
-        - oauth2
-        - aws
-    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://login-lecture.cindj3n0yfz1.ap-northeast-2.rds.amazonaws.com:3306/login_lecture
+    username: admin
+    password: vksek7827391
   thymeleaf:
     cache: false
+  profiles:
+    include: social, jwt
 
 #jpa database 설정
   jpa:
@@ -16,3 +16,7 @@ spring:
       ddl-auto: update
     open-in-view: false
     show-sql: true
+
+iamport:
+  api-key: {API 키}
+  api-secret: {API 시크릿 키}

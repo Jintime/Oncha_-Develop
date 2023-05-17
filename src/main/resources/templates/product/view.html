@@ -38,7 +38,7 @@
                 <div class="cont">
                     <td th:text="${product.detail}"></td>
                     <th>image</th>
-                    <td><img th:src="@{|/upload/${product.list.get(0).url}|}" alt=""></td>
+                    <td><img th:src="@{|/upload/${product.storedFileName}|}" alt=""></td>
                 </div>
 
             </div>

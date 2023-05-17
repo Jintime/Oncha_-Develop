@@ -35,6 +35,37 @@ public class ProductBoardDTO implements RequestProductBoard {
     private boolean blended;
     private boolean caffeine;
 
-    private List<ProductFileDTO> list;
+    private List<MultipartFile> productFile;
+    private List<String>  originFileName;
+    private List<String>  storedFileName;
+
+    public static ProductBoardDTO toProductBoardDTO(ProductBoard productBoard){
+        ProductBoardDTO productBoardDTO = new ProductBoardDTO();
+        productBoardDTO.setId(productBoard.getId());
+        productBoardDTO.setTitle(productBoard.getTitle());
+        productBoardDTO.setDetail(productBoard.getDetail());
+        productBoardDTO.setProduct_name(productBoard.getProduct_name());
+        productBoardDTO.setOrigin_nation(productBoard.getOrigin_nation());
+        productBoardDTO.setType(productBoard.getType());
+        productBoardDTO.setFlavor(productBoard.getFlavor());
+        productBoardDTO.setCategory(productBoard.getCategory());
+        productBoardDTO.setWeight(productBoard.getWeight());
+        productBoardDTO.setPrice(productBoard.getPrice());
+        productBoardDTO.setProduct_count(productBoard.getProduct_count());
+        productBoardDTO.setView(productBoard.getView());
+        productBoardDTO.setLike(productBoard.getLove());
+        productBoardDTO.setBlended(productBoard.isBlended());
+        productBoardDTO.setCaffeine(productBoard.isCaffeine());
+
+        List<String> originalFileNameList =new ArrayList<>();
+        List<String> storedFileNameList =new ArrayList<>();
+        for(ProductFile productFile: productBoard.getProductFileList()) {
+            originalFileNameList.add(productFile.getOriginalFileName());
+            storedFileNameList.add(productFile.getStoredFileName());
+        }
+        productBoardDTO.setOriginFileName(originalFileNameList);
+        productBoardDTO.setStoredFileName(storedFileNameList);
+        return productBoardDTO;
+    }
 
 }

@@ -31,7 +31,11 @@
                     <td><a th:href="@{|/product/admin/${product.id}|}" th:text="${product.title}"></a></td>
                     <td><a th:href="@{/product/admin/${product.id}}" th:text="${product.title}"></a></td>
                     <td th:text="${product.id}"></td>
+                    <td th:text="${product.origin}"></td>
                     <td th:text="${product.price}"></td>
+                    <td th:text="${product.teainfo}"></td>
+                    <td th:text="${product.amount}"></td>
+                    <td th:text="*{#temporals.format(product.getCreatedAt(), 'yyyy-MM-dd HH:mm:ss')}"></td>
 
                 </tr>
             </table>
