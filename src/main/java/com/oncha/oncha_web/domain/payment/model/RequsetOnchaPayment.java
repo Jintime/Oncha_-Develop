@@ -1,6 +1,6 @@
 package com.oncha.oncha_web.domain.payment.model;
 
-public interface RequsetPayment {
+public interface RequsetOnchaPayment {
     public Long getId();
     public String getImpUid();
     public String getPayment_price();

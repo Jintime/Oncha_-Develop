@@ -1,6 +1,6 @@
 package com.oncha.oncha_web.feature.payment.model;
 
-import com.oncha.oncha_web.domain.payment.model.RequsetPayment;
+import com.oncha.oncha_web.domain.payment.model.RequsetOnchaPayment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentRequest implements RequsetPayment {
+public class OnchaPaymentRequest implements RequsetOnchaPayment {
 
     private Long id;
     private String impUid;
