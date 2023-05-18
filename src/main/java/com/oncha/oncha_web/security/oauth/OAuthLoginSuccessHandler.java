@@ -1,7 +1,8 @@
 package com.oncha.oncha_web.security.oauth;
 
-import com.oncha.oncha_web.redis.RefreshTokenInfo;
-import com.oncha.oncha_web.redis.RefreshTokenRepository;
+import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
+import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenInfo;
+import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenRepository;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.util.CookieUtil;
@@ -14,14 +15,13 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Component
 public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private final TokenProvider tokenProvider;
-    private final RefreshTokenRepository repository;
+    private final RefreshTokenRedisService refreshTokenRedisService;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
@@ -29,13 +29,9 @@ public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
         String token = tokenProvider.createToken(principalDetails.getId(), principalDetails.getRole());
         String refreshToken = tokenProvider.createRefresh();
-        registryRefreshToken(refreshToken, principalDetails.getId());
+        refreshTokenRedisService.saveNewRefresh(tokenProvider.createTokenKey(principalDetails.getId()), refreshToken);
         CookieUtil.setTokenInCookie(response, token, refreshToken);
         response.sendRedirect("/");
     }
 
-    public void registryRefreshToken (String refresh, Long userId) {
-        RefreshTokenInfo refreshTokenInfo = new RefreshTokenInfo(tokenProvider.createTokenKey(userId), refresh);
-        repository.save(refreshTokenInfo);
-    }
 }

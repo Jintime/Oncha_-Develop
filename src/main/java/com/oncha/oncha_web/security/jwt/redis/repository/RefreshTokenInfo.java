@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.redis;
+package com.oncha.oncha_web.security.jwt.redis.repository;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.RedisHash;
 @AllArgsConstructor
 public class RefreshTokenInfo {
     @Id
-    private String userId;
+    private String id;
 
     private String refreshToken;
 

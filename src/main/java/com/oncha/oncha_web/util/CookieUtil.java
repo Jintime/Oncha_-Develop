@@ -46,10 +46,12 @@ public class CookieUtil {
     public static void removeTokenInCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie(TokenProvider.ACCESS_TOKEN_KEY, null);
         cookie.setMaxAge(0);
+        cookie.setPath("/");
         response.addCookie(cookie);
 
         Cookie cookie2 = new Cookie(TokenProvider.REFRESH_TOKEN_KEY, null);
-        cookie.setMaxAge(0);
+        cookie2.setMaxAge(0);
+        cookie2.setPath("/");
         response.addCookie(cookie2);
     }
 

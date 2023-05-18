@@ -2,7 +2,10 @@ package com.oncha.oncha_web.filter;
 
 
 import com.oncha.oncha_web.security.jwt.TokenProvider;
+import com.oncha.oncha_web.security.jwt.redis.exception.CustomJwtException;
+import com.oncha.oncha_web.security.jwt.redis.feature.TokenDto;
 import com.oncha.oncha_web.util.CookieUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -31,16 +34,40 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
         String jwt = resolveTokenByCookie(request);
         String refresh = resolveRefreshByCookie(request);
 
+        //기존문제 : jwt를 바꿔주었으나 현재 필터에서 바라보고있는 jwt 가 이전 jwt기 때문에 에러가 난다.
         String requestURI = request.getRequestURI();
-        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt, refresh, response)) {
-            Authentication authentication = tokenProvider.getAuthentication(jwt);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            logger.debug("Security Context에 '{}' 인증정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
+        if (StringUtils.hasText(jwt)) {
+            try {
+                if (tokenProvider.validateToken(jwt, response)) {
+                    setAuthenticationInSecurityContext(jwt, requestURI);
+                } else {
+                    logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                }
+            } catch (ExpiredJwtException e) {
+                try {
+                    logger.debug("리프레시 시작");
+                    TokenDto tokenDto = tokenProvider.getNewRegisteredTokenByClaims(e.getClaims(), refresh);
+                    setAuthenticationInSecurityContext(tokenDto.getAccess(), requestURI);
+                    resetRefreshCookie(tokenDto.getAccess(), tokenDto.getRefresh(), response);
+                }catch (CustomJwtException ce) {
+                    logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                }
+            }
         } else {
             logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private void setAuthenticationInSecurityContext(String access, String requestURI) {
+        Authentication authentication = tokenProvider.getAuthentication(access);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        logger.debug("Security Context에 '{}' 인증정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
+    }
+
+    private void resetRefreshCookie(String access, String refresh, HttpServletResponse response) {
+        CookieUtil.setTokenInCookie(response, access, refresh);
     }
 
     //request header에서 토큰정보를 꺼내오기 위한 메소드
