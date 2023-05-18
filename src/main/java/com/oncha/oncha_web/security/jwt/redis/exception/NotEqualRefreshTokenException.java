@@ -1,9 +1,9 @@
-package com.oncha.oncha_web.exception;
+package com.oncha.oncha_web.security.jwt.redis.exception;
 
 import lombok.Getter;
 
 @Getter
-public class NotEqualRefreshTokenException extends RuntimeException {
+public class NotEqualRefreshTokenException extends CustomJwtException {
 
     private final String infoId;
 
