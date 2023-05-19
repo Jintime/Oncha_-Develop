@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 public class TokenProvider implements InitializingBean {
     public static final String ACCESS_TOKEN_KEY = "access_token";
     public static final String REFRESH_TOKEN_KEY = "refresh_token";
-
+//
     public static final String TOKEN_START_WITH = "Bearer ";
     private final Logger logger = LoggerFactory.getLogger(TokenProvider.class);
     private static final String AUTHORITIES_KEY = "auth";
