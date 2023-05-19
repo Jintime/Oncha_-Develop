@@ -7,5 +7,7 @@ public interface RequsetOnchaPayment {
     public String getPayment_status();
     public String getBuyer_name();
     public String getBuyer_email();
+    public String getPost_code();
+    public String getPhone_number();
 
 }

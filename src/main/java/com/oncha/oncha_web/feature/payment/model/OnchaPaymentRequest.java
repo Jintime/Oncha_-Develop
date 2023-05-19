@@ -16,4 +16,6 @@ public class OnchaPaymentRequest implements RequsetOnchaPayment {
     private String payment_status;
     private String buyer_name;
     private String buyer_email;
+    private String post_code;
+    private String phone_number;
 }

@@ -31,6 +31,8 @@ public class OnchaPaymentService {
         data.setPayment_status(paymentRequest.getResponse().getStatus());
         data.setBuyer_name(paymentRequest.getResponse().getBuyerName());
         data.setBuyer_email(paymentRequest.getResponse().getBuyerEmail());
+        data.setPost_code(paymentRequest.getResponse().getBuyerPostcode());
+        data.setPhone_number(paymentRequest.getResponse().getBuyerTel());
         System.out.println(data.toString());
        OnchaPayment payment = onchaPaymentRepository.save(OnchaPayment.toPayment(data));
 
