@@ -56,7 +56,7 @@ public class ProductBoardController {
         model.addAttribute("product",productDTO);
         return "product/view";
     }
-
+//
     @GetMapping("/odertest/{id}")
     public String findById2(@PathVariable Long id,Model model){
         // productService.updateHits(index);
