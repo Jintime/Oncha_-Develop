@@ -336,24 +336,7 @@ float:right;
     top: 25%;
     cursor: pointer;
 }
-#coinfo-container{
-    float: left;
-    height: 140px;
-    width: 100%;
-    background-color: #AAC779;
-  }
-  .coinfoinner img{
-    display: block;
-    width: 60px;
-    margin: 10px auto 0px auto;
-  }
-  .coinfoinner p{
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 10px;
-    color: white;
-  }
+
 
 
 .slideShow_container{
