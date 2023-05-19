@@ -67,6 +67,6 @@ jwt:
   header: Authorization
   secret: b25jaGEta2JqLWtqcy1zZWNyZXQtdG9rZW4tand0LW5vdHJlZnJlc2gtd2Utd2lsbC1jcmVhdGUtd2ViLXNpdGU=
   # 키가 256 bit보다 커야함 낮으면 weakKeyException 이 나타남
-  token-validity-in-Mill-Seconds: 3000000
+  token-validity-in-seconds: 300 #토큰만료시간 8시간
   refresh-secret: YjI1amFHRXRhMkpxTFd0cWN5MXpaV055WlhRdGRHOXJaVzR0YW5kMExYSmxabkpsYzJndGQyVXRkMmxzYkMxamNtVmhkR1V0ZDJWaUxYTnBkR1U9
-  refresh-validity-in-Mill-Seconds : 604800000
+  refresh-validity-in-seconds : 604800000
