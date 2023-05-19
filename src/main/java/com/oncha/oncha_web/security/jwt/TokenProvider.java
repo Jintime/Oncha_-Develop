@@ -41,7 +41,7 @@ public class TokenProvider implements InitializingBean {
     private static final String AUTHORITIES_KEY = "auth";
     private final String secretKey;
     private final long tokenValidityInMilliSeconds;
-
+//
     private final String refreshKey;
 
     private final long refreshValidityMillInSeconds;
