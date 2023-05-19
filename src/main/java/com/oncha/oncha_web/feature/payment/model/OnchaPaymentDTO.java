@@ -1,7 +1,8 @@
 package com.oncha.oncha_web.feature.payment.model;
 
 
-import com.oncha.oncha_web.domain.payment.model.RequsetPayment;
+import com.oncha.oncha_web.domain.payment.model.RequsetOnchaPayment;
+import jakarta.persistence.Column;
 import lombok.*;
 
 @Getter
@@ -9,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentDTO implements RequsetPayment {
+public class OnchaPaymentDTO implements RequsetOnchaPayment {
 
     private Long id;
     private String impUid;
@@ -17,5 +18,7 @@ public class PaymentDTO implements RequsetPayment {
     private String payment_status;
     private String buyer_name;
     private String buyer_email;
+    private String post_code;
+    private String phone_number;
 
 }

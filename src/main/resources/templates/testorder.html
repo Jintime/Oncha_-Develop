@@ -122,16 +122,14 @@
             buyer_tel : "phone",
             buyer_addr : "address",
             buyer_postcode : "postcode",
-            m_redirect_url : 'http://localhost:8080//orderComplete'
+            m_redirect_url : 'http://localhost:8080/orderComplete'
         }, function(res) {
-
             // 결제검증
 
             $.ajax({
                 type : "POST",
                 url : "/verifyIamport/" + res.imp_uid
             }).done(function(data) {
-
                 if(res.paid_amount == data.response.amount){
                     alert("결제 및 결제검증완료");
 
