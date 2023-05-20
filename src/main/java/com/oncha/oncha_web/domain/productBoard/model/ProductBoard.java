@@ -52,6 +52,8 @@ public class ProductBoard extends BaseEntity {
     private boolean blended;
     private boolean caffeine;
 
+    private boolean allow;
+
     @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ProductFile> productFileList= new ArrayList<>();
 
@@ -59,7 +61,7 @@ public class ProductBoard extends BaseEntity {
     @Builder
     public ProductBoard(Long id, String title, String detail, String product_name, String origin_nation,
                         String type, String flavor, String category, int weight, int price, int product_count,
-                        int view, int love, boolean blended, boolean caffeine){
+                        int view, int love, boolean blended, boolean caffeine,boolean allow){
         this.id =id;
         this.title = title;
         this.detail = detail;
@@ -75,6 +77,7 @@ public class ProductBoard extends BaseEntity {
         this.love = love;
         this.blended =blended;
         this.caffeine = caffeine;
+        this.allow =allow;
     }
 
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
@@ -94,6 +97,7 @@ public class ProductBoard extends BaseEntity {
                 .love(requestProductBoard.getLike())
                 .blended(requestProductBoard.isBlended())
                 .caffeine(requestProductBoard.isCaffeine())
+                .allow(requestProductBoard.isAllow())
                 .build();
     }
 

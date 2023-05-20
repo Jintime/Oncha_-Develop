@@ -34,6 +34,7 @@ public class ProductBoardDTO implements RequestProductBoard {
 
     private boolean blended;
     private boolean caffeine;
+    private boolean allow;
 
     private List<ProductFileDTO> list;
 

@@ -17,5 +17,6 @@ public interface RequestProductBoard {
     public int getLike();
     public boolean isBlended();
     public boolean isCaffeine();
+    public boolean isAllow();
 
 }
