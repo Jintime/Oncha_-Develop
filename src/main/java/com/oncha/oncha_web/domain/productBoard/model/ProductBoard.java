@@ -101,4 +101,5 @@ public class ProductBoard extends BaseEntity {
                 .build();
     }
 
+
 }
