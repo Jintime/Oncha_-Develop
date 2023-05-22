@@ -36,15 +36,8 @@
           <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>-->
         <form class="login-form" action="/register" method="post">
-            <input name="userId" id ="id" type="text" onblur="checkValue(id)" placeholder="아이디"/>
-            <p id="id-result"></p>
             <input name="name" id ="name" type="text" placeholder="이름"/>
-            <input name="email" id ="email" type="email" onblur="checkValue(id)" placeholder="이메일"/>
-            <p id="email-result"></p>
-            <input name="password" id ="password" type="password" placeholder="비밀번호"/>
-            <input id ="confirm-password" type="password" placeholder="비밀번호확인"/>
-            <input name="phone" id="phone" onblur="checkValue(id)" type="text" placeholder="전화번호"/>
-            <p id="phone-result"></p>
+            <input name="phone" id="phone" type="text" placeholder="전화번호"/>
             <input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
             <button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
             <input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
@@ -59,7 +52,7 @@
 </div>
 </body>
 
-
+<!--
 <script th:inline="javascript">
 
     const checkType=(type,res)=>{
@@ -109,7 +102,7 @@
 
 
 </script>
-
+-->
 
 </html>
 

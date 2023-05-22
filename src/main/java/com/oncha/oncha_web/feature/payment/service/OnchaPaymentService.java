@@ -24,6 +24,7 @@ public class OnchaPaymentService {
     private final PaymentQueryRepository paymentQueryRepository;
 
     // 결제 정보를 저장하는 메서드
+    @Transactional
     public void save(IamportResponse<Payment> paymentRequest) {
         OnchaPaymentRequest data = new OnchaPaymentRequest();
         data.setImpUid(paymentRequest.getResponse().getImpUid());
@@ -38,6 +39,7 @@ public class OnchaPaymentService {
 
     }
     //결제 정보 수정하는 메소드
+    @Transactional
     public void update(Long id, OnchaPaymentRequest paymentRequest){
         OnchaPayment onchaPayment = onchaPaymentRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("해당 결제 정보가 존재하지 않습니다."));

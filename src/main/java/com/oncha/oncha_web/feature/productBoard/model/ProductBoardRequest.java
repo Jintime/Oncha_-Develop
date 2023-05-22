@@ -31,6 +31,7 @@ public class ProductBoardRequest implements RequestProductBoard {
 
     private boolean blended;
     private boolean caffeine;
+    private boolean allow;
 
     private List<MultipartFile> productFile;
     private List<String> originFileName;
