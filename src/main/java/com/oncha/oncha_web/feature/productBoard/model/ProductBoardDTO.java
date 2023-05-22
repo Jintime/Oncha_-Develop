@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ProductBoardDTO implements RequestProductBoard {
+public class ProductBoardDTO {
 
     private Long id;
 

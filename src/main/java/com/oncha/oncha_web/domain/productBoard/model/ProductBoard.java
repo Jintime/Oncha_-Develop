@@ -57,6 +57,10 @@ public class ProductBoard extends BaseEntity {
     @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ProductFile> productFileList= new ArrayList<>();
 
+    public void allowed() {
+        this.allow = true;
+    }
+
 
     @Builder
     public ProductBoard(Long id, String title, String detail, String product_name, String origin_nation,
