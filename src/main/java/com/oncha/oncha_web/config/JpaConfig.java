@@ -30,8 +30,10 @@ public class JpaConfig {
             @Override
             public Optional<Long> getCurrentAuditor() {
                 try {
-                    return Optional.of(((PrincipalDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
-                }catch (NullPointerException e) {
+                    Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                    PrincipalDetails principalDetails = (PrincipalDetails)object;
+                    return Optional.of(principalDetails.getId());
+                  }catch (Exception e) {
                     log.debug("사용자 특정에 실패했습니다.");
                     return Optional.empty();
                 }

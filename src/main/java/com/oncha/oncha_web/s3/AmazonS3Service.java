@@ -30,7 +30,7 @@ public class AmazonS3Service {
 
         List<S3FileDto> s3files = new ArrayList<>();
 
-        String uploadFilePath = "/" + getFolderName();
+        String uploadFilePath = getFolderName();
 
         for (MultipartFile multipartFile : multipartFiles) {
 
