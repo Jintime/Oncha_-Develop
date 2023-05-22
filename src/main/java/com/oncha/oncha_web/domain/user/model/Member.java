@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,6 +41,9 @@ public class Member extends BaseTimeEntity {
     private boolean allow;
     private String provider;
     private String providerId;
+
+    @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
+    private List<Address> addressList=new ArrayList<>();
 
     public Member(String userId, String name ,String email ,String role, String provider, String providerId) {
         this.userId = userId;

@@ -2,12 +2,11 @@ package com.oncha.oncha_web.security.oauth;
 
 
 import com.oncha.oncha_web.domain.user.model.Member;
-import com.oncha.oncha_web.domain.user.model.MemberRepository;
+import com.oncha.oncha_web.domain.user.repository.MemberRepository;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.provider.UserInfoProvider;
 import com.oncha.oncha_web.security.provider.userinfo.OAuth2UserInfo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
