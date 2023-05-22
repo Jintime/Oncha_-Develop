@@ -38,6 +38,7 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
                 productBoard.love,
                 productBoard.blended,
                 productBoard.caffeine,
+                productBoard.allow,
                 Projections.list(Projections.fields(
                         ProductFileDTO.class,
                         productFile.originalFileName,
