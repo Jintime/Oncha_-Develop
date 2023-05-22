@@ -14,14 +14,19 @@ public class RefreshTokenRedisService {
 
     private final RefreshTokenRepository refreshTokenRepository;
 
-    public RefreshTokenInfo getRefresh(String tokenKey) {
+    public RefreshTokenInfo getRefresh(String tokenKey) throws NotFoundRedisEntityException {
         return refreshTokenRepository.findById(tokenKey)
                 .orElseThrow(() -> new NotFoundRedisEntityException(tokenKey));
     }
 
     public void saveNewRefresh(String tokenKey, String refresh) {
-        RefreshTokenInfo refreshTokenInfo = getRefresh(tokenKey);
-        refreshTokenInfo.setRefreshToken(refresh);
+        RefreshTokenInfo refreshTokenInfo;
+        try {
+            refreshTokenInfo = getRefresh(tokenKey);
+            refreshTokenInfo.setRefreshToken(refresh);
+        } catch (NotFoundRedisEntityException e) {
+            refreshTokenInfo = new RefreshTokenInfo(e.getKey(), refresh);
+        }
         refreshTokenRepository.save(refreshTokenInfo);
     }
 
