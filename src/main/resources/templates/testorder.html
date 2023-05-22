@@ -14,8 +14,8 @@
 <div class="view">
     <div class="order_main_info">
       <div class="main_img">
-            <td th:each="fileName : ${product.list.get(0).getUrl()}">
-            <img th:src="fileName" alt="">></div>
+     <td th:each="fileName : ${product.list.get(0).getUrl()}">
+            <img th:src="@{|${fileName}|}" alt="">></div>
         </td>
         <div class=" inner_info">
             <ul>
@@ -92,6 +92,7 @@
     </div>
 </div>
 <script>
+
     function iamport(){
 
         const name = $("#name").val();
