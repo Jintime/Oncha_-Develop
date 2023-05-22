@@ -1,6 +1,8 @@
 package com.oncha.oncha_web.feature.payment.controller;
 
+import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
 import com.oncha.oncha_web.feature.payment.service.OnchaPaymentService;
+import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -34,8 +36,6 @@ public class OnchaPaymentController {
             , HttpSession session
             , @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException
     {
-
-
      //  System.out.println(paymentRequest);
         onchaPaymentService.save(api.paymentByImpUid(imp_uid));
         return api.paymentByImpUid(imp_uid);
@@ -60,4 +60,12 @@ public class OnchaPaymentController {
         return "redirect:index";
     }
 
+    //프론트작업 먼저 해야됨
+    @GetMapping("/payment/{id}")
+    public String oder(@PathVariable Long id, Model model){
+        // productService.updateHits(index);
+        OnchaPaymentDTO paymentDTO = onchaPaymentService.findById(id);
+        model.addAttribute("product",paymentDTO);
+        return "testorder";
+    }
 }

@@ -45,6 +45,9 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Address> addressList=new ArrayList<>();
 
+    public void allowed() {
+        this.allow = true;
+    }
     public Member(String userId, String name ,String email ,String role, String provider, String providerId) {
         this.userId = userId;
         this.email = email;

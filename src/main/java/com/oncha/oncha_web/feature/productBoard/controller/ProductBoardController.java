@@ -49,6 +49,12 @@ public class ProductBoardController {
         return "product/list";
     }
 
+    @GetMapping("/getId/{id}")
+    public ProductBoardDTO GetId(@PathVariable Long id){
+        ProductBoardDTO productBoardDTO =productBoardService.findById(id);
+        return productBoardDTO;
+    }
+
     @GetMapping("/admin/{id}")
     public String findById(@PathVariable Long id, Model model){
         // productService.updateHits(index);
@@ -56,22 +62,5 @@ public class ProductBoardController {
         model.addAttribute("product",productDTO);
         return "product/view";
     }
-
-    @GetMapping("/odertest/{id}")
-    public String findById2(@PathVariable Long id,Model model){
-        // productService.updateHits(index);
-        ProductBoardDTO productDTO = productBoardService.findById(id);
-        model.addAttribute("product",productDTO);
-        return "testorder";
-    }
-    @GetMapping("/payment/{id}")
-    public String oder(@PathVariable Long id, Model model){
-        // productService.updateHits(index);
-        ProductBoardDTO productDTO = productBoardService.findById(id);
-        model.addAttribute("product",productDTO);
-        return "testorder";
-    }
-
-
 
 }

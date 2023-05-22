@@ -47,7 +47,6 @@ public class ProductBoardService {
         for (Long productId : id) {
             ProductBoard productBoard = productBoardRepository.findById(productId)
                     .orElseThrow(() -> new NotFoundException("해당 정보가 없습니다"));
-            ///추후 수정이 필요할거같음
             productBoard.allowed();
         }
     }
