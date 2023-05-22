@@ -48,25 +48,7 @@ public class ProductBoardService {
             ProductBoard productBoard = productBoardRepository.findById(productId)
                     .orElseThrow(() -> new NotFoundException("해당 정보가 없습니다"));
             ///추후 수정이 필요할거같음
-            productBoard = ProductBoard.builder()
-                    .id(productBoard.getId())
-                    .title(productBoard.getTitle())
-                    .detail(productBoard.getDetail())
-                    .product_name(productBoard.getProduct_name())
-                    .origin_nation(productBoard.getOrigin_nation())
-                    .type(productBoard.getType())
-                    .flavor(productBoard.getFlavor())
-                    .category(productBoard.getCategory())
-                    .weight(productBoard.getWeight())
-                    .price(productBoard.getPrice())
-                    .product_count(productBoard.getProduct_count())
-                    .view(productBoard.getView())
-                    .love(productBoard.getLove())
-                    .blended(productBoard.isBlended())
-                    .caffeine(productBoard.isCaffeine())
-                    .allow(true)
-                    .build();
-            productBoardRepository.save(productBoard);
+            productBoard.allowed();
         }
     }
 
