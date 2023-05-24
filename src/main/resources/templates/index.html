@@ -33,12 +33,15 @@
     <div class="product_Container">
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="inner">
-            <table>
-            <tr th:each="product:${product_List}"></tr>
-                <a class="product_inner"><<img th:src="@{|${product.list.get(0).getUrl()}|}" alt="">
-                </td></a>
-            </table>
-        </div>
+            <a class="product_inner">
+            <tr th:each="prdocutList:${product}">
+                   <td th:text="${prdocutList.getTitle()}"></td><br>
+                   <td th:text="${prdocutList.getProduct_name()}"></td><br>
+
+                <td th:text="${prdocutList.getLike()}"></td>
+                <td th:text="${prdocutList.getView()}"></td>
+            </tr>
+        </a>
         <i id="right" class="fa-solid fa-angle-right"></i>
 
 
