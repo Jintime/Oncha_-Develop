@@ -5,6 +5,9 @@
     <title>Title</title>
     <link href="/css/test.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script>
+
+    </script>
 </head>
 <body>
 <div class="box">
@@ -30,13 +33,11 @@
     <div class="product_Container">
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="inner">
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
-            <a class="product_inner"><img src="/img/프로덕트칸.png"></a>
+            <table>
+            <tr th:each="product:${product_List}"></tr>
+                <a class="product_inner"><<img th:src="@{|${product.list.get(0).getUrl()}|}" alt="">
+                </td></a>
+            </table>
         </div>
         <i id="right" class="fa-solid fa-angle-right"></i>
 
