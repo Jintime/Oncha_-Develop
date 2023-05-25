@@ -18,12 +18,20 @@ public class StoreController {
     @GetMapping("/store")
     public String Store(){return "category/store";}
 
-    @GetMapping("/order/{id}")
+    @GetMapping("/{id}")
     public String findById2(@PathVariable Long id, Model model){
         // productService.updateHits(index);
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
         return "testorder";
+    }
+
+    @GetMapping("/order/{id}")
+    public String findById(@PathVariable Long id, Model model){
+        // productService.updateHits(index);
+        ProductBoardDTO productDTO = productBoardService.findById(id);
+        model.addAttribute("product",productDTO);
+        return "store/order/order";
     }
 
 }

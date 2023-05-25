@@ -34,7 +34,7 @@
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="inner">
             <tr th:each="prdocutList:${product}">
-                <a class="product_inner" th:href="@{/Store/order/{id}(id =${prdocutList.id})}">
+                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
                     <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
                    <td th:text="${prdocutList.getTitle()}"></td>
                     <td th:text="${prdocutList.getProduct_name()}"></td>
