@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="/css/board/css.css">
+</head>
+<body>
+<div class="board_wrap">
+    <div class="board_title">
+        <strong>제품 관리 게시판</strong>
+        <p>조민지 바보.</p>
+    </div>
+    <div class="board_list_wrap">
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>상품명</th>
+                <th>원산지</th>
+                <th>type</th>
+                <th>향미</th>
+                <th>분류</th>
+                <th>중량</th>
+                <th>가격</th>
+                <th>블렌디드유무</th>
+                <th>카페인유무</th>
+                <th>재고</th>
+                <th>승인</th>
+
+            </tr>
+
+            <tr th:each="product: ${productList}">
+                <td th:text="${product.id}"></td>
+                <td><a th:href="@{|/product/admin/${product.id}|}" th:text="${product.title}"></a></td>
+                <td><a th:href="@{/product/admin/${product.id}}" th:text="${product.product_name}"></a></td>
+                <td th:text="${product.origin_nation}"></td>
+                <td th:text="${product.type}"></td>
+                <td th:text="${product.flavor}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.weight}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.blended}"></td>
+                <td th:text="${product.caffeine}"></td>
+                <td th:text="${product.product_count}"></td>
+                <img th:src="@{|${product.list.get(0).url}|}">
+                <td><input class="allow" type="checkbox"></td>
+            </tr>
+        </table>
+        <div class="board_page">
+            <a href="#" class="bt first"><<</a>
+            <a href="#" class="bt prev"><</a>
+            <a href="#" class="num on">1</a>
+            <a href="#" class="num">2</a>
+            <a href="#" class="num">3</a>
+            <a href="#" class="num">4</a>
+            <a href="#" class="num">5</a>
+            <a href="#" class="bt next">></a>
+            <a href="#" class="bt last">>></a>
+        </div>
+        <div class="bt_wrap">
+            <a href="write.html" class="on">등록</a>
+            <!--<a href="#">수정</a>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

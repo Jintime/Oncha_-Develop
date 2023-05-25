@@ -100,7 +100,7 @@ a:hover{
     cursor: pointer;
     overflow: hidden;
     scroll-behavior: smooth;
-
+ height: 480px;
 }
 .inner .drgging{
     cursor: grab;
@@ -113,6 +113,10 @@ a:hover{
     object-fit: cover;
     margin-left: 14px;
     width: calc(100%/3);
+}
+.product_inner{
+width: 100%;
+    height: 100%;
 }
 .inner img:first-child{
     margin-left: 0px;

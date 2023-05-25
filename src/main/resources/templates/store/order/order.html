@@ -2,94 +2,59 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="/css/order/order.css" rel="stylesheet">
+    <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
-
-<div class="view">
-    <div class="order_main_info">
-      <div class="main_img">
-     <td th:each="fileName : ${product.list.get(0).getUrl()}">
-            <img th:src="@{|${fileName}|}" alt="">></div>
-        </td>
-        <div class=" inner_info">
-            <ul>
-                <li >배송<br> <h1 class="productName" th:text="${product.title}"></h1></li>
-                <li>배송 일반배송(주문시 ~~도착)</li>
-                <li class="productId" th:text="${product.id}"></li>
-                <li>포장타입 일반포장</li>
-                <li>판매단위 1개</li>
-                <li th:text="${product.weight}">g </li>
-                <li th:text="${product.origin_nation}"></li>
-                <li th:text="${product.type}"></li>
-                <li>상품 선택 <button>-</button><button>1</button><button>+</button></li>
-                <li class="amount" th:text="${product.price}"></li>
-                <li> <a th:href="@{/Store/order/{id}(id =${product.id})}">결제하기</a></li>
-            </ul>
-        </div>
+<div class="box">
+<div class="nav_barContainer">
+    <div class="left"><a class="logo"><img class="top_logo" src="/img/로고.png"></a></div>
+    <div class="right"><button class="finder_bt"><img src="/img/티파인더마오.png"></button>
+        <button class="store_bt"><img src="/img/스토어마오.png"></button>
+        <button class="reserve_bt"><img src="/img/예약마오.png"></button>
+        <button class="sub_bt"><img src="/img/티구독마오.png"></button>
+        <input type="text">
     </div>
-    <div class="button_panel">
-        <button>상품설명</button>
-        <button>상세정보</button>
-        <button>후기</button>
-        <button>문의</button>
-    </div>
-    <div class="info">
-        상품설명
-
-
-        어쩌구저쩌구
-
-
-
-        저절씨구
-
-
-        어쩌구저쩌구
-
-
-        온차언쩌구
-    </div>
-    <div class="detail">
-        상세정보
-
-
-
-
-
-
-
-    </div>
-    <div class="review">
-        후기
-        <div class="review_borad">
-            리뷰가 없습니다.
-        </div>
-    </div>
-    <div class="inquiry">
-        나문희
-        <div class="inquiry_board">
-            문희는 포도가 먹고싶은데
-        </div>
-    </div>
-
-
 </div>
+<button id="login"><img src="/img/로긴온차.png"></button>
+
+
+
+<div class="product_info"></div>
+
+<div class="address_info">
+<div class="deliver_option_wrap">
+    <strong>배송지 선택</strong>
+    <div>
+    <input type="radio" name="deliver_option">
+        <span>기본 배송지</span>
+    <input type="radio" name="deliver_option">
+        <span>배송지 입력</span>
+        <button>배송지 목록</button>
+    </div>
+    <input type="radio" name="deliver">
+    <span>1번</span>
+    <input type="radio" name="deliver">
+    <span>2번</span>
+    <input type="radio" name="deliver">
+    <span>3번</span>
+    </div>
+    <div class="deliver_address">
+        어쩌고저쩌고
+    </div>
+    <button  onclick="iamport()">결제하기</button>
 </div>
-</div>
-<!--tail-->
-<div id="coinfo-container">
+
+<div id="coinfo_container">
     <div class="coinfoinner">
-        <img src="/img/logo2.png">
+        <img src="/img/로고.png">
         <p>E-mail : oncha.minji@gmail.com</p>
         <p>Copyright 2023 Oncha</p>
     </div>
 </div>
+</div>
+</body>
 <script>
 
     function iamport(){
@@ -142,5 +107,4 @@
         });
     }
 </script>
-</body>
 </html>

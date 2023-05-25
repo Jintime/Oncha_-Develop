@@ -1,5 +1,6 @@
-package com.oncha.oncha_web.domain.user.model;
+package com.oncha.oncha_web.domain.user.repository;
 
+import com.oncha.oncha_web.domain.user.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

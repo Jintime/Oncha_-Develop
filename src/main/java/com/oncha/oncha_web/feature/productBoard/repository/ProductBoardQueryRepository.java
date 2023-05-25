@@ -39,10 +39,10 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
                 productBoard.blended,
                 productBoard.caffeine,
                 productBoard.allow,
-                Projections.list(Projections.fields(
+                Projections.list(Projections.constructor(//병준님때문에 개고생함
                         ProductFileDTO.class,
                         productFile.originalFileName,
-                        productFile.storedFileName
+                        productFile.url
                 ))
         )).from(productBoard)
                 .leftJoin(productFile).on(productFile.productBoard.

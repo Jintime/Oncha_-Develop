@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function openZipSearch() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    document.querySelector("#zip").value = data.zonecode;
+                    document.querySelector("#address1").value =  data.address;
+                }
+            }).open();
+        }
+    </script>
+</head>
+<body>
+<button>
+<h1>배송지 입력</h1>
+</button>
+<input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
+<button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
+<input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
+<input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
+<h1>기본 배송지</h1>
+<button>
+<input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
+<input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
+<input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
+</button>
+<h1>이전 배송지</h1>
+<button>
+<input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
+<input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
+<input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
+</button>
+</button>
+<h1>이전 배송지</h1>
+<button>
+    <input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
+    <input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
+    <input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
+</button>
+</body>
+</html>
