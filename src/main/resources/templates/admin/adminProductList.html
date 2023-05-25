@@ -29,6 +29,7 @@
                 <th>승인</th>
 
             </tr>
+
             <tr th:each="product: ${productList}">
                 <td th:text="${product.id}"></td>
                 <td><a th:href="@{|/product/admin/${product.id}|}" th:text="${product.title}"></a></td>
@@ -42,6 +43,7 @@
                 <td th:text="${product.blended}"></td>
                 <td th:text="${product.caffeine}"></td>
                 <td th:text="${product.product_count}"></td>
+                <img th:src="@{|${product.list.get(0).url}|}">
                 <td><input class="allow" type="checkbox"></td>
             </tr>
         </table>

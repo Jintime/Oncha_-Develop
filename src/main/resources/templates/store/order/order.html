@@ -3,44 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function openZipSearch() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    document.querySelector("#zip").value = data.zonecode;
-                    document.querySelector("#address1").value =  data.address;
-                }
-            }).open();
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
-<button>
-<h1>배송지 입력</h1>
-</button>
-<input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
-<button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
-<input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-<input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
-<h1>기본 배송지</h1>
-<button>
-<input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
-<input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-<input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
-</button>
-<h1>이전 배송지</h1>
-<button>
-<input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
-<input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-<input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
-</button>
-</button>
-<h1>이전 배송지</h1>
-<button>
-    <input name="zip" type="text" style="width:200px; height:50px;" placeholder="우편번호" />
-    <input name="address1" type="text"style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-    <input name="address2" type="text" style="width:270px; height:50px;" placeholder="상세" />
-</button>
+<div class="box">
+<div class="nav_barContainer">
+    <div class="left"><a class="logo"><img class="top_logo" src="/img/로고.png"></a></div>
+    <div class="right"><button class="finder_bt"><img src="/img/티파인더마오.png"></button>
+        <button class="store_bt"><img src="/img/스토어마오.png"></button>
+        <button class="reserve_bt"><img src="/img/예약마오.png"></button>
+        <button class="sub_bt"><img src="/img/티구독마오.png"></button>
+        <input type="text">
+    </div>
+</div>
+<button id="login"><img src="/img/로긴온차.png"></button>
+
+
+
+<div class="product_info"></div>
+
+<div class="address_info">
+<div class="deliver_option_wrap">
+    <strong>배송지 선택</strong>
+    <div>
+    <input type="radio" name="deliver_option">
+        <span>기본 배송지</span>
+    <input type="radio" name="deliver_option">
+        <span>배송지 입력</span>
+        <button>배송지 목록</button>
+    </div>
+    <input type="radio" name="deliver">
+    <span>1번</span>
+    <input type="radio" name="deliver">
+    <span>2번</span>
+    <input type="radio" name="deliver">
+    <span>3번</span>
+    </div>
+    <div class="deliver_address">
+        어쩌고저쩌고
+    </div>
+    <button  onclick="iamport()">결제하기</button>
+</div>
+
+<div id="coinfo_container">
+    <div class="coinfoinner">
+        <img src="/img/로고.png">
+        <p>E-mail : oncha.minji@gmail.com</p>
+        <p>Copyright 2023 Oncha</p>
+    </div>
+</div>
+</div>
 </body>
+<script>
+
+    function iamport(){
+
+        const name = $("#name").val();
+        const phone = $("#phone").val();
+        const email = $("#email").val();
+        const postcode = $("#postcode").val();
+        const address = $("#address").val() + " " + $("#detailAddress").val();
+
+        const productName= document.querySelector(".productName").textContent;
+        const productId = $("#productId").val();
+        const detailName = $("#productName").val();
+        const cartName = $("#cartName").val();
+        const amount = document.querySelector(".amount").textContent;
+        const price = $("#total-price").text();
+
+        console.log(amount);
+
+        //가맹점 식별코드
+        IMP.init("imp85443833");
+        IMP.request_pay({
+            pg : 'nice.nictest04m',
+            pay_method : 'card',
+            merchant_uid : 'merchant_' + new Date().getTime(),
+            name :  productName,
+            amount : amount,
+            buyer_email : "email",
+            buyer_name : "name",
+            buyer_tel : "phone",
+            buyer_addr : "address",
+            buyer_postcode : "postcode",
+            m_redirect_url : 'http://localhost:8080/orderComplete'
+        }, function(res) {
+            // 결제검증
+
+            $.ajax({
+                type : "POST",
+                url : "/verifyIamport/" + res.imp_uid
+            }).done(function(data) {
+                if(res.paid_amount == data.response.amount){
+                    alert("결제 및 결제검증완료");
+
+                    //결제 성공 시 비즈니스 로직
+
+                } else {
+                    alert("결제 실패");
+                }
+            });
+        });
+    }
+</script>
 </html>
