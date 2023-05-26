@@ -26,22 +26,18 @@ public class SecurityConfig {
     private final PrincipalOauth2UserService principalOauth2UserService;
     private final TokenProvider tokenProvider;
 
-
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
                 .ignoring().requestMatchers("/h2-console/**","/favicon.ico", "/static/**");
     }
 
-
     @Bean
     protected SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
+        String LOGIN_PATH = "/login";
 
-        http.csrf().disable();
-        http.authorizeHttpRequests()
-                    .requestMatchers("/user/**").authenticated()
-                    .requestMatchers("/manager/**").hasAnyRole("ADMIN","MANAGER")
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
+        http.csrf().disable()
+                    .authorizeHttpRequests()
                     .anyRequest().permitAll()
                 .and()
 
@@ -50,13 +46,10 @@ public class SecurityConfig {
                 .and()
 
                 .formLogin().disable()
-//                .loginPage("/loginForm")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/") 이거 있으면 loginSuccessHandler 무시된다.
-//                .and()
                 .httpBasic().disable()
 
                 .oauth2Login()
+                .loginPage(LOGIN_PATH)
                 .userInfoEndpoint()
                     .userService(principalOauth2UserService)
                 .and()
@@ -64,7 +57,7 @@ public class SecurityConfig {
                     .failureHandler(oAuthLoginFailureHandler);
 
         http.addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
-
+//        http.addFilterBefore(new RefererFilter(), JwtFilter.class);
         return http.build();
     }
 
