@@ -31,29 +31,32 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
 //
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String jwt = resolveTokenByCookie(request);
-        String refresh = resolveRefreshByCookie(request);
-
-        //기존문제 : jwt를 바꿔주었으나 현재 필터에서 바라보고있는 jwt 가 이전 jwt기 때문에 에러가 난다.
         String requestURI = request.getRequestURI();
-        if (StringUtils.hasText(jwt)) {
-            try {
-                if (tokenProvider.validateToken(jwt, response)) {
-                    setAuthenticationInSecurityContext(jwt, requestURI);
-                } else {
-                    logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
-                }
-            } catch (ExpiredJwtException e) {
+        try {
+            String jwt = resolveTokenByCookie(request);
+            String refresh = resolveRefreshByCookie(request);
+            if (StringUtils.hasText(jwt)) {
                 try {
-                    logger.debug("리프레시 시작");
-                    TokenDto tokenDto = tokenProvider.getNewRegisteredTokenByClaims(e.getClaims(), refresh);
-                    setAuthenticationInSecurityContext(tokenDto.getAccess(), requestURI);
-                    resetRefreshCookie(tokenDto.getAccess(), tokenDto.getRefresh(), response);
-                }catch (CustomJwtException ce) {
-                    logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                    if (tokenProvider.validateToken(jwt, response)) {
+                        setAuthenticationInSecurityContext(jwt, requestURI);
+                    } else {
+                        logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                    }
+                } catch (ExpiredJwtException e) {
+                    try {
+                        logger.debug("리프레시 시작");
+                        TokenDto tokenDto = tokenProvider.getNewRegisteredTokenByClaims(e.getClaims(), refresh);
+                        setAuthenticationInSecurityContext(tokenDto.getAccess(), requestURI);
+                        resetRefreshCookie(tokenDto.getAccess(), tokenDto.getRefresh(), response);
+                    }catch (CustomJwtException ce) {
+                        logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                    }
                 }
+            } else {
+                logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
             }
-        } else {
+
+        }catch (Exception e) {
             logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
         }
 

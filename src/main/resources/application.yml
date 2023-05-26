@@ -9,10 +9,13 @@ spring:
     active: local
   thymeleaf:
     cache: false
-
 #jpa database 설정
   jpa:
     hibernate:
       ddl-auto: update
     open-in-view: false
     show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
