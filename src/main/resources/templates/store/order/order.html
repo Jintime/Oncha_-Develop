@@ -20,8 +20,13 @@
 <button id="login"><img src="/img/로긴온차.png"></button>
 
 
+<div class="product_info">
+        <a class="product_inner" th:href="@{/Store/{id}(id =${product.id})}">
+            <img th:src="@{|${product.list.get(0).getUrl()}|}" alt="">
+            <td th:text="${product.getTitle()}"></td>
+            <td th:text="${product.getProduct_name()}"></td></a>
 
-<div class="product_info"></div>
+</div>
 
 <div class="address_info">
 <div class="deliver_option_wrap">

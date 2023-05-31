@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/Store")
 public class StoreController {
     private final ProductBoardService productBoardService;
-    @GetMapping("/store")
-    public String Store(){return "category/store";}
+    @GetMapping("/")
+    public String Store(){return "store/store";}
 
     @GetMapping("/{id}")
     public String findById2(@PathVariable Long id, Model model){

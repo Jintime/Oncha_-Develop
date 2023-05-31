@@ -1,3 +1,6 @@
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
 button{
     border: none;
     background-color: unset;
@@ -19,36 +22,83 @@ a:hover{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     justify-content: space-between;
+
 }
+.Like_bt{
+    position: absolute;
+background: #FFFFFF;
+
+}
+
 .nav_barContainer button{
-    width: 150px;
+    width: 120px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .nav_barContainer .left{
-    margin-left: 50px;
+    margin-left: 30px;
 }
-.nav_barContainer .top_logo{
+.nav_barContainer img{
+    vertical-align: middle;
+}   
+.nav_barContainer .top_logo{    
+    width: 180px;
     height: 50px;
 }
-.nav_barContainer .right{
+.nav_barContainer .right{  
+    padding-top: 10px; 
     margin-right: 50px;
 }
+
 .Top_viewContainer{
-    margin-top: 70px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
-}
-#login{
-    display: flex;
-    margin-left: auto;
-    margin-right: 40px;
 }
 
 .Top_viewContainer .main_view{
     width: 68%;
     height: 580px;
 
+}
+.title_container{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.main_view{
+    position: relative;
+}
+.main_view h1{
+    top:40%;
+    text-align: left;
+    left: 5%;
+    width: 100%;
+    font-size: 50px;
+    position: absolute;
+}
+.banner{
+    position: relative;
+}
+.banner h1{
+    top:20%;
+    text-align: right;
+    right: 10%;
+    width: 100%;
+    font-size: 50px;
+    position: absolute;
+    color: #FFFFFF;
+}
+.banner p{
+    top:90%;
+    text-align: right;
+    right: 10%;
+    width: 100%;
+    font-size: 14px;
+    position: absolute;
+    color: #FFFFFF;
+    font-weight: bold;
 }
 .Top_viewContainer .banner{
     width: 30%;
@@ -93,14 +143,25 @@ a:hover{
     font-size: 10px;
 
 }
-
+.middle_banner_container{
+    position: relative;
+}
+.middle_banner_container p{
+    font-weight: bold;
+    letter-spacing :5px;
+    top:5%;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    position: absolute;
+}
 /**/
-.product_Container .inner{
+.inner{
     white-space: nowrap;
     cursor: pointer;
     overflow: hidden;
     scroll-behavior: smooth;
- height: 480px;
+    height: 480px;
 }
 .inner .drgging{
     cursor: grab;
@@ -109,14 +170,65 @@ a:hover{
 .inner .drgging img{
     pointer-events: none;
 }
+
+
 .inner img{
     object-fit: cover;
     margin-left: 14px;
-    width: calc(100%/3);
+    height: calc(60%);
+    border-radius: 8px;
 }
-.product_inner{
-width: 100%;
+.rank_img img{
+    width: 80px;
+    top:0%;
+    height: 70px;
+    border-radius: 0px;
+    position: absolute;
+}
+/***지워야되는코드**/
+ .product_inner span{
+    margin-right: 5px;
+    font-size: 14px;
+ }
+ .type{
+    font-size: 8px;
+    color: gray;
+ }
+ .title{
+    font-weight: bold;
+    white-space: normal;
+    word-break: break-all;
+    height: 50px;
+ }
+ .like_bt{
+    width: 45px;
+    top:48%;
+    right:5%;
+    position: absolute;
+ }
+.icons{
+    vertical-align: middle;
+display: inline-block;
+margin-right:5px ;
+height: 15px;
+}
+.icons img{
+    vertical-align: top;
     height: 100%;
+    border-radius: 0;
+}
+
+/***************/
+.product_inner{
+    width: calc(24%);
+    height: 100%;
+    display: inline-block;
+    border-radius: 8px;
+    position: relative;
+}
+.product_inner:not(:first-child){
+    margin-left: 10px;
+    
 }
 .inner img:first-child{
     margin-left: 0px;
