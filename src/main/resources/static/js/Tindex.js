@@ -8,7 +8,7 @@ const logoBtn = document.querySelector(".logo"),
     loginBtn=document.querySelector("#login");
 
 loginBtn.addEventListener("click",()=>getterBtn("login"));
-logoBtn.addEventListener("click",()=>getterBtn("index"));
+logoBtn.addEventListener("click",()=>getterBtn("/"));
 finderBtn.addEventListener("click",()=>getterBtn("finder"));
 storeBtn.addEventListener("click",()=>getterBtn("store"));
 reserveBtn.addEventListener("click",()=>getterBtn("teaHouse"));

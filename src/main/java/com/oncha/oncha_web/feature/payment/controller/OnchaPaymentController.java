@@ -39,7 +39,6 @@ public class OnchaPaymentController {
      //  System.out.println(paymentRequest);
         onchaPaymentService.save(api.paymentByImpUid(imp_uid));
         return api.paymentByImpUid(imp_uid);
-
     }
     @RequestMapping(value="/orderComplete", produces = "application/text; charset=utf8", method = RequestMethod.GET)
     public String orderComplete(
@@ -49,14 +48,11 @@ public class OnchaPaymentController {
             , Locale locale
             , HttpSession session) throws IamportResponseException, IOException
     {
-
         IamportResponse<Payment> result = api.paymentByImpUid(imp_uid);
         // 결제 가격과 검증결과를 비교한다.
         if(result.getResponse().getAmount().compareTo(BigDecimal.valueOf(100)) == 0) {
-
             System.out.println("검증통과");
         }
-
         return "redirect:index";
     }
 

@@ -43,60 +43,28 @@
     <div class="title_container"><h1>가장 많이 마시는 차! Best</h1></div>
 
     <div class="product_Container">
+        <!--<tr th:each="prdocutList:${product}">
+         <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+             <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+            <td th:text="${prdocutList.getTitle()}"></td>
+             <td th:text="${prdocutList.getProduct_name()}"></td>
+         <td th:text="${prdocutList.getLike()}"></td>
+         <td th:text="${prdocutList.getView()}"></td>
+         </a>
+     </tr>
+ -->
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="inner">
-            <a><div class="product_inner"><img src="/img/index/상품1-2.png">
-                <p class="type">싱글오리진</p>
-                <p class="title">얼그레이</p>
-                <strong>12,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-       </div></a>
-                  <div class="product_inner"><img src="/img/index/상품2-2.png">
-                    <p class="type">블렌딩</p>
-                    <p class="title">고요한 바다를 담은 숲</p>
-                <strong>27,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                  </div>
-                      <div class="product_inner"><img src="/img/index/상품3-2.png">
-                        <p class="type">싱글오리진</p>
-                        <p class="title">제주 녹차</p>
-                <strong>31,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                </div>
-                      <div class="product_inner"><img src="/img/index/상품4-2.png">
-                        <p class="type">뉴타입</p>
-                        <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
-                <strong>43,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                </div>
-                      <div class="product_inner"><img src="/img/index/상품1-2.png">
-                        <p class="type">싱글오리진</p>
-                        <p class="title">얼그레이</p>
-                        <strong>12,000원</strong><br>
-                        <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                        <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                </div>
-                      <div class="product_inner"><img src="/img/index/상품2-2.png">
-                        <p class="type">싱글오리진</p>
-                        <p class="title">얼그레이</p>
-                        <strong>12,000원</strong><br>
-                        <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                        <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                </div>
-            <!--<tr th:each="prdocutList:${product}">
-                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                    <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-                   <td th:text="${prdocutList.getTitle()}"></td>
-                    <td th:text="${prdocutList.getProduct_name()}"></td>
-                <td th:text="${prdocutList.getLike()}"></td>
-                <td th:text="${prdocutList.getView()}"></td>
-                </a>
+            <tr th:each="productList:${product}">
+                <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" >
+                    <img th:src="@{|${productList.list.get(0).getUrl()}|}" alt="">
+                    <p class="type" th:text="${productList.type}"></p>
+                    <p class="title" th:text="${productList.title}"></p>
+                    <strong th:text="${productList.price}">원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                </div></a>
             </tr>
-        -->
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
     </div>
@@ -194,7 +162,7 @@
         -->
     </div>
     </div>
-
+<div><a href="/product_board/write">물건등록하기</a></div>
     <div id="coinfo_container">
         <div class="coinfoinner">
             <img src="/img/Logo.png">

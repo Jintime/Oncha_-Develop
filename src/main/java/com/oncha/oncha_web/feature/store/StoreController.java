@@ -2,6 +2,8 @@ package com.oncha.oncha_web.feature.store;
 
 import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.productBoard.service.ProductBoardService;
+import com.oncha.oncha_web.feature.user.model.MemberDTO;
+import com.oncha.oncha_web.feature.user.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/Store")
+@RequestMapping("/store")
 public class StoreController {
     private final ProductBoardService productBoardService;
-    @GetMapping("/")
+    private final MemberService memberService;
+
+    @GetMapping("")
     public String Store(){return "store/store";}
 
     @GetMapping("/{id}")
