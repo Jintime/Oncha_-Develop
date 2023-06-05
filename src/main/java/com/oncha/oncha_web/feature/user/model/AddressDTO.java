@@ -1,18 +1,23 @@
 package com.oncha.oncha_web.feature.user.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class AddressDTO {
     private Long id;
 
+    private String default_zipcode;
     private String default_address;
+    private String default_address_detail;
+
+    private String spare_zipcode;
     private String spare_address;
-    private String spare_address2;
+    private String spare_address_detail;
+
+    private String spare2_zipcode;
+    private String spare2_address;
+    private String spare2_address_detail;
+
 }

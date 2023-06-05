@@ -94,6 +94,7 @@
         </td>
     </tr>
 
+
     </tbody>
 </table>
        <!-- <a class="product_inner" th:href="@{/Store/{id}(id =${product.id})}">
@@ -111,24 +112,42 @@
     <div>
     <input type="radio" name="deliver_option">
         <span>기본 배송지</span>
-    <input type="radio" name="deliver_option">
+    <input type="radio" name="deliver_option_set">
         <span>배송지 입력</span>
         <a>배송지 목록</a>
     </div>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver1">
     <span>1번</span>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver2">
     <span>2번</span>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver3">
     <span>3번</span>
     </div>
     <div class="deliver_address">
-       <ul class="address_info">
-        <li>이름</li>
-        <li>전화번호</li>
-        <li>주소 <a class="address_change">정보변경</a></li>
+       <ul class="address_info_default">
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.phoneNumber}"></li>
+        <li th:text="${user.addressDTOList.get(0).default_zipcode}"> <a class="address_change">정보변경</a></li>
+        <li th:text="${user.addressDTOList.get(0).default_address}"></li>
+        <li th:text="${user.addressDTOList.get(0).default_address_detail}"></li>
         <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
        </ul>
+        <ul class="address_info_spare">
+            <li th:text="${user.name}"></li>
+            <li th:text="${user.phoneNumber}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare_zipcode}"> <a class="address_change">정보변경</a></li>
+            <li th:text="${user.addressDTOList.get(0).spare_address}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare_address_detail}"></li>
+            <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
+        </ul>
+        <ul class="address_info_spare2">
+            <li th:text="${user.name}"></li>
+            <li th:text="${user.phoneNumber}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_zipcode}"> <a class="address_change">정보변경</a></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_address}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_address_detail}"></li>
+            <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
+        </ul>
     </div>
 </div>
 
@@ -136,9 +155,9 @@
 <div class="user_info_container">
     <h4>주문자 정보</h4>
     <ul class="user_inf">
-        <li>이름</li>
-        <li>전화번호 <a>수정</a></li>
-        <li>이메일<a>수정</a></li>
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.phoneNumber}"> <a>수정</a></li>
+        <li th:text="${user.email}"><a>수정</a></li>
     </ul>
 
 </div>
@@ -147,9 +166,9 @@
 
 <div class="payment_confirmed_container">
     <h2>결제 상세</h2>
-    <div class="sum"><strong>주문금액</strong> <p>1,000원</p></div>
+    <div class="sum"><strong>주문금액</strong> <p th:text="${product.price}"></p></div>
     <ul class="calc">
-        <li><strong>상품금액</strong><p>1,000원</p></li>
+        <li><strong>상품금액</strong><p th:text="${product.price}"></p></li>
         <li><strong>배송비</strong><p>3,500원</p></li>
         <li><strong>할인</strong><p>0원</p></li>
     </ul>

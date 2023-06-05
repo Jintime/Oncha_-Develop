@@ -170,8 +170,6 @@ background: #FFFFFF;
 .inner .drgging img{
     pointer-events: none;
 }
-
-
 .inner img{
     object-fit: cover;
     margin-left: 14px;
