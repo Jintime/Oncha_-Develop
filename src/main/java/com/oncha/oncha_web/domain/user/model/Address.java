@@ -16,11 +16,21 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String default_address;
+    private String zonecode;
 
-    private String spare_address;
+    private String address;
 
-    private String spare_address2;
+    private String roadAddress;
+
+    private String jibunAddress;
+
+    private String buildingName;
+
+    private String sido;
+
+    private String sigungu;
+
+    private String roadname;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
