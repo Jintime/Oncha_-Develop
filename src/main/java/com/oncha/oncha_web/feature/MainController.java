@@ -25,8 +25,5 @@ public class MainController {
         model.addAttribute("product",productDTOList);
         return "index";}
 
-    @GetMapping("/login")
-    public String Login(){return "login/loginForm";}
-
 
 }
