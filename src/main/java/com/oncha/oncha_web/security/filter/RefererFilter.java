@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.filter;
+package com.oncha.oncha_web.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

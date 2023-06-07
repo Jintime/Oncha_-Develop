@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.filter;
+package com.oncha.oncha_web.security.filter;
 
 
 import com.oncha.oncha_web.security.jwt.TokenProvider;
