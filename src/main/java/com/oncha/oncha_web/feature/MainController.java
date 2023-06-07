@@ -23,10 +23,6 @@ public class MainController {
     public String Home(Model model,@PageableDefault Pageable pageable){
        List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("product",productDTOList);
-        return "index";}
-
-    @GetMapping("/login")
-    public String Login(){return "login/loginForm";}
-
-
+        return "index";
+    }
 }
