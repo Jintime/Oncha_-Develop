@@ -1,14 +1,10 @@
 package com.oncha.oncha_web.security.jwt;
 
 
-
+import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.jwt.redis.exception.CustomJwtException;
 import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
-import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenInfo;
-import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenRepository;
-import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.jwt.redis.feature.TokenDto;
-import com.oncha.oncha_web.util.CookieUtil;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -35,13 +31,13 @@ import java.util.stream.Collectors;
 public class TokenProvider implements InitializingBean {
     public static final String ACCESS_TOKEN_KEY = "access_token";
     public static final String REFRESH_TOKEN_KEY = "refresh_token";
-//
+    public static final String ALLOW_KEY = "allow";
     public static final String TOKEN_START_WITH = "Bearer ";
     private final Logger logger = LoggerFactory.getLogger(TokenProvider.class);
     private static final String AUTHORITIES_KEY = "auth";
     private final String secretKey;
     private final long tokenValidityInMilliSeconds;
-//
+
     private final String refreshKey;
 
     private final long refreshValidityMillInSeconds;
@@ -76,13 +72,14 @@ public class TokenProvider implements InitializingBean {
         this.refreshTypeKey = Keys.hmacShaKeyFor(keyBytesRefresh);
     }
 
-    public String createToken(Long id, String role) {
+    public String createToken(Long id, String role, boolean allow) {
 
         Date validity = new Date(System.currentTimeMillis() + this.tokenValidityInMilliSeconds);//현재시간+토큰만료기간
 
         String jwt = Jwts.builder()
                 .setSubject(String.valueOf(id))
                 .claim(AUTHORITIES_KEY, role)
+                .claim(ALLOW_KEY, String.valueOf(allow))
                 .signWith(accessTypeKey, SignatureAlgorithm.HS256)
                 .setExpiration(validity)
                 .compact();
@@ -114,12 +111,16 @@ public class TokenProvider implements InitializingBean {
 
     private Collection<GrantedAuthority> getAuthoritiesByClaims(Claims claims) {
         return Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
-                        .map(SimpleGrantedAuthority::new)
-                        .collect(Collectors.toList());
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
 
     private String getRoleByClaims(Claims claims) {
         return claims.get(AUTHORITIES_KEY).toString();
+    }
+
+    private boolean getAllowByClaims(Claims claims) {
+        return Boolean.parseBoolean(claims.get(ALLOW_KEY).toString());
     }
 
     private Long getSubjectByClaims(Claims claims) {
@@ -146,33 +147,22 @@ public class TokenProvider implements InitializingBean {
         //권한 한줄로 추출
         String role = getRoleByClaims(claims);
 
-        return new UsernamePasswordAuthenticationToken(new PrincipalDetails(id, role), token, authorities);
-    }
-
-    //토큰을 파라미터로 받아 토큰에 담겨있는 권한정보를 이용해서 Authentication 객체를 리턴하는 메소드
-    public Authentication getAuthenticationWithClaims(String token, Claims claims) {
-        //권한 목록 추출
-        Collection<GrantedAuthority> authorities = getAuthoritiesByClaims(claims);
-
-        //subject에서 id 추출
-        Long id = getSubjectByClaims(claims);
-
-        //권한 한줄로 추출
-        String role = getRoleByClaims(claims);
-
-        return new UsernamePasswordAuthenticationToken(new PrincipalDetails(id, role), token, authorities);
+        //회원가입 완료 유무 추출
+        boolean allow = getAllowByClaims(claims);
+        return new UsernamePasswordAuthenticationToken(new PrincipalDetails(id, role, allow), token, authorities);
     }
 
     public TokenDto getNewRegisteredTokenByClaims(Claims claims, String refresh) throws CustomJwtException {
-        //id. 역할 추출
+        //id. 역할 회원 가입 완료 유무 추출
         Long id = getSubjectByClaims(claims);
         String role = getRoleByClaims(claims);
+        boolean allow = getAllowByClaims(claims);
 
         //id로 redis key 생성
         String tokenKey = createTokenKey(id);
 
         //새로운 access,refresh token 생성
-        String newAccessToken = createToken(id, role);
+        String newAccessToken = createToken(id, role, allow);
         String newRefreshToken = createRefresh();
 
         //기존 것들을 비교하여 올바르면 새로운 값을 집어넣기
@@ -197,14 +187,11 @@ public class TokenProvider implements InitializingBean {
             logger.info("만료된 JWT 토큰입니다");
             throw e;
         } catch (UnsupportedJwtException e) {
-            logger.info("지원 되지 않는 JWT 토큰입니다. 쿠키 삭제");
-            CookieUtil.removeTokenInCookie(response);
+            logger.info("지원 되지 않는 JWT 토큰입니다.");
         } catch (IllegalArgumentException e) {
-            logger.info("JWT 토큰이 잘못되었습니다. 쿠키 삭제");
-            CookieUtil.removeTokenInCookie(response);
+            logger.info("JWT 토큰이 잘못되었습니다.");
         } catch (Exception e) {
-            System.out.println("비정상적인 토큰입니다. 쿠키 삭제");
-            CookieUtil.removeTokenInCookie(response);
+            System.out.println("비정상적인 토큰입니다.");
         }
         return false;
     }

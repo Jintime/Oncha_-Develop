@@ -42,6 +42,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             member = new Member(userId, username, email, role, provider, providerId);
             member = memberRepository.save(member);
         }
-        return new PrincipalDetails(member.getId(), member.getRole(), oAuth2User.getAttributes());
+        return new PrincipalDetails(member.getId(), member.getRole(), member.isAllow() ,oAuth2User.getAttributes());
     }
 }
