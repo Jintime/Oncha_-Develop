@@ -39,11 +39,12 @@
         <form class="login-form" action="/register" method="post">
             <input name="name" id ="name" type="text" placeholder="이름"/>
             <input name="phone" id="phone" type="text" placeholder="전화번호"/>
+            <input name="birth" id="birth" type="date"/>
             <input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
             <button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
             <input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
             <input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
-            <input name="tag" type="text" id="tag" style="width:270px; height:50px;" placeholder="member" />
+
 
             <input id="button" type="submit">SIGN UP</input>
             <p class="message">Already registered? <a href="/login">Login</a></p>

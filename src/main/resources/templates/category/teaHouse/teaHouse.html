@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/test.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="logo" href="/"><img class="top_logo" src="img/Logo.png"></a>
+                <button class="finder_bt">마이티</button>
+                <button class="store_bt" >스토어</button>
+                <button class="reserve_bt">티하우스</button>
+                <button class="sub_bt">커뮤니티</button>
+    
+            </div>
+            <div class="right">
+                <input type="text" >
+                <button id="login">로그인</button>
+                <button id="register">회원가입</button>
+            </div>
+        </div>
+        <hr>
+    
+        
+        <div class="best_teaHouse_cotainer">
+            <h1>찻집랭킹</h1>
+            <div class="inner">
+                <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
+                    <p class="title">다락방</p>
+                    <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <div class="rank_img"><img  src="/img/icons/1.png"></div>
+                </div></a>
+                <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
+                    <p class="title">고바담 숲</p>
+                    <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,005</span>
+                    <div class="rank_img"><img  src="/img/icons/2.png"></div>
+                </div></a>
+                <a> <div class="product_inner"><img src="/img/index/상품3-1.png">
+                    <p class="title">작은 혀의 외침</p>
+                    <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 47</span>
+                    <div class="rank_img"><img  src="/img/icons/3.png"></div>
+                </div></a>
+                <a> <div class="product_inner"><img src="/img/index/상품4-1.png">
+                    <p class="title">그대의 눈빛</p>
+                    <p class="type">풍경이 좋은 찻집</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>100</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 15</span>
+                </div></a>
+                <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
+                    <p class="title">얼그레이</p>
+                    <p class="type">싱글오리진</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                </div></a>
+                <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
+                    <p class="title">얼그레이</p>
+                    <p class="type">싱글오리진</p><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                </div></a>
+                <!--<tr th:each="prdocutList:${product}">
+                    <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                        <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                       <td th:text="${prdocutList.getTitle()}"></td>
+                        <td th:text="${prdocutList.getProduct_name()}"></td>
+                    <td th:text="${prdocutList.getLike()}"></td>
+                    <td th:text="${prdocutList.getView()}"></td>
+                    </a>
+                </tr>
+            -->
+        </div>
+        </div>
+        <hr>
+        <div class="teaHouse_info_container">
+            <h1>내 주변 찻집</h1>
+            <img src="/img/지도.png">
+            일단이미지박음 = api필요
+        </div>
+        <div id="coinfo_container">
+            <div class="coinfoinner">
+                <img src="/img/Logo.png">
+                <p>E-mail : oncha.minji@gmail.com</p>
+                <p>Copyright 2023 Oncha</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/Tindex.js"></script>
+</html>
