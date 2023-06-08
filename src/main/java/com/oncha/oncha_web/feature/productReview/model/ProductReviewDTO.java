@@ -15,6 +15,7 @@ public class ProductReviewDTO implements RequestProductReview {
 
     private Long id;
 
+    private String title;
     private String content;
 
     private int like;

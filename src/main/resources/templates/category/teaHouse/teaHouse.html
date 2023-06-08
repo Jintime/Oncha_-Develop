@@ -8,86 +8,124 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="box">
-        <div class="nav_barContainer">
-            <div class="left"><a class="logo" href="/"><img class="top_logo" src="img/Logo.png"></a>
-                <button class="finder_bt">마이티</button>
-                <button class="store_bt" >스토어</button>
-                <button class="reserve_bt">티하우스</button>
-                <button class="sub_bt">커뮤니티</button>
-    
-            </div>
-            <div class="right">
-                <input type="text" >
-                <button id="login">로그인</button>
-                <button id="register">회원가입</button>
-            </div>
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="logo" href="/index.html"><img class="top_logo" src="img/Logo.png"></a>
+            <button class="finder_bt">마이티</button>
+            <button class="store_bt" onclick="location.href='/store.html'">스토어</button>
+            <button class="reserve_bt" onclick="location.href='/teaHouse.html'">티하우스</button>
+            <button class="sub_bt">커뮤니티</button>
+
         </div>
-        <hr>
-    
-        
-        <div class="best_teaHouse_cotainer">
-            <h1>찻집랭킹</h1>
-            <div class="inner">
-                <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
-                    <p class="title">다락방</p>
-                    <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                    <div class="rank_img"><img  src="/img/icons/1.png"></div>
-                </div></a>
-                <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
-                    <p class="title">고바담 숲</p>
-                    <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,005</span>
-                    <div class="rank_img"><img  src="/img/icons/2.png"></div>
-                </div></a>
-                <a> <div class="product_inner"><img src="/img/index/상품3-1.png">
-                    <p class="title">작은 혀의 외침</p>
-                    <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 47</span>
-                    <div class="rank_img"><img  src="/img/icons/3.png"></div>
-                </div></a>
-                <a> <div class="product_inner"><img src="/img/index/상품4-1.png">
-                    <p class="title">그대의 눈빛</p>
-                    <p class="type">풍경이 좋은 찻집</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>100</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 15</span>
-                </div></a>
-                <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
-                    <p class="title">얼그레이</p>
-                    <p class="type">싱글오리진</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                </div></a>
-                <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
-                    <p class="title">얼그레이</p>
-                    <p class="type">싱글오리진</p><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                </div></a>
-                <!--<tr th:each="prdocutList:${product}">
-                    <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                        <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-                       <td th:text="${prdocutList.getTitle()}"></td>
-                        <td th:text="${prdocutList.getProduct_name()}"></td>
-                    <td th:text="${prdocutList.getLike()}"></td>
-                    <td th:text="${prdocutList.getView()}"></td>
-                    </a>
-                </tr>
-            -->
-        </div>
-        </div>
-        <hr>
-        <div class="teaHouse_info_container">
-            <h1>내 주변 찻집</h1>
-            <img src="/img/지도.png">
-            일단이미지박음 = api필요
-        </div>
-        <div id="coinfo_container">
-            <div class="coinfoinner">
-                <img src="/img/Logo.png">
-                <p>E-mail : oncha.minji@gmail.com</p>
-                <p>Copyright 2023 Oncha</p>
-            </div>
+        <div class="right">
+            <input type="text" >
+            <button id="login">로그인</button>
+            <button id="register">회원가입</button>
         </div>
     </div>
+    <hr>
+
+
+    <div class="best_teaHouse_cotainer">
+        <h1>찻집랭킹</h1>
+        <div class="inner">
+            <a> <div class="product_inner"><img src="img/index/상품1-1.png">
+                <p class="title">다락방</p>
+                <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                <div class="rank_img"><img  src="img/icons/1.png"></div>
+            </div></a>
+            <a> <div class="product_inner"><img src="img/index/상품2-1.png">
+                <p class="title">고바담 숲</p>
+                <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,005</span>
+                <div class="rank_img"><img  src="img/icons/2.png"></div>
+            </div></a>
+            <a> <div class="product_inner"><img src="img/index/상품3-1.png">
+                <p class="title">작은 혀의 외침</p>
+                <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 47</span>
+                <div class="rank_img"><img  src="img/icons/3.png"></div>
+            </div></a>
+            <a> <div class="product_inner"><img src="img/index/상품4-1.png">
+                <p class="title">그대의 눈빛</p>
+                <p class="type">풍경이 좋은 찻집</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>100</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 15</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="img/index/상품1-1.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="img/index/상품2-1.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p><br>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+            </div></a>
+            <!--<tr th:each="prdocutList:${product}">
+                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                    <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                   <td th:text="${prdocutList.getTitle()}"></td>
+                    <td th:text="${prdocutList.getProduct_name()}"></td>
+                <td th:text="${prdocutList.getLike()}"></td>
+                <td th:text="${prdocutList.getView()}"></td>
+                </a>
+            </tr>
+        -->
+        </div>
+    </div>
+    <hr>
+    <p style="margin-top:-12px">
+    </p>
+    <div id="map" style="width:100%;height:350px;"></div>
+
+    <div id="coinfo_container">
+        <div class="coinfoinner">
+            <img src="img/Logo.png">
+            <p>E-mail : oncha.minji@gmail.com</p>
+            <p>Copyright 2023 Oncha</p>
+        </div>
+    </div>
+</div>
 </body>
-<script src="/js/Tindex.js"></script>
+<script src="js/Tindex.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d70541ee46ce2a23a47556dd8015275&libraries=services"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch('제주특별자치도 제주시 구좌읍 세화7길 37 3호', function(result, status) {
+
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+            });
+            infowindow.open(map, marker);
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        }
+    });
+</script>
 </html>
