@@ -13,30 +13,33 @@ import java.util.Optional;
 
 @NoArgsConstructor
 public class SecurityUtil {
+
     private static final Logger logger = LoggerFactory.getLogger(SecurityUtil.class);
 
-    @Deprecated
-    public static Optional<String> getCurrentUsername() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //홀딩되는 시점은 jwtFilter에서 request가 들어올때 authentication 객체를 저장해서 사용하게 됨
+    public static boolean isLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getPrincipal() != null
+            && authentication.getPrincipal() instanceof PrincipalDetails;
+    }
+
+    public static Boolean getAllow() {
+        final Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
+
         if (authentication == null) {
             logger.debug("Security Context에 인증 정보가 없습니다");
-            return Optional.empty();
+            return true;
         }
 
-        String userName = null;
         if (authentication.getPrincipal() instanceof PrincipalDetails principalDetails) {
-//            userName = principalDetails.getUsername();
-            userName = null;
-         } else if (authentication.getPrincipal() instanceof String) {
-            userName = (String) authentication.getPrincipal();
+            return principalDetails.isAllowed();
         }
-
-        return Optional.ofNullable(userName);
+        return true;
     }
 
     public static Optional<Long> getCurrentId() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        final Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
         //홀딩되는 시점은 jwtFilter에서 request가 들어올때 authentication 객체를 저장해서 사용하게 됨
         if (authentication == null) {
             logger.debug("Security Context에 인증 정보가 없습니다");
@@ -52,7 +55,8 @@ public class SecurityUtil {
     }
 
     public static boolean isAdmin() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        final Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
         //홀딩되는 시점은 jwtFilter에서 request가 들어올때 authentication 객체를 저장해서 사용하게 됨
         if (authentication == null) {
             logger.debug("Security Context에 인증 정보가 없습니다");
