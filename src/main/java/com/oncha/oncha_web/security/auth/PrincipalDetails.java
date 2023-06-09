@@ -25,20 +25,23 @@ public class PrincipalDetails implements OAuth2User { //이렇게 하면 Authent
 
     private Long id;
     private String role;
+    private boolean allow;
 
     //Oauth의 어트리뷰트를 저장하는것.
     private Map <String, Object> attributes;
 
     //JWT 필터에 사용되는 생성자
-    public PrincipalDetails(Long id ,String role) {
+    public PrincipalDetails(Long id ,String role, boolean allow) {
         this.id = id;
         this.role = role;
+        this.allow = allow;
     }
 
     //Oauth 로그인시 사용되는 생성자
-    public PrincipalDetails (Long id, String role , Map<String, Object> attributes) {
+    public PrincipalDetails (Long id, String role, boolean allow, Map<String, Object> attributes) {
         this.id = id;
         this.role = role;
+        this.allow = allow;
         this.attributes = attributes;
     }
 
@@ -61,6 +64,10 @@ public class PrincipalDetails implements OAuth2User { //이렇게 하면 Authent
 
     public String getRole() {
         return role;
+    }
+
+    public boolean isAllowed() {
+        return allow;
     }
 
     //이쪽 아래는 oauthUser method

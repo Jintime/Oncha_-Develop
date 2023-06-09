@@ -23,11 +23,5 @@ public class MemberDTO {
     private LocalDateTime birth;
     private String gender;
     private String grade;
-    private boolean disable;
-    private String provider;
-    private String providerId;
     private List<AddressDTO> addressDTOList;
-
-
-
 }

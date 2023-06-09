@@ -1,6 +1,7 @@
-package com.oncha.oncha_web.filter;
+package com.oncha.oncha_web.security.filter;
 
 
+import com.oncha.oncha_web.security.jwt.JwtTokenUtil;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.security.jwt.redis.exception.CustomJwtException;
 import com.oncha.oncha_web.security.jwt.redis.feature.TokenDto;
@@ -41,23 +42,26 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
                         setAuthenticationInSecurityContext(jwt, requestURI);
                     } else {
                         logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                        resetRefreshCookie(response);
                     }
                 } catch (ExpiredJwtException e) {
                     try {
                         logger.debug("리프레시 시작");
                         TokenDto tokenDto = tokenProvider.getNewRegisteredTokenByClaims(e.getClaims(), refresh);
                         setAuthenticationInSecurityContext(tokenDto.getAccess(), requestURI);
-                        resetRefreshCookie(tokenDto.getAccess(), tokenDto.getRefresh(), response);
+                        resetRefreshCookie(response);
                     }catch (CustomJwtException ce) {
                         logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+                        resetRefreshCookie(response);
                     }
                 }
             } else {
                 logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.debug("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+            resetRefreshCookie(response);
         }
 
         filterChain.doFilter(request, response);
@@ -69,8 +73,8 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
         logger.debug("Security Context에 '{}' 인증정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
     }
 
-    private void resetRefreshCookie(String access, String refresh, HttpServletResponse response) {
-        CookieUtil.setTokenInCookie(response, access, refresh);
+    private void resetRefreshCookie(HttpServletResponse response) {
+        JwtTokenUtil.removeTokenInCookie(response);
     }
 
     //request header에서 토큰정보를 꺼내오기 위한 메소드
