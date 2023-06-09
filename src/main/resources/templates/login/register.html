@@ -31,13 +31,14 @@
     <div class="form">
         <form class="login-form" action="/register" method="post">
             <input name="name" id ="name" type="text" placeholder="이름"/>
-            <input name="phone" id="phone" type="text" placeholder="전화번호"/>
-            <input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
-            <button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
-            <input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-            <input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
-            <input name="tag" type="text" id="tag" style="width:270px; height:50px;" placeholder="member" />
-
+            <input name="nickName" id ="nickName" type="text" placeholder="닉네임"/>
+            <input name="phoneNumber" id="phone" type="text" placeholder="전화번호"/>
+            <select name="gender" id="gender">
+                <option value="male">남자</option>
+                <option value="female">여자</option>
+                <option value="etc">기타</option>
+            </select>
+            <input name="birth" id="birth" type="date" placeholder="생년월일"/>
             <input id="button" type="submit">SIGN UP</input>
         </form>
     </div>

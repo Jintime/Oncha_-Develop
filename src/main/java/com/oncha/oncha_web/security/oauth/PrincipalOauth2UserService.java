@@ -31,7 +31,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String provider = oAuth2UserInfo.getProvider();
         String userId = provider+"_"+providerId;
         String email = oAuth2UserInfo.getEmail();
-        String username = oAuth2UserInfo.getName();
         String role = "ROLE_USER";
 
         Optional<Member> oMember = memberRepository.findByUserId(userId);
@@ -39,7 +38,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         if (oMember.isPresent()) {
             member = oMember.get();
         } else {
-            member = new Member(userId, username, email, role, provider, providerId);
+            member = new Member(userId, email, role, provider, providerId);
             member = memberRepository.save(member);
         }
         return new PrincipalDetails(member.getId(), member.getRole(), member.isAllow() ,oAuth2User.getAttributes());

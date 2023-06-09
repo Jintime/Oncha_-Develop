@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.security.oauth;
 
+import com.oncha.oncha_web.security.jwt.JwtTokenUtil;
 import com.oncha.oncha_web.util.CookieUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ public class OAuthLoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        CookieUtil.removeTokenInCookie(response);
+        JwtTokenUtil.removeTokenInCookie(response);
         response.sendRedirect("/");
     }
 }
