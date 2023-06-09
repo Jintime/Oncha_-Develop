@@ -2,7 +2,9 @@ package com.oncha.oncha_web.feature.user.service;
 
 import com.oncha.oncha_web.domain.user.model.Member;
 import com.oncha.oncha_web.domain.user.repository.MemberRepository;
+import com.oncha.oncha_web.feature.user.model.MemberDTO;
 import com.oncha.oncha_web.feature.user.model.RegisterRequest;
+import com.oncha.oncha_web.feature.user.repository.MemberQueryRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final MemberQueryRepository memberQueryRepository;
 
     @Transactional
     public boolean signAdd(Long id, RegisterRequest request) {
@@ -23,5 +26,6 @@ public class MemberService {
         return true;
     }
 
+    public MemberDTO findById(Long id){return memberQueryRepository.findById(id);}
 
 }

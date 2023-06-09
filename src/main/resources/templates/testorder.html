@@ -29,7 +29,7 @@
                 <li th:text="${product.type}"></li>
                 <li>상품 선택 <button>-</button><button>1</button><button>+</button></li>
                 <li class="amount" th:text="${product.price}"></li>
-                <li> <a th:href="@{/Store/order/{id}(id =${product.id})}">결제하기</a></li>
+                <li> <a th:href="@{/store/order/{id}(id =${product.id})}">결제하기</a></li>
             </ul>
         </div>
     </div>
@@ -43,7 +43,7 @@
         상품설명
 
 
-        어쩌구저쩌구
+        <p th:text="${product.detail}">
 
 
 

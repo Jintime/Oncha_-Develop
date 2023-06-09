@@ -1,27 +1,110 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <link href="/css/test.css" rel="stylesheet">
+    <link href="/css/store.css" rel="stylesheet">
 </head>
 <body>
 <div class="box">
-<div class="nav_barContainer">
-    <div class="left"><a class="logo"><img class="top_logo" src="/img/로고.png"></a></div>
-    <div class="right"><button class="finder_bt"><img src="/img/티파인더마오.png"></button>
-        <button class="store_bt"><img src="/img/스토어마오.png"></button>
-        <button class="reserve_bt"><img src="/img/예약마오.png"></button>
-        <button class="sub_bt"><img src="/img/티구독마오.png"></button>
-        <input type="text">
-    </div>
-</div>
-<button id="login"><img src="/img/로긴온차.png"></button>
+    <div class="nav_barContainer">
+        <div class="left"><a class="logo" href="/index.html"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="finder_bt">마이티</button>
+            <button class="store_bt" >스토어</button>
+            <button class="reserve_bt">티하우스</button>
+            <button class="sub_bt">커뮤니티</button>
+        </div>
+        <div class="right">
+            <input class="serch" type="text" >
+            <button id="login">로그인</button>
+            <button id="register">회원가입</button>
+        </div>
+        </div>
+
+<table cellspacing="0" class="tb_products">
+    <caption>주문내역</caption>
+    <colgroup>
+        <col width="500">
+        <col width="135">
+        <col width="120">
+        <col width="90">
+        <col width="110">
+        <col>
+    </colgroup>
+    <thead class="point_plus">
+    <tr>
+    <th scope="col" class="product">상품정보</th>
+    <th scope="col">판매자</th>
+    <th scope="col">배송비</th>
+    <th scope="col">수량</th>
+    <th scope="col" class="bg_point">할인</th>
+    <th scope="col" class="col_price">상품금액(할인포함)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+                <span class="bdr"></span>
+            <div class="product_info">
+                <a href="#" class="product_thmb" target="_blank">
+                    <span class="mask"><img th:src="${product.list.get(0).url}" alt="" width="32" height="32"></span>
+                </a><!--N=a:ord.product-->
+                <div class="product_dsc">
+                    <div class="additional_status">
+                            <span class="ico_npmember type_npay small"><span class="blind">온차</span></span>
+                    </div>
+                            <strong class="name_seller">[다락방]</strong>
+                    <a href="#" target="_blank" class="product_name">
+                        <strong th:text="${product.title}">
+
+                        </strong>
+                    </a><!--N=a:ord.product-->
+                        <div class="option">
+                            <span class="ico_option"><span class="blind">옵션</span></span>
+                            <ul class="option_list">
+                                    <li>
+                                        타입 : 뉴타입 / 녹차
+                                    </li>
+                            </ul>
+                        </div>
+                </div>
+                <span class="vm"></span>
+            </div>
+        </td>
+            <td rowspan="1">
+                        <a href="#" class="seller" target="_blank" title="다락방">다락방</a><!--N=a:ord.ord.sellerstore-->
+            </td>
+            <td rowspan="1">
+                        <span class="deli_fee"><span class="sp_order ico_deli"></span><span>3,500원</span>
+            </td>
+        <td>1개</td>
+        <td>
+                <span class="discount">
+                    <span>(-) </span>
+                    <span>
+                        1,000원</span>
+                </span>
+        </td>
+        <td class="col_price">
+            <span ><em th:text="${product.price}"></em>원</span>
+            <strong><em>14,900</em>원</strong>
+        </td>
+    </tr>
 
 
+    </tbody>
+</table>
+       <!-- <a class="product_inner" th:href="@{/Store/{id}(id =${product.id})}">
+            <img th:src="@{|${product.list.get(0).getUrl()}|}" alt="">
+            <td th:text="${product.getTitle()}"></td>
+            <td th:text="${product.getProduct_name()}"></td></a>
+-->
 
-<div class="product_info"></div>
+<div class="payment_info_container">
+
 
 <div class="address_info">
 <div class="deliver_option_wrap">
@@ -29,26 +112,73 @@
     <div>
     <input type="radio" name="deliver_option">
         <span>기본 배송지</span>
-    <input type="radio" name="deliver_option">
+    <input type="radio" name="deliver_option_set">
         <span>배송지 입력</span>
-        <button>배송지 목록</button>
+        <a>배송지 목록</a>
     </div>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver1">
     <span>1번</span>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver2">
     <span>2번</span>
-    <input type="radio" name="deliver">
+    <input type="radio" name="deliver3">
     <span>3번</span>
     </div>
     <div class="deliver_address">
-        어쩌고저쩌고
+       <ul class="address_info_default">
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.phoneNumber}"></li>
+        <li th:text="${user.addressDTOList.get(0).default_zipcode}"> <a class="address_change">정보변경</a></li>
+        <li th:text="${user.addressDTOList.get(0).default_address}"></li>
+        <li th:text="${user.addressDTOList.get(0).default_address_detail}"></li>
+        <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
+       </ul>
+        <ul class="address_info_spare">
+            <li th:text="${user.name}"></li>
+            <li th:text="${user.phoneNumber}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare_zipcode}"> <a class="address_change">정보변경</a></li>
+            <li th:text="${user.addressDTOList.get(0).spare_address}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare_address_detail}"></li>
+            <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
+        </ul>
+        <ul class="address_info_spare2">
+            <li th:text="${user.name}"></li>
+            <li th:text="${user.phoneNumber}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_zipcode}"> <a class="address_change">정보변경</a></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_address}"></li>
+            <li th:text="${user.addressDTOList.get(0).spare2_address_detail}"></li>
+            <li><input type="text" placeholder="요청사항을 입력해주세요"></li>
+        </ul>
     </div>
-    <button  onclick="iamport()">결제하기</button>
+</div>
+
+
+<div class="user_info_container">
+    <h4>주문자 정보</h4>
+    <ul class="user_inf">
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.phoneNumber}"> <a>수정</a></li>
+        <li th:text="${user.email}"><a>수정</a></li>
+    </ul>
+
+</div>
+
+</div>
+
+<div class="payment_confirmed_container">
+    <h2>결제 상세</h2>
+    <div class="sum"><strong>주문금액</strong> <p th:text="${product.price}"></p></div>
+    <ul class="calc">
+        <li><strong>상품금액</strong><p th:text="${product.price}"></p></li>
+        <li><strong>배송비</strong><p>3,500원</p></li>
+        <li><strong>할인</strong><p>0원</p></li>
+    </ul>
+</div>
+<button  onclick="iamport()">결제하기</button>
 </div>
 
 <div id="coinfo_container">
     <div class="coinfoinner">
-        <img src="/img/로고.png">
+        <img src="/img/Logo.png">
         <p>E-mail : oncha.minji@gmail.com</p>
         <p>Copyright 2023 Oncha</p>
     </div>
@@ -59,29 +189,15 @@
 
     function iamport(){
 
-        const name = $("#name").val();
-        const phone = $("#phone").val();
-        const email = $("#email").val();
-        const postcode = $("#postcode").val();
-        const address = $("#address").val() + " " + $("#detailAddress").val();
-
-        const productName= document.querySelector(".productName").textContent;
-        const productId = $("#productId").val();
-        const detailName = $("#productName").val();
-        const cartName = $("#cartName").val();
-        const amount = document.querySelector(".amount").textContent;
-        const price = $("#total-price").text();
-
-        console.log(amount);
 
         //가맹점 식별코드
         IMP.init("imp85443833");
         IMP.request_pay({
-            pg : 'nice.nictest04m',
+            pg : 'kcp.A52CY',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name :  productName,
-            amount : amount,
+            name :  "온차",
+            amount : "100",
             buyer_email : "email",
             buyer_name : "name",
             buyer_tel : "phone",
@@ -91,10 +207,12 @@
         }, function(res) {
             // 결제검증
 
+            console.log(res);
             $.ajax({
                 type : "POST",
                 url : "/verifyIamport/" + res.imp_uid
             }).done(function(data) {
+                console.log(data);
                 if(res.paid_amount == data.response.amount){
                     alert("결제 및 결제검증완료");
 
