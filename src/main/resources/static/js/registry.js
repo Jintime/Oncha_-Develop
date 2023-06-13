@@ -3,7 +3,6 @@ import {initializePostCode, getPostCode} from './util/daumpostcode.js';
 function submit () {
 
 }
-
 function onLoadPostCode () {
   initializePostCode();
   const button = document.getElementById("postcodebutton");

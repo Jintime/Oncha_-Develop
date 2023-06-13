@@ -4,48 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/login.css">
-    <title>OnchaLogin</title>
+    <link href="/css/test.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <style>
-        #google_login_btn {
-            background: url("/img/btn_google_signin_dark_normal_web@2x.png")
-            no-repeat;
-            background-size: 100% 100%;
-            cursor: pointer;
-            width: 200px;
-            height: 50px;
-        }
-    </style>
-
-
+    <title>Document</title>
 </head>
 <body>
-<div class="login-page">
-    <div class="form">
-        <!--<form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form" >
-            <input id ="username" name="userName" type="text" placeholder="아이디"/>
-            <input id ="password" name="password" type="password" placeholder="비밀번호"/>
-            <button type="button" id= "button">login</button>
-            <p class="message">Not registered? <a href="/register">Create an account</a></p>
-        </form>-->
+    <img class="login_bg" src="/img/login/loginBG.png">
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="logo" href="/index.html"><img class="top_logo" src="/img/Logo.png"></a>
+                <button class="finder_bt">마이티</button>
+                <button class="store_bt" onclick="location.href='/store.html'">스토어</button>
+                <button class="reserve_bt" onclick="location.href='/teaHouse.html'">티하우스</button>
+                <button class="sub_bt">커뮤니티</button>
+    
+            </div>
+            <div class="right">
+                <input type="text" >
+                <button id="login">로그인</button>
+                <button id="register">회원가입</button>
+            </div>
+        </div>
 
-        <button onclick="location.href='/oauth2/authorization/google'" id="google_login_btn" style="background-color:transparent;  border:0px transparent solid;"> </button>
+        <div class="login_wrap">
+
+        <div class="login_L"><h1>나만의 차를<br> 위한 여행</h1></div>
+        <div class="login_R">
+            <img class="login_logo" src="/img/Logo.png">
+            <h2>로그인</h2>
+            <p>소셜네트워크 서비스로 로그인하기</p>
+            <button class="social_login_bt" onclick="location.href='/oauth2/authorization/google'"><img src="/img/login/logo1.png"></button>
+            <button class="social_login_bt"><img src="/img/login/logo2.png"></button>
+            <button class="social_login_bt"><img src="/img/login/logo3.png"></button>
+
+            <p>세상의 모든 차를 담다 ONCHA</p>
+        </div>   
+        </div>
 
 
-    </div>
-</div>
+        </div>
+
+
+
 </body>
-<script type="module" src="/js/loginform.js"></script>
 </html>
-
-<!--Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)-->

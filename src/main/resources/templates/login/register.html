@@ -6,25 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
     <title>OnchaLogin</title>
-    <!--jquery-cdn-->
-
-    <script
-            src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-            crossorigin="anonymous">
-    </script>
-
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function openZipSearch() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    document.querySelector("#zip").value = data.zonecode;
-                    document.querySelector("#address1").value =  data.address;
-                }
-            }).open();
-        }
-    </script>
 </head>
 <body>
 <div class="login-page">
