@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 /src/main/resources/application-aws.yml
 /src/main/resources/application-oauth2.yml
+/src/main/resources/application-production.yml
 
 ### STS ###
 .apt_generated
