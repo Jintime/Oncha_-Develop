@@ -1,5 +1,7 @@
 package com.oncha.oncha_web.config;
 import com.oncha.oncha_web.security.filter.JwtFilter;
+import com.oncha.oncha_web.security.jwt.JwtAccessDeniedHandler;
+import com.oncha.oncha_web.security.jwt.JwtAuthenticationEntryPoint;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.security.oauth.OAuthLoginFailureHandler;
 import com.oncha.oncha_web.security.oauth.OAuthLoginSuccessHandler;
@@ -26,6 +28,9 @@ public class SecurityConfig {
     private final PrincipalOauth2UserService principalOauth2UserService;
     private final TokenProvider tokenProvider;
 
+    private final JwtAccessDeniedHandler accessDeniedHandler;
+    private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
@@ -38,7 +43,14 @@ public class SecurityConfig {
 
         http.csrf().disable()
                     .authorizeHttpRequests()
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/company/**").hasRole("MANAGER")
                     .anyRequest().permitAll()
+                .and()
+
+                .exceptionHandling()
+                    .authenticationEntryPoint(authenticationEntryPoint)
+                    .accessDeniedHandler(accessDeniedHandler)
                 .and()
 
                 .sessionManagement()

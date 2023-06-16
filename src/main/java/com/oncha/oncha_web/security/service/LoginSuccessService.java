@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.security.service;
 
+import com.oncha.oncha_web.domain.user.model.Role;
 import com.oncha.oncha_web.security.jwt.JwtTokenUtil;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
@@ -16,7 +17,7 @@ public class LoginSuccessService {
 
     private final RefreshTokenRedisService refreshTokenRedisService;
 
-    public void processingLogin(HttpServletResponse response, Long id, String role, boolean allow)
+    public void processingLogin(HttpServletResponse response, Long id, Role role, boolean allow)
         throws IOException {
         String token = tokenProvider.createToken(id, role, allow);
         String refreshToken = tokenProvider.createRefresh();

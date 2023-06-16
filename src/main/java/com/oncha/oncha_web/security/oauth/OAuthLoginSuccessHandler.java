@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.security.oauth;
 
+import com.oncha.oncha_web.domain.user.model.Role;
 import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
 import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenInfo;
 import com.oncha.oncha_web.security.jwt.redis.repository.RefreshTokenRepository;
@@ -29,7 +30,7 @@ public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         // 최초 로그인이라면 회원가입 처리를 한다. //이미 서비스에서 회원가입 처리 되었음
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
         Long id = principalDetails.getId();
-        String role = principalDetails.getRole();
+        Role role = principalDetails.getRole();
         boolean allow = principalDetails.isAllowed();
         loginSuccessService.processingLogin(response, id, role, allow);
         response.sendRedirect("/");

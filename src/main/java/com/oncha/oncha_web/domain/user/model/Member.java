@@ -34,8 +34,8 @@ public class Member extends BaseTimeEntity {
     //등급
     @Column(length = 10)
     private String grade;
-    @Column(length = 10)
-    private String role;
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
     @Column(nullable = false)
     private boolean disable;
     @Column(nullable = false)
@@ -49,7 +49,8 @@ public class Member extends BaseTimeEntity {
     public void allowed() {
         this.allow = true;
     }
-    public Member(String userId, String email ,String role, String provider, String providerId) {
+
+    public Member(String userId, String email ,Role role, String provider, String providerId) {
         this.userId = userId;
         this.email = email;
         this.role = role;

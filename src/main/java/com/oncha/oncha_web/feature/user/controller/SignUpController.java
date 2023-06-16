@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.feature.user.controller;
 
+import com.oncha.oncha_web.domain.user.model.Role;
 import com.oncha.oncha_web.exception._40x.NotLoginException;
 import com.oncha.oncha_web.feature.user.model.RegisterRequest;
 import com.oncha.oncha_web.feature.user.service.MemberService;
@@ -9,7 +10,6 @@ import com.oncha.oncha_web.util.SecurityUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -31,10 +31,11 @@ public class SignUpController {
     @PreAuthorize("isAuthenticated()")
     public String signAdd(@ModelAttribute RegisterRequest request,
         HttpServletResponse response,
-        @AuthenticationPrincipal PrincipalDetails principalDetails) throws IOException, NotLoginException {
+        @AuthenticationPrincipal PrincipalDetails principalDetails)
+        throws IOException, NotLoginException {
 
         Long id = principalDetails.getId();
-        String role = principalDetails.getRole();
+        Role role = principalDetails.getRole();
         boolean changeAllow = memberService.signAdd(id, request);
         loginSuccessService.processingLogin(response, id, role, changeAllow);
         return "redirect:/";
