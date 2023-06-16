@@ -2,7 +2,6 @@ package com.oncha.oncha_web.feature.payment.controller;
 
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
 import com.oncha.oncha_web.feature.payment.service.OnchaPaymentService;
-import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
