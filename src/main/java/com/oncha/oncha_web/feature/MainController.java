@@ -1,15 +1,13 @@
 package com.oncha.oncha_web.feature;
 
-import com.oncha.oncha_web.feature.productBoard.model.ProductBoardDTO;
-import com.oncha.oncha_web.feature.productBoard.model.ProductBoardRequest;
-import com.oncha.oncha_web.feature.productBoard.service.ProductBoardService;
+import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
+import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

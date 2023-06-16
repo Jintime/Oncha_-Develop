@@ -1,6 +1,6 @@
 package com.oncha.oncha_web.config;
 
-import com.oncha.oncha_web.intercetor.SignUpCompletionInterceptor;
+import com.oncha.oncha_web.config.intercetor.SignUpCompletionInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
