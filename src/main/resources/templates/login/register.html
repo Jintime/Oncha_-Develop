@@ -4,108 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <title>OnchaLogin</title>
-    <!--jquery-cdn-->
-
-    <script
-            src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-            crossorigin="anonymous">
-    </script>
-
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function openZipSearch() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    document.querySelector("#zip").value = data.zonecode;
-                    document.querySelector("#address1").value =  data.address;
-                }
-            }).open();
-        }
-    </script>
+    <link href="/css/test.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-<div class="login-page">
-    <div class="form">
-        <!--<form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>-->
-        <form class="login-form" action="/register" method="post">
-            <input name="name" id ="name" type="text" placeholder="이름"/>
-            <input name="phone" id="phone" type="text" placeholder="전화번호"/>
-            <input name="birth" id="birth" type="date"/>
-            <input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
-            <button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">검색</button><br>
-            <input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
-            <input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="finder_bt">마이티</button>
+            <button class="store_bt" onclick="location.href='/store.html'">스토어</button>
+            <button class="reserve_bt" onclick="location.href='/teaHouse.html'">티하우스</button>
+            <button class="sub_bt">커뮤니티</button>
 
-
-            <input id="button" type="submit">SIGN UP</input>
-            <p class="message">Already registered? <a href="/login">Login</a></p>
-        </form>
+        </div>
+        <div class="right">
+            <input type="text" >
+            <button id="login">로그인</button>
+            <button id="register">회원가입</button>
+        </div>
     </div>
+
+    <div class="register_wrap">
+        <img class="regiset_logo" src="/img/Logo.png">
+        <h1>회원가입</h1>
+        <div class="register_img"><img src="/img/login/regi1.png">-- --- -<img src="/img/login/regi3.png"></div>
+        <div class="register_text"><p>계졍 인증</p><p>정보 입력</p></div>
+        <form id="myForm">
+            <div class="input_wrap">
+                <input type="text" id="username" name="username" placeholder="이름">
+                <div class="input-group-prepend">
+                    <input type="text" class="form-control" name="my_num1" id="my_num1" maxlength="6" placeholder="주민번호 앞자리">
+                    <input type="password" class="form-control" name="my_num2" id="my_num2" maxlength="1" placeholder="주민번호 뒤 1자리">
+                </div>
+                <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+                <button class="join_bt" type="submit">가입하기</button>
+            </div>
+        </form>
+        <p>세상의 모든 차를 담다 ONCHA</p>
+    </div>
+</div>
+
+
+</div>
+
 
 </div>
 </body>
-
-<!--
-<script th:inline="javascript">
-
-    const checkType=(type,res)=>{
-        let data;
-        let color="green";
-        let use="사용가능한";
-        if(res=="no"){use = "이미 사용중인"; color="red";}
-
-        switch (type){
-            case "id":
-                data= document.getElementById("id-result");
-                data.innerHTML = `${use} 아이디 입니다.`
-                data.style.color =color;
-                break;
-            case "email":
-                data = document.getElementById("email-result");
-                data.innerHTML = `${use} 이메일 입니다.`
-                data.style.color =color;
-                break;
-            case "phone_number":
-                data = document.getElementById("phone-result");
-                data.innerHTML = `${use} 전화번호 입니다.`
-                data.style.color =color;
-                break;
-        }
-    }
-
-    const checkValue =(type)=>{
-        const id = document.getElementById(type).value;
-        console.log("입력값"+id);
-        $.ajax({
-            // 요청방식: post, url: "email-check", 데이터: 이메일
-            type: "post",
-            url: `/register/${type}-check`,
-            data: {
-                "data": id
-            },
-            success :function (res){
-                checkType(type,res);
-                console.log("요청성공",res);
-            },
-            error : function (err){
-               console.log("에러",err);
-            }
-        });
-    }
-
-
-</script>
--->
-
+<script src="/js/register.js"></script>
 </html>
-
-<!--Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)-->
