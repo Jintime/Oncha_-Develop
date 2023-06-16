@@ -21,18 +21,18 @@ public class ProductBoardController {
     private final ProductBoardService productBoardService;
 
     @GetMapping("write")
-    public String productWrite(){return "product/write";}
+    public String productWrite(){return "manager/product/write";}
     @GetMapping("/list")
     public String productList(){
-        return "product/list";
+        return "manager/product/list";
     }
     @GetMapping("/edit")
     public String productEdit(){
-        return "product/edit";
+        return "manager/product/edit";
     }
     @GetMapping("/view")
     public String productView(){
-        return "product/view";
+        return "manager/product/view";
     }
 
 
@@ -46,7 +46,7 @@ public class ProductBoardController {
     public String findAll(Model model, @PageableDefault Pageable pageable){
         List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("productList",productDTOList);
-        return "product/list";
+        return "manager/product/list";
     }
 
     @GetMapping("/getId/{id}")
@@ -60,7 +60,7 @@ public class ProductBoardController {
         // productService.updateHits(index);
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
-        return "product/view";
+        return "manager/product/view";
     }
 
 }

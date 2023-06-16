@@ -1,3 +1,4 @@
+@import url(default.css);
 .register_wrap{
     display: flex;
     flex-direction: column;
