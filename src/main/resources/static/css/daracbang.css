@@ -1,0 +1,59 @@
+@import url(default.css);
+.info_main_wrap{
+    position: relative;
+    margin: 50px auto 0px auto;
+    height: 650px;
+ }
+ .info_main_wrap img{
+    border-radius: 20px;
+ }
+.main_inner{
+    position: absolute;
+    right: 20px;
+    bottom: 50px;
+}
+.main_inner h1{
+    color: white;
+}
+.main_inner button{
+    width: 108px;
+    height: 30px;
+    background-color: brown;
+    border-radius: 15px;
+    color: white;
+}
+.info_product_wrap{
+    text-align: center;
+    width: 80%;
+    margin: 20px auto 0px auto;
+}
+.info_product_wrap img{
+    border-radius: 20px;
+}
+.info_wrap{
+    display: flex;
+    width: 80%;
+    margin: 150px auto 150px auto;
+    text-align: center;
+}
+.info_inner{
+    width: 20%;
+    margin: auto;
+}
+.info_inner img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.info_inner h3{
+    color: chocolate;
+}
+.info_inner p{
+    color: gray;
+    font-size: 12px;
+}
+.info_teaShop_wrap{
+    width: 80%;
+    margin: 100px auto 50px auto;
+    text-align: center;
+}

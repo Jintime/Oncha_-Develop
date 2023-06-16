@@ -1,3 +1,4 @@
+@import url(default.css);
 body{
     display: flex;
     flex-wrap: wrap;

@@ -21,7 +21,7 @@ public class StoreController {
     private final MemberService memberService;
 
     @GetMapping("")
-    public String Store(){return "store/store";}
+    public String Store(){return "user/store/store";}
 
     @GetMapping("/{id}")
     public String findById2(@PathVariable Long id, Model model){
@@ -39,7 +39,7 @@ public class StoreController {
         MemberDTO memberDTO = memberService.findById(userId.get());
         model.addAttribute("product",productDTO);
         model.addAttribute("user",memberDTO);
-        return "store/order/order";
+        return "user/store/order/order";
     }
 
 }

@@ -33,7 +33,7 @@ public class AdminProductBoardController extends BaseAdminController {
     public String findAll(Model model, @PageableDefault Pageable pageable) {
         List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("productList", productDTOList);
-        return "product/list";
+        return "/manager/product/list";
     }
 
     @GetMapping("/view/{id}")
@@ -41,7 +41,7 @@ public class AdminProductBoardController extends BaseAdminController {
         // productService.updateHits(index);
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product", productDTO);
-        return "product/view";
+        return "/manager/product/view";
     }
 
 }

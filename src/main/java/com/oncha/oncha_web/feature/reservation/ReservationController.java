@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ReservationController {
 
     @GetMapping("/teaHouse")
-    public String Reservation(){return "category/teaHouse/teaHouse";}
+    public String Reservation(){return "user/category/teaHouse/teaHouse";}
 
 }

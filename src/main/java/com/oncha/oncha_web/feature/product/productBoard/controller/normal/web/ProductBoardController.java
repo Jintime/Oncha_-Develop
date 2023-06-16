@@ -19,22 +19,22 @@ public class ProductBoardController {
 
     @GetMapping("write")
     public String productWrite() {
-        return "product/write";
+        return "/manager/product/write";
     }
 
     @GetMapping("/list")
     public String productList() {
-        return "product/list";
+        return "/manager/product/list";
     }
 
     @GetMapping("/edit")
     public String productEdit() {
-        return "product/edit";
+        return "/manager/product/edit";
     }
 
     @GetMapping("/view")
     public String productView() {
-        return "product/view";
+        return "/manager/product/view";
     }
 
     @PostMapping("/write")
