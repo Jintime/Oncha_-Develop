@@ -48,7 +48,7 @@ public class SignUpController {
         if (SecurityUtil.getAllow()) {
             return "redirect:/";
         }
-        return "signon";
+        return "login/register";
     }
 
 }
