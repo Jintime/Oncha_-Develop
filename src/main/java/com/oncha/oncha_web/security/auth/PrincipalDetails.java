@@ -8,6 +8,7 @@ package com.oncha.oncha_web.security.auth;
 // Authentication 안에는 유저정보가 있어야함.
 // User 오브젝트 타입은 => userDetails 타입 객체
 
+import com.oncha.oncha_web.domain.user.model.Role;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,21 +25,21 @@ import java.util.Map;
 public class PrincipalDetails implements OAuth2User { //이렇게 하면 Authentication 객체안에 넣을수잇음
 
     private Long id;
-    private String role;
+    private Role role;
     private boolean allow;
 
     //Oauth의 어트리뷰트를 저장하는것.
     private Map <String, Object> attributes;
 
     //JWT 필터에 사용되는 생성자
-    public PrincipalDetails(Long id ,String role, boolean allow) {
+    public PrincipalDetails(Long id ,Role role, boolean allow) {
         this.id = id;
         this.role = role;
         this.allow = allow;
     }
 
     //Oauth 로그인시 사용되는 생성자
-    public PrincipalDetails (Long id, String role, boolean allow, Map<String, Object> attributes) {
+    public PrincipalDetails (Long id, Role role, boolean allow, Map<String, Object> attributes) {
         this.id = id;
         this.role = role;
         this.allow = allow;
@@ -49,12 +50,7 @@ public class PrincipalDetails implements OAuth2User { //이렇게 하면 Authent
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collect = new ArrayList<>();
-        collect.add(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-               return role;
-            }
-        });
+        collect.add(role);
         return collect;
     }
 
@@ -62,7 +58,7 @@ public class PrincipalDetails implements OAuth2User { //이렇게 하면 Authent
         return id;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 

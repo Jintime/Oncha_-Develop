@@ -1,6 +1,7 @@
 package com.oncha.oncha_web.security.jwt;
 
 
+import com.oncha.oncha_web.domain.user.model.Role;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.jwt.redis.exception.CustomJwtException;
 import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
@@ -72,7 +73,7 @@ public class TokenProvider implements InitializingBean {
         this.refreshTypeKey = Keys.hmacShaKeyFor(keyBytesRefresh);
     }
 
-    public String createToken(Long id, String role, boolean allow) {
+    public String createToken(Long id, Role role, boolean allow) {
 
         Date validity = new Date(System.currentTimeMillis() + this.tokenValidityInMilliSeconds);//현재시간+토큰만료기간
 
@@ -145,7 +146,7 @@ public class TokenProvider implements InitializingBean {
         Long id = getSubjectByClaims(claims);
 
         //권한 한줄로 추출
-        String role = getRoleByClaims(claims);
+        Role role = Role.valueOf(getRoleByClaims(claims));
 
         //회원가입 완료 유무 추출
         boolean allow = getAllowByClaims(claims);
@@ -155,7 +156,7 @@ public class TokenProvider implements InitializingBean {
     public TokenDto getNewRegisteredTokenByClaims(Claims claims, String refresh) throws CustomJwtException {
         //id. 역할 회원 가입 완료 유무 추출
         Long id = getSubjectByClaims(claims);
-        String role = getRoleByClaims(claims);
+        Role role = Role.valueOf(getRoleByClaims(claims));
         boolean allow = getAllowByClaims(claims);
 
         //id로 redis key 생성
