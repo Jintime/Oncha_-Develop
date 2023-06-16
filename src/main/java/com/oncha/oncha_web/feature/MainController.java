@@ -23,7 +23,6 @@ public class MainController {
     public String Home(Model model,@PageableDefault Pageable pageable){
        List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("product",productDTOList);
-        return "index";}
-
-
+        return "index";
+    }
 }

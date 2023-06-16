@@ -26,9 +26,6 @@ public class MemberQueryRepository extends Querydsl4RepositorySupport {
                 member.birth,
                 member.gender,
                 member.grade,
-                member.disable,
-                member.provider,
-                member.providerId,
                 Projections.list(Projections.constructor(
                         AddressDTO.class,
                         address.id,

@@ -26,4 +26,8 @@ public class Company {
     @Column(length = 255)
     private String company_url;
 
+    private String company_zipcode;
+    private String company_address;
+    private String company_address_detail;
+
 }

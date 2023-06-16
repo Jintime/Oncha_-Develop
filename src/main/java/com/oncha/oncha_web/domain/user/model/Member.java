@@ -2,6 +2,7 @@ package com.oncha.oncha_web.domain.user.model;
 
 import com.oncha.oncha_web.domain.BaseTimeEntity;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class Member extends BaseTimeEntity {
     @Column(length = 13)
     private String phoneNumber;
     private String email;
-    private LocalDateTime birth;
+    private LocalDate birth;
     @Column(length = 10)
     private String gender;
     //등급
@@ -48,15 +49,21 @@ public class Member extends BaseTimeEntity {
     public void allowed() {
         this.allow = true;
     }
-    public Member(String userId, String name ,String email ,String role, String provider, String providerId) {
+    public Member(String userId, String email ,String role, String provider, String providerId) {
         this.userId = userId;
         this.email = email;
-        this.name = name;
         this.role = role;
         this.grade = "normal";
         this.allow = false;
         this.disable = false;
         this.provider = provider;
         this.providerId = providerId;
+    }
+
+    public void signup(RequestRegister request) {
+        this.name = request.getName();
+        this.birth = request.getBirth();
+        this.gender = request.getGender();
+        this.phoneNumber = request.getPhoneNumber();
     }
 }
