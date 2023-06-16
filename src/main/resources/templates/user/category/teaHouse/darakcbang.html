@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/css/darakbang.css" rel="stylesheet">
+</head>
+<body>
+<div class="box">
+  <div class="nav_barContainer">
+    <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+    </div>
+    <div class="right">
+
+    </div>
+  </div>
+
+  <div class="info_main_wrap">
+    <img src="/img/darak/1.jpeg">
+
+    <div class="main_inner">
+      <button class="order_bt">상품 구경 하기</button>
+      <button class="reserv_bt">예약 하러 가기</button>
+      <h1>TEA가 우러나고 맛있어 지는 순간,<br>
+        그 때의 느림을 팔아요.</h1>
+    </div>
+  </div>
+
+  <div class="info_wrap">
+    <div class="info_inner">
+      <img src="/img/darak/3.jpeg">
+      <h3>Brand Story</h3>
+      <p>15일 전통의 다락방의<br> 브랜드 스토리 소개합니다.</p>
+    </div>
+    <div class="info_inner">
+      <img src="/img/darak/5.jpeg">
+      <h3>Menu</h3>
+      <p>다락방의 특별하고<br> 다양한 메뉴를 소개합니다.</p>
+    </div>
+    <div class="info_inner">
+      <img src="/img/darak/6.jpeg">
+      <h3>Reservation</h3>
+      <p>다락방의 예약<br> 어쩌고저쩌고</p>
+    </div>
+    <div class="info_inner">
+      <img src="/img/darak/2.jpeg">
+      <h3>Event</h3>
+      <p>다락방에서 준비한<br> 특별한 이벤트를 만나보세요.</p>
+    </div>
+
+  </div>
+
+  <div class="info_product_wrap">
+    <h1>매 뉴 소 개</h1>
+    <img src="/img/darak/7.png">
+  </div>
+  <div class="info_teaShop_wrap">
+    <h1>찾아오는 길</h1>
+    <div id="map" style="width:100%;height:350px;"></div>
+  </div>
+
+</div>
+<div id="coinfo_container">
+  <div class="coinfoinner">
+    <img src="/img/Logo.png">
+    <p>E-mail : oncha.minji@gmail.com</p>
+    <p>Copyright 2023 Oncha</p>
+  </div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d70541ee46ce2a23a47556dd8015275&libraries=services"></script>
+<script>
+  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+          mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+          };
+
+  // 지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+  // 주소-좌표 변환 객체를 생성합니다
+  var geocoder = new kakao.maps.services.Geocoder();
+
+  // 주소로 좌표를 검색합니다
+  geocoder.addressSearch('제주특별자치도 제주시 구좌읍 세화7길 37 3호', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면
+    if (status === kakao.maps.services.Status.OK) {
+
+      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+      // 결과값으로 받은 위치를 마커로 표시합니다
+      var marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+      });
+
+      // 인포윈도우로 장소에 대한 설명을 표시합니다
+      var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">다락방</div>'
+      });
+      infowindow.open(map, marker);
+
+      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      map.setCenter(coords);
+    }
+  });
+</script>
+</html>

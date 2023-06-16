@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class TeaFinderController {
     @GetMapping("/finder")
-    public String TeaFinder(){return "category/tea_finder";}
+    public String TeaFinder(){return "user/category/myOncha/teaFinder";}
 
 }
