@@ -19,15 +19,15 @@ public class RegisterRequest implements RequestRegister {
     @Min(value = 2, message = "이름의 최소 길이는 2자 입니다.")
     private String name;
 
-    @NotNull(message = "휴대폰 번호를 입력해 주세요")
+//    @NotNull(message = "휴대폰 번호를 입력해 주세요")
     private String phoneNumber;
 
     @NotNull(message = "닉네임을 입력해 주세요")
     private String nickName;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyyMMdd")
     private LocalDate birth;
 
-    @NotNull(message = "성별을 입력해 주세요")
+    @NotNull(message = "주민번호 뒷자리가 올바르지 않습니다.")
     private String gender;
 }
