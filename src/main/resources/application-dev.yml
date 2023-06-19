@@ -7,9 +7,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oncha
-    username: root
-    password: zkfp3445@
+    url: jdbc:mysql://login-lecture.cindj3n0yfz1.ap-northeast-2.rds.amazonaws.com:3306/login_lecture
+    username: admin
+    password: vksek7827391
 
   data:
     redis:

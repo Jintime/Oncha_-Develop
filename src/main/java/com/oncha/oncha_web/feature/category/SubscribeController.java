@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.feature.category.subscribe;
+package com.oncha.oncha_web.feature.category;
 
 import org.springframework.web.bind.annotation.GetMapping;
 

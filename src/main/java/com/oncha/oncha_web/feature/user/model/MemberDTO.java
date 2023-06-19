@@ -1,12 +1,9 @@
 package com.oncha.oncha_web.feature.user.model;
 
 import com.oncha.oncha_web.domain.user.model.Member;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -20,7 +17,7 @@ public class MemberDTO {
     private String name;
     private String phoneNumber;
     private String email;
-    private LocalDateTime birth;
+    private LocalDate birth;
     private String gender;
     private String grade;
     private List<AddressDTO> addressDTOList;

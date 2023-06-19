@@ -39,7 +39,7 @@ public class StoreController {
         MemberDTO memberDTO = memberService.findById(userId.get());
         model.addAttribute("product",productDTO);
         model.addAttribute("user",memberDTO);
-        return "user/store/order/order";
+        return "user/store/order/userOrder";
     }
 
 }
