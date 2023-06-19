@@ -1,6 +1,5 @@
 package com.oncha.oncha_web.feature.product.productBoard.controller.admin.web;
 
-import com.oncha.oncha_web.feature.BaseAdminController;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +15,8 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/product_board")
-public class AdminProductBoardController extends BaseAdminController {
+@RequestMapping("/admin/product_board")
+public class AdminProductBoardController {
 
     private final ProductBoardService productBoardService;
 

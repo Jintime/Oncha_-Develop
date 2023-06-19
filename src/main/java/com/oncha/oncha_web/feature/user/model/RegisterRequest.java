@@ -1,33 +1,30 @@
 package com.oncha.oncha_web.feature.user.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.oncha.oncha_web.domain.user.model.RequestRegister;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import lombok.*;
-
-import java.time.LocalDateTime;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest implements RequestRegister {
 
-    @Min(value = 2, message = "이름의 최소 길이는 2자 입니다.")
+    @Size(min = 2, message = "이름의 최소 길이는 2자 입니다.")
     private String name;
 
-    @NotNull(message = "휴대폰 번호를 입력해 주세요")
+//    @NotNull(message = "휴대폰 번호를 입력해 주세요")
     private String phoneNumber;
 
-    @NotNull(message = "닉네임을 입력해 주세요")
-    private String nickName;
+    @Size(min = 3, message = "닉네임의 최소길이는 3자 입니다.")
+    private String nickname;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMdd")
     private LocalDate birth;
 
-    @NotNull(message = "성별을 입력해 주세요")
+    @NotNull(message = "주민번호 뒷자리가 올바르지 않습니다.")
     private String gender;
 }

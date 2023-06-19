@@ -5,6 +5,7 @@ import com.oncha.oncha_web.exception._40x.UnauthorizedException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 @ControllerAdvice(annotations = Controller.class)
+@Order(2)
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
