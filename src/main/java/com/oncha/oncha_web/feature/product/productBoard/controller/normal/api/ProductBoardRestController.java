@@ -1,6 +1,5 @@
 package com.oncha.oncha_web.feature.product.productBoard.controller.normal.api;
 
-import com.oncha.oncha_web.feature.BaseRestController;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/product_board")
-public class ProductBoardRestController extends BaseRestController {
+public class ProductBoardRestController {
 
     private final ProductBoardService productBoardService;
 
