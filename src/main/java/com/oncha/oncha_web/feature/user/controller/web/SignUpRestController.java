@@ -7,14 +7,17 @@ import com.oncha.oncha_web.feature.user.service.MemberService;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.service.LoginSuccessService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +32,7 @@ public class SignUpRestController {
 
     @PostMapping
     @PreAuthorize("isAuthenticated()")
-    @ResponseStatus(HttpStatus.OK)
-    public void signAdd(@RequestBody RegisterRequest request,
+    public @ResponseBody void signAdd(@RequestBody @Valid RegisterRequest request,
         HttpServletResponse response,
         @AuthenticationPrincipal PrincipalDetails principalDetails)
         throws IOException, NotLoginException {

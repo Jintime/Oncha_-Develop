@@ -9,7 +9,7 @@ public interface RequestRegister {
 
     String getPhoneNumber();
 
-    String getNickName();
+    String getNickname();
 
     LocalDate getBirth();
 

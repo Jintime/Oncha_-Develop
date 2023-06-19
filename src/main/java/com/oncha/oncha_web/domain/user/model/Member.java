@@ -89,6 +89,6 @@ public class Member extends BaseTimeEntity {
         this.birth = request.getBirth();
         this.gender = request.getGender();
         this.phoneNumber = request.getPhoneNumber();
-        this.nickName = request.getNickName();
+        this.nickName = request.getNickname();
     }
 }

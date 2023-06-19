@@ -22,8 +22,8 @@ public class MemberService {
         Member member = memberRepository.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("데이터베이스에 현재 해당 하는 사용자 정보가 없습니다."));
 
-        if (memberRepository.existsByNickName(request.getNickName())) {
-            throw new ExistNickNameException(request.getNickName());
+        if (memberRepository.existsByNickName(request.getNickname())) {
+            throw new ExistNickNameException(request.getNickname());
         }
 
         member.register(request);
