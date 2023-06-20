@@ -1,18 +1,5 @@
 "use strict";
 
-const logoBtn = document.querySelector(".logo"),
-    finderBtn=document.querySelector(".finder_bt"),
-    storeBtn =document.querySelector(".store_bt"),
-    reserveBtn=document.querySelector(".reserve_bt"),
-    subBtn=document.querySelector(".sub_bt"),
-    loginBtn=document.querySelector("#login");
-
-loginBtn.addEventListener("click",()=>getterBtn("login"));
-logoBtn.addEventListener("click",()=>getterBtn("/"));
-finderBtn.addEventListener("click",()=>getterBtn("finder"));
-storeBtn.addEventListener("click",()=>getterBtn("store"));
-reserveBtn.addEventListener("click",()=>getterBtn("teaHouse"));
-subBtn.addEventListener("click",()=>getterBtn("subscribe"));
 
 const inner = document.querySelector(".inner"),
 firstImg = inner.querySelectorAll("img")[0],
@@ -63,21 +50,3 @@ inner.addEventListener("mouseup",dragStop);
 inner.addEventListener("mouseleave",dragStop);
 
 
-
-function  getterBtn (value){
-
-    fetch(`/${value}`,{
-        method : "GET",
-        headers : {
-            "Content-Type":"application/json"
-        },
-    })
-        .then(()=>{
-            location.href =`/${value}`;
-
-        })
-        .catch((err)=>{
-            console.error(new Error(`${value} 에러`));
-        });
-
-}

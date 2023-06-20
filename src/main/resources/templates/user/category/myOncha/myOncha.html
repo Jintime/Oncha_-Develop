@@ -3,8 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/default.css" rel="stylesheet">
 </head>
 <body>
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="teaFinder_bt">마이티</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
 
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
+        </div>
+    </div>
+    <div th:if="${user==null}">
+        <h1>아직 온차의 회원이 아니신가요???</h1>
+        <button class="login_bt">로그인하기</button>
+        <button class="login_bt">회원가입하기</button>
+        <button class="index_bt">비회원으로 둘러볼래요</button>
+    </div>
+
+  <!--  <div th:unless="${user==null}">-->
+    <hr>
+    <h1>(test)회원일경우 보이는 곳</h1>
+    <button class="mypage_bt">마이페이지</button>
+    <button class="rank_bt">평가수/리뷰수/구매수</button>
+    <button class="teaFinder_bt">차 취향</button>
+    <button class="like_bt">좋아요</button>
+
+</div>
 </body>
+<script src="/js/buttonManager.js"></script>
+
 </html>

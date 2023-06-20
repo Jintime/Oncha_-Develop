@@ -3,99 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <link href="/css/default.css" rel="stylesheet">
 </head>
 <body>
-<form class="form1">
-  <P id="navP">MY ONCHA</p>
-  <ul>
-    <li><input class="mypage" type="button" value="개인 정보 수정"></li>
-    <li><input class="order_history" type="button" value="주문 내역"></li>
-    <li><input class="coupon" type="button" value="적립금/쿠폰"></li>
-    <li><input class="like" type="button" value="찜한 상품"></li>
-    <li><input class="review" type="button" value="상품 후기"></li>
-    <li><input class="inquiry" type="button" value="상품 문의"></li>
-    <li><input class="notification" type="button" value="공지사항"></li>
-    <li><input class="faq" type="button" value="자주하는 질문"></li>
-    <li><input class="csc" type="button" value="1:1일 문의"></li>
-    <li><input class="navbutton1" type="button" value="제품 등록"></li>
-  </ul>
-</form>
+<div class="box">
+  <div class="nav_barContainer">
+    <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+      <button class="teaFinder_bt">마이티</button>
+      <button class="store_bt">스토어</button>
+      <button class="teaHouse_bt">티하우스</button>
+      <button class="subscribe_bt">커뮤니티</button>
 
-<form class="form2">
-
-  <header>
-    <p id="PersonalInformation">개인 정보 수정</p>
-    <div id="line"></div>
-  </header>
-
-  <div>
-    <span class="write">아이디</span>
-    <label id="user_name"><%=data.id%></label>
-  </div>
-
-  <div>
-    <span class="write">현재 비밀번호</span>
-    <input class="button">
-  </div>
-
-  <div>
-    <span class="write">새 비밀번호</span>
-    <input class="button">
-  </div>
-
-  <div>
-    <span class="write">새 비밀번호 확인</span>
-    <input class="button">
-  </div>
-
-  <div>
-    <span class="write">이름</span>
-    <%=data.username%>
-  </div>
-
-  <div>
-    <span class="write">이메일</span>
-    <%=data.email%>
-    <input class="check" type="button" value="중복확인">
-  </div>
-
-  <div>
-    <span class="write">휴대폰</span>
-    <input class="button">
-    <input class="check" type="button" value="다른번호 인증">
-  </div>
-
-  <div>
-    <span class="write">생년월일</span>
-    <input class="button" type="date">
-  </div>
-
-  <div>
-    <span class="write">선택약관동의</span>
-    <input id="button1" type="checkbox">개인정보 수집・이용 동의<strong>(선택)</strong>
-    <span id="see">약관보기></span>
-  </div>
-
-
-  <div class="line2"></div>
-
-  <footer>
-    <div>
-      <span class="write">이용약관 동의</span>
-      <input type="checkbox">무료배송,할인쿠폰 등 혜택/정보 수신동의<strong>(선택)</strong>
-      <br>
-      <input id="checkBox1" type="checkbox">SMS
-      <input id="checkBox2" type="checkbox">이메일
     </div>
-
-    <div class="line3"></div>
-
-    <div class="outbutton">
-      <input class="out" type="button" value="탈퇴하기">
-      <input class="out" type="button" value="회원정보수정">
+    <div class="right">
+      <input class="search" type="text" >
+      <button class="login_bt">로그인</button>
     </div>
-  </footer>
-
-</form>
+  </div>
+  <button class="mypage/detail_bt">내정보 수정</button>
+  <button class="mypage/etc_bt">적립금/쿠폰/평가하기</button>
+  <button class="mypage/orderInfo_bt">주문/배송조회</button>
+  <button class="mypage/refundDetail_bt">취소/반품/교환내역</button>
+  <button class="mypage/CS_bt">고객센터</button>
+</div>
 </body>
 </html>

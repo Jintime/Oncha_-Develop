@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/test.css" rel="stylesheet">
+    <link href="/css/test.css" rel="stylesheet">
 
     <title>Document</title>
 </head>
 <body>
 <div class="box">
     <div class="nav_barContainer">
-        <div class="left"><a class="logo" href="/index.html"><img class="top_logo" src="img/Logo.png"></a>
-            <button class="finder_bt">마이티</button>
-            <button class="store_bt" onclick="location.href='/store.html'">스토어</button>
-            <button class="reserve_bt" onclick="location.href='/teaHouse.html'">티하우스</button>
-            <button class="sub_bt">커뮤니티</button>
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="teaFinder_bt">마이티</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
 
         </div>
         <div class="right">
-            <input type="text" >
-            <button id="login">로그인</button>
-            <button id="register">회원가입</button>
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
         </div>
     </div>
     <hr>
@@ -30,7 +30,7 @@
     <div class="best_teaHouse_cotainer">
         <h1>찻집랭킹</h1>
         <div class="inner">
-            <a> <div class="product_inner"><img src="img/index/상품1-1.png">
+            <a href="/darakbang"> <div class="product_inner" ><img src="img/index/상품1-1.png">
                 <p class="title">다락방</p>
                 <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
                 <a class="icons"><img src="img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
@@ -89,6 +89,7 @@
     </div>
 </div>
 </body>
+<script src="/js/buttonManager.js"></script>
 <script src="js/Tindex.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d70541ee46ce2a23a47556dd8015275&libraries=services"></script>
 <script>

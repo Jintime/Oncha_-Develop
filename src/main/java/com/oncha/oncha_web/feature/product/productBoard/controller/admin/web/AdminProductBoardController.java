@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/admin/product_board")
+@RequestMapping("/admin/product")
 public class AdminProductBoardController {
 
     private final ProductBoardService productBoardService;

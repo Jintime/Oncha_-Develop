@@ -21,7 +21,10 @@
             <button class="myoncha_bt">마이온차</button>
         </div>
     </div>
-    <h1>FAQ가 들어갈 페이지입니다.</h1>
+<a th:href="@{/store/order/non_{id}(id =${product.id})}">비회원으로 구매하기</a>
+
+<a th:href="@{/login}">회원이신가요?</a>
+
 </div>
 </body>
 </html>

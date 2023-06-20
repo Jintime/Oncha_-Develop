@@ -28,13 +28,15 @@ public class OnchaPayment extends BaseEntity {
     private String post_code;
     @Column
     private String phone_number;
+    @Column
+    private Long seller_id;
 
 
 
     @Builder
     public OnchaPayment(Long id, String impUid, String payment_price, String payment_status,
                         String buyer_name, String buyer_email,
-                        String post_code,String phone_number){
+                        String post_code,String phone_number,Long seller_id){
         this.id =id;
         this.impUid = impUid;
         this.payment_price = payment_price;
@@ -43,6 +45,7 @@ public class OnchaPayment extends BaseEntity {
         this.buyer_email = buyer_email;
         this.post_code =post_code;
         this.phone_number =phone_number;
+        this.seller_id =seller_id;
     }
 
     public static OnchaPayment toPayment(RequsetOnchaPayment requsetOnchaPayment){
@@ -54,6 +57,7 @@ public class OnchaPayment extends BaseEntity {
                 .buyer_email(requsetOnchaPayment.getBuyer_email())
                 .post_code(requsetOnchaPayment.getPost_code())
                 .phone_number(requsetOnchaPayment.getPhone_number())
+
                 .build();
     }
 }
