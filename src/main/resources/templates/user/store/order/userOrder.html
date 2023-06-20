@@ -10,7 +10,7 @@
 <body>
 <div class="box">
     <div class="nav_barContainer">
-        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
             <button class="teaFinder_bt">마이티</button>
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
@@ -19,7 +19,8 @@
         </div>
         <div class="right">
             <input class="search" type="text" >
-            <button class="login_bt">로그인</button>
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
         </div>
     </div>
 <table cellspacing="0" class="tb_products">

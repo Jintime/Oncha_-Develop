@@ -4,7 +4,10 @@
     display: flex;
     justify-content: space-between;
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
 .Top_viewContainer .main_view{
     width: 68%;
     height: 580px;

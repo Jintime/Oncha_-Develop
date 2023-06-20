@@ -9,21 +9,21 @@
     <title>상품</title>
 </head>
 <body>
-    <div class="box">
-        <div class="nav_barContainer">
-            <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-                <button class="finder_bt">마이티</button>
-                <button class="store_bt">스토어</button>
-                <button class="reserve_bt">티하우스</button>
-                <button class="sub_bt">커뮤니티</button>
-    
-            </div>
-            <div class="right">
-                <input type="text" >
-                <button id="login">로그인</button>
-                <button id="register">회원가입</button>
-            </div>
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="teaFinder_bt">마이티</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
+
         </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
+        </div>
+    </div>
         <hr>
     
 <div><img src="/img/StoreBanner.png"></div>
@@ -224,5 +224,5 @@
 </div>    
 </body>
 <script src="/js/Tindex.js"></script>
-
+<script src="/js/buttonManager.js"></script>
 </html>

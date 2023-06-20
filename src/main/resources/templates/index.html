@@ -25,7 +25,8 @@
         </div>
         <div class="right">
             <input class="search" type="text" >
-            <button class="login_bt">로그인</button>
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
         </div>
     </div>
     <div class="sub_nav_bar"><div>
@@ -75,7 +76,7 @@
     <div class="title_container"><h1>꼭 가야 할 소문난 찻집! Best</h1></div>
     <div class="reserve_contaiter">
         <div class="inner">
-           <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
+           <a href="/darakbang"> <div class="product_inner"><img src="/img/index/상품1-1.png">
                 <p class="title">다락방</p>
                 <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
                 <a class="icons"><img src="/img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>

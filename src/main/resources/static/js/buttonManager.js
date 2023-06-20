@@ -1,23 +1,27 @@
 "use strict";
+
 const buttons = {
-    indexBtn: {
+    indexBtn: {///index
         logoBtn: ".index_bt",
         teaFinderBtn: ".teaFinder_bt",
         storeBtn :".store_bt",
         teaHouseBtn:".teaHouse_bt",
         subBtn:"subscribe_bt",
-        loginBtn:".login_bt"
-    },
+        loginBtn:".login_bt",
+        myonchaBtn:".myoncha_bt"
+    },///마이온차
     MyOnchaBtn: {
-        myPageBtn: ".myPage_bt",
+        myPageBtn: ".mypage_bt",
         rankBtn: ".rank_bt",
         teaFinderBtn: ".teaFinder_bt",
         likeBtn: ".like_bt"
-    },
+    },//마이페이지
     MyPageBtn:{
         myPageDetailBtn:".mypage/detail_bt",
-        etcBtn:".mypage/etc_bt"
-
+        etcBtn:".mypage/etc_bt",
+        orderInfoBtn:"mypage/orderInfo_bt",
+        refundDetailBtn:".mypage/refundDetail_bt",
+        CSBtn:"mypage/CS_bt"
     }
 
 };

@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/default.css" rel="stylesheet">
 </head>
 <body>
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="teaFinder_bt">마이티</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
 
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <button class="myoncha_bt">마이온차</button>
+        </div>
+    </div>
+    <h1>내정보수정이 들어갈 페이지입니다.</h1>
+</div>
 </body>
 </html>

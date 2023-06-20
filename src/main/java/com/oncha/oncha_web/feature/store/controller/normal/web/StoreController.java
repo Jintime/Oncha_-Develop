@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.feature.store.controller.nomal.web;
+package com.oncha.oncha_web.feature.store.controller.normal.web;
 
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
@@ -18,13 +18,12 @@ import java.util.Optional;
 @RequestMapping("/store")
 public class StoreController {
     private final ProductBoardService productBoardService;
-    private final MemberService memberService;
 
     @GetMapping("")
     public String Store(){return "user/store/store";}
 
     @GetMapping("/{id}")
-    public String findById2(@PathVariable Long id, Model model){
+    public String ProductInfo(@PathVariable Long id, Model model){
         // productService.updateHits(index);
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
@@ -32,14 +31,21 @@ public class StoreController {
     }
 
     @GetMapping("/order/{id}")
-    public String findById(@PathVariable Long id, Model model){
-        // productService.updateHits(index);
-        Optional<Long> userId = SecurityUtil.getCurrentId();
+    public String Order(@PathVariable Long id, Model model){
+        Object user = model.getAttribute("user");
         ProductBoardDTO productDTO = productBoardService.findById(id);
-        MemberDTO memberDTO = memberService.findById(userId.get());
         model.addAttribute("product",productDTO);
-        model.addAttribute("user",memberDTO);
-        return "user/store/order/userOrder";
+
+        if (user != null) return "user/store/order/userOrder";
+        else return "user/store/order/userCheck";
     }
+
+    @GetMapping("/order/non_{id}")
+    public String NonMemberOrder(@PathVariable Long id, Model model){
+        ProductBoardDTO productDTO = productBoardService.findById(id);
+        model.addAttribute("product",productDTO);
+        return "user/store/order/order";
+    }
+
 
 }
