@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.feature.category.tea_finder;
+package com.oncha.oncha_web.feature.myOncha.tea_finder.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 

@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.feature.product.store.controller.web;
+package com.oncha.oncha_web.feature.store.controller.nomal.web;
 
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;

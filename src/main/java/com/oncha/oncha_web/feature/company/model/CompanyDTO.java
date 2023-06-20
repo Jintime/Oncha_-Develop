@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.feature.category.company.model;
+package com.oncha.oncha_web.feature.company.model;
 
 import lombok.*;
 

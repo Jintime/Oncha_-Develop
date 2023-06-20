@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/product_board")
+@RequestMapping("/product")
 public class ProductBoardController {
 
     private final ProductBoardService productBoardService;
