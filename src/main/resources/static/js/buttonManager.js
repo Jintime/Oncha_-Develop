@@ -17,11 +17,11 @@ const buttons = {
         likeBtn: ".like_bt"
     },//마이페이지
     MyPageBtn:{
-        myPageDetailBtn:".mypage/detail_bt",
-        etcBtn:".mypage/etc_bt",
-        orderInfoBtn:"mypage/orderInfo_bt",
-        refundDetailBtn:".mypage/refundDetail_bt",
-        CSBtn:"mypage/CS_bt"
+        myPageDetailBtn:".detail_bt",
+        etcBtn:".etc_bt",
+        orderInfoBtn:"orderInfo_bt",
+        refundDetailBtn:".refundDetail_bt",
+        CSBtn:"CS_bt"
     }
 
 };

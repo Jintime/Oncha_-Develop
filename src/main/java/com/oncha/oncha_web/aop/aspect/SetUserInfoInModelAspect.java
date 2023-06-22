@@ -33,7 +33,7 @@ public class SetUserInfoInModelAspect {
 
         // Set the property in the Model object
         if (model != null) {
-            model.addAttribute("userInfo", member);
+            model.addAttribute("user", member);
         }
 
         // Proceed with the execution of the controller method

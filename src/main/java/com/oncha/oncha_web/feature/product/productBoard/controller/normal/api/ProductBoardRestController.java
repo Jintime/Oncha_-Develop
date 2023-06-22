@@ -15,7 +15,6 @@ public class ProductBoardRestController {
 
     private final ProductBoardService productBoardService;
 
-
     @GetMapping("/getId/{id}")
     public ProductBoardDTO GetId(@PathVariable Long id) {
         ProductBoardDTO productBoardDTO = productBoardService.findById(id);

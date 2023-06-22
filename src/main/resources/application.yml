@@ -10,7 +10,7 @@ spring:
         - production
         - oauth2
         - aws
-    active: production
+    active: local
 
   thymeleaf:
     cache: false
