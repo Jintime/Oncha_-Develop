@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.feature.store.controller.normal.web;
 
+import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import com.oncha.oncha_web.feature.user.model.MemberDTO;
@@ -19,9 +20,11 @@ import java.util.Optional;
 public class StoreController {
     private final ProductBoardService productBoardService;
 
+    @SetUserInfoInModel
     @GetMapping("")
-    public String Store(){return "user/store/store";}
+    public String Store(Model model){return "user/store/store";}
 
+    @SetUserInfoInModel
     @GetMapping("/{id}")
     public String ProductInfo(@PathVariable Long id, Model model){
         // productService.updateHits(index);
@@ -30,6 +33,7 @@ public class StoreController {
         return "testorder";
     }
 
+    @SetUserInfoInModel
     @GetMapping("/order/{id}")
     public String Order(@PathVariable Long id, Model model){
         Object user = model.getAttribute("user");

@@ -4,8 +4,13 @@ import com.amazonaws.services.kms.model.NotFoundException;
 import com.oncha.oncha_web.domain.payment.PaymentRepository.OnchaPaymentRepository;
 import com.oncha.oncha_web.domain.payment.model.OnchaPayment;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
+import com.oncha.oncha_web.feature.payment.model.OnchaPaymentInfoDTO;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentRequest;
 import com.oncha.oncha_web.feature.payment.repository.PaymentQueryRepository;
+import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
+import com.oncha.oncha_web.feature.user.model.MemberDTO;
+import com.oncha.oncha_web.feature.user.service.MemberService;
+import com.oncha.oncha_web.util.SecurityUtil;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +27,7 @@ public class OnchaPaymentService {
 
     private final OnchaPaymentRepository onchaPaymentRepository;
     private final PaymentQueryRepository paymentQueryRepository;
+    private final MemberService memberService;
 
     // 결제 정보를 저장하는 메서드
     @Transactional
@@ -34,9 +40,19 @@ public class OnchaPaymentService {
         data.setBuyer_email(paymentRequest.getResponse().getBuyerEmail());
         data.setPost_code(paymentRequest.getResponse().getBuyerPostcode());
         data.setPhone_number(paymentRequest.getResponse().getBuyerTel());
-        System.out.println(data.toString());
-       OnchaPayment payment = onchaPaymentRepository.save(OnchaPayment.toPayment(data));
-
+        onchaPaymentRepository.save(OnchaPayment.toPayment(data));
+    }
+    public OnchaPaymentInfoDTO setPaymentData(ProductBoardDTO productBoardDTO) {
+        Long userId = SecurityUtil.getCurrentId().orElse(null);
+        MemberDTO memberDTO = memberService.findById(userId);
+        OnchaPaymentInfoDTO data =new OnchaPaymentInfoDTO();
+        data.setPayment_price(String.valueOf(productBoardDTO.getPrice()));
+        data.setProduct_name(productBoardDTO.getProduct_name());
+        data.setBuyer_name(memberDTO.getName());
+        data.setBuyer_email(memberDTO.getEmail());
+        data.setPhone_number(memberDTO.getPhoneNumber());
+        data.setSeller_id(productBoardDTO.getId());
+        return data;
     }
     //결제 정보 수정하는 메소드
     @Transactional
@@ -55,6 +71,7 @@ public class OnchaPaymentService {
 
         onchaPaymentRepository.save(onchaPayment);
     }
+
 
     @Transactional(readOnly = true)
     public List<OnchaPaymentDTO> findAll(Pageable pageable){

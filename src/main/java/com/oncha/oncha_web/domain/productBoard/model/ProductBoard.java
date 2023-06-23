@@ -84,6 +84,7 @@ public class ProductBoard extends BaseEntity {
         this.allow =allow;
     }
 
+
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
         return ProductBoard.builder()
                 .id(requestProductBoard.getId())

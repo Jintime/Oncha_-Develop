@@ -1,12 +1,17 @@
 package com.oncha.oncha_web.feature.payment.controller;
 
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
+import com.oncha.oncha_web.feature.payment.model.OnchaPaymentInfoDTO;
 import com.oncha.oncha_web.feature.payment.service.OnchaPaymentService;
+import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
+import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
+import com.oncha.oncha_web.util.SecurityUtil;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +21,26 @@ import java.math.BigDecimal;
 import java.util.Locale;
 
 @Controller
-
 //@RequestMapping("/order")
 public class OnchaPaymentController {
 
     private IamportClient api;
     private final OnchaPaymentService onchaPaymentService;
-    public OnchaPaymentController(OnchaPaymentService onchaPaymentService) {
+    private final ProductBoardService productBoardService;
+    public OnchaPaymentController(OnchaPaymentService onchaPaymentService, ProductBoardService productBoardService) {
         this.onchaPaymentService = onchaPaymentService;
+        this.productBoardService = productBoardService;
         // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
         this.api = new IamportClient("6332301523447220","s6IZNUNmxgPZ5RJe2dUNsSx7axyeIvL49m8cPyAL91XO1TjXO4YWUiQRBCpJ8hIkAHpngtZuq1zXWA0m");
     }
+    @PostMapping("/request_pay/{id}")
+    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id) {
+        ProductBoardDTO productBoardDTO = productBoardService.findById(id);
+        OnchaPaymentInfoDTO onchaPaymentInfoDTO =onchaPaymentService.setPaymentData(productBoardDTO);
+        return ResponseEntity.ok(onchaPaymentInfoDTO);
+    }
     @ResponseBody
-    @RequestMapping(value="/verifyIamport/{imp_uid}")
+    @GetMapping("/verifyIamport/{imp_uid}")
     public IamportResponse<Payment> paymentByImpUid(
             Model model
             , Locale locale
@@ -39,7 +51,7 @@ public class OnchaPaymentController {
         onchaPaymentService.save(api.paymentByImpUid(imp_uid));
         return api.paymentByImpUid(imp_uid);
     }
-    @RequestMapping(value="/orderComplete", produces = "application/text; charset=utf8", method = RequestMethod.GET)
+    @PostMapping("/orderComplete")
     public String orderComplete(
             @RequestParam(required = false) String imp_uid
             , @RequestParam(required = false) String merchant_uid
