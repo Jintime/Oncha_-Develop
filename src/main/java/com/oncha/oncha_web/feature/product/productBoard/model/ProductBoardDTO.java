@@ -55,17 +55,17 @@ public class ProductBoardDTO {
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
         this.product_name = productBoard.getProduct_name();
-        this.origin_nation = productBoard.getOrigin_nation();
-        this.type = productBoard.getType();
-        this.flavor = productBoard.getFlavor();
-        this.category = productBoard.getCategory();
+        this.origin_nation = productBoard.getTeaCategory().getOriginNation();
+        this.type = productBoard.getTeaCategory().getType();
+        this.flavor = productBoard.getTeaCategory().getFlavor();
+        this.category = productBoard.getTeaCategory().getCategory();
         this.weight = productBoard.getWeight();
         this.price = productBoard.getPrice();
         this.product_count = productBoard.getProduct_count();
         this.view = productBoard.getView();
         this.like = productBoard.getLove();
-        this.blended = productBoard.isBlended();
-        this.caffeine = productBoard.isCaffeine();
+        this.blended = productBoard.getTeaCategory().isBlended();
+        this.caffeine = productBoard.getTeaCategory().isCaffeine();
         this.allow = productBoard.isAllow();
         this.list = dtos;
     }
@@ -76,17 +76,17 @@ public class ProductBoardDTO {
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
         this.product_name = productBoard.getProduct_name();
-        this.origin_nation = productBoard.getOrigin_nation();
-        this.type = productBoard.getType();
-        this.flavor = productBoard.getFlavor();
-        this.category = productBoard.getCategory();
+        this.origin_nation = productBoard.getTeaCategory().getOriginNation();
+        this.type = productBoard.getTeaCategory().getType();
+        this.flavor = productBoard.getTeaCategory().getFlavor();
+        this.category = productBoard.getTeaCategory().getCategory();
         this.weight = productBoard.getWeight();
         this.price = productBoard.getPrice();
         this.product_count = productBoard.getProduct_count();
         this.view = productBoard.getView();
         this.like = productBoard.getLove();
-        this.blended = productBoard.isBlended();
-        this.caffeine = productBoard.isCaffeine();
+        this.blended = productBoard.getTeaCategory().isBlended();
+        this.caffeine = productBoard.getTeaCategory().isCaffeine();
         this.allow = productBoard.isAllow();
         this.list = productBoard.getProductFileList().stream().map(ProductFileDTO::new).toList();
     }

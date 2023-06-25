@@ -52,6 +52,8 @@ public class ProductBoard extends BaseEntity {
 
     private boolean allow;
 
+    private boolean recommend;
+
     @OneToMany(mappedBy = "productBoard", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProductFile> productFileList = new ArrayList<>();
 
@@ -59,6 +61,13 @@ public class ProductBoard extends BaseEntity {
         this.allow = true;
     }
 
+    public void enableRecommend() {
+        recommend = true;
+    }
+
+    public void disableRecommend() {
+        recommend = false;
+    }
 
     @Builder
     public ProductBoard(Long id, String title, String detail, String product_name,
@@ -83,6 +92,7 @@ public class ProductBoard extends BaseEntity {
         this.view = view;
         this.love = love;
         this.allow = allow;
+        this.recommend = false;
     }
 
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard) {

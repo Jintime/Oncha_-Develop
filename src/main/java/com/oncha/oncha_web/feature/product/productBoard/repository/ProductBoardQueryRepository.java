@@ -4,7 +4,14 @@ import static com.oncha.oncha_web.domain.productBoard.model.QProductBoard.produc
 import static com.oncha.oncha_web.domain.productBoard.model.QProductFile.productFile;
 
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
+import com.oncha.oncha_web.domain.productBoard.model.TeaCategory;
+import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.util.Querydsl4RepositorySupport;
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,18 +25,7 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
     }
 
     public Page<ProductBoard> findAllByPageable(Pageable pageable) {
-//         selectFrom(productBoard)
-//            .leftJoin(productBoard.productFileList, productFile)
-//            .offset((long) pageable.getPageNumber() * pageable.getPageSize())
-//            .limit(pageable.getPageSize()).fetchJoin()
-//            .transform(groupBy(productBoard.id).list(new QProductBoardDTO(
-//                productBoard,
-//                list(new QProductFileDTO(productFile))
-//            )));
-
-        return applyPagination(pageable, query -> selectFrom(productBoard)
-            .leftJoin(productBoard.productFileList, productFile)
-            .fetchJoin());
+        return applyPagination(pageable, query -> getFindAllQuery());
     }
 
     public Optional<ProductBoard> findById(Long id) {
@@ -39,4 +35,29 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
             .fetchJoin().fetchOne());
     }
 
+    public Page<ProductBoardDTO> findAllByTeaCategory(Pageable pageable, TeaCategory teaCategory) {
+        JPAQuery<ProductBoard> jpaQuery = getFindAllQuery();
+
+        if (teaCategory == null) {
+            jpaQuery.orderBy(productBoard.recommend.desc());
+            return applyPagination(pageable, query -> jpaQuery);
+        }
+
+        jpaQuery
+            .orderBy(
+                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.flavor.eq(teaCategory.getFlavor())),
+                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.origin_nation.eq(teaCategory.getOriginNation())),
+                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.caffeine.eq(teaCategory.isCaffeine())),
+                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.blended.eq(teaCategory.isBlended())),
+                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.category.eq(teaCategory.getCategory()))
+            );
+
+        return applyPagination(pageable, query -> jpaQuery);
+    }
+
+    public JPAQuery<ProductBoard> getFindAllQuery() {
+        return selectFrom(productBoard)
+            .leftJoin(productBoard.productFileList, productFile)
+            .fetchJoin();
+    }
 }
