@@ -49,5 +49,20 @@ public class ProductBoardQueryRepositoryTest {
         assertThat(resultTeaCategory.isBlended()).isEqualTo(teaCategory.isBlended());
         assertThat(resultTeaCategory.getCategory()).isEqualTo(teaCategory.getCategory());
     }
+
+    @Test
+    @DisplayName("차의 정렬조건이 주어지지 않으면 추천 게시글을 먼저 보여주어야한다")
+    public void test2 () {
+        //given
+        Pageable pageable = PageRequest.of(0, 10);
+
+        //when
+        Page<ProductBoard> productBoards = productBoardQueryRepository.findAllByTeaCategory(pageable, null);
+        List<ProductBoard> productBoardList = productBoards.getContent();
+
+        //then
+        assertThat(productBoardList).isNotEmpty();
+        productBoardList.forEach((item) -> assertThat(item.isRecommend()).isTrue());
+    }
 }
 
