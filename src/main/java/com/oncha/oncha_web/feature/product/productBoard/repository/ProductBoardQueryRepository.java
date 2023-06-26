@@ -9,6 +9,7 @@ import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.util.Querydsl4RepositorySupport;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
@@ -35,7 +36,8 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
             .fetchJoin().fetchOne());
     }
 
-    public Page<ProductBoardDTO> findAllByTeaCategory(Pageable pageable, TeaCategory teaCategory) {
+    public Page<ProductBoard> findAllByTeaCategory(Pageable pageable, TeaCategory teaCategory) {
+        CaseBuilder caseBuilder = new CaseBuilder();
         JPAQuery<ProductBoard> jpaQuery = getFindAllQuery();
 
         if (teaCategory == null) {
@@ -45,11 +47,11 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
 
         jpaQuery
             .orderBy(
-                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.flavor.eq(teaCategory.getFlavor())),
-                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.origin_nation.eq(teaCategory.getOriginNation())),
-                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.caffeine.eq(teaCategory.isCaffeine())),
-                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.blended.eq(teaCategory.isBlended())),
-                new OrderSpecifier<>(Order.DESC, productBoard.teaCategory.category.eq(teaCategory.getCategory()))
+                caseBuilder.when(productBoard.teaCategory.flavor.eq(teaCategory.getFlavor())).then(1).otherwise(0).desc(),
+                caseBuilder.when(productBoard.teaCategory.originNation.eq(teaCategory.getOriginNation())).then(1).otherwise(0).desc(),
+                caseBuilder.when(productBoard.teaCategory.caffeine.eq(teaCategory.isCaffeine())).then(1).otherwise(0).desc(),
+                caseBuilder.when(productBoard.teaCategory.blended.eq(teaCategory.isBlended())).then(1).otherwise(0).desc(),
+                caseBuilder.when(productBoard.teaCategory.category.eq(teaCategory.getCategory())).then(1).otherwise(0).desc()
             );
 
         return applyPagination(pageable, query -> jpaQuery);
