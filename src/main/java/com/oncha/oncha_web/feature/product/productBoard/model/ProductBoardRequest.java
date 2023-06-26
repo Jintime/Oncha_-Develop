@@ -17,15 +17,15 @@ public class ProductBoardRequest implements RequestProductBoard {
 
     private String title;
     private String detail;
-    private String product_name;
-    private String origin_nation;
+    private String productName;
+    private String originNation;
     private String type;
     private String flavor;
     private String category;
 
     private int weight;
     private int price;
-    private int product_count;
+    private int productCount;
     private int view;
     private int like;
 

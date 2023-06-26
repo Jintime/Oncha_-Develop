@@ -35,7 +35,7 @@ public class ProductBoard extends BaseEntity {
     private String detail;
 
     @Column(length = 200)
-    private String product_name;
+    private String productName;
 
     @Embedded
     private TeaCategory teaCategory;
@@ -44,7 +44,7 @@ public class ProductBoard extends BaseEntity {
 
     private int price;
 
-    private int product_count;
+    private int productCount;
 
     private int view;
 
@@ -70,14 +70,14 @@ public class ProductBoard extends BaseEntity {
     }
 
     @Builder
-    public ProductBoard(Long id, String title, String detail, String product_name,
+    public ProductBoard(Long id, String title, String detail, String productName,
         String origin_nation,
-        String type, String flavor, String category, int weight, int price, int product_count,
+        String type, String flavor, String category, int weight, int price, int productCount,
         int view, int love, boolean blended, boolean caffeine, boolean allow) {
         this.id = id;
         this.title = title;
         this.detail = detail;
-        this.product_name = product_name;
+        this.productName = productName;
         this.teaCategory = new TeaCategory(
             origin_nation,
             type,
@@ -88,7 +88,7 @@ public class ProductBoard extends BaseEntity {
         );
         this.weight = weight;
         this.price = price;
-        this.product_count = product_count;
+        this.productCount = productCount;
         this.view = view;
         this.love = love;
         this.allow = allow;
@@ -100,14 +100,14 @@ public class ProductBoard extends BaseEntity {
             .id(requestProductBoard.getId())
             .title(requestProductBoard.getTitle())
             .detail(requestProductBoard.getDetail())
-            .product_name(requestProductBoard.getProduct_name())
-            .origin_nation(requestProductBoard.getOrigin_nation())
+            .productName(requestProductBoard.getProductName())
+            .origin_nation(requestProductBoard.getOriginNation())
             .type(requestProductBoard.getType())
             .flavor(requestProductBoard.getFlavor())
             .category(requestProductBoard.getCategory())
             .weight(requestProductBoard.getWeight())
             .price(requestProductBoard.getPrice())
-            .product_count(requestProductBoard.getProduct_count())
+            .productCount(requestProductBoard.getProductCount())
             .view(requestProductBoard.getView())
             .love(requestProductBoard.getLike())
             .blended(requestProductBoard.isBlended())
