@@ -17,7 +17,8 @@ public class SetUserInfoInModelAspect {
 
     private final MemberService memberService;
 
-    @Around("@annotation(com.oncha.oncha_web.aop.annotation.SetUserInfoInModel)")
+    @Around("@annotation(com.oncha.oncha_web.aop.annotation.CompleteInfoModel) " +
+            "|| @annotation(com.oncha.oncha_web.aop.annotation.SetUserInfoInModel)")
     public Object setUserIdInModel(ProceedingJoinPoint joinPoint) throws Throwable {
         Long id = SecurityUtil.getCurrentId().orElse(null);
 
