@@ -68,11 +68,11 @@ public class OnchaPaymentController {
     }
 
     //프론트작업 먼저 해야됨
-    @GetMapping("/payment/{id}")
-    public String oder(@PathVariable Long id, Model model){
+  /*  @GetMapping("/payment/{id}")
+    public String order(@PathVariable Long id, Model model){
         // productService.updateHits(index);
         OnchaPaymentDTO paymentDTO = onchaPaymentService.findById(id);
         model.addAttribute("product",paymentDTO);
         return "testorder";
-    }
+    }*/
 }
