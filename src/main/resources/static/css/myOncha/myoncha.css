@@ -1,0 +1,159 @@
+@import url(/css/default.css);
+*{text-align: center;}
+.box{
+    display: flex;
+    flex-direction: column;
+}
+table{
+    margin: auto;
+}
+h1,h2,h4{
+    color: #F60;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Inter;
+}
+h3{
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Inter;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.myOncha_wrap h4{
+    margin-top: 5px;
+}
+
+.profile_img{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+}
+.myOncha_wrap{
+    margin-top: 50px;
+    position: relative;
+}
+.myOncha_wrap_bg {
+    position: absolute;
+    background: rgba(255, 102, 0, 0.05);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+.myOncha_wrap th{
+    width: 60px;
+    height: 20px;
+    border-radius: 5px;
+    background: #F60;
+}
+.myOncha_wrap button{
+    color: white;
+    font-weight: 600;
+}
+
+.myOncha_wrap table{
+    border-spacing:10px;
+}
+.tea_finder_wrap{
+    position: relative;
+}
+.tea_finder_wrap table{
+    border-spacing:20px;
+}
+.tea_finder_inner button{
+    color: white;
+    font-weight: 600;
+}
+.tea_finder_bg {
+    position: absolute;
+    left: 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+.tea_finder_wrap th{
+    width: 100px;
+    height: 100px;
+    background-color: #FF6600;
+}
+.tea_finder_bt{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #F60;
+    background-color: white;
+    border: 3px solid #F60;
+    margin: 50px;
+}
+.td_head{
+    font-size: 23px;
+    font-weight: 700;
+}
+.td_tail{
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.tea_finder_keyword td{
+    border-radius: 5px;
+    border: 0.5px solid #F60;
+    color: #000;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 3px 13px;
+    display: inline-flex;
+    margin: 3px;
+}
+
+.product_inner{
+    width: calc(24%);
+    height: 100%;
+    display: inline-block;
+    border-radius: 8px;
+    position: relative;
+}
+.like_bt{
+    width: 45px;
+    top:48%;
+    right:5%;
+    position: absolute;
+ }
+.icons{
+    vertical-align: middle;
+display: inline-block;
+margin-right:5px ;
+height: 15px;
+}
+.product_inner span{
+    margin-right: 5px;
+    font-size: 14px;
+ }
+ .type{
+    font-size: 8px;
+    color: gray;
+ }
+ .title{
+    font-weight: bold;
+    white-space: normal;
+    word-break: break-all;
+    height: 50px;
+ }
+ .tea_recommend_wrap{
+    position: relative;
+ }
+ .other_tea_bt{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: #F60;
+    border: 3px solid #F60;
+    margin: 50px;
+ }

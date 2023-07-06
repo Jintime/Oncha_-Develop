@@ -2,26 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/default.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/myOncha/tea_finder.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
-    <div class="nav_barContainer">
-        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-            <button class="teaFinder_bt">마이티</button>
-            <button class="store_bt">스토어</button>
-            <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+                <button class="finder_bt">마이티</button>
+                <button class="store_bt" onclick="location.href='/store'">스토어</button>
+                <button class="reserve_bt" onclick="location.href='/teaHouse'">티하우스</button>
+                <button class="sub_bt">커뮤니티</button>
+    
+            </div>
+            <div class="right">
+                <input class="serch" type="text" >
+                <button id="login">로그인</button>
+                <button id="register">회원가입</button>
+            </div>
+        </div>
+
+        <div class="tea_finder_wrap">
+            <div class="tea_finder_wrap_bg"></div>
+                <h2>내 취향 한 눈에 보기</h2>
+                <table class="tea_finder_inner">
+                    <th><button>리쉬</button></th>
+                    <th><button>산미</button></th>
+                    <th><button>흙</button></th>
+                    <th><button>드립</button></th>
+                    <tr class="td_head">
+                        <td>스타일</td>
+                        <td>맛</td>
+                        <td>향</td>
+                        <td>음용방식</td>
+                    </tr>
+                    <tr class="td_tail">
+                        <td>Style</td>
+                        <td>Flavor</td>
+                        <td>Aroma</td>
+                        <td>Drinking method</td>
+                    </tr>
+                    </table>
+                    <button class="tea_finder_bt">나의 차 취향 분석하기</button>
+        </div>
+
+        <div class="keyWoard_details_wrap">
+            <table>
+                <tr>
+                <th>스타일 <span>Style</span><br><button>리쉬</button></th>
+                <td>내용이어쩌구 저쩌고 </td>
+                <td><img src="/img/grap.png" width="50"></td>
+            </tr>   
+            <tr>
+                <th>맛 <span>Flavor</span><br><button>산미</button></th>
+                <td>내용이어쩌구 저쩌고</td>
+                <td><img src="/img/grap.png"></td>
+            </tr>
+            <tr>
+                <th>향 <span>Aroma</span><br><button>흙</button></th>
+                <td>내용이어쩌구 저쩌고</td>
+                <td><img src="/img/grap.png"></td>
+            </tr>
+            <tr>
+                <th>음용방식 <span>Drinking method</span><br><button>드롭</button></th>
+                <td>내용이어쩌구 저쩌고</td>
+                <td><img src="/img/grap.png"></td>
+            </tr>
+            </table>
+        </div>
+
+       <div class="tea_recommend_wrap">
+        <img class="tea_finder_bg " src="/img/my_oncha_bg.png">
+                <h2>당신을 위한 ONCHA의 추천차</h2>
+                <a><div class="product_inner"><img src="/img/index/상품1-2.png">
+                    <p class="type">싱글오리진</p>
+                    <p class="title">얼그레이</p>
+                    <strong>12,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+           </div></a>
+           <br>
+           <button class="other_tea_bt">또 다른 추천차 알아보기</button>
+            </div>
+
 
         </div>
-        <div class="right">
-            <input class="search" type="text" >
-            <button th:if="${user == null}" class="login_bt">로그인</button>
-            <button class="myoncha_bt">마이온차</button>
-        </div>
-    </div>
-    <h1>티파인더가 들어갈 페이지입니다.</h1>
-</div>
 </body>
 </html>

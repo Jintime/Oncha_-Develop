@@ -4,61 +4,140 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/test.css" rel="stylesheet">
+    <link href="css/test.css" rel="stylesheet">
+    <link href="css/store.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>상품</title>
 </head>
 <body>
-<div class="box">
-    <div class="nav_barContainer">
-        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-            <button class="teaFinder_bt">마이티</button>
-            <button class="store_bt">스토어</button>
-            <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
-
-        </div>
-        <div class="right">
-            <input class="search" type="text" >
-            <button th:if="${user == null}" class="login_bt">로그인</button>
-            <button class="myoncha_bt">마이온차</button>
-        </div>
-    </div>
-        <hr>
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="logo" href="/"><img class="top_logo" src="img/Logo.png"></a>
+                <button class="finder_bt">마이티</button>
+                <button class="store_bt" onclick="location.href='/store'">스토어</button>
+                <button class="reserve_bt" onclick="location.href='/teaHouse'">티하우스</button>
+                <button class="sub_bt">커뮤니티</button>
     
-<div><img src="/img/StoreBanner.png"></div>
+            </div>
+            <div class="right">
+                <input type="text" >
+                <button id="login">로그인</button>
+                <button id="register">회원가입</button>
+            </div>
+        </div>
+        <hr>
+    <div class="Store_fillter_wrap">
+        <div class="fillter_tag">
+            <img src="img/Link.png">
+            ><input type="text">
+            ><input type="text">
+            ><input type="text">
+            ><input type="text">
+            ><input type="text">
+            ><input type="text">
+        </div>
+        <table>
+            <tr>
+                <th>블렌딩</th>
+                <td><input type="checkbox">블렌디드</td>
+                <td><input type="checkbox">싱글오리진</td>
+                <td><input type="checkbox">뉴타입</td>
+            </tr>
+            <tr>
+                <th>차종</th>
+                <td><input type="checkbox">녹차</td>
+                <td><input type="checkbox">홍차</td>
+                <td><input type="checkbox">백차</td>
+                <td><input type="checkbox">황차</td>
+                <td><input type="checkbox">청차</td>
+                <td><input type="checkbox">허브차</td>
+            </tr>
+            <tr>
+                <th>카페인</th>
+                <td><input type="checkbox">유</td>
+                <td><input type="checkbox">무</td>
+            </tr>
+            <tr>
+                <th>유형</th>
+                <td><input type="checkbox">액상</td>
+                <td><input type="checkbox">잎장</td>
+                <td><input type="checkbox">티백</td>
+                <td><input type="checkbox">청</td>
+                <td><input type="checkbox">가루</td>
+            </tr>
+            <tr>
+                <th>원산지</th>
+                <td><input type="checkbox">스리랑카</td>
+                <td><input type="checkbox">다즐링</td>
+                <td><input type="checkbox">아쌈</td>
+                <td><input type="checkbox">닐기리</td>
+                <td><input type="checkbox">케냐</td>
+                <td><input type="checkbox">네팔</td>
+                <td><input type="checkbox">누와델리아</td>
+                <td><input type="checkbox">딤블라</td>
+            </tr>
+            <tr>
+                <th>맛과향</th>
+                <td><input type="checkbox">풀</td>
+                <td><input type="checkbox">채소</td>
+                <td><input type="checkbox">허브</td>
+                <td><input type="checkbox">꽃</td>
+                <td><input type="checkbox">트로피칼</td>
+                <td><input type="checkbox">시트러스</td>
+                <td><input type="checkbox">베리</td>
+                <td><input type="checkbox">과일</td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>00개</th>
+                <td><button>랭킹순</button></td>
+                <td><button>신규등록순</button></td>
+                <td><button>낮은가격순</button></td>
+                <td><button>높은가격순</button></td>
+                <td><button>상품평많은순</button></td>
+                <td><button>판매량순</button></td>
+                <td><button>40개씩보기</button></td>
+                <td><button>ㅁ</button></td>
+                <td><button>ㅁ</button></td>
+            </tr>
+        </table>
+
+    </div>
+<div><img src="img/StoreBanner.png"></div>
 
 <div class="best_tea_container">
     <h1>베스트 차</h1>
         <div class="inner">
             <div class="inner">
-                <a><div class="product_inner"><img src="/img/store/상품1-3.png">
+                <a><div class="product_inner"><img src="img/store/상품1-3.png">
                     <p class="type">싱글오리진</p>
                     <p class="title">얼그레이</p>
                     <strong>12,000원</strong><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
            </div></a>
-                      <div class="product_inner"><img src="/img/store/상품2-3.png">
+                      <div class="product_inner"><img src="img/store/상품2-3.png">
                         <p class="type">블렌딩</p>
                         <p class="title">고요한 바다를 담은 숲</p>
                     <strong>27,000원</strong><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
-                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
                       </div>
-                          <div class="product_inner"><img src="/img/store/상품3-3.png">
+                          <div class="product_inner"><img src="img/store/상품3-3.png">
                             <p class="type">싱글오리진</p>
                             <p class="title">제주 녹차</p>
                     <strong>31,000원</strong><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
-                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
                     </div>
-                          <div class="product_inner"><img src="/img/store/상품4-3.png">
+                          <div class="product_inner"><img src="img/store/상품4-3.png">
                             <p class="type">뉴타입</p>
                             <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
                     <strong>43,000원</strong><br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
-                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
                     </div>
             <!--<tr th:each="prdocutList:${product}">
                 <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
@@ -72,40 +151,40 @@
         -->
     </div>
 </div>
-<div class="middle_banner"><img src="/img/TeaFindBanner.png"></div>
+<div class="middle_banner"><img src="img/TeaFindBanner.png"></div>
 
 <hr>
 
 <div class="single_origin_contanier">
     <h1>싱글오리진</h1>
     <div class="inner">
-        <a><div class="product_inner"><img src="/img/store/상품1-2.png">
+        <a><div class="product_inner"><img src="img/store/상품1-2.png">
             <p class="type">싱글오리진</p>
             <p class="title">얼그레이</p>
             <strong>12,000원</strong><br>
-            <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-            <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+            <a class="like_bt"><img src="img/icons/Vector.png"></a>
    </div></a>
-              <div class="product_inner"><img src="/img/store/상품2-2.png">
+              <div class="product_inner"><img src="img/store/상품2-2.png">
                 <p class="type">블렌딩</p>
                 <p class="title">고요한 바다를 담은 숲</p>
             <strong>27,000원</strong><br>
-            <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
-            <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+            <a class="like_bt"><img src="img/icons/Vector.png"></a>
               </div>
-                  <div class="product_inner"><img src="/img/store/상품3-2.png">
+                  <div class="product_inner"><img src="img/store/상품3-2.png">
                     <p class="type">싱글오리진</p>
                     <p class="title">제주 녹차</p>
             <strong>31,000원</strong><br>
-            <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
-            <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+            <a class="like_bt"><img src="img/icons/Vector.png"></a>
             </div>
-                  <div class="product_inner"><img src="/img/store/상품4-2.png">
+                  <div class="product_inner"><img src="img/store/상품4-2.png">
                     <p class="type">뉴타입</p>
                     <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
             <strong>43,000원</strong><br>
-            <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
-            <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+            <a class="like_bt"><img src="img/icons/Vector.png"></a>
             </div>
         <!--<tr th:each="prdocutList:${product}">
             <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
@@ -124,33 +203,33 @@
     <h1>블렌딩</h1>
     <div class="inner">
         <div class="inner">
-            <a><div class="product_inner"><img src="/img/store/상품1-1.png">
+            <a><div class="product_inner"><img src="img/store/상품1-1.png">
                 <p class="type">싱글오리진</p>
                 <p class="title">얼그레이</p>
                 <strong>12,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
        </div></a>
-                  <div class="product_inner"><img src="/img/store/상품2-1.png">
+                  <div class="product_inner"><img src="img/store/상품2-1.png">
                     <p class="type">블렌딩</p>
                     <p class="title">고요한 바다를 담은 숲</p>
                 <strong>27,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                   </div>
-                      <div class="product_inner"><img src="/img/store/상품3-1.png">
+                      <div class="product_inner"><img src="img/store/상품3-1.png">
                         <p class="type">싱글오리진</p>
                         <p class="title">제주 녹차</p>
                 <strong>31,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                 </div>
-                      <div class="product_inner"><img src="/img/store/상품4-1.png">
+                      <div class="product_inner"><img src="img/store/상품4-1.png">
                         <p class="type">뉴타입</p>
                         <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
                 <strong>43,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                 </div>
         <!--<tr th:each="prdocutList:${product}">
             <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
@@ -169,33 +248,33 @@
 <h1>뉴타입</h1>
     <div class="inner">
         <div class="inner">
-            <a><div class="product_inner"><img src="/img/store/상품1.png">
+            <a><div class="product_inner"><img src="img/store/상품1.png">
                 <p class="type">싱글오리진</p>
                 <p class="title">얼그레이</p>
                 <strong>12,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
        </div></a>
-                  <div class="product_inner"><img src="/img/store/상품2.png">
+                  <div class="product_inner"><img src="img/store/상품2.png">
                     <p class="type">블렌딩</p>
                     <p class="title">고요한 바다를 담은 숲</p>
                 <strong>27,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                   </div>
-                      <div class="product_inner"><img src="/img/store/상품3.png">
+                      <div class="product_inner"><img src="img/store/상품3.png">
                         <p class="type">싱글오리진</p>
                         <p class="title">제주 녹차</p>
                 <strong>31,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                 </div>
-                      <div class="product_inner"><img src="/img/store/상품4.png">
+                      <div class="product_inner"><img src="img/store/상품4.png">
                         <p class="type">뉴타입</p>
                         <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
                 <strong>43,000원</strong><br>
-                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
-                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                <a class="like_bt"><img src="img/icons/Vector.png"></a>
                 </div>
         <!--<tr th:each="prdocutList:${product}">
             <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
@@ -215,7 +294,7 @@
 
 <div id="coinfo_container">
     <div class="coinfoinner">
-        <img src="/img/Logo.png">
+        <img src="img/Logo.png">
         <p>E-mail : oncha.minji@gmail.com</p>
         <p>Copyright 2023 Oncha</p>
     </div>
@@ -223,6 +302,6 @@
 
 </div>    
 </body>
-<script src="/js/Tindex.js"></script>
-<script src="/js/buttonManager.js"></script>
+<script src="js/Tindex.js"></script>
+
 </html>

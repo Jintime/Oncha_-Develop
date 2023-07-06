@@ -1,32 +1,5 @@
-@import url(default.css);
+@import url(/css/default.css);
 
-.tb_products{
-    margin-top: 100px;
-}
-.product_dsc{
-    padding: 31px 7px 30px 189px;
-}
-.mask{
-    position: absolute;
-    width: 100px;
-}
-.payment_info_container{
-    display: flex;
-    margin-top: 50px;
-    justify-content: space-between;
-}
-.user_info_cntainer{
-    width: 300px;
-}
-.deliver_option_wrap{
-    width: 1000px;
-}
-.info_left{
-}
-.info_right{
-border-spacing: 20px;
-margin-left: 50px;
-}
 
 .Store_fillter_wrap table{
     margin-top: 10px;
@@ -50,5 +23,5 @@ margin-left: 50px;
     border-bottom: 1px solid gray;
 }
 .fillter_tag img{width: 20px;
-    vertical-align: bottom;
+vertical-align: bottom;
 }

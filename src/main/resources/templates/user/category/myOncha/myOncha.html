@@ -2,41 +2,144 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/default.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link href="/css/myOncha/myoncha.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
-    <div class="nav_barContainer">
-        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-            <button class="teaFinder_bt">마이티</button>
-            <button class="store_bt">스토어</button>
-            <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
-        </div>
-        <div class="right">
-            <input class="search" type="text" >
-            <button th:if="${user == null}" class="login_bt">로그인</button>
-            <button class="myoncha_bt">마이온차</button>
-        </div>
-    </div>
-    <div th:if="${user==null}">
-        <h1>아직 온차의 회원이 아니신가요???</h1>
-        <button class="login_bt">로그인하기</button>
-        <button class="login_bt">회원가입하기</button>
-        <button class="index_bt">비회원으로 둘러볼래요</button>
-    </div>
+    <div class="box">
+            <div class="nav_barContainer">
+                <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+                    <button class="finder_bt">마이티</button>
+                    <button class="store_bt" onclick="location.href='/store'">스토어</button>
+                    <button class="reserve_bt" onclick="location.href='/teaHouse'">티하우스</button>
+                    <button class="sub_bt">커뮤니티</button>
+        
+                </div>
+                <div class="right">
+                    <input class="serch" type="text" >
+                    <button id="login">로그인</button>
+                    <button id="register">회원가입</button>
+                </div>
+            </div>
+            <div class="myOncha_wrap">
+                <div class="myOncha_wrap_bg"></div>
+                <h1>MY ONCHA</h1>
+                <img class="profile_img" src="/img/Main_img.png">
+                <h3>이름?</h3>
+                <h4>차마스터</h4>
+                <table>
+                    <th><button>리뷰</button></th>
+                    <th><button>구매</button></th>
+                    <tr>
+                    <td>00</td>
+                    <td>00</td>
+                </tr>
+                </table>
+            </div>
+            <div class="tea_finder_wrap">
+                <h2>내 취향 한 눈에 보기</h2>
+                <table class="tea_finder_inner">
+                    <th><button>리쉬</button></th>
+                    <th><button>산미</button></th>
+                    <th><button>흙</button></th>
+                    <th><button>드립</button></th>
+                    <tr class="td_head">
+                        <td>스타일</td>
+                        <td>맛</td>
+                        <td>향</td>
+                        <td>음용방식</td>
+                    </tr>
+                    <tr class="td_tail">
+                        <td>Style</td>
+                        <td>Flavor</td>
+                        <td>Aroma</td>
+                        <td>Drinking method</td>
+                    </tr>
+                    </table>
+                    <button class="tea_finder_bt">나의 차 취향 분석하기</button>
+                    <h2>취향 키워드</h2>
+                    <table class="tea_finder_keyword">
+                        <tr>
+                            <td>독서</td>
+                            <td>운동</td>
+                            <td>바이크</td>
+                            <td>여행</td>
+                            <td>사랑</td>
+                            <td>티하우스</td>
+                            <td>티하우스</td>
+                        </tr>
+                        <tr>
+                            <td>아르헨티나</td>
+                            <td>연남동</td>
+                            <td>바이크</td>
+                            <td>여행</td>
+                            <td>사랑</td>
+                            <td>티하우스</td>
+                            <td>티하우스</td>
+                        </tr>
+                        <tr>
+                            <td>독서</td>
+                            <td>운동</td>
+                            <td>바이크</td>
+                            <td>여행</td>
+                            <td>사랑</td>
+                            <td>티하우스</td>
+                            <td><button>etc...</button></td>
+                        </tr>
+                    </table>
+                </div>
+            <div class="tea_recommend_wrap">
+                <img class="tea_finder_bg " src="/img/my_oncha_bg.png">
+                <h2>당신을 위한 ONCHA의 추천차</h2>
+                <a><div class="product_inner"><img src="/img/index/상품1-2.png">
+                    <p class="type">싱글오리진</p>
+                    <p class="title">얼그레이</p>
+                    <strong>12,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+           </div></a><br>
+           <button class="other_tea_bt">또 다른 차 추천 받아보기</button>
+            </div>
 
-  <!--  <div th:unless="${user==null}">-->
-    <hr>
-    <h1>(test)회원일경우 보이는 곳</h1>
-    <button class="mypage_bt">마이페이지</button>
-    <button class="rank_bt">평가수/리뷰수/구매수</button>
-    <button class="teaFinder_bt">차 취향</button>
-    <button class="like_bt">좋아요</button>
+
+            <div class="favorite_tea_wrap">
+                <h2>내가 좋아하는 차</h2>
+                <a><div class="product_inner"><img src="/img/index/상품1-2.png">
+                    <p class="type">싱글오리진</p>
+                    <p class="title">얼그레이</p>
+                    <strong>12,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+           </div></a>
+                      <div class="product_inner"><img src="/img/index/상품2-2.png">
+                        <p class="type">블렌딩</p>
+                        <p class="title">고요한 바다를 담은 숲</p>
+                    <strong>27,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,237</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                      </div>
+                          <div class="product_inner"><img src="/img/index/상품3-2.png">
+                            <p class="type">싱글오리진</p>
+                            <p class="title">제주 녹차</p>
+                    <strong>31,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 65</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                    </div>
+                          <div class="product_inner"><img src="/img/index/상품4-2.png">
+                            <p class="type">뉴타입</p>
+                            <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
+                    <strong>43,000원</strong><br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 2,915</span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+        </div>
+        </div>
+            </div>
 
 </div>
 </body>
-<script src="/js/buttonManager.js"></script>
-
 </html>
