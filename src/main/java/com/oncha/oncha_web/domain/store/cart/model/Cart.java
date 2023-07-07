@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.domain.cart.model;
+package com.oncha.oncha_web.domain.store.cart.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

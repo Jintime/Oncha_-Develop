@@ -10,4 +10,5 @@ public class StoreRestController {
     public String SaveAddress(){
         return "redirect:user/store/store";
     }
+
 }

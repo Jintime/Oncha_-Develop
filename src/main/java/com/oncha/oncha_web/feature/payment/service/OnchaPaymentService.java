@@ -1,7 +1,7 @@
 package com.oncha.oncha_web.feature.payment.service;
 
 import com.amazonaws.services.kms.model.NotFoundException;
-import com.oncha.oncha_web.domain.payment.PaymentRepository.OnchaPaymentRepository;
+import com.oncha.oncha_web.domain.payment.repository.OnchaPaymentRepository;
 import com.oncha.oncha_web.domain.payment.model.OnchaPayment;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentInfoDTO;
