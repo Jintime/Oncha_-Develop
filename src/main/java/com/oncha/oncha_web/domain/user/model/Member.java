@@ -63,14 +63,19 @@ public class Member extends BaseTimeEntity {
     private boolean allow;
 
     private String provider;
-
     private String providerId;
+
+    private String refreshToken;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Address> addressList = new ArrayList<>();
 
     public void allowed() {
         this.allow = true;
+    }
+
+    public void setRefreshToken (String token) {
+        refreshToken = token;
     }
 
     public Member(String userId, String email, Role role, String provider, String providerId) {

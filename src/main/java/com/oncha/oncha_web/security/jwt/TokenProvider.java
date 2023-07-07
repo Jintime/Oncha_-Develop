@@ -1,7 +1,9 @@
 package com.oncha.oncha_web.security.jwt;
 
 
+import com.oncha.oncha_web.domain.user.model.Member;
 import com.oncha.oncha_web.domain.user.model.Role;
+import com.oncha.oncha_web.feature.user.service.MemberService;
 import com.oncha.oncha_web.security.auth.PrincipalDetails;
 import com.oncha.oncha_web.security.jwt.redis.exception.CustomJwtException;
 import com.oncha.oncha_web.security.jwt.redis.feature.RefreshTokenRedisService;
@@ -47,6 +49,8 @@ public class TokenProvider implements InitializingBean {
 
     private Key refreshTypeKey;
 
+    private final MemberService memberService;
+
     private final RefreshTokenRedisService refreshTokenRedisService;
 
     @Autowired
@@ -56,11 +60,13 @@ public class TokenProvider implements InitializingBean {
             @Value("${jwt.token-validity-in-Mill-Seconds}") long tokenValidityMillInSeconds,
             @Value("${jwt.refresh-secret}") String refreshKey,
             @Value("${jwt.refresh-validity-in-Mill-Seconds}") long refreshValidityMillInSeconds,
-            RefreshTokenRedisService refreshTokenRedisService ) {
+            MemberService memberService,
+            RefreshTokenRedisService refreshTokenRedisService) {
         this.secretKey = secretKey;
         this.refreshKey = refreshKey;
         this.refreshValidityMillInSeconds = refreshValidityMillInSeconds; //redis 저장기한고 별도.. 항상 redis 보다는 클것! - 크게 의미없음
         this.tokenValidityInMilliSeconds = tokenValidityMillInSeconds;
+        this.memberService = memberService;
         this.refreshTokenRedisService = refreshTokenRedisService;
     }
 
@@ -159,15 +165,16 @@ public class TokenProvider implements InitializingBean {
         Role role = Role.valueOf(getRoleByClaims(claims));
         boolean allow = getAllowByClaims(claims);
 
-        //id로 redis key 생성
-        String tokenKey = createTokenKey(id);
+//        //id로 redis key 생성
+//        String tokenKey = createTokenKey(id);
 
         //새로운 access,refresh token 생성
         String newAccessToken = createToken(id, role, allow);
         String newRefreshToken = createRefresh();
 
         //기존 것들을 비교하여 올바르면 새로운 값을 집어넣기
-        refreshTokenRedisService.processingResetRefreshToken(tokenKey, refresh, newRefreshToken);
+//        refreshTokenRedisService.processingResetRefreshToken(tokenKey, refresh, newRefreshToken);
+        memberService.processingResetRefreshToken(id, refresh, newRefreshToken);
 
         return new TokenDto(newAccessToken, newRefreshToken);
     }
