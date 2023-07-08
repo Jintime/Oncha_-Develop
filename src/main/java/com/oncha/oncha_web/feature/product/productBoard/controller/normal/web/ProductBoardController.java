@@ -46,7 +46,7 @@ public class ProductBoardController {
 
     @PostMapping("/write")
     public String saveWrite(@ModelAttribute ProductBoardRequest productBoardRequest)
-        throws IOException {
+            throws IOException {
         productBoardService.save(productBoardRequest);
         return "index";
     }

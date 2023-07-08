@@ -15,6 +15,8 @@ public class ProductBoardRequest implements RequestProductBoard {
 
     private Long id;
 
+    private Long companyId;
+
     private String title;
     private String detail;
     private String product_name;
@@ -22,6 +24,7 @@ public class ProductBoardRequest implements RequestProductBoard {
     private String type;
     private String flavor;
     private String category;
+    private String blended;
 
     private int weight;
     private int price;
@@ -29,9 +32,8 @@ public class ProductBoardRequest implements RequestProductBoard {
     private int view;
     private int like;
 
-    private boolean blended;
+
     private boolean caffeine;
-    private boolean allow;
 
     private List<MultipartFile> productFile;
     private List<String> originFileName;

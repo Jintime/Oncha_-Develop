@@ -21,6 +21,9 @@ public class ProductBoard extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100)
+    private long companyId;
+
     @Column(length = 200)
     private String title;
 
@@ -42,6 +45,8 @@ public class ProductBoard extends BaseEntity {
     @Column(length = 30)
     private String category;
 
+    @Column(length = 50)
+    private String blended;
 
     private int weight;
     private int price;
@@ -49,24 +54,18 @@ public class ProductBoard extends BaseEntity {
     private int view;
     private int love;
 
-    private boolean blended;
-    private boolean caffeine;
 
-    private boolean allow;
+    private boolean caffeine;
 
     @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ProductFile> productFileList= new ArrayList<>();
 
-    public void allowed() {
-        this.allow = true;
-    }
-
-
     @Builder
-    public ProductBoard(Long id, String title, String detail, String product_name, String origin_nation,
+    public ProductBoard(Long id,long companyId, String title, String detail, String product_name, String origin_nation,
                         String type, String flavor, String category, int weight, int price, int product_count,
-                        int view, int love, boolean blended, boolean caffeine,boolean allow){
+                        int view, int love, String blended, boolean caffeine,boolean allow){
         this.id =id;
+        this.companyId = companyId;
         this.title = title;
         this.detail = detail;
         this.product_name=product_name;
@@ -81,13 +80,13 @@ public class ProductBoard extends BaseEntity {
         this.love = love;
         this.blended =blended;
         this.caffeine = caffeine;
-        this.allow =allow;
     }
 
 
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
         return ProductBoard.builder()
                 .id(requestProductBoard.getId())
+                .companyId(requestProductBoard.getCompanyId())
                 .title(requestProductBoard.getTitle())
                 .detail(requestProductBoard.getDetail())
                 .product_name(requestProductBoard.getProduct_name())
@@ -100,9 +99,8 @@ public class ProductBoard extends BaseEntity {
                 .product_count(requestProductBoard.getProduct_count())
                 .view(requestProductBoard.getView())
                 .love(requestProductBoard.getLike())
-                .blended(requestProductBoard.isBlended())
+                .blended(requestProductBoard.getBlended())
                 .caffeine(requestProductBoard.isCaffeine())
-                .allow(requestProductBoard.isAllow())
                 .build();
     }
 
