@@ -40,7 +40,7 @@ public class AmazonS3Service {
             try (InputStream inputStream = multipartFile.getInputStream()) {
 
                 //s3에 저장할 파일 패스 생성
-                String processedPrefix = reProcessFilePath(prefixPath);
+                String processedPrefix = addPathInPrefix(prefixPath);
                 String fileDatePath = getFolderDatePath();
                 String filePath = processedPrefix + fileDatePath;
 
@@ -78,12 +78,11 @@ public class AmazonS3Service {
     /**
      * S3에 업로드된 파일 삭제
      */
-    public String deleteFile(String uploadFilePath, String uuidFileName) {
-
+    public String deleteFile(String filePath, String uploadFileName) {
         String result = "success";
 
         try {
-            String keyName = uploadFilePath + "/" + uuidFileName; // ex) 구분/년/월/일/파일.확장자
+            String keyName = filePath + uploadFileName;
             boolean isObjectExist = amazonS3Client.doesObjectExist(bucketName, keyName);
             if (isObjectExist) {
                 amazonS3Client.deleteObject(bucketName, keyName);
@@ -109,7 +108,7 @@ public class AmazonS3Service {
         return objectMetadata;
     }
 
-    private String reProcessFilePath (String prefix) {
+    private String addPathInPrefix(String prefix) {
         if (prefix.charAt(prefix.length() -1) != '/') prefix += "/";
         return prefix;
     }
