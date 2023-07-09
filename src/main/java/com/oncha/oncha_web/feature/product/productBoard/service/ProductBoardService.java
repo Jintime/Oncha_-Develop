@@ -44,14 +44,6 @@ public class ProductBoardService {
         }
     }
 
-    @Transactional
-    public void allow(Long[] id) throws IOException {
-        for (Long productId : id) {
-            ProductBoard productBoard = productBoardRepository.findById(productId)
-                .orElseThrow(() -> new NotFoundException("해당 정보가 없습니다"));
-            productBoard.allowed();
-        }
-    }
 
     @Transactional(readOnly = true)
     public List<ProductBoardDTO> findAll(Pageable pageable) {

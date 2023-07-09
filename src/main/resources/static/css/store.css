@@ -27,3 +27,28 @@
 border-spacing: 20px;
 margin-left: 50px;
 }
+
+.Store_fillter_wrap table{
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width:100%;
+}
+.Store_fillter_wrap th{
+    border: 1px solid gray;
+    height: 50px;
+    width: 120px;
+    background-color: rgb(238, 237, 237);
+    padding-left: 5px;
+    text-align: left;
+}
+.Store_fillter_wrap td{
+    width: 100px;
+}
+.Store_fillter_wrap tr{
+    border-bottom: 1px solid gray;
+}
+.fillter_tag img{width: 20px;
+    vertical-align: bottom;
+}
