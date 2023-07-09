@@ -1,6 +1,8 @@
 package com.oncha.oncha_web.feature.product.productBoard.service;
 
 import com.amazonaws.services.kms.model.NotFoundException;
+import com.oncha.oncha_web.domain.file.model.FileInfo;
+import com.oncha.oncha_web.domain.file.repository.FileInfoRepository;
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
 import com.oncha.oncha_web.domain.productBoard.model.ProductFile;
 import com.oncha.oncha_web.domain.productBoard.repository.ProductBoardRepository;
@@ -30,16 +32,21 @@ public class ProductBoardService {
 
     private final AmazonS3Service amazonS3Service;
 
+    private final FileInfoRepository fileInfoRepository;
+
     @Transactional
     public void save(ProductBoardRequest productBoardRequest) throws IOException {
         ProductBoard productBoard = productBoardRepository.save(
             ProductBoard.toProductBoard(productBoardRequest));
 
         List<S3FileDto> s3FileDtoList = amazonS3Service.uploadFiles(
-            productBoardRequest.getProductFile());
+            productBoardRequest.getProductFile(), "productBoard");
+
         for (S3FileDto s3FileDto : s3FileDtoList) {
-            ProductFile productFile = ProductFile.toProductFile(s3FileDto.getOriginalFileName(),
-                s3FileDto.getUploadFilePath(), s3FileDto.getUploadFileUrl(), productBoard);
+            FileInfo fileInfo = fileInfoRepository.save(s3FileDto.toFileInfoEntity());
+
+            ProductFile productFile = new ProductFile(fileInfo, productBoard);
+
             productFileRepository.save(productFile);
         }
     }
@@ -53,9 +60,7 @@ public class ProductBoardService {
 
     @Transactional(readOnly = true)
     public ProductBoardDTO findById(Long id) {
-        return new ProductBoardDTO(productBoardQueryRepository.findById(id).orElseThrow(
-            () -> new EntityNotFoundException(id, ProductBoard.class)
-        ));
+        return new ProductBoardDTO(productBoardRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, ProductBoard.class)));
     }
 
 

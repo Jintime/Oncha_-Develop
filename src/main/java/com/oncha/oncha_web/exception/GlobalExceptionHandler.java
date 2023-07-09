@@ -30,6 +30,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public void handleNotValidException(HttpServletRequest request, HttpServletResponse response, Model model, MethodArgumentNotValidException ex) {
         try {
+            ex.printStackTrace();
             String url = request.getRequestURL().toString();
             model.addAttribute("message", ex.getMessage());
             response.sendRedirect(url);

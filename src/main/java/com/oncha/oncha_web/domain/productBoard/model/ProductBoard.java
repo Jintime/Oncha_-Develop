@@ -2,6 +2,7 @@ package com.oncha.oncha_web.domain.productBoard.model;
 
 import com.oncha.oncha_web.domain.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class ProductBoard extends BaseEntity {
     private Long id;
 
     @Column(length = 100)
-    private long companyId;
+    private Long companyId;
 
     @Column(length = 200)
     private String title;
@@ -48,17 +49,15 @@ public class ProductBoard extends BaseEntity {
     @Column(length = 50)
     private String blended;
 
-    private int weight;
-    private int price;
-    private int product_count;
-    private int view;
-    private int love;
-
-
-    private boolean caffeine;
+    private Integer weight;
+    private Integer price;
+    private Integer product_count;
+    private Integer view;
+    private Integer love;
+    private Boolean caffeine;
 
     @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<ProductFile> productFileList= new ArrayList<>();
+    private List<ProductFile> productFileList;
 
     @Builder
     public ProductBoard(Long id,long companyId, String title, String detail, String product_name, String origin_nation,
