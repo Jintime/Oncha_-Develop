@@ -2,15 +2,11 @@ package com.oncha.oncha_web.domain.productBoard.model;
 
 import com.oncha.oncha_web.domain.BaseEntity;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder.In;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Getter
@@ -56,8 +52,8 @@ public class ProductBoard extends BaseEntity {
     private Integer love;
     private Boolean caffeine;
 
-    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<ProductFile> productFileList;
+    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ProductFile> productFiles;
 
     @Builder
     public ProductBoard(Long id,long companyId, String title, String detail, String product_name, String origin_nation,

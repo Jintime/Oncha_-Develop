@@ -1,6 +1,5 @@
 package com.oncha.oncha_web.feature.product.productBoard.service;
 
-import com.amazonaws.services.kms.model.NotFoundException;
 import com.oncha.oncha_web.domain.file.model.FileInfo;
 import com.oncha.oncha_web.domain.file.repository.FileInfoRepository;
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
@@ -54,13 +53,12 @@ public class ProductBoardService {
 
     @Transactional(readOnly = true)
     public List<ProductBoardDTO> findAll(Pageable pageable) {
-        return productBoardQueryRepository
-            .findAllByPageable(pageable).getContent().stream().map(ProductBoardDTO::new).toList();
+        return productBoardRepository.findAllByDeletedAtIsNull(pageable).getContent().stream().map(ProductBoardDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
     public ProductBoardDTO findById(Long id) {
-        return new ProductBoardDTO(productBoardRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id, ProductBoard.class)));
+        return new ProductBoardDTO(productBoardRepository.findWithProductFileAAndFileInfoById(id).orElseThrow(() -> new EntityNotFoundException(id, ProductBoard.class)));
     }
 
 
