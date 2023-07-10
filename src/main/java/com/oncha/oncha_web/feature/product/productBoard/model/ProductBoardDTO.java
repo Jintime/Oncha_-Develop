@@ -88,6 +88,6 @@ public class ProductBoardDTO {
         this.like = productBoard.getLove();
         this.blended = productBoard.getBlended();
         this.caffeine = productBoard.getCaffeine();
-        this.list = productBoard.getProductFileList().stream().map(ProductFileDTO::new).toList();
+        this.list = productBoard.getProductFiles().stream().map(ProductFileDTO::new).toList();
     }
 }

@@ -17,25 +17,10 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
         super(ProductBoard.class);
     }
 
-    public Page<ProductBoard> findAllByPageable(Pageable pageable) {
-//         selectFrom(productBoard)
-//            .leftJoin(productBoard.productFileList, productFile)
-//            .offset((long) pageable.getPageNumber() * pageable.getPageSize())
-//            .limit(pageable.getPageSize()).fetchJoin()
-//            .transform(groupBy(productBoard.id).list(new QProductBoardDTO(
-//                productBoard,
-//                list(new QProductFileDTO(productFile))
-//            )));
-
-        return applyPagination(pageable, query -> selectFrom(productBoard)
-            .leftJoin(productBoard.productFileList, productFile)
-            .fetchJoin());
-    }
-
     public Optional<ProductBoard> findById(Long id) {
         return Optional.ofNullable(selectFrom(productBoard)
             .where(productBoard.id.eq(id))
-            .leftJoin(productBoard.productFileList, productFile)
+            .leftJoin(productBoard.productFiles, productFile)
             .fetchJoin().fetchOne());
     }
 
