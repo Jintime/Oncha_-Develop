@@ -95,5 +95,6 @@ public class Member extends BaseTimeEntity {
         this.gender = request.getGender();
         this.phoneNumber = request.getPhoneNumber();
         this.nickName = request.getNickname();
+        this.allow = true;
     }
 }

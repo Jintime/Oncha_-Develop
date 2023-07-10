@@ -1,4 +1,4 @@
-package com.oncha.oncha_web.domain.payment.PaymentRepository;
+package com.oncha.oncha_web.domain.payment.repository;
 
 
 import com.oncha.oncha_web.domain.payment.model.OnchaPayment;

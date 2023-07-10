@@ -1,0 +1,1 @@
+insert into product_board (title) values (  )

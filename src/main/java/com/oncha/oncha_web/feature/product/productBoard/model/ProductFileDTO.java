@@ -15,7 +15,7 @@ public class ProductFileDTO {
 
     @QueryProjection
     public ProductFileDTO (ProductFile productFile) {
-        this.originFileName = productFile.getOriginalFileName();
-        this.url = productFile.getUrl();
+        this.originFileName = productFile.getFileInfo().getOriginalFileName();
+        this.url = productFile.getFileInfo().getUrl();
     }
 }

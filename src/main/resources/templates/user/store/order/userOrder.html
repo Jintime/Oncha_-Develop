@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -185,43 +185,50 @@
 </div>
 </body>
 <script>
+    function iamport() {
+        const currentURL = window.location.href;
+        const pattern = /\d+$/;
+        const match = currentURL.match(pattern);
+        const lastNumber = match ? match[0] : '';
 
-    function iamport(){
+        $.ajax({
+            type: "POST",
+            url: `/request_pay/`+lastNumber,
+            success: function (res) {
+            IMP.init("imp85443833");
+            IMP.request_pay({
+                pg: 'kcp.A52CY',
+                pay_method: 'card',
+                merchant_uid: 'merchant_' + new Date().getTime(),
+                name: res.product_name,
+                amount: "100",
+                buyer_email:res.buyer_email,
+                buyer_name: res.buyer_name,
+                buyer_tel: res.buyer_tel,
+                buyer_postcode: "우편번호다~",
+                m_redirect_url: 'http://localhost:8080/orderComplete'
+            }, function (res) {
+                // 결제검증
+                console.log(res);
+                $.ajax({
+                    type: "POST",
+                    url: "/verifyIamport/" + res.imp_uid
+                }).done(function (data) {
+                    console.log(data);
+                    if (res.paid_amount == data.response.amount) {
+                        alert("결제 및 결제검증완료");
 
+                        //결제 성공 시 비즈니스 로직
 
-        //가맹점 식별코드
-        IMP.init("imp85443833");
-        IMP.request_pay({
-            pg : 'kcp.A52CY',
-            pay_method : 'card',
-            merchant_uid : 'merchant_' + new Date().getTime(),
-            name :  "온차",
-            amount : "100",
-            buyer_email : "email",
-            buyer_name : "name",
-            buyer_tel : "phone",
-            buyer_addr : "address",
-            buyer_postcode : "postcode",
-            m_redirect_url : 'http://localhost:8080/orderComplete'
-        }, function(res) {
-            // 결제검증
-
-            console.log(res);
-            $.ajax({
-                type : "POST",
-                url : "/verifyIamport/" + res.imp_uid
-            }).done(function(data) {
-                console.log(data);
-                if(res.paid_amount == data.response.amount){
-                    alert("결제 및 결제검증완료");
-
-                    //결제 성공 시 비즈니스 로직
-
-                } else {
-                    alert("결제 실패");
-                }
+                    } else {
+                        alert("결제 실패");
+                    }
+                });
             });
+        }
         });
     }
+
+
 </script>
 </html>

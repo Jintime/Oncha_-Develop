@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.feature;
 
+import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import com.oncha.oncha_web.feature.user.model.MemberDTO;
@@ -20,10 +21,10 @@ import java.util.Optional;
 public class MainController {
 
     private final ProductBoardService productBoardService;
-    private final MemberService memberService;
+
+    @SetUserInfoInModel
     @GetMapping({"/","index"})
     public String Home(Model model,@PageableDefault Pageable pageable){
-
         List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("product",productDTOList);
         return "index";

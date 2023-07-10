@@ -1,7 +1,6 @@
 package com.oncha.oncha_web.feature.product.productBoard.model;
 
 import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
-import com.querydsl.core.annotations.QueryProjection;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +17,8 @@ public class ProductBoardDTO {
 
     private Long id;
 
+    private Long companyId;
+
     private String title;
 
     private String detail;
@@ -32,6 +33,8 @@ public class ProductBoardDTO {
 
     private String category;
 
+    private String blended;
+
     private int weight;
 
     private int price;
@@ -42,8 +45,6 @@ public class ProductBoardDTO {
 
     private int like;
 
-    private boolean blended;
-
     private boolean caffeine;
 
     private boolean allow;
@@ -52,6 +53,7 @@ public class ProductBoardDTO {
 
     public ProductBoardDTO(ProductBoard productBoard, List<ProductFileDTO> dtos) {
         this.id = productBoard.getId();
+        this.companyId = productBoard.getCompanyId();
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
         this.product_name = productBoard.getProduct_name();
@@ -64,15 +66,14 @@ public class ProductBoardDTO {
         this.product_count = productBoard.getProduct_count();
         this.view = productBoard.getView();
         this.like = productBoard.getLove();
-        this.blended = productBoard.isBlended();
-        this.caffeine = productBoard.isCaffeine();
-        this.allow = productBoard.isAllow();
+        this.blended = productBoard.getBlended();
+        this.caffeine = productBoard.getCaffeine();
         this.list = dtos;
     }
 
-    @QueryProjection
     public ProductBoardDTO(ProductBoard productBoard) {
         this.id = productBoard.getId();
+        this.companyId = productBoard.getCompanyId();
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
         this.product_name = productBoard.getProduct_name();
@@ -85,9 +86,8 @@ public class ProductBoardDTO {
         this.product_count = productBoard.getProduct_count();
         this.view = productBoard.getView();
         this.like = productBoard.getLove();
-        this.blended = productBoard.isBlended();
-        this.caffeine = productBoard.isCaffeine();
-        this.allow = productBoard.isAllow();
+        this.blended = productBoard.getBlended();
+        this.caffeine = productBoard.getCaffeine();
         this.list = productBoard.getProductFileList().stream().map(ProductFileDTO::new).toList();
     }
 }
