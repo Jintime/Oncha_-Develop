@@ -3,6 +3,7 @@ package com.oncha.oncha_web.domain.user.model;
 import com.oncha.oncha_web.domain.BaseTimeEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -66,6 +68,9 @@ public class Member extends BaseTimeEntity {
     private String providerId;
 
     private String refreshToken;
+
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+    private TeaTaste teaTaste;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Address> addressList = new ArrayList<>();

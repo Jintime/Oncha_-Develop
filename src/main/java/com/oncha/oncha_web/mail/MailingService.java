@@ -1,6 +1,5 @@
 package com.oncha.oncha_web.mail;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,7 +12,7 @@ public class MailingService {
     private final MailSender mailSender;
     private final String sender;
 
-    public MailingService(MailSender mailSender,         @Value("${mail.google.email}") String email) {
+    public MailingService(MailSender mailSender, @Value("${mail.google.email}") String email) {
         sender = email;
         this.mailSender = mailSender;
     }
