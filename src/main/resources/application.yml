@@ -12,6 +12,12 @@ spring:
         - aws
     active: local
 
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
   thymeleaf:
     cache: false
 #jpa database 설정
