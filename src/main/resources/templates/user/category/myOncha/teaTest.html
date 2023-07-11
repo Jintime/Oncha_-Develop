@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/teafinderTest.css" rel="stylesheet">
+</head>
+<body>
+<div class="tea_finder_wrap">
+    <section id="main">
+        <h3>나만의 티 찾기</h3>
+        <p>나만의 티를 찾아주는 페이지입니다<br>
+            시작하기버튼을 눌러주세요</p>
+        <button onclick="js:begin()">시작하기</button>
+    </section>
+    <section id="qna">
+        <div class="status">
+            <div class="statusBar">
+
+            </div>
+        </div>
+        <div class="qBox">
+
+        </div>
+        <div class="answerBox">
+
+        </div>
+    </section>
+    <section id="result">
+        <h3>나의 결과는?</h3>
+        <div class="resultName"></div>
+        <div id="resultImg"></div>
+        <div class="resultDesc"></div>
+        <button class="kakao">공유하기</button>
+    </section>
+</div>
+</body>
+<script src="/js/data.js"></script>
+<script src="/js/teaFinder.js"></script>
+</html>

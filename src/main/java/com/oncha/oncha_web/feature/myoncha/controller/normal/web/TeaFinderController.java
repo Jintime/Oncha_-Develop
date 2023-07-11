@@ -12,4 +12,9 @@ public class TeaFinderController {
     @GetMapping("/finder")
     public String TeaFinder(){return "user/category/myOncha/teaFinder";}
 
+    @GetMapping("/tea-finder")
+    public String TeaFindTest(){
+        return "user/category/myOncha/teaTest";
+    }
+
 }

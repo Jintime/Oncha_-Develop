@@ -13,6 +13,7 @@ a{
     height: 580px;
 
 }
+
 .title_container{
     margin-top: 30px;
     margin-bottom: 10px;
@@ -39,6 +40,13 @@ a{
     font-size: 50px;
     position: absolute;
     color: #FFFFFF;
+}
+.title_container h1{
+    color: #F60;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 .banner p{
     top:90%;
@@ -116,31 +124,31 @@ a{
     position: absolute;
 }
 /***지워야되는코드**/
- .product_inner span{
+.product_inner span{
     margin-right: 5px;
     font-size: 14px;
- }
- .type{
+}
+.type{
     font-size: 8px;
     color: gray;
- }
- .title{
+}
+.title{
     font-weight: bold;
     white-space: normal;
     word-break: break-all;
-    height: 50px;
- }
- .like_bt{
+    height: 40px;
+}
+.like_bt{
     width: 45px;
     top:48%;
     right:5%;
     position: absolute;
- }
+}
 .icons{
     vertical-align: middle;
-display: inline-block;
-margin-right:5px ;
-height: 15px;
+    display: inline-block;
+    margin-right:5px ;
+    height: 15px;
 }
 .icons img{
     vertical-align: top;
@@ -158,7 +166,7 @@ height: 15px;
 }
 .product_inner:not(:first-child){
     margin-left: 10px;
-    
+
 }
 .inner img:first-child{
     margin-left: 0px;

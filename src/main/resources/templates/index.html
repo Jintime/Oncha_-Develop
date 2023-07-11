@@ -22,7 +22,8 @@
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-            <a th:unless="${user==null}">마이페이지</a>
+            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
         </div>
     </div>
     <div class="sub_nav_bar"><div>
