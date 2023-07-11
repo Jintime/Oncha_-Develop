@@ -6,10 +6,12 @@ spring:
         - dev
         - oauth2
         - aws
+        - mail
       production:
         - production
         - oauth2
         - aws
+        - mail
     active: local
 
   devtools:
