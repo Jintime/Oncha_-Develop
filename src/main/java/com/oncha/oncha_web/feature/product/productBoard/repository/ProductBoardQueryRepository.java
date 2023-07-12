@@ -17,11 +17,5 @@ public class ProductBoardQueryRepository extends Querydsl4RepositorySupport {
         super(ProductBoard.class);
     }
 
-    public Optional<ProductBoard> findById(Long id) {
-        return Optional.ofNullable(selectFrom(productBoard)
-            .where(productBoard.id.eq(id))
-            .leftJoin(productBoard.productFiles, productFile)
-            .fetchJoin().fetchOne());
-    }
 
 }

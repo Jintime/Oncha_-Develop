@@ -2,7 +2,6 @@ package com.oncha.oncha_web.domain.productBoard.model;
 
 import com.oncha.oncha_web.domain.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,75 +27,37 @@ public class ProductBoard extends BaseEntity {
     private String detail;
 
     @Column(length = 200)
-    private String product_name;
+    private String productName;
 
-    @Column(length = 50)
-    private String origin_nation;
+    @Embedded
+    private TeaCategory teaCategory;
 
-    @Column(length = 15)
-    private String type;
-
-    @Column(length = 30)
-    private String flavor;
-
-    @Column(length = 30)
-    private String category;
-
-    @Column(length = 50)
-    private String blended;
+    private int view;
 
     private Integer weight;
     private Integer price;
-    private Integer product_count;
-    private Integer view;
-    private Integer love;
-    private Boolean caffeine;
+    private Integer productCount;
 
-    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "productBoard", fetch = FetchType.LAZY)
+    private List<ProductBoardLike> productBoardLikes;
+
+    @OneToMany(mappedBy = "productBoard", cascade = CascadeType.REMOVE,orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProductFile> productFiles;
 
-    @Builder
-    public ProductBoard(Long id,long companyId, String title, String detail, String product_name, String origin_nation,
-                        String type, String flavor, String category, int weight, int price, int product_count,
-                        int view, int love, String blended, boolean caffeine,boolean allow){
-        this.id =id;
-        this.companyId = companyId;
-        this.title = title;
-        this.detail = detail;
-        this.product_name=product_name;
-        this.origin_nation=origin_nation;
-        this.type = type;
-        this.flavor = flavor;
-        this.category = category;
-        this.weight = weight;
-        this.price =price;
-        this.product_count = product_count;
-        this.view = view;
-        this.love = love;
-        this.blended =blended;
-        this.caffeine = caffeine;
+    public ProductBoard (RequestProductBoard requestProductBoard){
+        this.companyId = requestProductBoard.getCompanyId();
+        this.title = requestProductBoard.getTitle();
+        this.detail = requestProductBoard.getDetail();
+        this.productName = requestProductBoard.getProductName();
+        this.weight = requestProductBoard.getWeight();
+        this.price = requestProductBoard.getPrice();
+        this.productCount = requestProductBoard.getProductCount();
+        this.teaCategory = requestProductBoard.getTeaCategory();
+        this.view = 0;
     }
 
-
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
-        return ProductBoard.builder()
-                .id(requestProductBoard.getId())
-                .companyId(requestProductBoard.getCompanyId())
-                .title(requestProductBoard.getTitle())
-                .detail(requestProductBoard.getDetail())
-                .product_name(requestProductBoard.getProduct_name())
-                .origin_nation(requestProductBoard.getOrigin_nation())
-                .type(requestProductBoard.getType())
-                .flavor(requestProductBoard.getFlavor())
-                .category(requestProductBoard.getCategory())
-                .weight(requestProductBoard.getWeight())
-                .price(requestProductBoard.getPrice())
-                .product_count(requestProductBoard.getProduct_count())
-                .view(requestProductBoard.getView())
-                .love(requestProductBoard.getLike())
-                .blended(requestProductBoard.getBlended())
-                .caffeine(requestProductBoard.isCaffeine())
-                .build();
+        return new ProductBoard(requestProductBoard);
     }
 
 

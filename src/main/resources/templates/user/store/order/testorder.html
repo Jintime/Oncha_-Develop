@@ -34,9 +34,9 @@
                     <hr>
                     <li><h1 class="productName" th:text="${product.title}">특가 배송테스트</h1></li>
                     <li>리뷰</li>
-                    <li th:text="${product.weight}">g </li>
-                    <li th:text="${product.origin_nation}">원산지</li>
-                    <li th:text="${product.type}">타입</li>
+                    <li th:text="${product.getWeight()}">g </li>
+                    <li th:text="${product.getOriginNation()}">원산지</li>
+                    <li th:text="${product.getType()}">타입</li>
                     <li>상품 선택 <button>-</button><button>1</button><button>+</button></li>
                     <li class="amount" th:text="${product.price}">test원</li>
                     <li>배송정보 배송비 : 어쩌고</li>
@@ -67,10 +67,10 @@
                         <th>티 타입</th><td th:text="${product.type}"></td>
                     </tr>
                     <tr>
-                        <th>상품이름</th><td th:text="${product.product_name}"></td>
+                        <th>상품이름</th><td th:text="${product.getProductName}"></td>
                     </tr>
                     <tr>
-                        <th>원산지</th><td th:text="${product.origin_nation}"></td>
+                        <th>원산지</th><td th:text="${product.getOriginNation}"></td>
                     </tr>
                     <tr>
                         <th>분류</th><td th:text="${product.category}"></td>
@@ -79,7 +79,7 @@
                         <th>중량</th><td th:text="${product.weight}">g</td>
                     </tr>
                     <tr>
-                        <th>블렌디드</th><td th:text="${product.blended}">o</td>
+                        <th>블렌디드</th><td th:text="${product.getBlending}">o</td>
                     </tr>
                     <tr>
                         <th>카페인</th><td th:text="${product.caffeine}">o</td>

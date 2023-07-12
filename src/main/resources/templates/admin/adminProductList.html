@@ -20,7 +20,6 @@
                 <th>원산지</th>
                 <th>type</th>
                 <th>향미</th>
-                <th>분류</th>
                 <th>중량</th>
                 <th>가격</th>
                 <th>블렌디드유무</th>
@@ -33,16 +32,15 @@
             <tr th:each="product: ${productList}">
                 <td th:text="${product.id}"></td>
                 <td><a th:href="@{|/product/admin/${product.id}|}" th:text="${product.title}"></a></td>
-                <td><a th:href="@{/product/admin/${product.id}}" th:text="${product.product_name}"></a></td>
-                <td th:text="${product.origin_nation}"></td>
-                <td th:text="${product.type}"></td>
-                <td th:text="${product.flavor}"></td>
-                <td th:text="${product.category}"></td>
-                <td th:text="${product.weight}"></td>
-                <td th:text="${product.price}"></td>
-                <td th:text="${product.blended}"></td>
-                <td th:text="${product.caffeine}"></td>
-                <td th:text="${product.product_count}"></td>
+                <td><a th:href="@{/product/admin/${product.id}}" th:text="${product.getProductName}"></a></td>
+                <td th:text="${product.getOriginNation()}"></td>
+                <td th:text="${product.getType()}"></td>
+                <td th:text="${product.getFlavor()}"></td>
+                <td th:text="${product.getWeight()}"></td>
+                <td th:text="${product.getPrice()}"></td>
+                <td th:text="${product.getBlending()}"></td>
+                <td th:text="${product.getCaffeine()}"></td>
+                <td th:text="${product.getProductCount()}"></td>
                 <img th:src="@{|${product.list.get(0).url}|}">
                 <td><input class="allow" type="checkbox"></td>
             </tr>

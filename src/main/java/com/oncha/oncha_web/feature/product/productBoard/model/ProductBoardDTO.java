@@ -23,29 +23,27 @@ public class ProductBoardDTO {
 
     private String detail;
 
-    private String product_name;
+    private String productName;
 
-    private String origin_nation;
+    private String originNation;
 
     private String type;
 
     private String flavor;
 
-    private String category;
+    private String blending;
 
-    private String blended;
+    private Integer weight;
 
-    private int weight;
+    private Integer price;
 
-    private int price;
+    private Integer productCount;
 
-    private int product_count;
+    private Integer view;
 
-    private int view;
+    private Integer like;
 
-    private int like;
-
-    private boolean caffeine;
+    private Boolean caffeine;
 
     private boolean allow;
 
@@ -56,18 +54,17 @@ public class ProductBoardDTO {
         this.companyId = productBoard.getCompanyId();
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
-        this.product_name = productBoard.getProduct_name();
-        this.origin_nation = productBoard.getOrigin_nation();
-        this.type = productBoard.getType();
-        this.flavor = productBoard.getFlavor();
-        this.category = productBoard.getCategory();
+        this.productName = productBoard.getProductName();
+        this.originNation = productBoard.getTeaCategory().getOriginNation();
+        this.type = productBoard.getTeaCategory().getTeaType();
+        this.flavor = productBoard.getTeaCategory().getFlavor();
         this.weight = productBoard.getWeight();
         this.price = productBoard.getPrice();
-        this.product_count = productBoard.getProduct_count();
+        this.productCount = productBoard.getProductCount();
         this.view = productBoard.getView();
-        this.like = productBoard.getLove();
-        this.blended = productBoard.getBlended();
-        this.caffeine = productBoard.getCaffeine();
+        this.like = productBoard.getProductBoardLikes().size();
+        this.blending = productBoard.getTeaCategory().getBlending();
+        this.caffeine = productBoard.getTeaCategory().getCaffeine();
         this.list = dtos;
     }
 
@@ -76,18 +73,17 @@ public class ProductBoardDTO {
         this.companyId = productBoard.getCompanyId();
         this.title = productBoard.getTitle();
         this.detail = productBoard.getDetail();
-        this.product_name = productBoard.getProduct_name();
-        this.origin_nation = productBoard.getOrigin_nation();
-        this.type = productBoard.getType();
-        this.flavor = productBoard.getFlavor();
-        this.category = productBoard.getCategory();
+        this.productName = productBoard.getProductName();
+        this.originNation = productBoard.getTeaCategory().getOriginNation();
+        this.type = productBoard.getTeaCategory().getTeaType();
+        this.flavor = productBoard.getTeaCategory().getFlavor();
         this.weight = productBoard.getWeight();
         this.price = productBoard.getPrice();
-        this.product_count = productBoard.getProduct_count();
+        this.productCount = productBoard.getProductCount();
         this.view = productBoard.getView();
-        this.like = productBoard.getLove();
-        this.blended = productBoard.getBlended();
-        this.caffeine = productBoard.getCaffeine();
+        this.like = productBoard.getProductBoardLikes().size();
+        this.blending = productBoard.getTeaCategory().getBlending();
+        this.caffeine = productBoard.getTeaCategory().getCaffeine();
         this.list = productBoard.getProductFiles().stream().map(ProductFileDTO::new).toList();
     }
 }

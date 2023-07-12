@@ -1,6 +1,7 @@
 package com.oncha.oncha_web.feature.product.productBoard.model;
 
 import com.oncha.oncha_web.domain.productBoard.model.RequestProductBoard;
+import com.oncha.oncha_web.domain.productBoard.model.TeaCategory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,26 +15,17 @@ import java.util.List;
 public class ProductBoardRequest implements RequestProductBoard {
 
     private Long id;
-
     private Long companyId;
 
     private String title;
     private String detail;
-    private String product_name;
-    private String origin_nation;
-    private String type;
-    private String flavor;
-    private String category;
-    private String blended;
+    private String productName;
 
-    private int weight;
-    private int price;
-    private int product_count;
-    private int view;
-    private int like;
+    private TeaCategory teaCategory;
 
-
-    private boolean caffeine;
+    private Integer weight;
+    private Integer price;
+    private Integer productCount;
 
     private List<MultipartFile> productFile;
     private List<String> originFileName;

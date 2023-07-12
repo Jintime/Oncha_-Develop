@@ -47,7 +47,7 @@ public class OnchaPaymentService {
         MemberDTO memberDTO = memberService.findById(userId);
         OnchaPaymentInfoDTO data =new OnchaPaymentInfoDTO();
         data.setPayment_price(String.valueOf(productBoardDTO.getPrice()));
-        data.setProduct_name(productBoardDTO.getProduct_name());
+        data.setProduct_name(productBoardDTO.getProductName());
         data.setBuyer_name(memberDTO.getName());
         data.setBuyer_email(memberDTO.getEmail());
         data.setPhone_number(memberDTO.getPhoneNumber());
