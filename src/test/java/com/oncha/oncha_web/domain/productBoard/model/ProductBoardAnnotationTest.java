@@ -19,7 +19,9 @@ public class ProductBoardAnnotationTest {
     @BeforeEach
     public void init() {
         ProductBoard productBoard = new ProductBoard();
+        ProductBoard productBoard2 = new ProductBoard();
         productBoardRepository.save(productBoard);
+        productBoardRepository.save(productBoard2);
     }
 
     @Test
@@ -27,6 +29,7 @@ public class ProductBoardAnnotationTest {
     public void test1() {
         //given
         Long id = 1L;
+        Long id2 = 2L;
 
         // when
         Optional<ProductBoard> beforeProductBoard = productBoardRepository.findById(id);
@@ -35,11 +38,16 @@ public class ProductBoardAnnotationTest {
         productBoardRepository.flush();
 
         Optional<ProductBoard> productBoard = productBoardRepository.findById(id);
+        Optional<ProductBoard> productBoard2 = productBoardRepository.findById(id2);
 
         //then
         assertThat(productBoard).isPresent();
         assertThat(productBoard.get().getId()).isEqualTo(id);
         assertThat(productBoard.get().getDeletedAt()).isNotNull();
+
+        assertThat(productBoard2).isPresent();
+        assertThat(productBoard2.get().getId()).isEqualTo(id2);
+        assertThat(productBoard2.get().getDeletedAt()).isNull();
     }
 
     @Test

@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(name = "product_board")
+@SQLDelete(sql = "update product_board set deleted_at = now() where id = ?")
 public class ProductBoard extends BaseEntity {
 
     @Id
