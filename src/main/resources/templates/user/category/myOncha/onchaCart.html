@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/myOncha/onchaCart.css" rel="stylesheet">
+</head>
+<body>
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+                <button class="myoncha_bt">마이온차</button>
+                <button class="store_bt">스토어</button>
+                <button class="teaHouse_bt">티하우스</button>
+                <button class="subscribe_bt">커뮤니티</button>
+    
+            </div>
+            <div class="right">
+                <input class="search" type="text" >
+                <button th:if="${user == null}" class="login_bt">로그인</button>
+                <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                   <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+            </div>
+        </div>
+        <h1>ONCHA CART</h1>
+    
+        <div class="product_info">
+            <div class="product_detail">
+                <input class="check" type="checkbox">
+                <!--<img th:src="${product.list.get(0).url}" src="img/프로덕트칸.png">
+           <div class="info">
+           <p th:text="${product.title}">타이틀 테스트입니다</p>
+           <p><a>옵션</a>없음 0개</p>
+           <p th:text="${product.price}">1,000원</p>-->
+            </div>
+            <button>삭제</button>
+            </div>
+        </div>
+        <div class="product_info">
+            <div class="product_detail">
+                <input class="check" type="checkbox">
+                <!--<img th:src="${product.list.get(0).url}" src="img/프로덕트칸.png">
+            <div class="info">
+            <p th:text="${product.title}">타이틀 테스트입니다</p>
+            <p><a>옵션</a>없음 0개</p>
+            <p th:text="${product.price}">1,000원</p>-->
+            </div>
+            <button>삭제</button>
+            </div>
+        </div>
+        <div class="product_info">
+            <div class="product_detail">
+                <input class="check" type="checkbox">
+                <!--<img th:src="${product.list.get(0).url}" src="img/프로덕트칸.png">
+                <div class="info">
+                <p th:text="${product.title}">타이틀 테스트입니다</p>
+                <p><a>옵션</a>없음 0개</p>
+                <p th:text="${product.price}">1,000원</p>-->
+            </div>
+            <button>삭제</button>
+            </div>
+        </div>
+        <div class="check_bt_wrap">
+            <button class="all_select_bt">전체선택</button>
+            <button class="all_delete_bt">선택삭제</button>
+        </div>
+
+        <div class="pay_info_wrap">
+            <div class="total_price_wrap"><label class="tag">결제예정금액</label><p>1,000,000원</p></div>
+            <div class="total_product_wrap"><label class="tag">총 상품금액</label><p>1,000,000원</p></div>
+            <div class="total_deliveryFee_wrap"><label class="tag">총 배송비</label><p>무료</p></div>
+        </div>
+
+        <div class="order_bt_wrap">
+            <button class="select_order_bt">선택상품주문</button>
+            <button class="all_order_bt">전체상품주문</button>
+        </div>
+
+        </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+@import url(/css/default.css);
+h1{
+    text-align: center;
+    color: #F60;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 42px; /* 168% */
+    margin: 50px auto 30px auto;
+}
+.product_info{
+    background-color: white;
+    width: 90%;
+    margin: 20px auto 0 auto;
+}
+.product_info{
+    height: 200px;
+}
+
+.product_detail img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+.product_detail{
+    display: flex;
+    width: 520px;
+    flex-wrap: wrap;
+    border: 1px solid rgba(33, 33, 33, 0.15);
+    margin: auto;
+}
+.info{
+    width: 70%;
+    margin-left: 20px;
+}
+.check{
+    margin: 10px 80% 0 10px;
+}
+.product_info button{
+    margin: 0 80% 10px 10px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px; /* 224% */
+    border-radius: 2px;
+    border: 1px solid #CCC;
+}
+.check_bt_wrap{
+    width: 520px;
+    height: 50px;
+    margin: auto;
+}
+.check_bt_wrap button{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.4px; /* 224% */
+    border-radius: 2px;
+    border: 1px solid #F60;
+}
+.order_bt_wrap{
+    text-align: center;
+}
+.order_bt_wrap button{
+    width: 250px;
+    height: 50px;
+    color: white;
+    border: 1px solid #F60;
+    background-color: #F60;
+}
+.order_bt_wrap button:hover{
+    background-color: white;
+    color: black;
+}
+.pay_info_wrap{
+    width: 800px;
+    margin: 30px auto 30px auto;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22.4px; /* 224% */
+}
+.total_price_wrap{
+    background: #F60;
+    height: 30px;
+}
+.total_product_wrap ,.total_deliveryFee_wrap{
+    border: 1px solid #C5C5C5;
+    background: #EFEFEF;
+    height: 30px;
+}
+.tag{
+    width: 380px;
+    padding-left: 20px;
+    display: inline-block;
+    margin: 5px 0px 0px 0px ;
+}
+.pay_info_wrap p{
+    text-align: right;
+    display: inline-block;
+    width: 370px;
+    padding-right: 20px;
+    margin: 0;
+}

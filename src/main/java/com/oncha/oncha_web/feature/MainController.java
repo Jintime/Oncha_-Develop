@@ -43,5 +43,16 @@ public class MainController {
     @GetMapping("/like")
     public String Likes(){return "user/store/likes";}
 
+    @GetMapping("/test1")
+    public String frontTest1(){return "user/store/order/testorder";}
 
+
+    @GetMapping("/test2")
+    public String frontTest2(){return "user/category/myOncha/myPage";}
+
+    @GetMapping("/test3")
+    public String frontTest3(){return "user/category/myOncha/onchaCart";}
+
+    @GetMapping("/test4")
+    public String frontTest4(){return "user/store/order/testorder";}
 }

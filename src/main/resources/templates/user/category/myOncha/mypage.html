@@ -1,31 +1,95 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  <link href="/css/default.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/myOncha/mypage.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
-  <div class="nav_barContainer">
-    <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-      <button class="teaFinder_bt">마이티</button>
-      <button class="store_bt">스토어</button>
-      <button class="teaHouse_bt">티하우스</button>
-      <button class="subscribe_bt">커뮤니티</button>
+    <div class="box">
+        <div class="nav_barContainer">
+            <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+                <button class="myoncha_bt">마이온차</button>
+                <button class="store_bt">스토어</button>
+                <button class="teaHouse_bt">티하우스</button>
+                <button class="subscribe_bt">커뮤니티</button>
+    
+            </div>
+            <div class="right">
+                <input class="search" type="text" >
+                <button th:if="${user == null}" class="login_bt">로그인</button>
+                <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                   <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+            </div>
+        </div>
+<hr>
+<div class="myPage_wrap">
+    <div class="category_wrap">
+        <section class="info_section">
+            <div class="userInfo_wrap"><button class="user_tier">티마스터</button>
+            <button class="user_info_bt">누구누구 님  ></button></div>
 
+            <div class="point_wrap">
+                <label>적립금</label><p>0,000</p>
+                <hr>
+                <label>쿠폰</label><p>0개</p>
+            </div>
+        </section>
+        <section class="delivery_section category_section">
+            <div class="delivery_menu_bar">
+                <button class="delivery_menu_bt category_bt">주문/배송 내역</button>
+            </div>
+        </section>
+        <section class="etc_section category_section">
+            <div class="etc_menu_bar">
+                <button class="etc_menu_bt category_bt">취소/반품/교환 내역</button>
+            </div>
+        </section>
+        <section class="cs_section category_section">
+            <div class="cs_menu_bar">
+                <button class="cs_menu_bt category_bt">고객센터</button>
+                <button class="in_menu_bt">공지사항</button>
+                <button class="in_menu_bt">1:1문의</button>
+                <button class="in_menu_bt">Q&A</button>
+            </div>
+        </section>
     </div>
-    <div class="right">
-      <input class="search" type="text" >
-      <button class="login_bt">로그인</button>
+
+    <div class="view_page_wrap">
+        <div class="view_detail">
+            <h4>내 정보 수정</h4>
+            <hr>
+            <div class="nickname_wrap">
+                <label>닉네임</label> <input type="text" value="${user.nickname}">
+            </div>
+            <hr>
+            <div class="address_wrap">
+                <label for="zip">주소</label>
+                <button class="address_bt" type="button" style="width:80px; height:30px;" onclick="openZipSearch()">주소찾기</button>
+                <input name="zip" type="text" id="zip" style="width:120px; height:28px;" placeholder="우편번호" /><br>
+                <input class="address_input" name="address1" type="text" id="address1" style="width:300px; height:28px;" readonly placeholder="주소"/><br>
+               <input class="address_input"  name="address2" type="text" id="address2" style="width:300px; height:28px;" placeholder="상세" />
+            </div>  
+            <hr>
+            <div class="refund_wrap">
+                <div class="refund_detail">
+                    <label>환불계좌</label>
+                    <input type="text" placeholder="예금주" style="width:120px; height:28px;"><br>
+                    <select class="refund_input" name="refund_bank"  style="width:126px; height:30px;" >
+                        <option value="농협">농협</option>
+                        <option value="신한">신한</option>
+                        <option value="우리">우리</option>
+                        <option value="하나">하나</option>
+                    </select><br>
+                    <input class="refund_input"  type="text" placeholder="계좌번호" style="width:120px; height:28px;"> <button class="refund_bank_account">계좌인증</button>
+                    <p>1. 환불계좌 등록 시 계좌의 예금주와 회원명이 동일해야만 승인처리가 됩니다. </p>
+                    <p>2. 한번 등록된 환불계좌는 수정이 불가하오니 이점 유의하셔서 등록해 주시기 바랍니다.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <button class="detail_bt">내정보 수정</button>
-  <button class="etc_bt">적립금/쿠폰/평가하기</button>
-  <button class="orderInfo_bt">주문/배송조회</button>
-  <button class="refundDetail_bt">취소/반품/교환내역</button>
-  <button class="CS_bt">고객센터</button>
 </div>
+        </div>
 </body>
-<script src="/js/buttonManager.js"></script>
 </html>
