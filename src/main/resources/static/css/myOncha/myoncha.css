@@ -1,27 +1,33 @@
 @import url(/css/default.css);
+
 *{text-align: center;}
-.box{
-    display: flex;
-    flex-direction: column;
-}
+
 table{
     margin: auto;
 }
-h1,h2,h4{
+h1{
     color: #F60;
     font-size: 32px;
     font-weight: 700;
-    font-family: Inter;
+}
+h2{
+    color: #F60;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    margin-top: 80px;
 }
 h3{
     font-size: 32px;
     font-weight: 700;
-    font-family: Inter;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 .myOncha_wrap h4{
     margin-top: 5px;
+    color: #F60;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .profile_img{
@@ -30,12 +36,12 @@ h3{
     border-radius: 100%;
 }
 .myOncha_wrap{
+    overflow: hidden;
     margin-top: 50px;
     position: relative;
 }
 .myOncha_wrap_bg {
     position: absolute;
-    background: rgba(255, 102, 0, 0.05);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -50,7 +56,22 @@ h3{
 }
 .myOncha_wrap button{
     color: white;
+    width:100%;
+    height: 100%;
     font-weight: 600;
+    margin-bottom: 1px;
+}
+
+.review_count ,.buy_count{
+    position: relative;
+    top:-5px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .myOncha_wrap table{
@@ -81,14 +102,22 @@ h3{
     background-color: #FF6600;
 }
 .tea_finder_bt{
-    width: 200px;
-    height: 50px;
-    font-size: 18px;
+    width: 260px;
+    height: 54px;
+    font-size: 23px;
     font-weight: 700;
     color: #F60;
     background-color: white;
     border: 3px solid #F60;
-    margin: 50px;
+    margin: 30px auto 20px auto;
+}
+.td_head{
+    position: relative;
+    top:-10px;
+}
+.td_tail{
+    position: relative;
+    top:-35px;
 }
 .td_head{
     font-size: 23px;
@@ -115,8 +144,8 @@ h3{
     width: calc(24%);
     height: 100%;
     display: inline-block;
-    border-radius: 8px;
     position: relative;
+    margin-top: 20px;
 }
 .like_bt{
     width: 45px;
@@ -148,7 +177,7 @@ height: 15px;
     position: relative;
  }
  .other_tea_bt{
-    width: 200px;
+    width: 220px;
     height: 50px;
     font-size: 18px;
     font-weight: 700;

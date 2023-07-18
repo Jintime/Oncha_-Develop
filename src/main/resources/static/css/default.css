@@ -1,9 +1,13 @@
 body{
     font-family: 'Noto Sans KR', sans-serif;
 }
+
 button{
     border: none;
     background-color: unset;
+}
+.nav_barContainer button:hover{
+    color: #FF6600;
 }
 .box{
     margin: auto;
@@ -15,15 +19,9 @@ img{
     width: 100%;
     height: 100%;
 }
-
-a:hover{
-    background-color : gray;
-}
-
 .Like_bt{
     position: absolute;
     background: #FFFFFF;
-
 }
 .nav_barContainer{
     display: flex;
@@ -34,17 +32,19 @@ a:hover{
 
 }
 .nav_barContainer button{
-    width: 120px;
-    font-size: 18px;
+    position: relative;
+    width: 80px;
+    font-size: 15px;
     font-weight: bold;
+    top: 3px;
 }
-.nav_barContainer .left{
-    margin-left: 30px;
-}
+
 .nav_barContainer img{
     vertical-align: middle;
 }
 .nav_barContainer .top_logo{
+    position: relative;
+    left: -10px;
     width: 180px;
     height: 50px;
 }

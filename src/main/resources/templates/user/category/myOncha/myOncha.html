@@ -7,27 +7,35 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/myOncha/myoncha.css" rel="stylesheet">
+    <link href="/css/wave.css" rel="stylesheet">
 </head>
 <body>
-    <div class="box">
-            <div class="nav_barContainer">
-                <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-                    <button class="finder_bt">마이티</button>
-                    <button class="store_bt" onclick="location.href='/store'">스토어</button>
-                    <button class="reserve_bt" onclick="location.href='/teaHouse'">티하우스</button>
-                    <button class="sub_bt">커뮤니티</button>
-        
-                </div>
-                <div class="right">
-                    <input class="serch" type="text" >
-                    <button id="login">로그인</button>
-                    <button id="register">회원가입</button>
-                </div>
-            </div>
+<div class="box">
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
+
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+        </div>
+    </div>
+
             <div class="myOncha_wrap">
-                <div class="myOncha_wrap_bg"></div>
+                <div class="myOncha_wrap_bg">
+                    <div class="ocean">
+                     <div class="wave"></div>
+                      <div class="wave2"></div>
+                    </div>
+                </div>
                 <h1>MY ONCHA</h1>
                 <img class="profile_img" src="/img/Main_img.png">
                 <h3>이름?</h3>
@@ -36,8 +44,8 @@
                     <th><button>리뷰</button></th>
                     <th><button>구매</button></th>
                     <tr>
-                    <td>00</td>
-                    <td>00</td>
+                    <td class="review_count">00,000</td>
+                    <td class="buy_count">0,000</td>
                 </tr>
                 </table>
             </div>
@@ -62,39 +70,40 @@
                     </tr>
                     </table>
                     <button class="tea_finder_bt" onclick="location.href='/tea-finder'">나의 차 취향 분석하기</button>
-                    <h2>취향 키워드</h2>
-                    <table class="tea_finder_keyword">
-                        <tr>
-                            <td>독서</td>
-                            <td>운동</td>
-                            <td>바이크</td>
-                            <td>여행</td>
-                            <td>사랑</td>
-                            <td>티하우스</td>
-                            <td>티하우스</td>
-                        </tr>
-                        <tr>
-                            <td>아르헨티나</td>
-                            <td>연남동</td>
-                            <td>바이크</td>
-                            <td>여행</td>
-                            <td>사랑</td>
-                            <td>티하우스</td>
-                            <td>티하우스</td>
-                        </tr>
-                        <tr>
-                            <td>독서</td>
-                            <td>운동</td>
-                            <td>바이크</td>
-                            <td>여행</td>
-                            <td>사랑</td>
-                            <td>티하우스</td>
-                            <td><button>etc...</button></td>
-                        </tr>
-                    </table>
                 </div>
+    <div class="tea_keyword">
+        <h2>취향 키워드</h2>
+        <table class="tea_finder_keyword">
+            <tr>
+                <td>독서</td>
+                <td>운동</td>
+                <td>바이크</td>
+                <td>여행</td>
+                <td>사랑</td>
+                <td>티하우스</td>
+                <td>티하우스</td>
+            </tr>
+            <tr>
+                <td>아르헨티나</td>
+                <td>연남동</td>
+                <td>바이크</td>
+                <td>여행</td>
+                <td>사랑</td>
+                <td>티하우스</td>
+                <td>티하우스</td>
+            </tr>
+            <tr>
+                <td>독서</td>
+                <td>운동</td>
+                <td>바이크</td>
+                <td>여행</td>
+                <td>사랑</td>
+                <td>티하우스</td>
+                <td><button>...</button></td>
+            </tr>
+        </table>
+    </div>
             <div class="tea_recommend_wrap">
-                <img class="tea_finder_bg " src="/img/my_oncha_bg.png">
                 <h2>당신을 위한 ONCHA의 추천차</h2>
                 <a><div class="product_inner"><img src="/img/index/상품1-2.png">
                     <p class="type">싱글오리진</p>

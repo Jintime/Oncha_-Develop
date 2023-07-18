@@ -1,7 +1,8 @@
 @import url(default.css);
 .Top_viewContainer{
-    margin-top: 20px;
     display: flex;
+    width: 99%;
+    margin: 20px auto 0px auto;
     justify-content: space-between;
 }
 a{
@@ -10,13 +11,13 @@ a{
 }
 .Top_viewContainer .main_view{
     width: 68%;
-    height: 580px;
-
+    height: 450px;
 }
 
 .title_container{
     margin-top: 30px;
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 .main_view{
     position: relative;
@@ -60,31 +61,29 @@ a{
 }
 .Top_viewContainer .banner{
     width: 30%;
-    height: 580px;
-
+    height: 450px;
 }
+
 .product_Container{
-    max-width: 1200px;
-    margin-top: 70px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1300px;
+    margin: 0 auto 40px auto;
     position: relative;
 
 }
 .product_Container ul{
-
     display: flex;
     list-style:none;
     padding: unset;
 }
 .product_Container li{
-
     width: 280PX;
     height: 400px;
 }
 
 .middle_banner_container{
     position: relative;
+    margin: 0px auto 70px auto;
+    width: 99%;
 }
 .middle_banner_container p{
     font-weight: bold;
@@ -103,6 +102,25 @@ a{
     scroll-behavior: smooth;
     height: 480px;
 }
+.title{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    white-space: normal;
+    word-break: break-all;
+    height: 30px;
+}
+.price{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    height: 2px;
+}
 .inner .drgging{
     cursor: grab;
     scroll-behavior: auto;
@@ -114,7 +132,6 @@ a{
     object-fit: cover;
     margin-left: 14px;
     height: calc(60%);
-    border-radius: 8px;
 }
 .rank_img img{
     width: 80px;
@@ -129,14 +146,13 @@ a{
     font-size: 14px;
 }
 .type{
-    font-size: 8px;
-    color: gray;
-}
-.title{
-    font-weight: bold;
-    white-space: normal;
-    word-break: break-all;
-    height: 40px;
+    color: #727272;
+    font-family: Noto Sans KR;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+    height: 5px;
 }
 .like_bt{
     width: 45px;
@@ -161,12 +177,10 @@ a{
     width: calc(24%);
     height: 100%;
     display: inline-block;
-    border-radius: 8px;
     position: relative;
 }
-.product_inner:not(:first-child){
-    margin-left: 10px;
-
+.product_inner{
+   margin: 0 5px 0 5px;
 }
 .inner img:first-child{
     margin-left: 0px;

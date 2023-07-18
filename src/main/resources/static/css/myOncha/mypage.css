@@ -1,0 +1,142 @@
+@import url(/css/default.css);
+.myPage_wrap{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.category_wrap{
+    margin-right: 50px;
+    background: rgba(255, 102, 0, 0.05);
+    width: 15%;
+}
+.view_page_wrap{
+    width: 65%;
+}
+.info_section{
+    width: 90%;
+    border: 1px solid #F60;
+    margin: 30px auto 0 auto;
+}
+.user_tier{
+    background: #F60;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 13.5px */
+    letter-spacing: -0.45px;
+}
+.user_info_bt{
+    color: #000;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 16.5px */
+}
+.userInfo_wrap{
+    margin: 10px auto 0 auto;
+    width: 80%;
+}
+.point_wrap label{
+    color: #8A8A8A;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 16.5px */
+}
+.point_wrap p{
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    color: #000;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 16.5px */
+}
+.in_menu_bt{
+    color: #727272;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 16.5px */
+    width: 90%;
+    height: 20px;
+    text-align: left;
+}
+.point_wrap{
+    margin: 10px auto 10px auto;
+    width: 80%;
+    border: 0.5px solid #6F6F6F;
+    background: #FFF;
+}
+.category_bt{
+    color: #000;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 16.5px */
+}
+.category_section{
+    width: 90%;
+    margin: 30px auto 0 auto;
+}
+.point_wrap p {
+    margin: 0px;
+}
+.view_page_wrap hr{
+    stroke-width: 1px;
+   border-color:  rgba(255, 102, 0, 0.10);
+}
+.view_page_wrap label{
+  display: inline-block;
+  width: 76px;
+}
+.view_page_wrap input, select{
+    border: 1px solid #D9D9D9;
+}
+.address_input{
+    margin-left: 80px;
+}
+.address_wrap input{
+    margin-top: 5px;
+}
+.address_bt{
+    color: #F60;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 15px */
+    border: 1px solid #F60;
+}
+.refund_input{
+    margin-left: 80px;
+    margin-top: 5px;
+}
+.refund_detail p{
+    margin-left: 80px;
+    color: #4E4E4E;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 16.5px */
+}
+.refund_bank_account{
+    color: #F60;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 15px */
+    border: 1px solid #F60;
+}
