@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="/css/order/payInfo.css" rel="stylesheet">
 </head>
 <body>
@@ -26,7 +27,6 @@
   </div>
   <h1>결제하기</h1>
   <div class="pay_info_wrap">
-
     <div class="order_detail_wrap">
       <div class="product_info">
         <h3>주문상품정보</h3>
@@ -43,14 +43,21 @@
 
       <div class="buyer_info">
         <h3>주문자 정보</h3>
-        <div class="buyer_detail">
+        <div th:if="${user==null}" class="buyer_detail">
           <input class="buyer_other" name="buyerName" type="text" placeholder="이름">
           <input class="buyer_other" name="phoneNumber" type="text" placeholder="연락처">
           <input class="buyer_email" name="email" type="text" placeholder="이메일">
           <input class="buyer_other" name="password" type="text" placeholder="주문 비밀번호">
           <input class="buyer_other" name="passwordCheck" type="text" placeholder="주문 비밀번호 확인">
         </div>
-      </div>
+        <div th:unless="${user==null}" class="buyer_detail">
+          <input class="buyer_other" name="buyerName" type="text"  th:value="${user.name}">
+          <input class="buyer_other" name="phoneNumber" type="text" placeholder="휴대폰번호" th:value="${user.phoneNumber}">
+          <input class="buyer_email" name="email" type="text" th:value="${user.email}">
+        </div>
+
+        </div>
+
 
       <div class="delivery_info">
         <h3>배송정보</h3>
@@ -196,4 +203,5 @@
   }
 
 </script>
+<script src="/js/buttonManager.js"></script>
 </html>

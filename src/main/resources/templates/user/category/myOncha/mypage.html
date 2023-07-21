@@ -28,7 +28,7 @@
     <div class="category_wrap">
         <section class="info_section">
             <div class="userInfo_wrap"><button class="user_tier">티마스터</button>
-            <button class="user_info_bt">누구누구 님  ></button></div>
+                <button class="user_info_bt"><label th:text="${user.name}"></label> 님  ></button></div>
 
             <div class="point_wrap">
                 <label>적립금</label><p>0,000</p>
@@ -61,16 +61,21 @@
             <h4>내 정보 수정</h4>
             <hr>
             <div class="nickname_wrap">
-                <label>닉네임</label> <input type="text" value="${user.nickname}">
+                <label>닉네임</label> <input type="text" th:value="${user.name}" readonly>
             </div>
             <hr>
             <div class="address_wrap">
+                <form action="/SaveAddress" method="post">
                 <label for="zip">주소</label>
                 <button class="address_bt" type="button" style="width:80px; height:30px;" onclick="openZipSearch()">주소찾기</button>
                 <input name="zip" type="text" id="zip" style="width:120px; height:28px;" placeholder="우편번호" /><br>
                 <input class="address_input" name="address1" type="text" id="address1" style="width:300px; height:28px;" readonly placeholder="주소"/><br>
                <input class="address_input"  name="address2" type="text" id="address2" style="width:300px; height:28px;" placeholder="상세" />
-            </div>  
+            <button type="submit">주소저장</button><button class="address_" type="button">주소수정</button>
+                </form>
+
+            </div>
+
             <hr>
             <div class="refund_wrap">
                 <div class="refund_detail">
@@ -92,4 +97,5 @@
 </div>
         </div>
 </body>
+<script src="/js/buttonManager.js"></script>
 </html>

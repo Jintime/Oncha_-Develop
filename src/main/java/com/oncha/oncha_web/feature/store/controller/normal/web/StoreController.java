@@ -34,8 +34,7 @@ public class StoreController {
         Object user = model.getAttribute("user");
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
-        if (user != null) return "user/store/order/order";
-        else return "user/store/order/userCheck";
+        return "user/store/order/order";
     }
 
     @GetMapping("/order/non_{id}")
