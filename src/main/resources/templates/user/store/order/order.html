@@ -9,7 +9,7 @@
   <link href="/css/order/payInfo.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
+<header>
   <div class="nav_barContainer">
     <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
       <button class="myoncha_bt">마이온차</button>
@@ -25,6 +25,9 @@
         <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
     </div>
   </div>
+  </div>
+</header>
+<main>
   <h1>결제하기</h1>
   <div class="pay_info_wrap">
     <div class="order_detail_wrap">
@@ -147,7 +150,9 @@
     </div>
 
   </div>
-
+</div>
+</main>
+<footer>
   <div id="coinfo_container">
     <div class="coinfoinner">
       <img src="/img/Logo.png">
@@ -155,7 +160,7 @@
       <p>Copyright 2023 Oncha</p>
     </div>
   </div>
-</div>
+</footer>
 </body>
 <script>
   function iamport() {

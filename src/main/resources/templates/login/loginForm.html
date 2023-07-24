@@ -11,10 +11,10 @@
 </head>
 <body>
     <img class="login_bg" src="/img/login/loginBG.png">
-    <div class="box">
+    <header>
         <div class="nav_barContainer">
-            <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-                <button class="teaFinder_bt">마이티</button>
+            <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+                <button class="myoncha_bt">마이온차</button>
                 <button class="store_bt">스토어</button>
                 <button class="teaHouse_bt">티하우스</button>
                 <button class="subscribe_bt">커뮤니티</button>
@@ -23,9 +23,13 @@
             <div class="right">
                 <input class="search" type="text" >
                 <button th:if="${user == null}" class="login_bt">로그인</button>
-                <button class="myoncha_bt">마이온차</button>
+                <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                    <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
             </div>
         </div>
+        </div>
+    </header>
+    <main>
         <div class="login_wrap">
 
         <div class="login_L"><h1>나만의 차를<br> 위한 여행</h1></div>
@@ -36,16 +40,24 @@
             <button class="social_login_bt" onclick="location.href='/oauth2/authorization/google'"><img src="/img/login/logo1.png"></button>
             <button class="social_login_bt" onclick="location.href='/oauth2/authorization/naver'"><img src="/img/login/logo2.png"></button>
             <button class="social_login_bt" onclick="location.href='/oauth2/authorization/kakao'"><img src="/img/login/logo3.png"></button>
+            <br>
 
+            <button class="company_register_bt">판매자 회원가입하기</button>
             <p>세상의 모든 차를 담다 ONCHA</p>
         </div>   
         </div>
 
 
+</main>
+    <footer>
+        <div id="coinfo_container">
+            <div class="coinfoinner">
+                <img src="/img/Logo.png">
+                <p>E-mail : oncha.minji@gmail.com</p>
+                <p>Copyright 2023 Oncha</p>
+            </div>
         </div>
-
-
-
+    </footer>
 </body>
 <script src="/js/buttonManager.js"></script>
 </html>

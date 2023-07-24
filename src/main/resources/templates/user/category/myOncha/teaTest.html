@@ -6,6 +6,25 @@
     <link href="/css/teafinderTest.css" rel="stylesheet">
 </head>
 <body>
+<header>
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
+
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+        </div>
+    </div>
+    </div>
+</header>
+<main>
 <div class="tea_finder_wrap">
     <section id="main">
         <h3>나만의 티 찾기</h3>
@@ -34,6 +53,16 @@
         <button class="kakao">공유하기</button>
     </section>
 </div>
+</main>
+<footer>
+    <div id="coinfo_container">
+        <div class="coinfoinner">
+            <img src="/img/Logo.png">
+            <p>E-mail : oncha.minji@gmail.com</p>
+            <p>Copyright 2023 Oncha</p>
+        </div>
+    </div>
+</footer>
 </body>
 <script src="/js/data.js"></script>
 <script src="/js/teaFinder.js"></script>
