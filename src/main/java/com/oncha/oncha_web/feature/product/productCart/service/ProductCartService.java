@@ -6,8 +6,12 @@ import com.oncha.oncha_web.domain.productBoard.model.ProductBoard;
 import com.oncha.oncha_web.domain.productBoard.repository.ProductBoardRepository;
 import com.oncha.oncha_web.exception._40x.AccessDinedException;
 import com.oncha.oncha_web.exception._40x.EntityNotFoundException;
+import com.oncha.oncha_web.feature.product.productCart.model.ProductCartDTO;
 import com.oncha.oncha_web.feature.product.productCart.model.ProductCartSaveRequest;
 import com.oncha.oncha_web.util.EntityUtil;
+import java.awt.print.Pageable;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +23,11 @@ public class ProductCartService {
     private final ProductBoardRepository productBoardRepository;
 
     private final ProductCartRepository productCartRepository;
+
+    public List<ProductCartDTO> getMyCart(Long memberId, Pageable pageable) {
+        return productCartRepository.findAllByCreatedBy(memberId, pageable).getContent()
+            .stream().map(ProductCartDTO::of).collect(Collectors.toList());
+    }
 
     @Transactional
     public Long saveProduct(ProductCartSaveRequest request) {
