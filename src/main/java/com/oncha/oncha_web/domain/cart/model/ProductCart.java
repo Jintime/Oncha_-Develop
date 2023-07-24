@@ -9,14 +9,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 @Entity
+@Table(name = "product_cart")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@SQLDelete(sql = "update product_cart set deleted_at = now() where id = ?")
 public class ProductCart extends BaseEntity {
 
     @Id

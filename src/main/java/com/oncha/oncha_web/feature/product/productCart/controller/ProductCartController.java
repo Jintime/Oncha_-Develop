@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,4 +29,11 @@ public class ProductCartController {
         productCartService.saveProduct(request);
     }
 
+    @DeleteMapping("/{cartId}")
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void deleteCart(@PathVariable Long cartId,
+        @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        productCartService.deleteCart(cartId, principalDetails.getId());
+    }
 }
