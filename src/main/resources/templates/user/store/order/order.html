@@ -59,7 +59,7 @@
           <input class="buyer_other" name="phoneNumber" type="text" placeholder="연락처"><br>
           <label for="zip">주소 :</label>
           <input name="zip" type="text" id="zip" style="width:200px; height:50px;" placeholder="우편번호" />
-          <button type="button" style="width:60px; height:50px;" onclick="openZipSearch()">주소찾기</button><br>
+          <button id= "postcodebutton" type="button" style="width:60px; height:50px;">주소찾기</button><br>
           <input name="address1" type="text" id="address1" style="width:270px; height:50px;" readonly placeholder="주소"/><br>
           <input name="address2" type="text" id="address2" style="width:270px; height:50px;" placeholder="상세" />
           <h4>배송메모</h4>
@@ -188,4 +188,5 @@
     });
   }
 </script>
+<script type="module" src="/js/registry.js"></script>
 </html>

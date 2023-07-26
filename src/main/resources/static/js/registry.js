@@ -1,15 +1,11 @@
 import {initializePostCode, getPostCode} from './util/daumpostcode.js';
 
-function submit () {
-
-}
-function onLoadPostCode () {
+(function onLoadPostCode () {
   initializePostCode();
   const button = document.getElementById("postcodebutton");
-
   const data = {};
-  const zip = document.querySelector("#zip").value = data.zonecode;
-  const address = document.querySelector("#address1").value =  data.address;
+  const zip = document.querySelector("#zip");
+  const address = document.querySelector("#address1");
   const array = [
     {
       propertyName : 'zonecode',
@@ -22,5 +18,4 @@ function onLoadPostCode () {
   ]
 
   button.addEventListener("click", () => getPostCode(data, array));
-
-}
+})();
