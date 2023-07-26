@@ -29,14 +29,14 @@ public class GlobalRestExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseType<String> handleEntityNotFound(EntityNotFoundException ex) {
-        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
+//        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
         return new ResponseType<>(ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseType<ArrayList<String>> handleValidException(MethodArgumentNotValidException ex) {
-        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
+//        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
         ArrayList<String> messageList = new ArrayList<>();
         try {
             for (ObjectError message : ex.getBindingResult().getAllErrors()) {
@@ -52,7 +52,7 @@ public class GlobalRestExceptionHandler {
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseType<String> handleBadRequest(BadRequestException ex) {
-        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
+//        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
         System.out.println("a");
         return new ResponseType<>(ex.getMessage());
     }
@@ -60,7 +60,7 @@ public class GlobalRestExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseType<String> handleUnAuthorized(UnauthorizedException ex) {
-        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
+//        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
         System.out.println("a");
         return new ResponseType<>(ex.getMessage());
     }
@@ -68,7 +68,7 @@ public class GlobalRestExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseType<String> handleException(Exception ex) {
-        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
+//        mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(ex));
         System.out.println("a");
         return new ResponseType<>(ex.getMessage());
     }

@@ -9,10 +9,10 @@ import com.oncha.oncha_web.exception._40x.EntityNotFoundException;
 import com.oncha.oncha_web.feature.product.productCart.model.ProductCartDTO;
 import com.oncha.oncha_web.feature.product.productCart.model.ProductCartSaveRequest;
 import com.oncha.oncha_web.util.EntityUtil;
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
