@@ -30,13 +30,7 @@
 </header>
     <hr>
 <main>
-    <div class="store_fillterOn_wrap">
-        <div class="onFillterBt_wrap">
-            <button >All</button> <button class="onFillter_bt">+</button>
-        </div>
-
-    </div>
-    <div class="store_fillter_wrap">
+    <div class="store_filter_wrap">
         <table>
             <tr>
                 <th data-key="blending">블렌딩</th>
@@ -54,9 +48,9 @@
                     <input type="checkbox" name="herb_tea" id="herb_tea"><label for="herb_tea">허브차</label></td>
             </tr>
             <tr>
-                <th data-key="caffein">카페인</th>
-                <td><input type="checkbox" name="isCaffein" id="isCaffein"><label for="isCaffein">유</label>
-                    <input type="checkbox" name="noCaffein" id="noCaffein"><label for="noCaffein">무</label></td>
+                <th data-key="caffeine">카페인</th>
+                <td><input type="checkbox" name="isCaffeine" id="isCaffeine"><label for="isCaffeine">유</label>
+                    <input type="checkbox" name="noCaffeine" id="noCaffeine"><label for="noCaffeine">무</label></td>
             </tr>
             <tr>
                 <th data-key="category">유형</th>
@@ -90,32 +84,31 @@
             </tr>
             <tr>
                 <th data-key="flavor2">맛과 향</th>
-                <td>
-                    <input type="checkbox" name="Savory" id="Savory"><label for="Savory">Savory [향긋한]</label><br>
-                    <input type="checkbox" name="Acidity" id="Acidity"><label for="Acidity">Acidity [산미있는]</label><br>
+                <td class="check_flavor">
+                    <input type="checkbox" name="Savory" id="Savory"><label for="Savory">Savory [향긋한]</label>
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_2" value="2">
+                    <br>
+                    <input type="checkbox" name="Acidity" id="Acidity"><label for="Acidity">Acidity [산미있는]</label>
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_2" value="2">
+                    <br>
                     <input type="checkbox" name="Bitter" id="Bitter"><label for="Bitter">Bitter [쌉싸름한]</label>
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_2" value="2">
                 </td>
-                <td class="Check_flavor"> <input type="radio" class="Check_flavor" name="Savory" id="Savory_0" value="0"> ----
-                    <input type="radio" class="Check_flavor" name="Savory" id="Savory_1" value="1"> ----
-                    <input type="radio" class="Check_flavor" name="Savory" id="Savory_2" value="2">
-                    <br>
-                    <input type="radio" class="Check_flavor" name="Acidity" id="Acidity_0" value="0"> ----
-                    <input type="radio" class="Check_flavor" name="Acidity" id="Acidity_1" value="1"> ----
-                    <input type="radio" class="Check_flavor" name="Acidity" id="Acidity_2" value="2">
-                    <br>
-                    <input type="radio" class="Check_flavor" name="Bitter" id="Bitter_0" value="0"> ----
-                    <input type="radio" class="Check_flavor" name="Bitter" id="Bitter_1" value="1"> ----
-                    <input type="radio" class="Check_flavor" name="Bitter" id="Bitter_2" value="2">
 
-                </td>
             </tr>
             <tr>
                 <td><input type="text"></td>
             </tr>
         </table>
     </div>
-    <div class="check_produt_wrap">
-        <div class="check_produt_wrap_left">
+    <div class="check_product_wrap">
+        <div class="check_product_wrap_left">
             <label>0개</label>
             <button class="ranking_bt">랭킹순</button>
             <button class="new_product_bt">신규등록순</button>
@@ -124,7 +117,7 @@
             <button class="many_reviews_bt">상품평많은수</button>
             <button class="sale_rate_bt">판매량수</button>
         </div>
-        <div class="check_produt_wrap_right">
+        <div class="check_product_wrap_right">
             <button>40개씩보기</button>
             <button>ㅁㅁ</button>
             <button>ㅁ</button>
@@ -328,22 +321,6 @@
             </footer>
 </body>
 <script src="/js/buttonManager.js"></script>
-<script src="/js/fillter.js"></script>
-<script>
-    const toggleButton = document.querySelector(".onFillter_bt");
-    const targetDiv = document.querySelector(".store_fillter_wrap");
-
-    toggleButton.addEventListener("click", function() {
-        if (targetDiv.style.display === "none") {
-            targetDiv.style.display = "block";
-        } else {
-            targetDiv.style.display = "none";
-        }
-    });
-</script>
-
-
+<script src="/js/filter.js"></script>
 </body>
-</html>
-
 </html>

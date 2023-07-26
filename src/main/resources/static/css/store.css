@@ -3,42 +3,15 @@
 input[type="checkbox"]:checked + label {
     color: #F60;
 }
-.store_fillterOn_wrap{
-    border: 1px solid #EEE;
-    display: flex;
-    height: 41px;
-    padding: 1px 823px 0px 0px;
-    align-items: center;
-    flex-shrink: 0;
-}
-.onFillterBt_wrap{
-    display: flex;
-    width: 100px;
-    justify-content: space-around;
-    height: 100%;
-    background-color:  #FAFAFA;
-    border-right: 1px solid #EEE;
-}
-.onFillterBt_wrap button{
-    color: #F60;
-    font-family: Noto Sans KR;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 19.6px;
-}
 
-.store_fillter_wrap{
-    display: none;
-}
-.store_fillter_wrap table{
+.store_filter_wrap table{
     border: 1px solid #EEE;
     border-spacing: 0px;
     border-collapse: collapse;
     width:100%;
-    table-layout: fixed;
+    table-layout:fixed;
 }
-.store_fillter_wrap th{
+.store_filter_wrap th{
     border:  1px solid #EEE;
     height: 50px;
     width: 120px;
@@ -52,38 +25,37 @@ input[type="checkbox"]:checked + label {
     font-weight: 350;
     line-height: 19.6px; /* 140% */
 }
-.store_fillter_wrap label{
+.store_filter_wrap label{
     display: inline-block;
     width: 100px;
 }
-.store_fillter_wrap td{
+.store_filter_wrap td{
     color: #666;
     font-family: Noto Sans KR;
     font-size: 13px;
-    width: 500px;
     font-style: normal;
     font-weight: 400;
+    width: 100%;
     line-height: 18px; /* 138.462% */
 }
-.store_fillter_wrap tr{
+
+.store_filter_wrap tr{
     border-bottom:  1px solid #EEE;
 }
-.fillter_tag img{width: 20px;
+.filter_tag img{
+    width: 20px;
     vertical-align: bottom;
 }
-.check_flavor{
-    width: 400px;
-}
-.store_fillter_wrap input{
+.store_filter_wrap input{
     accent-color: #F60;
 }
-.check_produt_wrap{
+.check_product_wrap{
     border: 1px solid #EEE;
     display: flex;
     justify-content: space-between;
 }
 
-.check_produt_wrap button, .check_produt_wrap label{
+.check_product_wrap button, .check_product_wrap label{
     color: #999;
     font-family: Noto Sans KR;
     font-size: 13px;
@@ -94,12 +66,12 @@ input[type="checkbox"]:checked + label {
     display: inline-block;
     text-align: center;
 }
-.check_produt_wrap label{
+.check_product_wrap label{
     width: 50px;
 }
-.check_produt_wrap_left button ,.check_produt_wrap label{
+.check_product_wrap_left button ,.check_product_wrap label{
     border-right: 1px solid #DDD;
 }
-.check_produt_wrap_right button{
+.check_product_wrap_right button{
     border-left: 1px solid #DDD;
 }

@@ -60,7 +60,8 @@
                     <img th:src="@{|${productList.list.get(0).getUrl()}|}" alt="">
                     <p class="type" th:text="${productList.type}"></p>
                     <p class="title" th:text="${productList.title}"></p>
-                    <p class="price" th:text="${productList.price}">원</p><br>
+                    <p class="price" th:text="|${#numbers.formatInteger(productList.price, 0, 'COMMA')}원|"></p>
+                    <br>
                     <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
                     <a class="like_bt"><img src="/img/icons/Vector.png"></a>
                 </div></a>
