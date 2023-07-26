@@ -20,7 +20,10 @@ export function getPostCode(postcodeData, domInfos) {
       postcodeData.sigungu = data.sigungu;
       postcodeData.roadname = data.roadname;
 
-      for (domInfoItem of domInfos) {
+      console.log(postcodeData);
+      console.log(domInfos);
+
+      for (const domInfoItem of domInfos) {
         const key = domInfoItem.propertyName;
         domInfoItem.dom.value = data[key];
       }
