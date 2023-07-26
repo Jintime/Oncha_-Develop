@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="css/test.css" rel="stylesheet">
     <link href="/css/order/order.css" rel="stylesheet">
 
 </head>
 <body>
-<div class="box">
+<header>
     <div class="nav_barContainer">
         <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-            <button class="teaFinder_bt">마이티</button>
+            <button class="myoncha_bt">마이온차</button>
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
             <button class="subscribe_bt">커뮤니티</button>
@@ -21,16 +20,21 @@
         </div>
         <div class="right">
             <input class="search" type="text" >
-            <button class="login_bt">로그인</button>
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
         </div>
     </div>
+    </div>
+</header>
+<main>
     <div class="company_info_wrap">
         <div>
             <p class="company_name">다락방</p>
             <p class="company_info">52일의 전통</p>
             <button>BRAND HOME</button>
         </div>    
-        <img src="img/프로덕트칸.png">
+        <img src="/img/darak/1.jpeg">
     </div>
     <div class="view">
         <div class="order_main_info">
@@ -48,7 +52,7 @@
                         여기에 간단히 제품을 설명을 블라블라 아리가또 숑숑숑 무슨 말을 해야할까?</li>
                 </ul>
                 <hr>
-                <div class="amount" th:text="${product.price}">10,000 원</div>
+                <div class="amount" th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|"></div>
                 <hr>
                 <table>
                     <h2>배송정보</h2>
@@ -200,13 +204,17 @@
 </div>
 </div>
 </div>
+</main>
+<footer>
 <!--tail-->
 <div id="coinfo-container">
     <div class="coinfoinner">
-        <img src="/img/logo2.png">
+        <img src="/img/logo.png">
         <p>E-mail : oncha.minji@gmail.com</p>
         <p>Copyright 2023 Oncha</p>
     </div>
 </div>
+</footer>
 </body>
+<script src="/js/buttonManager.js"></script>
 </html>

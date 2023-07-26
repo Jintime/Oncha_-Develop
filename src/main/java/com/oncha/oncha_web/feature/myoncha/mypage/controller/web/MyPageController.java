@@ -1,14 +1,19 @@
-package com.oncha.oncha_web.feature.myoncha.controller.normal.web;
+package com.oncha.oncha_web.feature.myoncha.mypage.controller.web;
 
+import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MyPageController {
 
-    @GetMapping("/mypage")
-    public String MyPage(){return "user/category/myOncha/mypage";}
+    @SetUserInfoInModel
+    @GetMapping("/mypage/{id}")
+    public String MyPage(@PathVariable Long id, Model model){
+        return "user/category/myOncha/mypage";
+    }
 
     @GetMapping("/detail")
     public String MyPageDetail(){return "user/category/myOncha/MyPageDetail";}

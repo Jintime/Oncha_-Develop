@@ -79,7 +79,6 @@ public class ProductBoard extends BaseEntity {
         this.caffeine = caffeine;
     }
 
-
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
         return ProductBoard.builder()
                 .id(requestProductBoard.getId())
@@ -100,6 +99,5 @@ public class ProductBoard extends BaseEntity {
                 .caffeine(requestProductBoard.isCaffeine())
                 .build();
     }
-
 
 }

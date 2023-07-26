@@ -4,111 +4,129 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/test.css" rel="stylesheet">
-    <link href="css/store.css" rel="stylesheet">
+    <link href="/css/store.css" rel="stylesheet">
+    <link href="/css/test.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>상품</title>
 </head>
 <body>
-    <div class="box">
-        <div class="nav_barContainer">
-            <div class="left"><a class="logo" href="/"><img class="top_logo" src="img/Logo.png"></a>
-                <button class="finder_bt">마이티</button>
-                <button class="store_bt" onclick="location.href='/store'">스토어</button>
-                <button class="reserve_bt" onclick="location.href='/teaHouse'">티하우스</button>
-                <button class="sub_bt">커뮤니티</button>
-    
-            </div>
-            <div class="right">
-                <input type="text" >
-                <button id="login">로그인</button>
-                <button id="register">회원가입</button>
-            </div>
+<header>
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">커뮤니티</button>
+
         </div>
-        <hr>
-    <div class="Store_fillter_wrap">
-        <div class="fillter_tag">
-            <img src="img/Link.png">
-            ><input type="text">
-            ><input type="text">
-            ><input type="text">
-            ><input type="text">
-            ><input type="text">
-            ><input type="text">
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
+                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
         </div>
+    </div>
+    </div>
+</header>
+    <hr>
+<main>
+    <div class="store_filter_wrap">
         <table>
             <tr>
-                <th>블렌딩</th>
-                <td><input type="checkbox">블렌디드</td>
-                <td><input type="checkbox">싱글오리진</td>
-                <td><input type="checkbox">뉴타입</td>
+                <th data-key="blending">블렌딩</th>
+                <td><input type="checkbox" name="blended" id="blended"><label for="blended">블렌디드</label>
+                    <input type="checkbox" name="single_origin" id="single_origin"><label for="single_origin">싱글오리진</label>
+                    <input type="checkbox" name="new_type" id="new_type"><label for="new_type">뉴타입</label></td>
             </tr>
             <tr>
-                <th>차종</th>
-                <td><input type="checkbox">녹차</td>
-                <td><input type="checkbox">홍차</td>
-                <td><input type="checkbox">백차</td>
-                <td><input type="checkbox">황차</td>
-                <td><input type="checkbox">청차</td>
-                <td><input type="checkbox">허브차</td>
+                <th data-key="tea_type">차종</th>
+                <td><input type="checkbox" name="green_tea" id="green_tea"><label for="green_tea">녹차</label>
+                    <input type="checkbox" name="black_tea" id="black_tea"><label for="black_tea">홍차</label>
+                    <input type="checkbox" name="white_tea" id="white_tea"><label for="white_tea">백차</label>
+                    <input type="checkbox" name="yellow_tea" id="yellow_tea"><label for="yellow_tea">황차</label>
+                    <input type="checkbox" name="blue_tea" id="blue_tea"><label for="blue_tea">청차</label>
+                    <input type="checkbox" name="herb_tea" id="herb_tea"><label for="herb_tea">허브차</label></td>
             </tr>
             <tr>
-                <th>카페인</th>
-                <td><input type="checkbox">유</td>
-                <td><input type="checkbox">무</td>
+                <th data-key="caffeine">카페인</th>
+                <td><input type="checkbox" name="isCaffeine" id="isCaffeine"><label for="isCaffeine">유</label>
+                    <input type="checkbox" name="noCaffeine" id="noCaffeine"><label for="noCaffeine">무</label></td>
             </tr>
             <tr>
-                <th>유형</th>
-                <td><input type="checkbox">액상</td>
-                <td><input type="checkbox">잎장</td>
-                <td><input type="checkbox">티백</td>
-                <td><input type="checkbox">청</td>
-                <td><input type="checkbox">가루</td>
+                <th data-key="category">유형</th>
+                <td><input type="checkbox" name="liquid" id="liquid"><label for="liquid">액상</label>
+                    <input type="checkbox" name="leaf_tea" id="leaf tea"><label for="leaf tea">잎차</label>
+                    <input type="checkbox" name="tea_bag" id="tea_bag"><label for="tea_bag">티백</label>
+                    <input type="checkbox" name="syrup" id="syrup"><label for="syrup">청</label>
+                    <input type="checkbox" name="powder" id="powder"><label for="powder">가루</label></td>
             </tr>
             <tr>
-                <th>원산지</th>
-                <td><input type="checkbox">스리랑카</td>
-                <td><input type="checkbox">다즐링</td>
-                <td><input type="checkbox">아쌈</td>
-                <td><input type="checkbox">닐기리</td>
-                <td><input type="checkbox">케냐</td>
-                <td><input type="checkbox">네팔</td>
-                <td><input type="checkbox">누와델리아</td>
-                <td><input type="checkbox">딤블라</td>
+                <th data-key="origin_nation">원산지</th>
+                <td><input type="checkbox" name="sriLanka" id="sriLanka"><label for="sriLanka">스리랑카</label>
+                    <input type="checkbox" name="darjeeling" id="darjeeling"><label for="darjeeling">다즐링</label>
+                    <input type="checkbox" name="assam" id="assam"><label for="assam">아쌈</label>
+                    <input type="checkbox" name="nilgiri" id="nilgiri"><label for="nilgiri">닐기리</label>
+                    <input type="checkbox" name="kenya" id="kenya"><label for="kenya">케냐</label>
+                    <input type="checkbox" name="nepal" id="nepal"><label for="nepal">네팔</label>
+                    <input type="checkbox" name="newadelia" id="newadelia"><label for="newadelia">누와델리아</label>
+                    <input type="checkbox" name="dimbla" id="dimbla"><label for="dimbla">딤블라</label></td>
             </tr>
             <tr>
-                <th>맛과향</th>
-                <td><input type="checkbox">풀</td>
-                <td><input type="checkbox">채소</td>
-                <td><input type="checkbox">허브</td>
-                <td><input type="checkbox">꽃</td>
-                <td><input type="checkbox">트로피칼</td>
-                <td><input type="checkbox">시트러스</td>
-                <td><input type="checkbox">베리</td>
-                <td><input type="checkbox">과일</td>
+                <th data-key="flavor">향미</th>
+                <td><input type="checkbox" name="floral" id="floral"><label for="floral">플로럴</label>
+                    <input type="checkbox" name="citrus" id="citrus"><label for="citrus">시트러스</label>
+                    <input type="checkbox" name="fruity" id="fruity"><label for="fruity">프루티</label>
+                    <input type="checkbox" name="smokey" id="smokey"><label for="smokey">스모키</label>
+                    <input type="checkbox" name="caramel" id="caramel"><label for="caramel">카라멜</label>
+                    <input type="checkbox" name="nutty" id="nutty"><label for="nutty">너티</label>
+                    <input type="checkbox" name="mint" id="mint"><label for="mint">민트</label>
+                    <input type="checkbox" name="spicy" id="spicy"><label for="spicy">스파이시</label></td>
+            </tr>
+            <tr>
+                <th data-key="flavor2">맛과 향</th>
+                <td class="check_flavor">
+                    <input type="checkbox" name="Savory" id="Savory"><label for="Savory">Savory [향긋한]</label>
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Savory" id="Savory_2" value="2">
+                    <br>
+                    <input type="checkbox" name="Acidity" id="Acidity"><label for="Acidity">Acidity [산미있는]</label>
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Acidity" id="Acidity_2" value="2">
+                    <br>
+                    <input type="checkbox" name="Bitter" id="Bitter"><label for="Bitter">Bitter [쌉싸름한]</label>
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_0" value="0"> ----
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_1" value="1"> ----
+                    <input type="radio" class="check_flavor" name="Bitter" id="Bitter_2" value="2">
+                </td>
+
             </tr>
             <tr>
                 <td><input type="text"></td>
             </tr>
-            <tr>
-                <th>00개</th>
-                <td><button>랭킹순</button></td>
-                <td><button>신규등록순</button></td>
-                <td><button>낮은가격순</button></td>
-                <td><button>높은가격순</button></td>
-                <td><button>상품평많은순</button></td>
-                <td><button>판매량순</button></td>
-                <td><button>40개씩보기</button></td>
-                <td><button>ㅁ</button></td>
-                <td><button>ㅁ</button></td>
-            </tr>
         </table>
-
     </div>
-<div><img src="img/StoreBanner.png"></div>
+    <div class="check_product_wrap">
+        <div class="check_product_wrap_left">
+            <label>0개</label>
+            <button class="ranking_bt">랭킹순</button>
+            <button class="new_product_bt">신규등록순</button>
+            <button class="row_price_bt">낮은가격순</button>
+            <button class="hight_price_bt">높은가격순</button>
+            <button class="many_reviews_bt">상품평많은수</button>
+            <button class="sale_rate_bt">판매량수</button>
+        </div>
+        <div class="check_product_wrap_right">
+            <button>40개씩보기</button>
+            <button>ㅁㅁ</button>
+            <button>ㅁ</button>
+        </div>
+    </div>
+    <div><img src="img/StoreBanner.png"></div>
 
-<div class="best_tea_container">
-    <h1>베스트 차</h1>
+    <div class="best_tea_container">
+        <h1>베스트 차</h1>
         <div class="inner">
             <div class="inner">
                 <a><div class="product_inner"><img src="img/store/상품1-3.png">
@@ -117,191 +135,192 @@
                     <strong>12,000원</strong><br>
                     <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
                     <a class="like_bt"><img src="img/icons/Vector.png"></a>
-           </div></a>
-                      <div class="product_inner"><img src="img/store/상품2-3.png">
-                        <p class="type">블렌딩</p>
-                        <p class="title">고요한 바다를 담은 숲</p>
+                </div></a>
+                <div class="product_inner"><img src="img/store/상품2-3.png">
+                    <p class="type">블렌딩</p>
+                    <p class="title">고요한 바다를 담은 숲</p>
                     <strong>27,000원</strong><br>
                     <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
                     <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                      </div>
-                          <div class="product_inner"><img src="img/store/상품3-3.png">
-                            <p class="type">싱글오리진</p>
-                            <p class="title">제주 녹차</p>
+                </div>
+                <div class="product_inner"><img src="img/store/상품3-3.png">
+                    <p class="type">싱글오리진</p>
+                    <p class="title">제주 녹차</p>
                     <strong>31,000원</strong><br>
                     <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
                     <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                    </div>
-                          <div class="product_inner"><img src="img/store/상품4-3.png">
-                            <p class="type">뉴타입</p>
-                            <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
+                </div>
+                <div class="product_inner"><img src="img/store/상품4-3.png">
+                    <p class="type">뉴타입</p>
+                    <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
                     <strong>43,000원</strong><br>
                     <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
                     <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                    </div>
-            <!--<tr th:each="prdocutList:${product}">
-                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                    <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-                   <td th:text="${prdocutList.getTitle()}"></td>
-                    <td th:text="${prdocutList.getProduct_name()}"></td>
-                <td th:text="${prdocutList.getLike()}"></td>
-                <td th:text="${prdocutList.getView()}"></td>
-                </a>
-            </tr>
-        -->
-    </div>
-</div>
-<div class="middle_banner"><img src="img/TeaFindBanner.png"></div>
+                </div>
+                <!--<tr th:each="prdocutList:${product}">
+                    <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                        <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                       <td th:text="${prdocutList.getTitle()}"></td>
+                        <td th:text="${prdocutList.getProduct_name()}"></td>
+                    <td th:text="${prdocutList.getLike()}"></td>
+                    <td th:text="${prdocutList.getView()}"></td>
+                    </a>
+                </tr>
+            -->
+            </div>
+        </div>
+        <div class="middle_banner"><img src="img/TeaFindBanner.png"></div>
 
-<hr>
+        <hr>
 
-<div class="single_origin_contanier">
-    <h1>싱글오리진</h1>
-    <div class="inner">
-        <a><div class="product_inner"><img src="img/store/상품1-2.png">
-            <p class="type">싱글오리진</p>
-            <p class="title">얼그레이</p>
-            <strong>12,000원</strong><br>
-            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
-            <a class="like_bt"><img src="img/icons/Vector.png"></a>
-   </div></a>
-              <div class="product_inner"><img src="img/store/상품2-2.png">
-                <p class="type">블렌딩</p>
-                <p class="title">고요한 바다를 담은 숲</p>
-            <strong>27,000원</strong><br>
-            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
-            <a class="like_bt"><img src="img/icons/Vector.png"></a>
-              </div>
-                  <div class="product_inner"><img src="img/store/상품3-2.png">
+        <div class="single_origin_contanier">
+            <h1>싱글오리진</h1>
+            <div class="inner">
+                <a><div class="product_inner"><img src="img/store/상품1-2.png">
+                    <p class="type">싱글오리진</p>
+                    <p class="title">얼그레이</p>
+                    <strong>12,000원</strong><br>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                </div></a>
+                <div class="product_inner"><img src="img/store/상품2-2.png">
+                    <p class="type">블렌딩</p>
+                    <p class="title">고요한 바다를 담은 숲</p>
+                    <strong>27,000원</strong><br>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                </div>
+                <div class="product_inner"><img src="img/store/상품3-2.png">
                     <p class="type">싱글오리진</p>
                     <p class="title">제주 녹차</p>
-            <strong>31,000원</strong><br>
-            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
-            <a class="like_bt"><img src="img/icons/Vector.png"></a>
-            </div>
-                  <div class="product_inner"><img src="img/store/상품4-2.png">
+                    <strong>31,000원</strong><br>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                </div>
+                <div class="product_inner"><img src="img/store/상품4-2.png">
                     <p class="type">뉴타입</p>
                     <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
-            <strong>43,000원</strong><br>
-            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
-            <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                    <strong>43,000원</strong><br>
+                    <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                    <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                </div>
+                <!--<tr th:each="prdocutList:${product}">
+                    <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                        <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                       <td th:text="${prdocutList.getTitle()}"></td>
+                        <td th:text="${prdocutList.getProduct_name()}"></td>
+                    <td th:text="${prdocutList.getLike()}"></td>
+                    <td th:text="${prdocutList.getView()}"></td>
+                    </a>
+                </tr>
+            -->
             </div>
-        <!--<tr th:each="prdocutList:${product}">
-            <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-               <td th:text="${prdocutList.getTitle()}"></td>
-                <td th:text="${prdocutList.getProduct_name()}"></td>
-            <td th:text="${prdocutList.getLike()}"></td>
-            <td th:text="${prdocutList.getView()}"></td>
-            </a>
-        </tr>
-    -->
-</div>
-</div>
-<hr>
-<div class="blending_container">
-    <h1>블렌딩</h1>
-    <div class="inner">
-        <div class="inner">
-            <a><div class="product_inner"><img src="img/store/상품1-1.png">
-                <p class="type">싱글오리진</p>
-                <p class="title">얼그레이</p>
-                <strong>12,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-       </div></a>
-                  <div class="product_inner"><img src="img/store/상품2-1.png">
-                    <p class="type">블렌딩</p>
-                    <p class="title">고요한 바다를 담은 숲</p>
-                <strong>27,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                  </div>
-                      <div class="product_inner"><img src="img/store/상품3-1.png">
+        </div>
+        <hr>
+        <div class="blending_container">
+            <h1>블렌딩</h1>
+            <div class="inner">
+                <div class="inner">
+                    <a><div class="product_inner"><img src="img/store/상품1-1.png">
+                        <p class="type">싱글오리진</p>
+                        <p class="title">얼그레이</p>
+                        <strong>12,000원</strong><br>
+                        <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                        <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                    </div></a>
+                    <div class="product_inner"><img src="img/store/상품2-1.png">
+                        <p class="type">블렌딩</p>
+                        <p class="title">고요한 바다를 담은 숲</p>
+                        <strong>27,000원</strong><br>
+                        <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                        <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                    </div>
+                    <div class="product_inner"><img src="img/store/상품3-1.png">
                         <p class="type">싱글오리진</p>
                         <p class="title">제주 녹차</p>
-                <strong>31,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                </div>
-                      <div class="product_inner"><img src="img/store/상품4-1.png">
+                        <strong>31,000원</strong><br>
+                        <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                        <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                    </div>
+                    <div class="product_inner"><img src="img/store/상품4-1.png">
                         <p class="type">뉴타입</p>
                         <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
-                <strong>43,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                        <strong>43,000원</strong><br>
+                        <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                        <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                    </div>
+                    <!--<tr th:each="prdocutList:${product}">
+                        <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                            <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                           <td th:text="${prdocutList.getTitle()}"></td>
+                            <td th:text="${prdocutList.getProduct_name()}"></td>
+                        <td th:text="${prdocutList.getLike()}"></td>
+                        <td th:text="${prdocutList.getView()}"></td>
+                        </a>
+                    </tr>
+                -->
                 </div>
-        <!--<tr th:each="prdocutList:${product}">
-            <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-               <td th:text="${prdocutList.getTitle()}"></td>
-                <td th:text="${prdocutList.getProduct_name()}"></td>
-            <td th:text="${prdocutList.getLike()}"></td>
-            <td th:text="${prdocutList.getView()}"></td>
-            </a>
-        </tr>
-    -->
-</div>
-</div>
-<hr>
-<div class="newType_container">
-<h1>뉴타입</h1>
-    <div class="inner">
-        <div class="inner">
-            <a><div class="product_inner"><img src="img/store/상품1.png">
-                <p class="type">싱글오리진</p>
-                <p class="title">얼그레이</p>
-                <strong>12,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-       </div></a>
-                  <div class="product_inner"><img src="img/store/상품2.png">
-                    <p class="type">블렌딩</p>
-                    <p class="title">고요한 바다를 담은 숲</p>
-                <strong>27,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                  </div>
-                      <div class="product_inner"><img src="img/store/상품3.png">
-                        <p class="type">싱글오리진</p>
-                        <p class="title">제주 녹차</p>
-                <strong>31,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
+            </div>
+            <hr>
+            <div class="newType_container">
+                <h1>뉴타입</h1>
+                <div class="inner">
+                    <div class="inner">
+                        <a><div class="product_inner"><img src="img/store/상품1.png">
+                            <p class="type">싱글오리진</p>
+                            <p class="title">얼그레이</p>
+                            <strong>12,000원</strong><br>
+                            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
+                            <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                        </div></a>
+                        <div class="product_inner"><img src="img/store/상품2.png">
+                            <p class="type">블렌딩</p>
+                            <p class="title">고요한 바다를 담은 숲</p>
+                            <strong>27,000원</strong><br>
+                            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>856</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,237</span>
+                            <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                        </div>
+                        <div class="product_inner"><img src="img/store/상품3.png">
+                            <p class="type">싱글오리진</p>
+                            <p class="title">제주 녹차</p>
+                            <strong>31,000원</strong><br>
+                            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>23</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 65</span>
+                            <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                        </div>
+                        <div class="product_inner"><img src="img/store/상품4.png">
+                            <p class="type">뉴타입</p>
+                            <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
+                            <strong>43,000원</strong><br>
+                            <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
+                            <a class="like_bt"><img src="img/icons/Vector.png"></a>
+                        </div>
+                        <!--<tr th:each="prdocutList:${product}">
+                            <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                                <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                               <td th:text="${prdocutList.getTitle()}"></td>
+                                <td th:text="${prdocutList.getProduct_name()}"></td>
+                            <td th:text="${prdocutList.getLike()}"></td>
+                            <td th:text="${prdocutList.getView()}"></td>
+                            </a>
+                        </tr>
+                    -->
+                    </div>
                 </div>
-                      <div class="product_inner"><img src="img/store/상품4.png">
-                        <p class="type">뉴타입</p>
-                        <p class="title">그대의 눈빛에 차 한잔을 담으며 눈빛 너머 추억에 스며든다</p>
-                <strong>43,000원</strong><br>
-                <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>2,146</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 2,915</span>
-                <a class="like_bt"><img src="img/icons/Vector.png"></a>
-                </div>
-        <!--<tr th:each="prdocutList:${product}">
-            <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
-                <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
-               <td th:text="${prdocutList.getTitle()}"></td>
-                <td th:text="${prdocutList.getProduct_name()}"></td>
-            <td th:text="${prdocutList.getLike()}"></td>
-            <td th:text="${prdocutList.getView()}"></td>
-            </a>
-        </tr>
-    -->
-</div>
-</div>
-
-
-
-
-<div id="coinfo_container">
-    <div class="coinfoinner">
-        <img src="img/Logo.png">
-        <p>E-mail : oncha.minji@gmail.com</p>
-        <p>Copyright 2023 Oncha</p>
+            </div>
+        </div>
     </div>
-</div>
-
-</div>    
+</main>
+            <footer>
+                <div id="coinfo_container">
+                    <div class="coinfoinner">
+                        <img src="img/Logo.png">
+                        <p>E-mail : oncha.minji@gmail.com</p>
+                        <p>Copyright 2023 Oncha</p>
+                    </div>
+                </div>
+            </footer>
 </body>
-<script src="js/Tindex.js"></script>
-
+<script src="/js/buttonManager.js"></script>
+<script src="/js/filter.js"></script>
+</body>
 </html>

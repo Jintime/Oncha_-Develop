@@ -1,6 +1,6 @@
 "use strict";
 
-const buttons = {
+const MappingButtons = {
     indexBtn: {///index
         logoBtn: ".index_bt",
         teaFinderBtn: ".teaFinder_bt",
@@ -23,13 +23,11 @@ const buttons = {
         refundDetailBtn:".refundDetail_bt",
         CSBtn:"CS_bt"
     }
-
 };
-
 
 document.addEventListener('click', event => {
     const target = event.target;
-    Object.values(buttons).forEach(buttonObject => {
+    Object.values(MappingButtons).forEach(buttonObject => {
         Object.values(buttonObject).forEach(btnSelector => {
             if (target.matches(btnSelector)) {
                 getterBtn(btnSelector);

@@ -12,7 +12,7 @@
         <strong>제품 등록</strong>
         <p>제품을 등록할수있는 공간입니다.</p>
     </div>
-    <form action="/product/write" method="post" enctype="multipart/form-data">
+    <form action="/product/write" method="post" enctype="multipart/form-data" id="write_form">
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
@@ -30,10 +30,9 @@
                         <dt>이미지</dt>
                         <dd> <input type="file" name="productFile" multiple class="image" /></dd>
                     </dl>
-                    <!--
                     <dl>
                         <dt>원산지</dt>
-                        <select name="origin_nation" id="origin_nation">
+                        <select name="origin_nation" id="origin_nation" form="write_form">
                             <option value="스리랑카">스리랑카</option>
                             <option value="다즐링">다즐링</option>
                             <option value="아쌈">아쌈</option>
@@ -56,7 +55,7 @@
                     </dl>
                     <dl>
                         <dt>맛과 향</dt>
-                        <select name="flavor" id="flavor">
+                        <select name="flavor" id="flavor" form="write_form">
                             <option value="풀">풀</option>
                             <option value="채소">채소</option>
                             <option value="허브">허브</option>
@@ -75,7 +74,7 @@
                     </dl>
                     <dl>
                         <dt>차종</dt>
-                        <select name="category" id="category">
+                        <select name="category" id="category" form="write_form">
                             <option value="녹차">녹차</option>
                             <option value="홍차">홍차</option>
                             <option value="백차">백차</option>
@@ -87,7 +86,7 @@
                     </dl>
                     <dl>
                         <dt>블랜딩</dt>
-                        <select name="blended" id="blended">
+                        <select name="blended" id="blended" form="write_form">
                             <option value="블랜디드">블렌디드</option>
                             <option value="싱글오리진">싱글오리진</option>
                             <option value="뉴타입">뉴타입</option>
@@ -95,7 +94,7 @@
                     </dl>
                     <dl>
                         <dt>유형</dt>
-                        <select name="type" id="type">
+                        <select name="type" id="type" form="write_form">
                             <option value="액상">액상</option>
                             <option value="잎차">잎차</option>
                             <option value="티백">티백</option>
@@ -105,11 +104,11 @@
                     </dl>
                     <dl>
                         <dt>카페인</dt>
-                        <select name="caffeine" id="caffeine">
+                        <select name="caffeine" id="caffeine" form="write_form">
                             <option value="true">유</option>
                             <option value="false">무</option>
                         </select>
-                    </dl>-->
+                    </dl>
                 </div>
                 <div class="cont">
                     <textarea name="detail" class="detail" placeholder="이미지 파일은 가게명_제품명으로 입력해주세요."></textarea>
@@ -124,4 +123,5 @@
 
 </div>
 </body>
+<script src="/js/buttonManager.js"></script>
 </html>

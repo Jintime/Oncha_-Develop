@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="/css/order/payInfo.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
+<header>
   <div class="nav_barContainer">
     <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
       <button class="myoncha_bt">마이온차</button>
@@ -23,9 +25,11 @@
         <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
     </div>
   </div>
+  </div>
+</header>
+<main>
   <h1>결제하기</h1>
   <div class="pay_info_wrap">
-
     <div class="order_detail_wrap">
       <div class="product_info">
         <h3>주문상품정보</h3>
@@ -42,14 +46,21 @@
 
       <div class="buyer_info">
         <h3>주문자 정보</h3>
-        <div class="buyer_detail">
+        <div th:if="${user==null}" class="buyer_detail">
           <input class="buyer_other" name="buyerName" type="text" placeholder="이름">
           <input class="buyer_other" name="phoneNumber" type="text" placeholder="연락처">
           <input class="buyer_email" name="email" type="text" placeholder="이메일">
           <input class="buyer_other" name="password" type="text" placeholder="주문 비밀번호">
           <input class="buyer_other" name="passwordCheck" type="text" placeholder="주문 비밀번호 확인">
         </div>
-      </div>
+        <div th:unless="${user==null}" class="buyer_detail">
+          <input class="buyer_other" name="buyerName" type="text"  th:value="${user.name}">
+          <input class="buyer_other" name="phoneNumber" type="text" placeholder="휴대폰번호" th:value="${user.phoneNumber}">
+          <input class="buyer_email" name="email" type="text" th:value="${user.email}">
+        </div>
+
+        </div>
+
 
       <div class="delivery_info">
         <h3>배송정보</h3>
@@ -139,7 +150,9 @@
     </div>
 
   </div>
-
+</div>
+</main>
+<footer>
   <div id="coinfo_container">
     <div class="coinfoinner">
       <img src="/img/Logo.png">
@@ -147,46 +160,54 @@
       <p>Copyright 2023 Oncha</p>
     </div>
   </div>
-</div>
+</footer>
 </body>
 <script>
-  function iamport(){
+  function iamport() {
+    const currentURL = window.location.href;
+    const pattern = /\d+$/;
+    const match = currentURL.match(pattern);
+    const lastNumber = match ? match[0] : '';
 
+    $.ajax({
+      type: "POST",
+      url: `/request_pay/`+lastNumber,
+      success: function (res) {
+        IMP.init("imp85443833");
+        IMP.request_pay({
+          pg: 'kcp.A52CY',
+          pay_method: 'card',
+          merchant_uid: 'merchant_' + new Date().getTime(),
+          name: res.product_name,
+          amount: "100",
+          buyer_email:res.buyer_email,
+          buyer_name: res.buyer_name,
+          buyer_tel: res.buyer_tel,
+          buyer_postcode: "우편번호다~",
+          m_redirect_url: 'http://localhost:8080/orderComplete'
+        }, function (res) {
+          // 결제검증
+          console.log(res);
+          $.ajax({
+            type: "POST",
+            url: "/verifyIamport/" + res.imp_uid
+          }).done(function (data) {
+            console.log(data);
+            if (res.paid_amount == data.response.amount) {
+              alert("결제 및 결제검증완료");
 
-    //가맹점 식별코드
-    IMP.init("imp85443833");
-    IMP.request_pay({
-      pg : 'kcp.A52CY',
-      pay_method : 'card',
-      merchant_uid : 'merchant_' + new Date().getTime(),
-      name :  "온차",
-      amount : "100",
-      buyer_email : "email",
-      buyer_name : "name",
-      buyer_tel : "phone",
-      buyer_addr : "address",
-      buyer_postcode : "postcode",
-      m_redirect_url : 'http://localhost:8080/orderComplete'
-    }, function(res) {
-      // 결제검증
+              //결제 성공 시 비즈니스 로직
 
-      console.log(res);
-      $.ajax({
-        type : "POST",
-        url : "/verifyIamport/" + res.imp_uid
-      }).done(function(data) {
-        console.log(data);
-        if(res.paid_amount == data.response.amount){
-          alert("결제 및 결제검증완료");
-
-          //결제 성공 시 비즈니스 로직
-
-        } else {
-          alert("결제 실패");
-        }
-      });
+            } else {
+              alert("결제 실패");
+            }
+          });
+        });
+      }
     });
   }
+
 </script>
+<script src="/js/buttonManager.js"></script>
 <script type="module" src="/js/registry.js"></script>
 </html>
