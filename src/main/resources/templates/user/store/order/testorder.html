@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="/css/order/order.css" rel="stylesheet">
+    <link href="/css/test.css" rel="stylesheet">
 
 </head>
 <body>
@@ -82,19 +83,15 @@
      
             <button class="more_info_bt">상품설명 더보기</button>
         <div class="more_info_wrap">
-        <a>상품정보</a>
+        <a th:text="${product.product_name}"></a>
         <div class="button_panel">
-            <button>상품설명</button>
-            <button>상세정보</button>
-            <button>후기</button>
-            <button>문의</button>
+            <button class="product_info_bt">상품설명</button>
+            <button class="product_detail_bt">상세정보</button>
+            <button class="review_bt">후기</button>
+            <button class="inquiry_bt">문의</button>
         </div>
         <div class="info">
-            상품설명
-
-
             <p th:text="${product.detail}">
-
         </div>
         <div class="detail">
             <div class="product_info">  
@@ -152,7 +149,6 @@
                 <img src="">
                 <a class="brand_button"></a>
                 <div class="product_Container">
-                    <i id="left" class="fa-solid fa-angle-left"></i>
                     <div class="inner">
                         <tr th:each="productList:${product}">
                             <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" >
@@ -164,13 +160,12 @@
                                 <a class="like_bt"><img src="/img/icons/Vector.png"></a>
                             </div></a>
                         </tr>
-                        <i id="right" class="fa-solid fa-angle-right"></i>
                     </div>
                 </div>
             </div>
         </div>
         <div class="review">
-            후기₩
+            후기
             <div class="review_borad">
                 리뷰가 없습니다.
             </div>
@@ -203,7 +198,6 @@
 </div>
 </div>
 </div>
-</div>
 </main>
 <footer>
 <!--tail-->
@@ -216,5 +210,15 @@
 </div>
 </footer>
 </body>
+
+<script>
+    const moreInfoButton = document.querySelector('.more_info_bt');
+    const moreInfoWrap = document.querySelector('.more_info_wrap');
+
+    moreInfoButton.addEventListener('click', () => {
+        moreInfoWrap.style.display = 'block';
+        moreInfoButton.style.display = " none";
+    });
+</script>
 <script src="/js/buttonManager.js"></script>
 </html>

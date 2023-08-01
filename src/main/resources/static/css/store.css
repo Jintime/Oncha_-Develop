@@ -3,7 +3,9 @@
 input[type="checkbox"]:checked + label {
     color: #F60;
 }
-
+.best_tea_container{
+    margin-top: 50px;
+}
 .store_filter_wrap table{
     border: 1px solid #EEE;
     border-spacing: 0px;

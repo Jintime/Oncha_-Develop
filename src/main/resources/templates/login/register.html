@@ -35,13 +35,17 @@
         <div class="register_text"><p>계졍 인증</p><p>정보 입력</p></div>
         <form>
             <div class="input_wrap">
-                <input type="text" id="username" name="username" placeholder="이름">
-                <div class="input-group-prepend">
-                    <input type="text" class="form-control" name="birthDayNumber" id="birthDayNumber" maxlength="6" placeholder="주민번호 앞자리">
-                    <input type="password" class="form-control" name="genderNumber" id="genderNumber" maxlength="1" placeholder="주민번호 뒤 1자리">
+                <div class="input_wrap">
+                    <input type="text" id="username" name="username" placeholder="이름">
+                    <div class="input-group-prepend">
+                        <input type="text" class="form-control" name="birthDayNumber" id="birthDayNumber" maxlength="6" placeholder="주민번호">
+                        <label>-</label>
+                        <input type="password" class="form-control" name="genderNumber" id="genderNumber" maxlength="1" >
+                        <img src="/img//login/regi5.png">
+                    </div>
+                    <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+                    <button type="button" id= "joinButton" class="join_bt">가입하기</button>
                 </div>
-                <input type="text" id="nickname" name="nickname" placeholder="닉네임">
-                <button type="button" id= "joinButton" class="join_bt">가입하기</button>
             </div>
         </form>
         <p>세상의 모든 차를 담다 ONCHA</p>

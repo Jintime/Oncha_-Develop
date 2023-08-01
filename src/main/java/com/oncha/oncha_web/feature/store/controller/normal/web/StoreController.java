@@ -31,7 +31,6 @@ public class StoreController {
     @SetUserInfoInModel
     @GetMapping("/order/{id}")
     public String Order(@PathVariable Long id, Model model){
-        Object user = model.getAttribute("user");
         ProductBoardDTO productDTO = productBoardService.findById(id);
         model.addAttribute("product",productDTO);
         return "user/store/order/order";
