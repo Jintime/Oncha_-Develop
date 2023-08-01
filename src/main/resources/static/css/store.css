@@ -56,7 +56,10 @@ input[type="checkbox"]:checked + label {
     display: flex;
     justify-content: space-between;
 }
-
+.tag{
+    width: 100%;
+    border: none;
+}
 .check_product_wrap button, .check_product_wrap label{
     color: #999;
     font-family: Noto Sans KR;

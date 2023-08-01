@@ -11,7 +11,7 @@ public class TeaFinderController {
     @SetUserInfoInModel
     @GetMapping("/myoncha")
     public String MyOncha(Model model){
-        if(model == null) return "user/store/order/userCheck";
+        if(!model.containsAttribute("user")) return "user/store/order/userCheck";
         else return "user/category/myOncha/myOncha";
     }
     @GetMapping("/finder")
