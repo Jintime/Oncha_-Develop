@@ -1,8 +1,30 @@
 // 체크박스 이름과 해당 값에 대응하는 태그 매핑 객체
 const tagMapping = {
-    "blended": "#블렌디드",
-    "single_origin": "#싱글오리진",
-    "new_type": "#뉴타입",
+    "blended": "블렌디드 x",
+    "single_origin": "싱글오리진 x",
+    "new_type": "뉴타입 x",
+    "green_tea": "녹차 x",
+    "black_tea": "홍차 x",
+    "white_tea": "백차 x",
+    "yellow_tea": "황차 x",
+    "blue_tea": "청차 x",
+    "herb_tea":"허브차 x",
+    "isCaffeine":"카페인 유 x",
+    "noCaffeine" :"카페인 무 x",
+    "liquid":"액상 x",
+    "leaf_tea":"잎차 x",
+    "tea_bag":"티백 x",
+    "syrup":"청 x",
+    "powder":"가루 x",
+    "floral":"플로럴 x",
+    "citrus":"시트러스 x",
+    "fruity":"프루티 x",
+    "smokey":"스모키 x",
+    "caramel":"카라멜 x",
+    "nutty":"너티 x",
+    "mint":"민트 x",
+    "spicy":"스파이시 x",
+
     // 다른 체크박스들도 추가해주세요
 };
 

@@ -80,3 +80,15 @@ input[type="checkbox"]:checked + label {
 .check_product_wrap_right button{
     border-left: 1px solid #DDD;
 }
+.tags-wrapper{
+    height: 30px;
+    border: 1px solid #DDD;
+}
+.tags-wrapper button{
+    padding:0px 10px 0px 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #ff6600;
+    color: white;
+    font-size: 13px;
+}
