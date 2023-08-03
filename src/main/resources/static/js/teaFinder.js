@@ -1,8 +1,8 @@
 const main = document.querySelector("#main"),
     qna=document.querySelector("#qna"),
     result = document.querySelector("#result"),
-    endPoint=12,
-    select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    endPoint=10,
+    select = [0, 0, 0, 0, 0, 0, 0, 0];
 
 function calResult(){
     return select.indexOf(Math.max(...select));
@@ -14,7 +14,7 @@ function setResult(){
 
     var resultImg = document.createElement('img');
     const imgDiv = document.querySelector('#resultImg');
-    var imgURL = 'img/image-' + point + '.png';
+    var imgURL = '/img/teaFinder/' + point + '.png';
     resultImg.src = imgURL;
     resultImg.alt = point;
     resultImg.classList.add('img-fluid');

@@ -5,18 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="/css/darakbang.css" rel="stylesheet">
 </head>
 <body>
-<div class="box">
-  <div class="nav_barContainer">
-    <div class="left"><a class="logo" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-    </div>
-    <div class="right">
+<header>
+<div class="nav_barContainer">
+  <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+    <button class="myoncha_bt">마이온차</button>
+    <button class="store_bt">스토어</button>
+    <button class="teaHouse_bt">티하우스</button>
+    <button class="subscribe_bt">매거진</button>
 
-    </div>
   </div>
+  <div class="right">
+    <input class="search" type="text" >
+    <button th:if="${user == null}" class="login_bt">로그인</button>
 
+    <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
+  </div>
+</div>
+</div>
+  </header>
+<main>
   <div class="info_main_wrap">
     <img src="/img/darak/1.jpeg">
 
@@ -60,7 +77,8 @@
     <h1>찾아오는 길</h1>
     <div id="map" style="width:100%;height:350px;"></div>
   </div>
-
+</main>
+<footer>
 </div>
 <div id="coinfo_container">
   <div class="coinfoinner">
@@ -70,6 +88,7 @@
   </div>
 </div>
 </div>
+</footer>
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d70541ee46ce2a23a47556dd8015275&libraries=services"></script>
 <script>

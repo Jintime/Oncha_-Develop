@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/test.css" rel="stylesheet">
     <link href="/css/register.css" rel="stylesheet">
     <title>Document</title>
@@ -15,14 +18,18 @@
             <button class="myoncha_bt">마이온차</button>
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
+            <button class="subscribe_bt">매거진</button>
 
         </div>
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
-                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
         </div>
     </div>
     </div>
@@ -35,13 +42,17 @@
         <div class="register_text"><p>계졍 인증</p><p>정보 입력</p></div>
         <form>
             <div class="input_wrap">
-                <input type="text" id="username" name="username" placeholder="이름">
-                <div class="input-group-prepend">
-                    <input type="text" class="form-control" name="birthDayNumber" id="birthDayNumber" maxlength="6" placeholder="주민번호 앞자리">
-                    <input type="password" class="form-control" name="genderNumber" id="genderNumber" maxlength="1" placeholder="주민번호 뒤 1자리">
+                <div class="input_wrap">
+                    <input type="text" id="username" name="username" placeholder="이름">
+                    <div class="input-group-prepend">
+                        <input type="text" class="form-control" name="birthDayNumber" id="birthDayNumber" maxlength="6" placeholder="주민번호">
+                        <label>-</label>
+                        <input type="password" class="form-control" name="genderNumber" id="genderNumber" maxlength="1" >
+                        <img src="/img//login/regi5.png">
+                    </div>
+                    <input type="text" id="nickname" name="nickname" placeholder="닉네임">
+                    <button type="button" id= "joinButton" class="join_bt">가입하기</button>
                 </div>
-                <input type="text" id="nickname" name="nickname" placeholder="닉네임">
-                <button type="button" id= "joinButton" class="join_bt">가입하기</button>
             </div>
         </form>
         <p>세상의 모든 차를 담다 ONCHA</p>

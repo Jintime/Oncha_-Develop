@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/test.css" rel="stylesheet">
 
     <title>Document</title>
@@ -15,14 +18,18 @@
             <button class="myoncha_bt">마이온차</button>
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
+            <button class="subscribe_bt">매거진</button>
 
         </div>
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
-                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
         </div>
     </div>
     </div>
@@ -36,19 +43,16 @@
                 <p class="title">다락방</p>
                 <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
                 <a class="icons"><img src="img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 105</span>
-                <div class="rank_img"><img  src="img/icons/1.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="img/index/상품2-1.png">
                 <p class="title">고바담 숲</p>
                 <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
                 <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 1,005</span>
-                <div class="rank_img"><img  src="img/icons/2.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="img/index/상품3-1.png">
                 <p class="title">작은 혀의 외침</p>
                 <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
                 <a class="icons"><img src="img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="img/icons/Vector-2.png"></a><span> 47</span>
-                <div class="rank_img"><img  src="img/icons/3.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="img/index/상품4-1.png">
                 <p class="title">그대의 눈빛</p>

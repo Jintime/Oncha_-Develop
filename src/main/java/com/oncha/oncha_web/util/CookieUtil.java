@@ -45,7 +45,7 @@ public class CookieUtil {
 
     public static Cookie getEmptyCookie(String key, String path) {
         Cookie cookie = new Cookie(key, null);
-        cookie.setDomain("www.oncha.kr");
+       cookie.setDomain("www.oncha.kr");
         cookie.setMaxAge(0);
         cookie.setPath(path);
         return cookie;

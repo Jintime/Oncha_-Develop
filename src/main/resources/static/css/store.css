@@ -3,7 +3,9 @@
 input[type="checkbox"]:checked + label {
     color: #F60;
 }
-
+.best_tea_container{
+    margin-top: 50px;
+}
 .store_filter_wrap table{
     border: 1px solid #EEE;
     border-spacing: 0px;
@@ -54,7 +56,10 @@ input[type="checkbox"]:checked + label {
     display: flex;
     justify-content: space-between;
 }
-
+.tag{
+    width: 100%;
+    border: none;
+}
 .check_product_wrap button, .check_product_wrap label{
     color: #999;
     font-family: Noto Sans KR;
@@ -74,4 +79,19 @@ input[type="checkbox"]:checked + label {
 }
 .check_product_wrap_right button{
     border-left: 1px solid #DDD;
+}
+.tags-wrapper{
+    height: 30px;
+    border: 1px solid #DDD;
+}
+.tags-wrapper button{
+    padding:0px 10px 0px 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #ff6600;
+    color: white;
+    font-size: 13px;
+}
+.check_flavor label{
+    width: 300px;
 }

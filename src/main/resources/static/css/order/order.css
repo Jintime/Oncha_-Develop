@@ -3,6 +3,18 @@ li ,ul{
     list-style: none;
     padding: 0;
 }
+.detail table {
+    width: 70%;
+    margin: auto;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+.detail th,.detail td {
+    border: 1px solid #444444;
+    padding: 10px;
+    font-size: 12px;
+}
 .view{
     display: flex;
     width: 100%;
@@ -17,7 +29,7 @@ li ,ul{
 .company_info_wrap{
     margin-top: 50px;
     text-align: right;
-    height: 50x;
+    height: 50px;
     display: flex;
     justify-content: flex-end;
 }
@@ -93,12 +105,13 @@ li ,ul{
 .button_panel{
     text-align: center;
     width: 100%;
-    height: 100px;
+    height: 50px;
 }
 .button_panel button{
     text-align: center;
-    border: 1px solid;
+    border: 1px solid #F60;
     width: 20%;
+    background-color: #F60;
     height: 100%;
 }
 .info,.detail,.review,.inquiry{
@@ -109,7 +122,6 @@ li ,ul{
     white-space:pre-line;
 }
 .review,.inquiry{
-    width: 80%;
     text-align: left;
 }
 .review_borad,.inquiry_board{
@@ -126,4 +138,7 @@ li ,ul{
 }
 .more_info_bt:hover{
     background-color: rgb(224, 224, 224);
+}
+.button_panel button:hover{
+    background-color: white;
 }

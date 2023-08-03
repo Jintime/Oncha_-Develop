@@ -16,14 +16,18 @@
             <button class="myoncha_bt">마이온차</button>
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">커뮤니티</button>
+            <button class="subscribe_bt">매거진</button>
 
         </div>
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-            <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
-               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
         </div>
     </div>
 </div>
@@ -36,7 +40,7 @@
             <h1>온차만의<br>특별함을 만나보세요</h1></a>
         <a class="banner"><img src="/img/tea_finder.png">
         <h1>나의<br>차를<br>찾다</h1>
-            <p>티파인더 알아보기</p>
+            <button class="myoncha_bt" >티파인더 알아보기</button>
         </a>
     </div>
 
@@ -56,13 +60,13 @@
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="inner">
             <tr th:each="productList:${product}">
-                <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" >
+                <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" onmouseover="showLikeButton(this)" onmouseout="hideLikeButton(this)" >
                     <img th:src="@{|${productList.list.get(0).getUrl()}|}" alt="">
                     <p class="type" th:text="${productList.type}"></p>
                     <p class="title" th:text="${productList.title}"></p>
                     <p class="price" th:text="|${#numbers.formatInteger(productList.price, 0, 'COMMA')}원|"></p>
                     <br>
-                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span th:text="${productList.view}"></Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span th:text="${productList.like}"></span>
                     <a class="like_bt"><img src="/img/icons/Vector.png"></a>
                 </div></a>
             </tr>
@@ -81,19 +85,16 @@
                 <p class="title">다락방</p>
                 <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
                 <a class="icons"><img src="/img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                <div class="rank_img"><img  src="/img/icons/1.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
                 <p class="title">고바담 숲</p>
                 <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
                 <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,005</span>
-                <div class="rank_img"><img  src="/img/icons/2.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="/img/index/상품3-1.png">
                 <p class="title">작은 혀의 외침</p>
                 <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
                 <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 47</span>
-                <div class="rank_img"><img  src="/img/icons/3.png"></div>
             </div></a>
             <a> <div class="product_inner"><img src="/img/index/상품4-1.png">
                 <p class="title">그대의 눈빛</p>
@@ -178,7 +179,17 @@
     </div>
 </footer>
 </body>
+<script>
+    function showLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "block";
+    }
 
+    function hideLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "none";
+    }
+</script>
 <script src="/js/Tindex.js"></script>
 <script src="/js/buttonManager.js"></script>
 

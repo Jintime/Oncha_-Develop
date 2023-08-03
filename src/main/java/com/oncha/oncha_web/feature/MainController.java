@@ -3,9 +3,6 @@ package com.oncha.oncha_web.feature;
 import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
-import com.oncha.oncha_web.feature.user.model.MemberDTO;
-import com.oncha.oncha_web.feature.user.service.MemberService;
-import com.oncha.oncha_web.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -14,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -30,8 +27,9 @@ public class MainController {
         return "index";
     }
 
+    @SetUserInfoInModel
     @GetMapping("/darakbang")
-    public String Dracbang(){return "user/category/teaHouse/darakbang";}
+    public String Dracbang(Model model){return "user/category/teaHouse/darakbang";}
 
 
     ///옮겨야될코드들
