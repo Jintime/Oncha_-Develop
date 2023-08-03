@@ -10,6 +10,10 @@ li ,ul{
     border-collapse: collapse;
     font-size: 12px;
 }
+h3{
+    font-size: 18px;
+    color: #F60;
+}
 .detail th,.detail td {
     border: 1px solid #444444;
     padding: 10px;
@@ -121,14 +125,15 @@ li ,ul{
     text-align: center;
     white-space:pre-line;
 }
-.review,.inquiry{
+.Q\&A,.delivery,.review,.inquiry{
     text-align: left;
 }
-.review_borad,.inquiry_board{
+.review_borad,.inquiry_board,.Q\&A_board,.delivery_board{
     text-align: center;
     border-top: 1px solid;
     border-bottom: 1px solid;
     padding: 50px;
+    font-size: 14px;
 }
 .more_info_bt{
     width: 80%;
