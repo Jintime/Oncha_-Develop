@@ -81,7 +81,7 @@ input[type="checkbox"]:checked + label {
     border-left: 1px solid #DDD;
 }
 .tags-wrapper{
-    height: 30px;
+    height: 60px;
     border: 1px solid #DDD;
 }
 .tags-wrapper button{
@@ -94,4 +94,118 @@ input[type="checkbox"]:checked + label {
 }
 .check_flavor label{
     width: 300px;
+}
+/**/
+.product_Container{
+    max-width: 1300px;
+    height: 2500px;
+    margin: 20px auto 40px auto;
+    position: relative;
+
+}
+.product_Container ul{
+    display: flex;
+    list-style:none;
+    padding: unset;
+}
+.product_Container li{
+    width: 280PX;
+    height: 400px;
+}
+
+.inner{
+    cursor: pointer;
+    scroll-behavior: smooth;
+    height: 480px;
+    display: flex;
+    flex-wrap :wrap;
+}
+.title{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    white-space: normal;
+    word-break: break-all;
+    height: 40px;
+    margin-top: 5px;
+}
+.price{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.inner .drgging{
+    cursor: grab;
+    scroll-behavior: auto;
+}
+.inner .drgging img{
+    pointer-events: none;
+}
+.inner img{
+    object-fit: cover;
+    margin-left: 14px;
+    height: calc(60%);
+}
+.rank_img img{
+    width: 80px;
+    top:0%;
+    height: 70px;
+    border-radius: 0px;
+    position: absolute;
+}
+/***지워야되는코드**/
+.product_inner span{
+    margin-right: 5px;
+    font-size: 14px;
+}
+.type{
+    color: #727272;
+    font-family: Noto Sans KR;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+}
+
+.like_bt{
+    width: 30px;
+    top:48%;
+    right:5%;
+    display: none;
+    position: absolute;
+}
+.icons{
+    vertical-align: middle;
+    display: inline-block;
+    margin-right:5px ;
+    height: 15px;
+}
+.icons img{
+    vertical-align: top;
+    height: 100%;
+    border-radius: 0;
+}
+
+/***************/
+.product_inner{
+    width: calc(24%);
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+.product_inner{
+    margin: 0 5px 0 5px;
+}
+.inner img:first-child{
+    margin-left: 0px;
+}
+.active {
+    background-color: #F1F1F1; /* 예시로 파란색 적용 */
+    color: white; /* 글자색을 흰색으로 설정 */
 }

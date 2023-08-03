@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/store.css" rel="stylesheet">
-    <link href="/css/test.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>상품</title>
 </head>
 <body>
@@ -134,6 +134,16 @@
             </tr>
         </div>
     </div>
+    <div id="pagination">
+        <!-- 페이징 버튼들을 동적으로 생성하는 예제 -->
+        <button class="page-link" data-page="0">1</button>
+        <button class="page-link" data-page="1">2</button>
+        <button class="page-link" data-page="2">3</button>
+        <!-- 이전 버튼 -->
+        <button id="prev-btn">Previous</button>
+        <!-- 다음 버튼 -->
+        <button id="next-btn">Next</button>
+    </div>
 
 </main>
             <footer>
@@ -149,5 +159,100 @@
 <script src="/js/buttonManager.js"></script>
 <script src="/js/filter.js"></script>
 <script src="/js/tagButton.js"></script>
+<script>
+    // 페이지 번호를 클릭했을 때 데이터를 받아와서 업데이트하는 함수
+    function loadPage(page) {
+        $.ajax({
+            url: "/store?page=" + page, // 서버로 데이터를 요청할 URL
+            method: "GET",
+            dataType: "json", // 받아올 데이터 타입 (JSON 형식으로 받아옴)
+            success: function (data) {
+                // 서버로부터 받은 데이터를 이용해서 product-list의 내용 업데이트
+                updateProductList(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            },
+        });
+    }
+
+    // product-list의 내용을 업데이트하는 함수
+    function updateProductList(data) {
+        // data를 이용하여 product-list 내용을 업데이트
+        // 예시로는 간단히 데이터를 텍스트로 보여주는 것으로 구현
+        let productList = $("#product-list");
+        productList.empty(); // 기존 내용 비우기
+        data.forEach(function (item) {
+            productList.append("<p>" + item.title + "</p>");
+        });
+    }
+
+    $(document).ready(function () {
+        // 페이지 번호를 클릭했을 때 loadPage 함수 호출
+        $(".page-link").on("click", function () {
+            const page = $(this).data("page");
+            loadPage(page);
+        });
+
+        // 이전 버튼을 클릭했을 때 이전 페이지로 이동
+        $("#prev-btn").on("click", function () {
+            const currentPage = $(".page-link.active").data("page");
+            if (currentPage > 0) {
+                loadPage(currentPage - 1);
+            }
+        });
+
+        // 다음 버튼을 클릭했을 때 다음 페이지로 이동
+        $("#next-btn").on("click", function () {
+            const currentPage = $(".page-link.active").data("page");
+            // 총 페이지 수를 서버에서 받아온다고 가정하고 변수 totalPages에 저장
+            const totalPages = 3; // 예시로 총 페이지 수를 3으로 가정
+            if (currentPage < totalPages - 1) {
+                loadPage(currentPage + 1);
+            }
+        });
+
+        // 초기 페이지 로드 시 첫 번째 페이지를 보여줌
+        loadPage(0);
+    });
+</script>
+<script>
+    // 좌측 버튼들에 이벤트 리스너 추가
+    const leftButtons = document.querySelectorAll('.check_product_wrap_left button');
+    leftButtons.forEach((button) => {
+        button.addEventListener('click', function() {
+            // 기존에 적용된 active 클래스를 모두 제거
+            leftButtons.forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            // 현재 클릭한 버튼에만 active 클래스를 추가
+            this.classList.add('active');
+        });
+    });
+
+    // 우측 버튼들에 이벤트 리스너 추가
+    const rightButtons = document.querySelectorAll('.check_product_wrap_right button');
+    rightButtons.forEach((button) => {
+        button.addEventListener('click', function() {
+            // 기존에 적용된 active 클래스를 모두 제거
+            rightButtons.forEach((btn) => {
+                btn.classList.remove('active');
+            });
+            // 현재 클릭한 버튼에만 active 클래스를 추가
+            this.classList.add('active');
+        });
+    });
+
+    function showLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "block";
+    }
+
+    function hideLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "none";
+    }
+
+</script>
 </body>
 </html>

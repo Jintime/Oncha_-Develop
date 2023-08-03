@@ -47,8 +47,6 @@ public class ProductBoardDTO {
 
     private boolean caffeine;
 
-    private boolean allow;
-
     private List<ProductFileDTO> list;
 
     public ProductBoardDTO(ProductBoard productBoard, List<ProductFileDTO> dtos) {

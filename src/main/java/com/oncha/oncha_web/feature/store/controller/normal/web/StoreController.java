@@ -5,6 +5,7 @@ import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class StoreController {
 
     @SetUserInfoInModel
     @GetMapping("")
-    public String Store(Model model, @PageableDefault Pageable pageable){
+    public String Store(Model model, @PageableDefault(size = 4, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
         List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("product",productDTOList);
         return "user/store/store";
