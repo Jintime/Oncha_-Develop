@@ -1,5 +1,6 @@
 package com.oncha.oncha_web.feature.payment.controller;
 
+import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentInfoDTO;
 import com.oncha.oncha_web.feature.payment.service.OnchaPaymentService;
@@ -33,8 +34,10 @@ public class OnchaPaymentController {
         // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
         this.api = new IamportClient("6332301523447220","s6IZNUNmxgPZ5RJe2dUNsSx7axyeIvL49m8cPyAL91XO1TjXO4YWUiQRBCpJ8hIkAHpngtZuq1zXWA0m");
     }
+
+    @SetUserInfoInModel
     @PostMapping("/request_pay/{id}")
-    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id) {
+    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id,Model model) {
         ProductBoardDTO productBoardDTO = productBoardService.findById(id);
         OnchaPaymentInfoDTO onchaPaymentInfoDTO =onchaPaymentService.setPaymentData(productBoardDTO);
         return ResponseEntity.ok(onchaPaymentInfoDTO);

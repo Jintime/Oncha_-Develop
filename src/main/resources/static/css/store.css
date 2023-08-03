@@ -92,3 +92,6 @@ input[type="checkbox"]:checked + label {
     color: white;
     font-size: 13px;
 }
+.check_flavor label{
+    width: 300px;
+}

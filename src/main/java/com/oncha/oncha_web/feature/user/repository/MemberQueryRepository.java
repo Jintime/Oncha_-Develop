@@ -1,10 +1,13 @@
 package com.oncha.oncha_web.feature.user.repository;
 
 import com.oncha.oncha_web.domain.user.model.Member;
+import com.oncha.oncha_web.domain.user.model.QAddress;
+import com.oncha.oncha_web.domain.user.model.QMember;
 import com.oncha.oncha_web.feature.user.model.AddressDTO;
 import com.oncha.oncha_web.feature.user.model.MemberDTO;
 import com.oncha.oncha_web.util.Querydsl4RepositorySupport;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.stereotype.Repository;
 
 import static com.oncha.oncha_web.domain.user.model.QAddress.address;
@@ -13,10 +16,15 @@ import static com.oncha.oncha_web.domain.user.model.QMember.member;
 @Repository
 public class MemberQueryRepository extends Querydsl4RepositorySupport {
 
-    public MemberQueryRepository(){super((Member.class));}
+    public MemberQueryRepository() {
+        super(Member.class);
+    }
 
     public MemberDTO findById(Long id) {
-        return select(Projections.constructor(
+        QMember member = QMember.member;
+        QAddress address = QAddress.address;
+
+        JPAQuery<MemberDTO> query = select(Projections.constructor(
                 MemberDTO.class,
                 member.id,
                 member.userId,
@@ -41,9 +49,14 @@ public class MemberQueryRepository extends Querydsl4RepositorySupport {
                 ))
         ))
                 .from(member)
-                .leftJoin(address).on(address.member.eq(member))
-                .where(member.id.eq(id))
-                .fetchJoin().fetchOne();
-    }
+                .leftJoin(address).on(address.member.eq(member));
 
+        if (id != null) {
+            query.where(member.id.eq(id));
+        } else {
+            query.where(member.id.isNull());
+        }
+
+        return query.fetchOne();
+    }
 }

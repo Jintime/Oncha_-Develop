@@ -4,11 +4,16 @@ import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,9 +23,14 @@ public class StoreController {
 
     @SetUserInfoInModel
     @GetMapping("")
-    public String Store(Model model){return "user/store/store";}
+    public String Store(Model model, @PageableDefault Pageable pageable){
+        List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
+        model.addAttribute("product",productDTOList);
+        return "user/store/store";
+    }
 
 
+    @SetUserInfoInModel
     @GetMapping("/{id}")
     public String ProductInfo(@PathVariable Long id, Model model){
         ProductBoardDTO productDTO = productBoardService.findById(id);

@@ -1,19 +1,26 @@
 @import url(default.css);
+
 .Top_viewContainer{
     display: flex;
     width: 99%;
     margin: 20px auto 0px auto;
     justify-content: space-between;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
+
 .Top_viewContainer .main_view{
     width: 68%;
     height: 450px;
 }
-
+.banner button{
+    top: 90%;
+    text-align: right;
+    right: 10%;
+    width: 100%;
+    font-size: 14px;
+    position: absolute;
+    color: #FFFFFF;
+    font-weight: bold;
+}
 .title_container{
     margin-top: 30px;
     margin-bottom: 10px;
@@ -111,7 +118,8 @@ a{
     line-height: 19px;
     white-space: normal;
     word-break: break-all;
-    height: 30px;
+    height: 40px;
+    margin-top: 5px;
 }
 .price{
     color: #000;
@@ -119,7 +127,7 @@ a{
     font-size: 17px;
     font-style: normal;
     font-weight: 700;
-    height: 2px;
+    margin-top: 20px;
 }
 .inner .drgging{
     cursor: grab;
@@ -152,12 +160,13 @@ a{
     font-style: normal;
     font-weight: 350;
     line-height: normal;
-    height: 5px;
 }
+
 .like_bt{
-    width: 45px;
+    width: 30px;
     top:48%;
     right:5%;
+    display: none;
     position: absolute;
 }
 .icons{

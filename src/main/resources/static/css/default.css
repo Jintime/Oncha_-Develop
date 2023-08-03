@@ -1,12 +1,23 @@
+@import url(reset.css);
 body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.cart_bt img{
+    width: 30px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
 button{
     border: none;
     background-color: unset;
 }
 .nav_barContainer button:hover{
+    color: #FF6600;
+}
+.nav_barContainer a:hover{
     color: #FF6600;
 }
 body{
@@ -23,6 +34,7 @@ img{
     position: absolute;
     background: #FFFFFF;
 }
+
 .nav_barContainer{
     display: flex;
     margin-left: auto;
@@ -31,7 +43,7 @@ img{
     justify-content: space-between;
 
 }
-.nav_barContainer button{
+.left button{
     position: relative;
     width: 80px;
     font-size: 15px;

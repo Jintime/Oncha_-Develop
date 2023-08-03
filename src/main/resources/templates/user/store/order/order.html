@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="/css/order/payInfo.css" rel="stylesheet">
@@ -15,14 +18,18 @@
       <button class="myoncha_bt">마이온차</button>
       <button class="store_bt">스토어</button>
       <button class="teaHouse_bt">티하우스</button>
-      <button class="subscribe_bt">커뮤니티</button>
+      <button class="subscribe_bt">매거진</button>
 
     </div>
     <div class="right">
       <input class="search" type="text" >
       <button th:if="${user == null}" class="login_bt">로그인</button>
-      <a th:unless="${user==null}" th:href="@{/mypage/{id}(id =${user.id})}">
-        <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>
+
+      <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
     </div>
   </div>
   </div>
@@ -55,7 +62,8 @@
         </div>
         <div th:unless="${user==null}" class="buyer_detail">
           <input class="buyer_other" name="buyerName" type="text" style="width:48%; height: 50px;"  th:value="${user.name}">
-          <input class="buyer_other" name="phoneNumber" type="text" style="width: 48%; height: 50px" placeholder="휴대폰번호" th:value="${user.phoneNumber}">
+          <input th:if="${user.phoneNumber==null}" class="buyer_other" name="phoneNumber" type="text" style="width: 48%; height: 50px" placeholder="휴대폰번호">
+          <input th:unless="${user.phoneNumber==null}" class="buyer_other" name="phoneNumber" type="text" style="width: 48%; height: 50px" placeholder="휴대폰번호" th:value="${user.phoneNumber}">
           <input class="buyer_email" name="email" type="text" style="width: 98%; height: 50px" th:value="${user.email}">
         </div>
 
@@ -65,7 +73,7 @@
       <div class="delivery_info">
         <h3>배송정보</h3>
         <div class="delivery_detail">
-          <input type="checkbox"> 주문자 정보와 동일<br>
+          <input type="checkbox" id="sameAsBuyer" onchange="copyBuyerInfo()"> 주문자 정보와 동일<br>
           <input class="buyer_other" name="userName" type="text"  style="width: 48%; height: 50px" placeholder="수령인">
           <input class="buyer_other" name="phoneNumber" type="text" style="width: 48%; height: 50px"  placeholder="연락처"><br>
           <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호" />
@@ -111,22 +119,22 @@
             <input id="creditCard" type="checkbox" value="신용카드">
             <label for="creditCard">신용카드</label>
 
-            <input id="virtualAccount" type="checkbox" value="가상계좌">
+            <input id="virtualAccount" type="checkbox" value="가상계좌" disabled>
             <label for="virtualAccount">가상계좌</label>
 
-            <input id="bank" type="checkbox" value="무통장입금">
+            <input id="bank" type="checkbox" value="무통장입금" disabled>
             <label for="bank">무통장입금</label>
 
-            <input id="kakaoPay" type="checkbox" value="카카오페이">
+            <input id="kakaoPay" type="checkbox" value="카카오페이" disabled>
             <label for="kakaoPay">카카오페이</label>
 
-            <input id="payco" type="checkbox" value="PAYCO">
+            <input id="payco" type="checkbox" value="PAYCO" disabled>
             <label for="payco">페이코</label>
 
-            <input id="samsungPay" type="checkbox" value="삼성페이">
+            <input id="samsungPay" type="checkbox" value="삼성페이" disabled>
             <label for="samsungPay">상성페이</label>
 
-            <input id="phonePay" type="checkbox" value="휴대폰">
+            <input id="phonePay" type="checkbox" value="휴대폰" disabled>
             <label for="phonePay">휴대폰</label>
           </fieldset>
         </div>
@@ -142,7 +150,7 @@
             <input id="payAssent" type="checkbox" value="true">
             <label for="payAssent">구매조건 확인 및 결제 진행에 동의</label><br>
           </fieldset>
-          <button  onclick="iamport()">결제하기</button>
+          <button  onclick="validateForm()">결제하기</button>
         </div>
       </div>
 
@@ -162,16 +170,98 @@
 </footer>
 </body>
 <script>
+  function copyBuyerInfo() {
+    const sameAsBuyer = document.getElementById("sameAsBuyer").checked;
+
+    if (sameAsBuyer) {
+      const buyerName = document.querySelector(".buyer_info input[name='buyerName']").value;
+      const phoneNumber = document.querySelector(".buyer_info input[name='phoneNumber']").value;
+
+      document.querySelector(".delivery_info input[name='userName']").value = buyerName;
+      document.querySelector(".delivery_info input[name='phoneNumber']").value = phoneNumber;
+    } else {
+      // 만약 주문자 정보와 동일 체크박스가 선택 해제되면 수령인 정보를 초기화할 수도 있습니다.
+      document.querySelector(".delivery_info input[name='userName']").value = "";
+      document.querySelector(".delivery_info input[name='phoneNumber']").value = "";
+    }
+  }
+  function validateForm() {
+    // 주문자 정보 입력 유효성 검사
+    const passwordInput = document.getElementsByName("password")[0];
+    const passwordCheckInput = document.getElementsByName("passwordCheck")[0];
+
+    const password = passwordInput ? passwordInput.value : null;
+    const passwordCheck=passwordCheckInput ? passwordCheckInput.value:null;
+
+    const buyerName = document.getElementsByName("buyerName")[0].value;
+    const phoneNumber = document.getElementsByName("phoneNumber")[0].value;
+    const email = document.getElementsByName("email")[0].value;
+    const assent = document.getElementById("assent").checked;
+    const privacy = document.getElementById("privacy").checked;
+    const payAssent = document.getElementById("payAssent").checked;
+
+    if (!assent) {
+      alert("전체 동의에 체크해주세요.");
+      return false;
+    }
+
+    if (!privacy) {
+      alert("개인정보 수집 및 이용에 동의해주세요.");
+      return false;
+    }
+
+    if (!payAssent) {
+      alert("구매조건 확인 및 결제 진행에 동의해주세요.");
+      return false;
+    }
+    if(password!=null){
+      if (buyerName === "" || phoneNumber === "" || email === "" || password === "" || passwordCheck === "") {
+        alert("주문자 정보를 모두 입력해주세요.");
+        return false;
+      }
+
+      if (password !== passwordCheck) {
+        alert("주문 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        return false;
+      }
+    }else{
+      if (buyerName === "" || phoneNumber === "" || email === "") {
+        alert("주문자 정보를 모두 입력해주세요.");
+        return false;
+      }
+    }
+
+
+    // 배송정보 입력 유효성 검사
+    const userName = document.getElementsByName("userName")[0].value;
+    const deliveryPhoneNumber = document.getElementsByName("phoneNumber")[1].value;
+    const zip = document.getElementById("zip").value;
+    const address1 = document.getElementById("address1").value;
+    const address2 = document.getElementById("address2").value;
+
+    if (document.getElementById("sameAsBuyer").checked === false) {
+      if (userName === "" || deliveryPhoneNumber === "" || zip === "" || address1 === "" || address2 === "") {
+        alert("배송정보를 모두 입력해주세요.");
+        return false;
+      }
+    }
+
+    // 유효성 검사 통과 시 결제 진행
+    iamport();
+    return true;
+  }
   function iamport() {
     const currentURL = window.location.href;
     const pattern = /\d+$/;
     const match = currentURL.match(pattern);
     const lastNumber = match ? match[0] : '';
 
+    console.log(lastNumber);
     $.ajax({
       type: "POST",
       url: `/request_pay/`+lastNumber,
       success: function (res) {
+        console.log(res);
         IMP.init("imp85443833");
         IMP.request_pay({
           pg: 'kcp.A52CY',
