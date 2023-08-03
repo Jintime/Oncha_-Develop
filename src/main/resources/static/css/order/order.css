@@ -129,11 +129,12 @@ h3{
     text-align: left;
 }
 .review_borad,.inquiry_board,.Q\&A_board,.delivery_board{
-    text-align: center;
+    text-align: left;
     border-top: 1px solid;
     border-bottom: 1px solid;
     padding: 50px;
     font-size: 14px;
+    white-space: pre-line;
 }
 .more_info_bt{
     width: 80%;
