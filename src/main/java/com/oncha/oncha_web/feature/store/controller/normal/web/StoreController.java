@@ -4,6 +4,7 @@ import com.oncha.oncha_web.aop.annotation.SetUserInfoInModel;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
 import com.oncha.oncha_web.feature.product.productBoard.service.ProductBoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -23,11 +24,20 @@ public class StoreController {
 
     @SetUserInfoInModel
     @GetMapping("")
-    public String Store(Model model, @PageableDefault Pageable pageable){
-        List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
-        model.addAttribute("product",productDTOList);
+    public String Store(Model model, @PageableDefault(page = 0) Pageable pageable) {
+        Page<ProductBoardDTO> productDTOList = productBoardService.paging(pageable);
+        int blockLimit = 4; // 페이징 블록 크기
+        int currentPage = pageable.getPageNumber(); // 요청한 페이지 번호
+        int startPage = (currentPage / blockLimit) * blockLimit + 1;
+        int endPage = Math.min(startPage + blockLimit - 1, productDTOList.getTotalPages());
+
+        model.addAttribute("product", productDTOList);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
         return "user/store/store";
     }
+
 
 
     @SetUserInfoInModel
