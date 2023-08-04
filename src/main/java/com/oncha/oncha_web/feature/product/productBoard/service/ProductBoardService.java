@@ -15,7 +15,10 @@ import com.oncha.oncha_web.feature.s3.S3FileDto;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,6 +53,19 @@ public class ProductBoardService {
         }
     }
 
+
+    @Transactional
+    public Page<ProductBoardDTO> paging(Pageable pageable) {
+        int page = pageable.getPageNumber();
+        int pageLimit = 4; // 한 페이지에 보여줄 글 갯수
+
+        // 한 페이지당 3개씩 글을 보여주고 정렬 기준은 id 기준으로 내림차순 정렬
+        Page<ProductBoard> boardEntities =
+                productBoardRepository.findAll(PageRequest.of(page, pageLimit, Sort.by(Sort.Direction.DESC, "id")));
+
+        // 목록: id, writer, title, hits, createdTime
+        return boardEntities.map(ProductBoardDTO::new);
+    }
 
     @Transactional(readOnly = true)
     public List<ProductBoardDTO> findAll(Pageable pageable) {

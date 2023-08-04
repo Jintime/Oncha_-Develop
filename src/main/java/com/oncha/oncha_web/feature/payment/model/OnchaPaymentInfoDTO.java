@@ -15,6 +15,9 @@ public class OnchaPaymentInfoDTO {
     private String buyer_name;
     private String buyer_email;
     private String phone_number;
+    private String zip_code;
+    private String address;
+    private String address_detail;
     private Long seller_id;
 
 }

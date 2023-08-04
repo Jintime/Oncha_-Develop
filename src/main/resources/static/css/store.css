@@ -6,6 +6,10 @@ input[type="checkbox"]:checked + label {
 .best_tea_container{
     margin-top: 50px;
 }
+
+.page_wrap{
+    text-align: center;
+}
 .store_filter_wrap table{
     border: 1px solid #EEE;
     border-spacing: 0px;
