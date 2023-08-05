@@ -37,9 +37,8 @@ public class OnchaPaymentController {
 
     @SetUserInfoInModel
     @PostMapping("/request_pay/{id}")
-    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id,Model model) {
-        ProductBoardDTO productBoardDTO = productBoardService.findById(id);
-        OnchaPaymentInfoDTO onchaPaymentInfoDTO =onchaPaymentService.setPaymentData(productBoardDTO);
+    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id,@RequestBody OnchaPaymentInfoDTO onchaPaymentInfoDTO,Model model) {
+        onchaPaymentService.setPaymentData(onchaPaymentInfoDTO);
         return ResponseEntity.ok(onchaPaymentInfoDTO);
     }
     @ResponseBody
