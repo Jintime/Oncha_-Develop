@@ -37,7 +37,7 @@ public class Address {
     @Builder
     public Address(Long id, String default_zipcode,String default_address,String default_address_detail,
                    String spare_zipcode,String spare_address, String spare_address_detail,
-                   String spare2_zipcode,String spare2_address,String spare2_address_detail){
+                   String spare2_zipcode,String spare2_address,String spare2_address_detail,Member member){
         this.id = id;
         this.default_zipcode = default_zipcode;
         this.default_address = default_address;
@@ -48,6 +48,7 @@ public class Address {
         this.spare2_zipcode = spare2_zipcode;
         this.spare2_address = spare2_address;
         this.spare2_address_detail = spare2_address_detail;
+        this.member = member;
     }
 
     public static Address toAddress(AddressDTO addressDTO){

@@ -35,10 +35,7 @@ public class OnchaPaymentService {
     private final OnchaPaymentRepository onchaPaymentRepository;
     private final PaymentQueryRepository paymentQueryRepository;
     private final AddressRepository addressRepository;
-    private final MemberService memberService;
-    private final AddressService addressService;
     private final MemberRepository memberRepository;
-
 
     // 결제 정보를 저장하는 메서드
     @Transactional
@@ -53,20 +50,25 @@ public class OnchaPaymentService {
         data.setPhone_number(paymentRequest.getResponse().getBuyerTel());
         onchaPaymentRepository.save(OnchaPayment.toPayment(data));
     }
+
+    @Transactional
     public OnchaPaymentInfoDTO setPaymentData(OnchaPaymentInfoDTO onchaPaymentInfoDTO) {
         Long userId = SecurityUtil.getCurrentId().orElse(null);
         Member member = memberRepository.findById(userId).orElse(null);
         Address address = addressRepository.findByMemberId(userId);
 
         if (member != null) {
-        if (address == null) {
-            address = Address.builder().
-                     default_zipcode(onchaPaymentInfoDTO.getZip_code())
-                    .default_address(onchaPaymentInfoDTO.getAddress())
-                    .default_address_detail(onchaPaymentInfoDTO.getAddress_detail()).build();
+            if (address == null) {
+                address = Address.builder().
+                         default_zipcode(onchaPaymentInfoDTO.getZip_code())
+                        .default_address(onchaPaymentInfoDTO.getAddress())
+                        .default_address_detail(onchaPaymentInfoDTO.getAddress_detail())
+                        .member(member).build();
         }
             member.getAddressList().add(address);
+            addressRepository.save(address);
             memberRepository.save(member);
+
         }
 
         return onchaPaymentInfoDTO;
