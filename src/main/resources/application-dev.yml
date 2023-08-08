@@ -23,3 +23,6 @@ jwt:
   token-validity-in-Mill-Seconds: 3000000 #토큰만료시간 8시간
   refresh-secret: b25jaGEtbnVtdS1oaW1kdWxkYS1oYS1qaS1tYW4tdS1yaS1uZW4taGFsLXN1LWl0LWRhLWtpbS1ieXVuZy1qdW4ta2ltLWppbi1zdW5nLXRoLWlzLWlzLXJlLWZyZXNoLWtleQ==
   refresh-validity-in-Mill-Seconds : 604800000
+
+cookie:
+  domain: localhost

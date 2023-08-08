@@ -2,6 +2,7 @@ package com.oncha.oncha_web.config;
 import com.oncha.oncha_web.security.filter.JwtFilter;
 import com.oncha.oncha_web.security.jwt.JwtAccessDeniedHandler;
 import com.oncha.oncha_web.security.jwt.JwtAuthenticationEntryPoint;
+import com.oncha.oncha_web.security.jwt.JwtTokenUtil;
 import com.oncha.oncha_web.security.jwt.TokenProvider;
 import com.oncha.oncha_web.security.oauth.OAuthLoginFailureHandler;
 import com.oncha.oncha_web.security.oauth.OAuthLoginSuccessHandler;
@@ -30,11 +31,12 @@ public class SecurityConfig {
 
     private final JwtAccessDeniedHandler accessDeniedHandler;
     private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+    private final JwtTokenUtil jwtTokenUtil;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web
-                .ignoring().requestMatchers("/h2-console/**","/favicon.ico", "/static /**");
+                .ignoring().requestMatchers("/h2-console/**","/favicon.ico", "/static/**");
     }
 
     @Bean
@@ -68,7 +70,7 @@ public class SecurityConfig {
                     .successHandler(oAuthLoginSuccessHandler)
                     .failureHandler(oAuthLoginFailureHandler);
 
-        http.addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JwtFilter(tokenProvider, jwtTokenUtil), UsernamePasswordAuthenticationFilter.class);
 //        http.addFilterBefore(new RefererFilter(), JwtFilter.class);
         return http.build();
     }

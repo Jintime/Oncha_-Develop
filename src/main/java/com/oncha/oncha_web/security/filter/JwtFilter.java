@@ -29,6 +29,8 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final TokenProvider tokenProvider;
+
+    private final JwtTokenUtil jwtTokenUtil;
 //
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -74,17 +76,17 @@ public class JwtFilter extends OncePerRequestFilter { //처음들어올때 한�
     }
 
     private void resetRefreshCookie(HttpServletResponse response) {
-        JwtTokenUtil.removeTokenInCookie(response);
+        jwtTokenUtil.removeTokenInCookie(response);
     }
 
     //request header에서 토큰정보를 꺼내오기 위한 메소드
     private String resolveTokenByCookie (HttpServletRequest request) {
-        Cookie cookie = CookieUtil.getCookie(request, TokenProvider.ACCESS_TOKEN_KEY).orElse(null);
+        Cookie cookie = jwtTokenUtil.getAccessTokenInCookie(request);
         return cookie == null ? null : cookie.getValue();
     }
 
     private String resolveRefreshByCookie (HttpServletRequest request) {
-        Cookie cookie = CookieUtil.getCookie(request, TokenProvider.REFRESH_TOKEN_KEY).orElse(null);
+        Cookie cookie = jwtTokenUtil.getAccessTokenInCookie(request);
         return cookie == null ? null : cookie.getValue();
     }
 
