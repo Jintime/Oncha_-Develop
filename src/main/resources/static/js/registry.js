@@ -2,10 +2,10 @@ import {initializePostCode, getPostCode} from './util/daumpostcode.js';
 
 (function onLoadPostCode () {
   initializePostCode();
-  const button = document.getElementById("postcodebutton");
+  const button = document.querySelector(".postcodebutton");
   const data = {};
-  const zip = document.querySelector("#zip");
-  const address = document.querySelector("#address1");
+  const zip = document.querySelector(".zip");
+  const address = document.querySelector(".address1");
   const array = [
     {
       propertyName : 'zonecode',

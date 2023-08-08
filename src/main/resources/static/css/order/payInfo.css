@@ -10,7 +10,7 @@ h1{
     font-weight: 700;
     line-height: 33.6px; /* 120% */
 }
-#postcodebutton{
+.postcodebutton{
     border-radius: 2px;
     border: 1px solid #DDD;
     background: #F2F2F2;
