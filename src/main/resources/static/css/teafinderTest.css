@@ -1,0 +1,114 @@
+@import url(default.css);
+#main{display: block;}
+#qna{display: none;}
+#result{display: none;}
+
+
+.status{
+    height: 20px;
+    width: 80%;
+    background-color: white;
+    border-radius: 20px;
+}
+.qBox{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 50px;
+}
+#main button,#qna button{
+    border: 1px solid #F60;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background-color: #ffffff00;
+    margin: 100px 10px 0 10px;
+    padding: 10px;
+}
+h3{
+    color: #F60;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#main p{
+    margin-top: 50px;
+}
+.bg{
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+.img-fluid{
+    width: 320px;
+    margin-top: 50px;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.resultName{
+    color: #F60;
+    font-size: 24px;
+    margin-top: 50px;
+}
+.resultDesc{
+    width: 50%;
+    margin: 50px auto;
+}
+section{
+    text-align: center;
+    margin-top: 100px;
+}
+.cup{
+    margin-top: 100px;
+    width: 250px;
+}
+.statusBar{
+    height: 100%;
+    background-color:#F60;
+    border-radius: 20px;
+}
+
+@keyframes fadeIn {
+    from{ opacity: 0;}
+    to{ opacity: 1 ;}
+}
+
+@keyframes fadeOut {
+    from{ opacity: 1;}
+    to{ opacity: 0 ;}
+}
+@-webkit-keyframes fadeIn {
+    from{ opacity: 0;}
+    to{ opacity: 1 ;}
+}
+
+@-webkit-keyframes fadeOut {
+    from{ opacity: 1;}
+    to{ opacity: 0 ;}
+}
+.fadeIn{
+    animation: fadeIn;
+    animation-duration: 0.5s;
+}
+.fadeOut{
+    animation: fadeOut;
+    animation-duration: 0.5s;
+}

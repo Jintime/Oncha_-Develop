@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="/css/board/css.css">
+</head>
+<body>
+<div class="board_wrap">
+    <div class="board_title">
+        <strong>제품 등록</strong>
+        <p>제품을 등록할수있는 공간입니다.</p>
+    </div>
+    <form action="/product/write" method="post" enctype="multipart/form-data" id="write_form">
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input name="title" class="title" type="text" placeholder="제목"></dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>판매업체</dt>
+                        <dd><input name="companyId" id="companyId" value="1" readonly></input></dd>
+                    </dl>
+                    <dl>
+                        <dt>이미지</dt>
+                        <dd> <input type="file" name="productFile" multiple class="image" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>원산지</dt>
+                        <select name="origin_nation" id="origin_nation" form="write_form">
+                            <option value="스리랑카">스리랑카</option>
+                            <option value="다즐링">다즐링</option>
+                            <option value="아쌈">아쌈</option>
+                            <option value="닐기리">닐기리</option>
+                            <option value="케냐">케냐</option>
+                            <option value="네팔">네팔</option>
+                            <option value="누와라엘리야">누와라엘리야</option>
+                            <option value="딤블라">딤블라</option>
+                            <option value="캔디">캔디</option>
+                            <option value="라트나푸라">라트나푸라</option>
+                            <option value="복건성">복건성</option>
+                            <option value="안휘성">안휘성</option>
+                            <option value="운남성">운남성</option>
+                            <option value="교토">교토</option>
+                            <option value="시즈오카">시즈오카</option>
+                            <option value="보성">보성</option>
+                            <option value="하동">하동</option>
+                            <option value="제주">제주</option>
+                        </select>
+                    </dl>
+                    <dl>
+                        <dt>맛과 향</dt>
+                        <select name="flavor" id="flavor" form="write_form">
+                            <option value="풀">풀</option>
+                            <option value="채소">채소</option>
+                            <option value="허브">허브</option>
+                            <option value="꽃">꽃</option>
+                            <option value="트로피칼">트로피칼</option>
+                            <option value="시트러스">시트러스</option>
+                            <option value="베리">베리</option>
+                            <option value="과일">과일</option>
+                            <option value="달콤함">달콤함</option>
+                            <option value="매콤함">매콤함</option>
+                            <option value="견과">견과</option>
+                            <option value="바다">바다</option>
+                            <option value="흙">흙</option>
+                            <option value="나무">나무</option>
+                        </select>
+                    </dl>
+                    <dl>
+                        <dt>차종</dt>
+                        <select name="category" id="category" form="write_form">
+                            <option value="녹차">녹차</option>
+                            <option value="홍차">홍차</option>
+                            <option value="백차">백차</option>
+                            <option value="흑차">흑차</option>
+                            <option value="황차">황차</option>
+                            <option value="청차">청차</option>
+                            <option value="허브차">허브차</option>
+                        </select>
+                    </dl>
+                    <dl>
+                        <dt>블랜딩</dt>
+                        <select name="blended" id="blended" form="write_form">
+                            <option value="블랜디드">블렌디드</option>
+                            <option value="싱글오리진">싱글오리진</option>
+                            <option value="뉴타입">뉴타입</option>
+                        </select>
+                    </dl>
+                    <dl>
+                        <dt>유형</dt>
+                        <select name="type" id="type" form="write_form">
+                            <option value="액상">액상</option>
+                            <option value="잎차">잎차</option>
+                            <option value="티백">티백</option>
+                            <option value="청">청</option>
+                            <option value="가루">가루</option>
+                        </select>
+                    </dl>
+                    <dl>
+                        <dt>카페인</dt>
+                        <select name="caffeine" id="caffeine" form="write_form">
+                            <option value="true">유</option>
+                            <option value="false">무</option>
+                        </select>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <textarea name="detail" class="detail" placeholder="이미지 파일은 가게명_제품명으로 입력해주세요."></textarea>
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <button type="submit"  class="on">등록</button>
+                <button type="button"  class="cancel">취소</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+<script src="/js/buttonManager.js"></script>
+</html>

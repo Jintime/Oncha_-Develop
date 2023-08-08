@@ -1,0 +1,136 @@
+@import url(/css/default.css);
+h1{
+    color: #f60;
+    left: 46%;
+    position: absolute;
+}
+#postcodebutton{
+    border-radius: 2px;
+    border: 1px solid #DDD;
+    background: #F2F2F2;
+}
+.agree_detail button{
+    color: #FFF;
+    text-align: center;
+    font-family: Malgun Gothic;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21.333px; /* 152.381% */
+    background: #F60;
+    width: 100%;
+    height: 50px;
+}
+fieldset{
+    border: none;
+}
+h3{
+    margin-top: 30px;
+    color: #20252B;
+    font-family: Noto Sans KR Medium;
+    font-size: 19.29px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27.006px;
+    margin-left: 25px;
+}
+.pay_info_wrap{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #FFFAF6;
+    height: 1200px;
+    padding-top: 150px;
+}
+.pay_info{
+    display: flex;
+    width: 90%;
+    margin: 0 auto 0 auto;
+}
+.pay_info div{
+    width: 50%;
+}
+.info_left{
+    text-align: left;
+}
+.info_right{
+    text-align: right;
+}
+.order_detail_wrap{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+.product_info ,.buyer_info, .delivery_info,.pay_detail,.pay_type_wrap,.agree_wrap{
+    background-color: white;
+    width: 90%;
+    margin: 20px auto 0 auto;
+}
+.product_info{
+    height: 280px;
+}
+.delivery_info{
+    height: 520px;
+}
+.buyer_other{
+    width: 220px;
+}
+.buyer_detail,.delivery_detail,.pay_detail.buyer_info,.pay_info,
+.pay_type_detail,.agree_detail{
+    width: 90%;
+    margin:0 auto 0 auto;
+}
+.buyer_detail input , .delivery_detail input{
+    height: 30px;
+    border:1px solid #DDD;
+    margin-bottom: 10px;
+}
+.buyer_info{
+    height: 300px;
+}
+.buyer_email{
+    width: 450px;
+}
+.product_detail img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+.product_detail{
+    display: flex;
+    width: 520px;
+    flex-wrap: wrap;
+    border: 1px solid rgba(33, 33, 33, 0.15);
+    margin: auto;
+}
+.info{
+    width: 70%;
+    margin-left: 20px;
+}
+.product_info button{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(240, 239, 239);
+}
+
+.pay_detail_wrap{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+.pay_type_wrap input{
+    text-align: center;
+}
+.pay_type_detail label{
+    display: inline-block;
+    width: 40%;
+}
+.total_price{
+    color: #F60;
+    text-align: right;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 142.857% */
+}

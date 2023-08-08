@@ -5,21 +5,23 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(name = "product_board")
+@SQLDelete(sql = "update product_board set deleted_at = now() where id = ?")
 public class ProductBoard extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 100)
+    private Long companyId;
 
     @Column(length = 200)
     private String title;
@@ -42,25 +44,25 @@ public class ProductBoard extends BaseEntity {
     @Column(length = 30)
     private String category;
 
+    @Column(length = 50)
+    private String blended;
 
-    private int weight;
-    private int price;
-    private int product_count;
-    private int view;
-    private int love;
+    private Integer weight;
+    private Integer price;
+    private Integer product_count;
+    private Integer view;
+    private Integer love;
+    private Boolean caffeine;
 
-    private boolean blended;
-    private boolean caffeine;
-
-    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<ProductFile> productFileList= new ArrayList<>();
-
+    @OneToMany(mappedBy = "productBoard",cascade = CascadeType.REMOVE,orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ProductFile> productFiles;
 
     @Builder
-    public ProductBoard(Long id, String title, String detail, String product_name, String origin_nation,
+    public ProductBoard(Long id,long companyId, String title, String detail, String product_name, String origin_nation,
                         String type, String flavor, String category, int weight, int price, int product_count,
-                        int view, int love, boolean blended, boolean caffeine){
+                        int view, int love, String blended, boolean caffeine,boolean allow){
         this.id =id;
+        this.companyId = companyId;
         this.title = title;
         this.detail = detail;
         this.product_name=product_name;
@@ -80,6 +82,7 @@ public class ProductBoard extends BaseEntity {
     public static ProductBoard toProductBoard(RequestProductBoard requestProductBoard){
         return ProductBoard.builder()
                 .id(requestProductBoard.getId())
+                .companyId(requestProductBoard.getCompanyId())
                 .title(requestProductBoard.getTitle())
                 .detail(requestProductBoard.getDetail())
                 .product_name(requestProductBoard.getProduct_name())
@@ -92,7 +95,7 @@ public class ProductBoard extends BaseEntity {
                 .product_count(requestProductBoard.getProduct_count())
                 .view(requestProductBoard.getView())
                 .love(requestProductBoard.getLike())
-                .blended(requestProductBoard.isBlended())
+                .blended(requestProductBoard.getBlended())
                 .caffeine(requestProductBoard.isCaffeine())
                 .build();
     }

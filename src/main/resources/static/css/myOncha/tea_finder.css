@@ -1,0 +1,129 @@
+@import url(/css/default.css);
+*{text-align: center;}
+table{
+    margin: auto;
+}
+.tea_finder_wrap{
+    position: relative;
+    margin-top: 50px;
+}
+h1,h2,h4{
+    color: #F60;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Inter;
+    padding-top: 50px;
+}
+.tea_finder_wrap table{
+    border-spacing:20px;
+}
+.tea_finder_inner button{
+    color: white;
+    font-weight: 600;
+}
+.tea_finder_wrap th{
+    width: 100px;
+    height: 100px;
+    background-color: #FF6600;
+}
+.tea_finder_wrap_bg {
+    position: absolute;
+    background: rgba(255, 102, 0, 0.05);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+.tea_finder_bt{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #F60;
+    background-color: white;
+    border: 3px solid #F60;
+    margin: 50px;
+}
+.td_head{
+    font-size: 23px;
+    font-weight: 700;
+}
+.td_tail{
+    font-size: 11px;
+    font-weight: 400;
+}
+.product_inner{
+    width: calc(24%);
+    height: 100%;
+    display: inline-block;
+    border-radius: 8px;
+    position: relative;
+}
+.like_bt{
+    width: 45px;
+    top:48%;
+    right:5%;
+    position: absolute;
+ }
+.icons{
+    vertical-align: middle;
+display: inline-block;
+margin-right:5px ;
+height: 15px;
+}
+.product_inner span{
+    margin-right: 5px;
+    font-size: 14px;
+ }
+ .type{
+    font-size: 8px;
+    color: gray;
+ }
+ .title{
+    font-weight: bold;
+    white-space: normal;
+    word-break: break-all;
+    height: 50px;
+ }
+ .keyWoard_details_wrap th{
+    color: #F60;
+ }
+ .keyWoard_details_wrap td{
+    width: 300px;
+ }
+ .keyWoard_details_wrap img{
+    width: 50%;
+ }
+ .keyWoard_details_wrap span{
+    color: #F60;
+    font-size: 12px;
+ }
+ .keyWoard_details_wrap button{
+    height: 100px;
+    width: 100px;
+    color: #F60;
+    border: 1px solid #F60;
+ }
+ .tea_recommend_wrap{
+    position: relative;
+ }
+ .tea_finder_bg {
+    position: absolute;
+    left: 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .other_tea_bt{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: #F60;
+    border: 3px solid #F60;
+    margin: 50px;
+ }

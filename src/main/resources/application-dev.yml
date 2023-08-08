@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://login-lecture.cindj3n0yfz1.ap-northeast-2.rds.amazonaws.com:3306/login_lecture
+    username: admin
+    password: vksek7827391
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+jwt:
+  header: Authorization
+  secret: b25jaGEtbnVtdS1qb2EtdS1yaS1uZW4taGFsLXN1LWl0LWRhLWtpbS1ieXVuZy1qdW4ta2ltLWppbi1zdW5nLXRoLWlzLWlzLXNlLWNyZWF0LWtlLXk=
+  # 키가 256 bit보다 커야함 낮으면 weakKeyException 이 나타남
+  token-validity-in-Mill-Seconds: 3000000 #토큰만료시간 8시간
+  refresh-secret: b25jaGEtbnVtdS1oaW1kdWxkYS1oYS1qaS1tYW4tdS1yaS1uZW4taGFsLXN1LWl0LWRhLWtpbS1ieXVuZy1qdW4ta2ltLWppbi1zdW5nLXRoLWlzLWlzLXJlLWZyZXNoLWtleQ==
+  refresh-validity-in-Mill-Seconds : 604800000
+
+cookie:
+  domain: localhost
