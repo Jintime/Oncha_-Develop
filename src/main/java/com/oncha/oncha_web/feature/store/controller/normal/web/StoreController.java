@@ -27,7 +27,7 @@ public class StoreController {
     @GetMapping("")
     public String Store(Model model, @PageableDefault(page = 0) Pageable pageable) {
         Page<ProductBoardDTO> productDTOList = productBoardService.paging(pageable);
-        int blockLimit = 4; // 페이징 블록 크기
+        int blockLimit = 20; // 페이징 블록 크기
         int currentPage = pageable.getPageNumber(); // 요청한 페이지 번호
         int startPage = (currentPage / blockLimit) * blockLimit + 1;
         int endPage = Math.min(startPage + blockLimit - 1, productDTOList.getTotalPages());

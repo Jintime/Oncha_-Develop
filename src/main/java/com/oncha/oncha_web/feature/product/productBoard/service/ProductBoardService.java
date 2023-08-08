@@ -57,7 +57,7 @@ public class ProductBoardService {
     @Transactional
     public Page<ProductBoardDTO> paging(Pageable pageable) {
         int page = pageable.getPageNumber();
-        int pageLimit = 4; // 한 페이지에 보여줄 글 갯수
+        int pageLimit = 20; // 한 페이지에 보여줄 글 갯수
 
         // 한 페이지당 3개씩 글을 보여주고 정렬 기준은 id 기준으로 내림차순 정렬
         Page<ProductBoard> boardEntities =

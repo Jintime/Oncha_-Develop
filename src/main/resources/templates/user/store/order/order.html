@@ -43,9 +43,9 @@
         <div class="product_detail">
           <img th:src="${product.list.get(0).url}" src="img/프로덕트칸.png">
           <div class="info">
-            <p th:text="${product.title}">타이틀 테스트입니다</p>
+            <p class="product_title" th:text="${product.title}">타이틀 테스트입니다</p>
             <p><a>옵션</a>없음 0개</p>
-            <p th:text="${product.price}">1,000원</p>
+            <p class="product_price" th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|">1,000원</p>
           </div>
           <button>배송비 3,000원</button>
         </div>
@@ -86,6 +86,12 @@
           <input name="address1" type="text" id="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
           <input name="address2" type="text" id="address2" style="width:98%; height:50px;" placeholder="상세" />
           </span>
+          <span th:unless="${user.addressDTOList==null}">
+          <input name="zip" type="text" style="width: 120px; height: 50px" th:value="${user.addressDTOList[0].default_zipcode}">
+          <br>
+            <input name="address1" type="text" style="width: 98%; height: 50px;" readonly th:value="${user.addressDTOList[0].default_address}">
+            <input name="address2" type="text" style="width: 98%; height: 50px" readonly th:value="${user.addressDTOList[0].default_address_detail}">
+          </span>
           <h4>배송메모</h4>
           <input type="text" style="width: 98%;height: 50px" placeholder="배송메모를 선택해주세요">
         </div>
@@ -106,11 +112,11 @@
             <p>총 주문금액</p>
           </div>
           <div class="info_right">
-            <p>10,000원</p>
+            <p th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|">10,000원</p>
             <p>무료</p>
             <p>없음</p>
             <hr>
-            <p class="total_price"> 00000 원</p>
+            <p th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|" class="total_price"> 00000 원</p>
           </div>
         </div>
 

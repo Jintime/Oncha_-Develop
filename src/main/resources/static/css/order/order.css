@@ -3,6 +3,15 @@ li ,ul{
     list-style: none;
     padding: 0;
 }
+h2{
+    color: #000;
+    font-family: Malgun Gothic;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .detail table {
     width: 70%;
     margin: auto;
@@ -51,6 +60,9 @@ h3{
 .more_info_wrap{
     display: none;
 }
+.option_wrap{
+    margin-top: 10px;
+}
 .option_wrap a{
     display:inline-block;
     width: 49%;
@@ -73,7 +85,7 @@ h3{
 }
 .inner_info td{
     width: 400px;
-    font-size: 14px;
+    font-size: 12px;
 }
 .company_info_wrap p {
     margin: 0px;
