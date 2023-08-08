@@ -43,9 +43,9 @@
         <div class="product_detail">
           <img th:src="${product.list.get(0).url}" src="img/프로덕트칸.png">
           <div class="info">
-            <p th:text="${product.title}">타이틀 테스트입니다</p>
+            <p class="product_title" th:text="${product.title}">타이틀 테스트입니다</p>
             <p><a>옵션</a>없음 0개</p>
-            <p th:text="${product.price}">1,000원</p>
+            <p class="product_price" th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|">1,000원</p>
           </div>
           <button>배송비 3,000원</button>
         </div>
@@ -76,10 +76,22 @@
           <input type="checkbox" id="sameAsBuyer" onchange="copyBuyerInfo()"> 주문자 정보와 동일<br>
           <input class="buyer_other" name="userName" type="text"  style="width: 48%; height: 50px" placeholder="수령인">
           <input class="buyer_other" name="phoneNumber" type="text" style="width: 48%; height: 50px"  placeholder="연락처"><br>
-          <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호" />
-          <button id= "postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button><br>
+          <input type="radio" name="delivery_info" id="1" value="default"><label for="1">기본배송지</label>
+          <input type="radio" name="delivery_info" id="2" value="default"><label for="2">최근배송지</label>
+          <input type="radio" name="delivery_info" id="3" value="default"><label for="3">배송지입력</label><br>
+          <span th:if="${user.addressDTOList==null}">
+          <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
+          <button id= "postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button>
+          <br>
           <input name="address1" type="text" id="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
           <input name="address2" type="text" id="address2" style="width:98%; height:50px;" placeholder="상세" />
+          </span>
+          <span th:unless="${user.addressDTOList==null}">
+          <input name="zip" type="text" style="width: 120px; height: 50px" th:value="${user.addressDTOList[0].default_zipcode}">
+          <br>
+            <input name="address1" type="text" style="width: 98%; height: 50px;" readonly th:value="${user.addressDTOList[0].default_address}">
+            <input name="address2" type="text" style="width: 98%; height: 50px" readonly th:value="${user.addressDTOList[0].default_address_detail}">
+          </span>
           <h4>배송메모</h4>
           <input type="text" style="width: 98%;height: 50px" placeholder="배송메모를 선택해주세요">
         </div>
@@ -100,11 +112,11 @@
             <p>총 주문금액</p>
           </div>
           <div class="info_right">
-            <p>10,000원</p>
+            <p th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|">10,000원</p>
             <p>무료</p>
             <p>없음</p>
             <hr>
-            <p class="total_price"> 00000 원</p>
+            <p th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|" class="total_price"> 00000 원</p>
           </div>
         </div>
 
@@ -200,6 +212,14 @@
     const privacy = document.getElementById("privacy").checked;
     const payAssent = document.getElementById("payAssent").checked;
 
+    // 배송정보 입력 유효성 검사
+    const userName = document.getElementsByName("userName")[0].value;
+    const deliveryPhoneNumber = document.getElementsByName("phoneNumber")[1].value;
+    const zip = document.getElementById("zip").value;
+    const address1 = document.getElementById("address1").value;
+    const address2 = document.getElementById("address2").value;
+    let data ={};
+
     if (!assent) {
       alert("전체 동의에 체크해주세요.");
       return false;
@@ -214,6 +234,14 @@
       alert("구매조건 확인 및 결제 진행에 동의해주세요.");
       return false;
     }
+
+    if (document.getElementById("sameAsBuyer").checked === false) {
+      if (userName === "" || deliveryPhoneNumber === "" || zip === "" || address1 === "" || address2 === "") {
+        alert("배송정보를 모두 입력해주세요.");
+        return false;
+      }
+    }
+
     if(password!=null){
       if (buyerName === "" || phoneNumber === "" || email === "" || password === "" || passwordCheck === "") {
         alert("주문자 정보를 모두 입력해주세요.");
@@ -224,33 +252,37 @@
         alert("주문 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
         return false;
       }
+      data = {
+        buyer_name:`${buyerName}`,
+        buyer_email:`${email}`,
+        phone_number:`${phoneNumber}`,
+        zip_code:`${zip}`,
+        address:`${address1}`,
+        address_detail:`${address2}`,
+        password : `${password}`
+      }
     }else{
       if (buyerName === "" || phoneNumber === "" || email === "") {
         alert("주문자 정보를 모두 입력해주세요.");
         return false;
       }
-    }
-
-
-    // 배송정보 입력 유효성 검사
-    const userName = document.getElementsByName("userName")[0].value;
-    const deliveryPhoneNumber = document.getElementsByName("phoneNumber")[1].value;
-    const zip = document.getElementById("zip").value;
-    const address1 = document.getElementById("address1").value;
-    const address2 = document.getElementById("address2").value;
-
-    if (document.getElementById("sameAsBuyer").checked === false) {
-      if (userName === "" || deliveryPhoneNumber === "" || zip === "" || address1 === "" || address2 === "") {
-        alert("배송정보를 모두 입력해주세요.");
-        return false;
+      data = {
+        buyer_name:`${buyerName}`,
+        buyer_email:`${email}`,
+        phone_number:`${phoneNumber}`,
+        zip_code:`${zip}`,
+        address:`${address1}`,
+        address_detail:`${address2}`,
       }
     }
 
+
+
     // 유효성 검사 통과 시 결제 진행
-    iamport();
+    iamport(data);
     return true;
   }
-  function iamport() {
+  function iamport(data) {
     const currentURL = window.location.href;
     const pattern = /\d+$/;
     const match = currentURL.match(pattern);
@@ -260,6 +292,9 @@
     $.ajax({
       type: "POST",
       url: `/request_pay/`+lastNumber,
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      dataType: "json",
       success: function (res) {
         console.log(res);
         IMP.init("imp85443833");

@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="/css/order/order.css" rel="stylesheet">
-    <link href="/css/test.css" rel="stylesheet">
 
 </head>
 <body>
@@ -53,7 +52,6 @@
                 <ul>
                     <hr>
                     <h1 class="productName" th:text="${product.title}">특가 배송테스트</h1>
-                    <li>***** <a>00개의 리뷰보기</a></li>
                     <li th:text="${product.origin_nation}">원산지</li>
                     <li th:text="${product.type}">타입</li>
                     <li class="productDetail" th:text="${product.detail}">여기에 간단히 제품을 설명을 블라블라 아리가또 숑숑숑 무슨 말을 해야할까?
@@ -90,7 +88,6 @@
      
             <button class="more_info_bt">상품설명 더보기</button>
         <div class="more_info_wrap">
-        <a th:text="${product.product_name}"></a>
         <div class="button_panel">
             <button class="product_info_bt">상품설명</button>
             <button class="product_detail_bt">상세정보</button>
@@ -101,104 +98,36 @@
             <p th:text="${product.detail}">
         </div>
         <div class="detail">
-            <div class="product_info">  
-                <table>
-                    <h3>상품 정보 보기</h3>
-                    <tbody>
-                    <tr>
-                        <th>티 타입</th><td th:text="${product.type}"></td>
-                    </tr>
-                    <tr>
-                        <th>상품이름</th><td th:text="${product.product_name}"></td>
-                    </tr>
-                    <tr>
-                        <th>원산지</th><td th:text="${product.origin_nation}"></td>
-                    </tr>
-                    <tr>
-                        <th>분류</th><td th:text="${product.category}"></td>
-                    </tr>
-                    <tr>
-                        <th>중량</th><td th:text="${product.weight}">g</td>
-                    </tr>
-                    <tr>
-                        <th>블렌디드</th><td th:text="${product.blended}">o</td>
-                    </tr>
-                    <tr>
-                        <th>카페인</th><td th:text="${product.caffeine}">o</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="company_info">
-                <table>
-                    <h3>판매자 정보</h3>
-                    <tbody>
-                    <tr>
-                        <th>업체명</th><td>다락방</td>
-                    </tr>
-                    <tr>
-                        <th>사업자등록번호</th><td>0000000</td>
-                    </tr>
-                    <tr>
-                        <th>통신판매정보</th><td>어쩌고</td>
-                    </tr>
-                    <tr>
-                        <th>대표자</th><td>조민지</td>
-                    </tr>
-                    <tr>
-                        <th>사업장소재지</th><td>제주</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="brand_page">
-                <img src="">
-                <a class="brand_button"></a>
-                <div class="product_Container">
-                    <div class="inner">
-                        <tr th:each="productList:${product}">
-                            <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" >
-                                <img th:src="@{|${productList.list.get(0).getUrl()}|}" alt="">
-                                <p class="type" th:text="${productList.type}"></p>
-                                <p class="title" th:text="${productList.title}"></p>
-                                <strong th:text="${productList.price}">원</strong><br>
-                                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
-                                <a class="like_bt"><img src="/img/icons/Vector.png"></a>
-                            </div></a>
-                        </tr>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="review">
-            후기
+           <h3>후기</h3>
             <div class="review_borad">
                 리뷰가 없습니다.
             </div>
         </div>
         <div class="inquiry">
-            상품 Q&A
+           <h3>상품 Q&A</h3>
             <div class="inquiry_board">
-                문희는 포도가 먹고싶은데
+                상품 문의 정보
             </div>
         </div>
         <div class="delivery">
             <h3>배송정보</h3>
-            <hr>
-            <p>배송관련정보</p>
+            <div class="delivery_board">
+                배송 방법 : 택배
+                배송 지역 : 전국지역
+                배송 비용 : 3,000원
+                배송 기간 : 3일 ~ 7일
+                배송 안내 : - 산간벽지나 도서지방은 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.
+                고객님께서 주문하신 상품은 입금 확인후 배송해 드립니다. 다만, 상품종류에 따라서 상품의 배송이 다소 지연될 수 있습니다.
+            </div>
         </div>
 
         <div class="Q&A">
             <h3>교환, 환불, A/S 안내</h3>
-            <hr>
-            <p>교환 환불관련 정보</p>
-        </div>
-
-        <div class="best_tea_container">
-            <h3>타입 BEST</h3>
-            <button>실시간</button><button>일간</button><button>주간</button><button>월간</button><br>
-            상품목록
+            <div class="Q&A_board">
+                교환 환불 관련정보
+            </div>
         </div>
 
     </div>
@@ -210,7 +139,7 @@
 <!--tail-->
 <div id="coinfo-container">
     <div class="coinfoinner">
-        <img src="/img/logo.png">
+        <img src="/img/Logo.png">
         <p>E-mail : oncha.minji@gmail.com</p>
         <p>Copyright 2023 Oncha</p>
     </div>

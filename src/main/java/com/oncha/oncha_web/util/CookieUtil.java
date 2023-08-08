@@ -35,7 +35,7 @@ public class CookieUtil {
         Cookie cookie = new Cookie(key, value);
         cookie.setHttpOnly(true);
 //        cookie.setSecure(true); https 가 아니면 넘어가지 않게함
-        cookie.setDomain("www.oncha.kr");
+       // cookie.setDomain("www.oncha.kr");
         if (maxAge != null) {
             cookie.setMaxAge(maxAge);
         }
@@ -45,7 +45,7 @@ public class CookieUtil {
 
     public static Cookie getEmptyCookie(String key, String path) {
         Cookie cookie = new Cookie(key, null);
-       cookie.setDomain("www.oncha.kr");
+       //cookie.setDomain("www.oncha.kr");
         cookie.setMaxAge(0);
         cookie.setPath(path);
         return cookie;

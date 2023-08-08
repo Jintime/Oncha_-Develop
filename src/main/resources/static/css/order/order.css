@@ -3,12 +3,25 @@ li ,ul{
     list-style: none;
     padding: 0;
 }
+h2{
+    color: #000;
+    font-family: Malgun Gothic;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .detail table {
     width: 70%;
     margin: auto;
     border: 1px solid #444444;
     border-collapse: collapse;
     font-size: 12px;
+}
+h3{
+    font-size: 18px;
+    color: #F60;
 }
 .detail th,.detail td {
     border: 1px solid #444444;
@@ -47,6 +60,9 @@ li ,ul{
 .more_info_wrap{
     display: none;
 }
+.option_wrap{
+    margin-top: 10px;
+}
 .option_wrap a{
     display:inline-block;
     width: 49%;
@@ -69,7 +85,7 @@ li ,ul{
 }
 .inner_info td{
     width: 400px;
-    font-size: 14px;
+    font-size: 12px;
 }
 .company_info_wrap p {
     margin: 0px;
@@ -121,14 +137,16 @@ li ,ul{
     text-align: center;
     white-space:pre-line;
 }
-.review,.inquiry{
+.Q\&A,.delivery,.review,.inquiry{
     text-align: left;
 }
-.review_borad,.inquiry_board{
-    text-align: center;
+.review_borad,.inquiry_board,.Q\&A_board,.delivery_board{
+    text-align: left;
     border-top: 1px solid;
     border-bottom: 1px solid;
     padding: 50px;
+    font-size: 14px;
+    white-space: pre-line;
 }
 .more_info_bt{
     width: 80%;
