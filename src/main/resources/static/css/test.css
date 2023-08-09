@@ -71,21 +71,6 @@
     height: 450px;
 }
 
-.product_Container{
-    max-width: 1300px;
-    margin: 0 auto 40px auto;
-    position: relative;
-
-}
-.product_Container ul{
-    display: flex;
-    list-style:none;
-    padding: unset;
-}
-.product_Container li{
-    width: 280PX;
-    height: 400px;
-}
 
 .middle_banner_container{
     position: relative;
@@ -102,6 +87,22 @@
     position: absolute;
 }
 /**/
+.product_Container{
+    max-width: 1300px;
+    margin: 0 auto 40px auto;
+    position: relative;
+
+}
+.product_Container ul{
+    display: flex;
+    list-style:none;
+    padding: unset;
+}
+.product_Container li{
+    width: 280PX;
+    height: 400px;
+}
+
 .inner{
     white-space: nowrap;
     cursor: pointer;

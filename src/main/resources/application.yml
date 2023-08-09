@@ -29,6 +29,10 @@ spring:
     open-in-view: false
     show-sql: true
 
+  iamport:
+    api-key: "6332301523447220"
+    api-secret: "s6IZNUNmxgPZ5RJe2dUNsSx7axyeIvL49m8cPyAL91XO1TjXO4YWUiQRBCpJ8hIkAHpngtZuq1zXWA0m"
+
   security:
     oauth2:
       client:

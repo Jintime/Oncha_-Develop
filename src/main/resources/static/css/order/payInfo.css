@@ -3,6 +3,12 @@ h1{
     color: #f60;
     left: 46%;
     position: absolute;
+    text-align: center;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 33.6px; /* 120% */
 }
 #postcodebutton{
     border-radius: 2px;
@@ -106,11 +112,37 @@ h3{
 .info{
     width: 70%;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;color: #000;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 19px; /* 135.714% */
 }
+
 .product_info button{
     height: 50px;
     width: 100%;
     background-color: rgb(240, 239, 239);
+}
+.product_title{
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 19px; /* 135.714% */
+}
+
+.product_price{
+    color: #20252B;
+    font-family: Malgun Gothic;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22.4px; /* 172.308% */
 }
 
 .pay_detail_wrap{

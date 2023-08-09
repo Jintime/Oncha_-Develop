@@ -1,14 +1,21 @@
 package com.oncha.oncha_web.feature.payment.service;
 
+import com.amazonaws.services.ec2.model.transform.AdvertiseByoipCidrResultStaxUnmarshaller;
 import com.amazonaws.services.kms.model.NotFoundException;
 import com.oncha.oncha_web.domain.payment.repository.OnchaPaymentRepository;
 import com.oncha.oncha_web.domain.payment.model.OnchaPayment;
+import com.oncha.oncha_web.domain.user.model.Address;
+import com.oncha.oncha_web.domain.user.model.Member;
+import com.oncha.oncha_web.domain.user.repository.AddressRepository;
+import com.oncha.oncha_web.domain.user.repository.MemberRepository;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentDTO;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentInfoDTO;
 import com.oncha.oncha_web.feature.payment.model.OnchaPaymentRequest;
 import com.oncha.oncha_web.feature.payment.repository.PaymentQueryRepository;
 import com.oncha.oncha_web.feature.product.productBoard.model.ProductBoardDTO;
+import com.oncha.oncha_web.feature.user.model.AddressDTO;
 import com.oncha.oncha_web.feature.user.model.MemberDTO;
+import com.oncha.oncha_web.feature.user.service.AddressService;
 import com.oncha.oncha_web.feature.user.service.MemberService;
 import com.oncha.oncha_web.util.SecurityUtil;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -27,7 +34,8 @@ public class OnchaPaymentService {
 
     private final OnchaPaymentRepository onchaPaymentRepository;
     private final PaymentQueryRepository paymentQueryRepository;
-    private final MemberService memberService;
+    private final AddressRepository addressRepository;
+    private final MemberRepository memberRepository;
 
     // 결제 정보를 저장하는 메서드
     @Transactional
@@ -42,17 +50,28 @@ public class OnchaPaymentService {
         data.setPhone_number(paymentRequest.getResponse().getBuyerTel());
         onchaPaymentRepository.save(OnchaPayment.toPayment(data));
     }
-    public OnchaPaymentInfoDTO setPaymentData(ProductBoardDTO productBoardDTO) {
+
+    @Transactional
+    public OnchaPaymentInfoDTO setPaymentData(OnchaPaymentInfoDTO onchaPaymentInfoDTO) {
         Long userId = SecurityUtil.getCurrentId().orElse(null);
-        MemberDTO memberDTO = memberService.findById(userId);
-        OnchaPaymentInfoDTO data =new OnchaPaymentInfoDTO();
-        data.setPayment_price(String.valueOf(productBoardDTO.getPrice()));
-        data.setProduct_name(productBoardDTO.getProduct_name());
-        data.setBuyer_name(memberDTO.getName());
-        data.setBuyer_email(memberDTO.getEmail());
-        data.setPhone_number(memberDTO.getPhoneNumber());
-        data.setSeller_id(productBoardDTO.getId());
-        return data;
+        Member member = memberRepository.findById(userId).orElse(null);
+        Address address = addressRepository.findByMemberId(userId);
+
+        if (member != null) {
+            if (address == null) {
+                address = Address.builder().
+                         default_zipcode(onchaPaymentInfoDTO.getZip_code())
+                        .default_address(onchaPaymentInfoDTO.getAddress())
+                        .default_address_detail(onchaPaymentInfoDTO.getAddress_detail())
+                        .member(member).build();
+        }
+            member.getAddressList().add(address);
+            addressRepository.save(address);
+            memberRepository.save(member);
+
+        }
+
+        return onchaPaymentInfoDTO;
     }
     //결제 정보 수정하는 메소드
     @Transactional

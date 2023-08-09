@@ -12,6 +12,8 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.sendgrid.SendGridProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,21 +27,22 @@ import java.util.Locale;
 //@RequestMapping("/order")
 public class OnchaPaymentController {
 
-    private IamportClient api;
+    private final IamportClient api;
     private final OnchaPaymentService onchaPaymentService;
     private final ProductBoardService productBoardService;
-    public OnchaPaymentController(OnchaPaymentService onchaPaymentService, ProductBoardService productBoardService) {
+
+
+    public OnchaPaymentController(OnchaPaymentService onchaPaymentService, ProductBoardService productBoardService,IamportClient api) {
         this.onchaPaymentService = onchaPaymentService;
         this.productBoardService = productBoardService;
         // REST API 키와 REST API secret 를 아래처럼 순서대로 입력한다.
-        this.api = new IamportClient("6332301523447220","s6IZNUNmxgPZ5RJe2dUNsSx7axyeIvL49m8cPyAL91XO1TjXO4YWUiQRBCpJ8hIkAHpngtZuq1zXWA0m");
+        this.api = api;
     }
 
     @SetUserInfoInModel
     @PostMapping("/request_pay/{id}")
-    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id,Model model) {
-        ProductBoardDTO productBoardDTO = productBoardService.findById(id);
-        OnchaPaymentInfoDTO onchaPaymentInfoDTO =onchaPaymentService.setPaymentData(productBoardDTO);
+    public ResponseEntity<OnchaPaymentInfoDTO> requestPay(@PathVariable Long id,@RequestBody OnchaPaymentInfoDTO onchaPaymentInfoDTO,Model model) {
+        onchaPaymentService.setPaymentData(onchaPaymentInfoDTO);
         return ResponseEntity.ok(onchaPaymentInfoDTO);
     }
     @ResponseBody

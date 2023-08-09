@@ -1,5 +1,8 @@
 package com.oncha.oncha_web.feature.user.model;
 
+import com.oncha.oncha_web.domain.productBoard.model.ProductFile;
+import com.oncha.oncha_web.domain.user.model.Address;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
 
 @AllArgsConstructor
@@ -19,5 +22,6 @@ public class AddressDTO {
     private String spare2_zipcode;
     private String spare2_address;
     private String spare2_address_detail;
+
 
 }
