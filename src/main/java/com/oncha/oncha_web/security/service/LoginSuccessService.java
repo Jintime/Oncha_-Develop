@@ -18,11 +18,13 @@ public class LoginSuccessService {
 
     private final MemberService memberService;
 
+    private final JwtTokenUtil jwtTokenUtil;
+
     public void processingLogin(HttpServletResponse response, Long id, Role role, boolean allow)
         throws IOException {
         String token = tokenProvider.createToken(id, role, allow);
         String refreshToken = tokenProvider.createRefresh();
         memberService.setNewRefresh(id, refreshToken);
-        JwtTokenUtil.setTokenInCookie(response, token, refreshToken);
+        jwtTokenUtil.setTokenInCookie(response, token, refreshToken);
     }
 }

@@ -22,13 +22,14 @@ public class OAuthLoginFailureHandler implements AuthenticationFailureHandler {
 
     private final MailingService mailingService;
     private String errorSubject = "oauth2 로그인 실패 오류입니다.";
+    private JwtTokenUtil jwtTokenUtil;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         exception.printStackTrace();
         mailingService.sendErrorMessage(errorSubject, ExceptionUtil.getStackTrace(exception));
-        JwtTokenUtil.removeTokenInCookie(response);
+        jwtTokenUtil.removeTokenInCookie(response);
         log.info("login fail");
         response.sendRedirect("/login");
     }
