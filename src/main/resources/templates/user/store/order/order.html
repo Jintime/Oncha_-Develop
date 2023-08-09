@@ -81,12 +81,13 @@
           <input type="radio" name="delivery_info" id="3" value="default"><label for="3">배송지입력</label><br>
 
           <span th:if="${user != null and user.addressDTOList == null}">
-    <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
+    <input name="zip" type="text" class="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
     <button class="postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button><br>
     <input name="address1" type="text" class="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
     <input name="address2" type="text" class="address2" style="width:98%; height:50px;" placeholder="상세" />
 </span>
           <span th:unless="${user != null}">
+    <input name="zip" type="text" class="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
  <button class="postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button><br>
     <input name="address1" type="text" class="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
     <input name="address2" type="text" class="address2" style="width:98%; height:50px;" placeholder="상세" />
@@ -221,9 +222,9 @@
     // 배송정보 입력 유효성 검사
     const userName = document.getElementsByName("userName")[0].value;
     const deliveryPhoneNumber = document.getElementsByName("phoneNumber")[1].value;
-    const zip = document.getElementById("zip").value;
-    const address1 = document.getElementById("address1").value;
-    const address2 = document.getElementById("address2").value;
+    const zip = document.getElementsByName("zip")[0].value;
+    const address1 = document.getElementsByName("address1")[0].value;
+    const address2 = document.getElementsByName("address2")[0].value;
     let data ={};
 
     if (!assent) {
