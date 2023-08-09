@@ -1,15 +1,21 @@
 package com.oncha.oncha_web.util;
 
-import com.oncha.oncha_web.security.jwt.TokenProvider;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CookieUtil {
 
-    public static Optional<Cookie> getCookie(HttpServletRequest request, String name) {
+    public String domain;
+
+    public CookieUtil (@Value("${cookie.domain}") String domain) {
+        this.domain = domain;
+    }
+
+    public Optional<Cookie> getCookie(HttpServletRequest request, String name) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
@@ -21,37 +27,37 @@ public class CookieUtil {
         return Optional.empty();
     }
 
-    public static void setTokenInCookie(HttpServletResponse response, String access, String refresh) {
-        setAccessInCookie(response, access);
-        setRefreshInCookie(response, refresh);
+    public Cookie getTokenCookie(String key, String value) {
+        return getTokenCookie(key, value, null, "/");
     }
 
-    private static Cookie getTokenCookie(String key, String value) {
+    public Cookie getTokenCookie(String key, String value, Integer maxAge) {
+        return getTokenCookie(key, value, maxAge, "/");
+    }
+
+    public Cookie getTokenCookie(String key, String value, String path) {
+        return getTokenCookie(key, value, null, path);
+    }
+
+    public Cookie getTokenCookie(String key, String value, Integer maxAge, String path) {
+
         Cookie cookie = new Cookie(key, value);
         cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/"); //이거 무조건 설정해줘야한다!!!!!!!!!!!!!!!
+//        cookie.setSecure(true); https 가 아니면 넘어가지 않게함
+        cookie.setDomain(domain);
+        if (maxAge != null) {
+            cookie.setMaxAge(maxAge);
+        }
+        cookie.setPath(path);
         return cookie;
     }
 
-
-    private static void setRefreshInCookie(HttpServletResponse response, String refresh) {
-        response.addCookie(getTokenCookie(TokenProvider.REFRESH_TOKEN_KEY, refresh));
-    }
-
-    private static void setAccessInCookie(HttpServletResponse response, String access) {
-        response.addCookie(getTokenCookie(TokenProvider.ACCESS_TOKEN_KEY, access));
-    }
-
-    public static void removeTokenInCookie(HttpServletResponse response) {
-        Cookie cookie = new Cookie(TokenProvider.ACCESS_TOKEN_KEY, null);
+    public Cookie getEmptyCookie(String key, String path) {
+        Cookie cookie = new Cookie(key, null);
+        cookie.setDomain(domain);
         cookie.setMaxAge(0);
-        response.addCookie(cookie);
-
-        Cookie cookie2 = new Cookie(TokenProvider.REFRESH_TOKEN_KEY, null);
-        cookie.setMaxAge(0);
-        response.addCookie(cookie2);
+        cookie.setPath(path);
+        return cookie;
     }
-
 
 }

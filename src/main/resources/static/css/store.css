@@ -1,0 +1,215 @@
+@import url(default.css);
+
+input[type="checkbox"]:checked + label {
+    color: #F60;
+}
+.best_tea_container{
+    margin-top: 50px;
+}
+
+.page_wrap{
+    text-align: center;
+}
+.store_filter_wrap table{
+    border: 1px solid #EEE;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width:100%;
+    table-layout:fixed;
+}
+.store_filter_wrap th{
+    border:  1px solid #EEE;
+    height: 50px;
+    width: 120px;
+    background-color: #FAFAFA;
+    padding-left: 5px;
+    text-align: left;
+    color: #333;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 19.6px; /* 140% */
+}
+.store_filter_wrap label{
+    display: inline-block;
+    width: 100px;
+}
+.store_filter_wrap td{
+    color: #666;
+    font-family: Noto Sans KR;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    width: 100%;
+    line-height: 18px; /* 138.462% */
+}
+
+.store_filter_wrap tr{
+    border-bottom:  1px solid #EEE;
+}
+.filter_tag img{
+    width: 20px;
+    vertical-align: bottom;
+}
+.store_filter_wrap input{
+    accent-color: #F60;
+}
+.check_product_wrap{
+    border: 1px solid #EEE;
+    display: flex;
+    justify-content: space-between;
+}
+.tag{
+    width: 100%;
+    border: none;
+}
+.check_product_wrap button, .check_product_wrap label{
+    color: #999;
+    font-family: Noto Sans KR;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 41px; /* 315.385% */
+    width: 100PX;
+    display: inline-block;
+    text-align: center;
+}
+.check_product_wrap label{
+    width: 50px;
+}
+.check_product_wrap_left button ,.check_product_wrap label{
+    border-right: 1px solid #DDD;
+}
+.check_product_wrap_right button{
+    border-left: 1px solid #DDD;
+}
+.tags-wrapper{
+    height: 60px;
+    border: 1px solid #DDD;
+}
+.tags-wrapper button{
+    padding:0px 10px 0px 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #ff6600;
+    color: white;
+    font-size: 13px;
+}
+.check_flavor label{
+    width: 300px;
+}
+/**/
+.product_Container{
+    max-width: 1300px;
+    height: 2100px;
+    margin: 20px auto 40px auto;
+    position: relative;
+
+}
+.product_Container ul{
+    display: flex;
+    list-style:none;
+    padding: unset;
+}
+.product_Container li{
+    width: 280PX;
+    height: 400px;
+}
+
+.inner{
+    cursor: pointer;
+    scroll-behavior: smooth;
+    height: 480px;
+    display: flex;
+    flex-wrap :wrap;
+}
+.title{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    white-space: normal;
+    word-break: break-all;
+    height: 40px;
+    margin-top: 5px;
+}
+.price{
+    color: #000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.inner .drgging{
+    cursor: grab;
+    scroll-behavior: auto;
+}
+.inner .drgging img{
+    pointer-events: none;
+}
+.inner img{
+    object-fit: cover;
+    margin-left: 14px;
+    height: calc(60%);
+}
+.rank_img img{
+    width: 80px;
+    top:0%;
+    height: 70px;
+    border-radius: 0px;
+    position: absolute;
+}
+/***지워야되는코드**/
+.product_inner span{
+    margin-right: 5px;
+    font-size: 14px;
+}
+.type{
+    color: #727272;
+    font-family: Noto Sans KR;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+}
+
+.like_bt{
+    width: 30px;
+    top:48%;
+    right:5%;
+    display: none;
+    position: absolute;
+}
+.icons{
+    vertical-align: middle;
+    display: inline-block;
+    margin-right:5px ;
+    height: 15px;
+}
+.icons img{
+    vertical-align: top;
+    height: 100%;
+    border-radius: 0;
+}
+
+/***************/
+.product_inner{
+    width: calc(24%);
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+.product_inner{
+    margin: 0 5px 0 5px;
+}
+.inner img:first-child{
+    margin-left: 0px;
+}
+.active {
+    background-color: #F1F1F1; /* 예시로 파란색 적용 */
+    color: white; /* 글자색을 흰색으로 설정 */
+}

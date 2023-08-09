@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="/css/order/order.css" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">매거진</button>
+
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
+        </div>
+    </div>
+    </div>
+</header>
+<main>
+    <div class="company_info_wrap">
+        <div>
+            <p class="company_name">다락방</p>
+            <p class="company_info">52일의 전통</p>
+            <button>BRAND HOME</button>
+        </div>    
+        <img src="/img/darak/1.jpeg">
+    </div>
+    <div class="view">
+        <div class="order_main_info">
+            <div class="main_img">
+                <img th:src="${product.list.get(0).getUrl()}" alt=""></div>
+            </td>
+            <div class=" inner_info">
+                <ul>
+                    <hr>
+                    <h1 class="productName" th:text="${product.title}">특가 배송테스트</h1>
+                    <li th:text="${product.origin_nation}">원산지</li>
+                    <li th:text="${product.type}">타입</li>
+                    <li class="productDetail" th:text="${product.detail}">여기에 간단히 제품을 설명을 블라블라 아리가또 숑숑숑 무슨 말을 해야할까?
+                        여기에 간단히 제품을 설명을 블라블라 아리가또 숑숑숑 무슨 말을 해야할까?</li>
+                </ul>
+                <hr>
+                <div class="amount" th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|"></div>
+                <hr>
+                <table>
+                    <h2>배송정보</h2>
+                   <tr>
+                   <th>배송비</th>
+                   <td>해당 브랜드 제품으로만 70000원 이상 구매시 무료배송
+                    (미만시 배송비 3000원 발생 )
+                    제주도를 포함한 도서/산간지역은 추가배송비 5,000원</td>
+                </tr>
+                    <tr>
+                    <th>배송예정</th>
+                    <td>2일 이내 출고 (주말,공휴일제외)</td>
+                   </tr>
+                </table>
+                <div class="option_wrap">
+                    <select class="option_select" name="option_select">
+                        <option value="1">1번</option>
+                        <option value="2">2번</option>
+                        <option value="3">3번</option>
+                    </select>
+                    <br>
+                    <a>장바구니 담기</a>
+                    <a th:href="@{/store/order/{id}(id =${product.id})}">바로 구매하기</a>
+                </div>
+            </div>
+        </div>
+     
+            <button class="more_info_bt">상품설명 더보기</button>
+        <div class="more_info_wrap">
+        <div class="button_panel">
+            <button class="product_info_bt">상품설명</button>
+            <button class="product_detail_bt">상세정보</button>
+            <button class="review_bt">후기</button>
+            <button class="inquiry_bt">문의</button>
+        </div>
+        <div class="info">
+            <p th:text="${product.detail}">
+        </div>
+        <div class="detail">
+
+        <div class="review">
+           <h3>후기</h3>
+            <div class="review_borad">
+                리뷰가 없습니다.
+            </div>
+        </div>
+        <div class="inquiry">
+           <h3>상품 Q&A</h3>
+            <div class="inquiry_board">
+                상품 문의 정보
+            </div>
+        </div>
+        <div class="delivery">
+            <h3>배송정보</h3>
+            <div class="delivery_board">
+                배송 방법 : 택배
+                배송 지역 : 전국지역
+                배송 비용 : 3,000원
+                배송 기간 : 3일 ~ 7일
+                배송 안내 : - 산간벽지나 도서지방은 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.
+                고객님께서 주문하신 상품은 입금 확인후 배송해 드립니다. 다만, 상품종류에 따라서 상품의 배송이 다소 지연될 수 있습니다.
+            </div>
+        </div>
+
+        <div class="Q&A">
+            <h3>교환, 환불, A/S 안내</h3>
+            <div class="Q&A_board">
+                교환 환불 관련정보
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<!--tail-->
+<div id="coinfo-container">
+    <div class="coinfoinner">
+        <img src="/img/Logo.png">
+        <p>E-mail : oncha.minji@gmail.com</p>
+        <p>Copyright 2023 Oncha</p>
+    </div>
+</div>
+</footer>
+</body>
+
+<script>
+    const moreInfoButton = document.querySelector('.more_info_bt');
+    const moreInfoWrap = document.querySelector('.more_info_wrap');
+
+    moreInfoButton.addEventListener('click', () => {
+        moreInfoWrap.style.display = 'block';
+        moreInfoButton.style.display = " none";
+    });
+</script>
+<script src="/js/buttonManager.js"></script>
+</html>

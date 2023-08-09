@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/default.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">매거진</button>
+
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
+
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
+        </div>
+    </div>
+    </div>
+</header>
+<main>
+    <h1>취소 / 반품 / 교환내역이 들어갈 페이지입니다.</h1>
+</div>
+</main>
+<footer>
+    <div id="coinfo_container">
+        <div class="coinfoinner">
+            <img src="/img/Logo.png">
+            <p>E-mail : oncha.minji@gmail.com</p>
+            <p>Copyright 2023 Oncha</p>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="/js/buttonManager.js"></script>
+</html>

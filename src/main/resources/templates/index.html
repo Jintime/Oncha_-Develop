@@ -1,178 +1,196 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title >OnCha</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta property="og:title"content="온차">
-  <meta property="og:description"content="세상의 모든 차">
-  <meta property="og:image"content="../img/ot.png">
-  <link rel="icon" href="./img/icon.png">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link href="/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>온차</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="/css/test.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
-<nav id="navbar_container">
-  <div id="check-btn2" >
-    <label for="check-btn"><img class="navmenu_bar" src="/img/메뉴.png"><a class="n_category" href ="#">카테고리</a></label>
-    <ul class="menubars">
-      <li><button class="order">주문/배송</button></li>
-      <li><button class="reservation">예약</button></li>
-      <li><button class="coupon">적립금/쿠폰</button></li>
-      <li><button class="intro">온차소개</button></li>
-      <li><button class="notification">공지사항</button></li>
-      <li><button class="faq">자주하는질문</button></li>
-      <li><button class="inquiry">고객센터</button></li>
-      <li><button class="mypage2">개인정보수정</button></li>
-    </ul>
-  </div>
-  <button class="n_newitem"> 신상품 </button>
-  <button class="n_bestitem"> 베스트 </button>
-  <button class="n_sale"> 특가/혜택 </button>
-  <input class="nav_search" type="text" placeholder="검색하기"/>
-  <button  href ="#"><img class="nav_sbt" src="/img/검색.png"></button>
-  <button class="mypage"><img src="/img/로그인_마이페이지.png"></button>
-  <button class="shop" href ="#"><img src="/img/장바구니.png"></button></div>
-  <!--<button class="search" href ="#"><img src="/img/검색.png"></button>
-  <input class="innersearch" type="text" placeholder="검색하기"/>-->
+<header>
+    <div class="nav_barContainer">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
+            <button class="myoncha_bt">마이온차</button>
+            <button class="store_bt">스토어</button>
+            <button class="teaHouse_bt">티하우스</button>
+            <button class="subscribe_bt">매거진</button>
 
+        </div>
+        <div class="right">
+            <input class="search" type="text" >
+            <button th:if="${user == null}" class="login_bt">로그인</button>
 
-</nav>
-<div class="talk_bar">
-
-  <h1>무엇을 도와드릴까요?</h1>
-  <hr/>
-  <input class="ask" type="text" placeholder="무엇이든 물어보세요."/>
-
-</div>
-
-<nav id="Talk">
-
-  <button class="csc"><img src="/img/상담.png"></button>
-</nav>
-
-
-
-<div class="login_bt">
-  <a  href ="#"><img src="/img/logo3.png"></a>
-  <h2>세상의 모든 차</h2>
-  <input class="top_search" type="text" placeholder="검색하기"/>
-  <button class="t_search_bt" href ="#"><img src="/img/검색.png"></button>
-
-  <button class="CS">고객센터</button>
-  <button class="register">회원가입</button>
-  <button class="loginbt">로그인</button>
-</div>
-<!--head-->
-<div id="menu_box">
-  <a class="menu_bar" href ="#"><img src="/img/메뉴.png"></a>
-  <a class="category" href ="#">카테고리</a>
-  <button class="newitem"> 신상품 </button>
-  <button class="bestitem"> 베스트 </button>
-  <button class="sale"> 특가/혜택 </button>
-  <button class="test">테스트</button>
-  <button class="mypage"><img src="/img/로그인_마이페이지.png"></button>
-  <button class="shop" href ="#"><img src="/img/장바구니.png"></button></div>
-<!--<button class="search" href ="#"><img src="/img/검색.png"></button>
-<input class="innersearch" type="text" placeholder="검색하기"/>-->
-
-
-
-<div id="Main_container">
-  <!--<video  class="bg" autoplay loop muted preload="auto">
-      <source src="/video/main.mp4" type="video/mp4">
-    </video>-->
-  <img class="bg" src="/img/bg.jpg">
-
-</div>
-<!--body-->
-
-<div id="onchaInfo">
-  <video class="info_video" autoplay loop muted>
-    <source src="/video/main.mp4" type="video/mp4">
-  </video>
-  <h1>혼자 차를 내려마시기 힘듬<br>온차가 도와줌<br>차를 ~~방법부터 ~~까지</h1>
-</div>
-
-
-<div class = "ad_container">
-  <img src="/img/ad.jpg">
-  <h1>간단한 광고가 들어갈자리</h1>
-</div>
-
-
-<div id="Recotext_container">
-  <h1>RECOMMENED</h1>
-</div>
-
-<div id="Reco_container">
-  <div class="Reco_inner"> <img src="/img/test1.jpg " ><h1>온차 녹차</h1><p>30,000원</p></div>
-  <div class="Reco_inner"> <img src="/img/test2.jpg " ><h1>온차 홍차</h1><p>28,000원</p></div>
-  <div class="Reco_inner"> <img src="/img/test1.jpg " ><h1>온차 녹차</h1> <p>30,000원</p></div>
-  <div class="Reco_inner"> <img src="/img/test2.jpg " ><h1>온차 홍차</h1><p>28,000원</p></div>
-  <div class="Reco_inner"> <img src="/img/test1.jpg " ><h1>온차 녹차</h1> <p>30,000원</p></div>
-  <div class="Reco_inner"> <img src="/img/test2.jpg " ><h1>온차 홍차</h1><p>28,000원</p></div>
-</div>
-
-
-
-
-<div id="Gifttext_container">
-  <h1>GIFT SET</h1>
-</div>
-
-<div id="gift">
-
- <!-- <div class="Gift_box">
-    <ul id = "Gift_container">
-      <% for(var i = 0; i < data.length; i++) { %>
-     // <a class=<%=data[i].index%> href="#"><li class ="Gift_inner"><img src="<%=data[i].image%>" ><h1><%=data[i].title%></h1><p><%=data[i].price%> 원</p></li></a>
-      <% } %>
-      </li>
-    </ul>
-  </div>-->
-  <p class="controller">
-    <span class="prev">&lang;</span>
-    <span class="next">&rang;</span>
-  </p>
-</div>
-
-<div class = "ad_container">
-  <img src="/img/ad.jpg">
-  <h1>간단한 광고가 들어갈자리</h1>
-</div>
-
-<div class="slideShow_container">
-  <div class="slideFade">
-    <img class="resev_main" src="/img/neko1.jpg">
-    <img class="map" src="/img/neko-map.png">
-    <img class="resev_inner" src="/img/neko1.jpg">
-    <img class="resev_inner" src="/img/neko2.jpg">
-    <img class="resev_inner" src="/img/neko1.jpg">
-    <div class="innre_info">
-      <h1>네꼬야 티하우스</h1>
-      <h2>10년, 20년 뒤에도 항상 지금처럼 반겨드리고픈 네꼬야 티하우스입니다.
-        고급진 티웨어로 즐기는 다양한 홍차와 밀크티, 커피 등과 함께 여유로운
-        티타임을 즐기세요</h2>
-
+            <span class="login" th:unless="${user==null}">
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+            <a  th:href="@{/mypage/{id}(id =${user.id})}">
+               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
+        </div>
     </div>
-  </div>
-
 </div>
-<!--tail-->
-<div id="coinfo-container">
-  <div class="coinfoinner">
-    <img src="/img/logo2.png">
-    <p>E-mail : oncha.minji@gmail.com</p>
-    <p>Copyright 2023 Oncha</p>
-  </div>
+</header>
+<main>
+    <div class="sub_nav_bar"><div>
+
+    <div class="Top_viewContainer">
+        <a class="main_view"><img src="/img/Main_img.png">
+            <h1>온차만의<br>특별함을 만나보세요</h1></a>
+        <a class="banner"><img src="/img/tea_finder.png">
+        <h1>나의<br>차를<br>찾다</h1>
+            <button class="myoncha_bt" >티파인더 알아보기</button>
+        </a>
+    </div>
+
+    <div class="title_container"><h1>가장 많이 마시는 차! Best</h1></div>
+
+    <div class="product_Container">
+        <!--<tr th:each="prdocutList:${product}">
+         <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+             <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+            <td th:text="${prdocutList.getTitle()}"></td>
+             <td th:text="${prdocutList.getProduct_name()}"></td>
+         <td th:text="${prdocutList.getLike()}"></td>
+         <td th:text="${prdocutList.getView()}"></td>
+         </a>
+     </tr>
+ -->
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="inner">
+            <tr th:each="productList:${product}">
+                <a th:href="@{/store/{id}(id =${productList.id})}"><div class="product_inner" onmouseover="showLikeButton(this)" onmouseout="hideLikeButton(this)" >
+                    <img th:src="@{|${productList.list.get(0).getUrl()}|}" alt="">
+                    <p class="type" th:text="${productList.type}"></p>
+                    <p class="title" th:text="${productList.title}"></p>
+                    <p class="price" th:text="|${#numbers.formatInteger(productList.price, 0, 'COMMA')}원|"></p>
+                    <br>
+                    <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span th:text="${productList.view}"></Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span th:text="${productList.like}"></span>
+                    <a class="like_bt"><img src="/img/icons/Vector.png"></a>
+                </div></a>
+            </tr>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+    </div>
+    
+    <div class="middle_banner_container">
+        <img src="/img/MiddleBanner.png">
+        <p>온 차 에 서  찾 는  나 의  어 울 리 는  차</p>
+    </div>
+    <div class="title_container"><h1>꼭 가야 할 소문난 찻집! Best</h1></div>
+    <div class="reserve_contaiter">
+        <div class="inner">
+           <a href="/darakbang"> <div class="product_inner"><img src="/img/index/상품1-1.png">
+                <p class="title">다락방</p>
+                <p class="type">감성있는 제주도의 밀크티 전문점</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><span>531</span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
+                <p class="title">고바담 숲</p>
+                <p class="type">제주의 숲과 바다를 보며 차를마시는 찻집</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>989</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 1,005</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="/img/index/상품3-1.png">
+                <p class="title">작은 혀의 외침</p>
+                <p class="type">새의 혀를 닮은 차를 경험할 수 있는 찻집</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>31</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 47</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="/img/index/상품4-1.png">
+                <p class="title">그대의 눈빛</p>
+                <p class="type">풍경이 좋은 찻집</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>100</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 15</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="/img/index/상품1-1.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+            </div></a>
+            <a> <div class="product_inner"><img src="/img/index/상품2-1.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p><br>
+                <a class="icons"><img src="/img/icons/Vector-1.png"></a><Span>531</Span> <a class="icons"><img src="/img/icons/Vector-2.png"></a><span> 105</span>
+            </div></a>
+            <!--<tr th:each="prdocutList:${product}">
+                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                    <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                   <td th:text="${prdocutList.getTitle()}"></td>
+                    <td th:text="${prdocutList.getProduct_name()}"></td>
+                <td th:text="${prdocutList.getLike()}"></td>
+                <td th:text="${prdocutList.getView()}"></td>
+                </a>
+            </tr>
+        -->
+    </div>
+    </div>
+
+    <div class="title_container"><h1>함께하고 싶은 특별한 차 레시피!</h1></div>
+    <div class="recipe_container">
+        <div class="inner">
+            <div class="product_inner"><img src="/img/index/상품1.png">
+                <p class="title">얼그레이 레몬티</p>
+                <p class="type">얼그레이와 레몬을 합쳐 새로운 맛을 창조</p>
+            </div>
+            <div class="product_inner"><img src="/img/index/상품2.png">
+                <p class="title">라벤더로 휘낭시에 만들기</p>
+                <p class="type">라벤더 휘낭시에 레시피</p>
+            </div>
+            <div class="product_inner"><img src="/img/index/상품3.png">
+                <p class="title">녹차와 아이스크림의 만남</p>
+                <p class="type">녹차 아포카토</p>
+            </div>
+            <div class="product_inner"><img src="/img/index/상품4.png">
+                <p class="title">연잎과 국화의 만남</p>
+                <p class="type">연잎차와 국화차를 동시에 느껴보는 레시피</p>
+            </div>
+            <div class="product_inner"><img src="/img/index/상품5.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p>
+            </div>
+            <div class="product_inner"><img src="/img/index/상품6.png">
+                <p class="title">얼그레이</p>
+                <p class="type">싱글오리진</p>
+            </div>
+         
+            <!--<tr th:each="prdocutList:${product}">
+                <a class="product_inner" th:href="@{/Store/{id}(id =${prdocutList.id})}">
+                    <img th:src="@{|${prdocutList.list.get(0).getUrl()}|}" alt="">
+                   <td th:text="${prdocutList.getTitle()}"></td>
+                    <td th:text="${prdocutList.getProduct_name()}"></td>
+                <td th:text="${prdocutList.getLike()}"></td>
+                <td th:text="${prdocutList.getView()}"></td>
+                </a>
+            </tr>
+        -->
+    </div>
+    </div>
+<div><a href="/product/write">물건등록하기</a></div>
 </div>
 </div>
-
-
-<script src="/js/Gift_Slide.js"></script>
-<script src ="/js"></script>
-<!--
--->
+</div>
+</main>
+<footer>
+    <div id="coinfo_container">
+        <div class="coinfoinner">
+            <img src="/img/Logo.png">
+            <p>E-mail : oncha.minji@gmail.com</p>
+            <p>Copyright 2023 Oncha</p>
+        </div>
+    </div>
+</footer>
 </body>
+<script>
+    function showLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "block";
+    }
+
+    function hideLikeButton(element) {
+        const likeButton = element.querySelector(".like_bt");
+        likeButton.style.display = "none";
+    }
+</script>
+<script src="/js/Tindex.js"></script>
+<script src="/js/buttonManager.js"></script>
+
+</html>
