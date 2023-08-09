@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class MyPageController {
 
     @SetUserInfoInModel
-    @GetMapping("/mypage/{id}")
-    public String MyPage(@PathVariable Long id, Model model){
+    @GetMapping("/mypage")
+    public String myPage(Model model){
         return "user/category/myOncha/mypage";
     }
 
@@ -25,6 +25,4 @@ public class MyPageController {
     public String RefundDetail(){return "user/category/cs/refundDetail";}
     @GetMapping("/CS")
     public String CsMain(){return "user/category/cs/csMain";}
-    @GetMapping("/{id}")
-    public String MyPageDetail(@PathVariable Long id){return "user/category/myOncha/MyPageDetail";}
 }
