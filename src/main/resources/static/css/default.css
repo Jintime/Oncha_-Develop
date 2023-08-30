@@ -2,7 +2,9 @@
 body{
     font-family: 'Noto Sans KR', sans-serif;
 }
-
+footer{
+    margin-top: 50px;
+}
 .cart_bt img{
     width: 30px;
 }
@@ -69,11 +71,6 @@ img{
 }
 
 
-#coinfo-container{
-    float: left;
-    height: 140px;
-    width: 100%;
-}
 .coinfoinner img{
     display: block;
     width: 60px;
@@ -97,11 +94,18 @@ img{
     }
     .nav_barContainer {
         width: 100%;
+        justify-content: center;
     }
-
+    .nav_barContainer .right{
+        display: none;
+    }
+    #coinfo_container{
+        margin-bottom: 110px;
+    }
     .top_logo {
         width: 120px;
         height: 30px;
+        left: 0px;
     }
     .left button {
         display: none;
