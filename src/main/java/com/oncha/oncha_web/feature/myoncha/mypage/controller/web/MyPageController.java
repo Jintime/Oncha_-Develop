@@ -21,10 +21,9 @@ public class MyPageController {
     public String ETC(){return "user/category/cs/etc";}
     @GetMapping("/orderInfo")
     public String DeliveryTracking(){return "user/category/cs/deliveryTracking";}
-    @GetMapping("/refundDetail")
+    @GetMapping("/refundDetail") 
     public String RefundDetail(){return "user/category/cs/refundDetail";}
     @GetMapping("/CS")
     public String CsMain(){return "user/category/cs/csMain";}
-    @GetMapping("/{id}")
-    public String MyPageDetail(@PathVariable Long id){return "user/category/myOncha/MyPageDetail";}
+
 }

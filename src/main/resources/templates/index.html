@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>온차</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +26,10 @@
 
             <span class="login" th:unless="${user==null}">
             <button class="cart_bt"><img src="/img/cart.png"></button>
+                <span class="user_bt">
             <a  th:href="@{/mypage/{id}(id =${user.id})}">
                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
+            </span>
             </span>
         </div>
     </div>
@@ -35,14 +38,19 @@
 <main>
     <div class="sub_nav_bar"><div>
 
-    <div class="Top_viewContainer">
-        <a class="main_view"><img src="/img/Main_img.png">
-            <h1>온차만의<br>특별함을 만나보세요</h1></a>
-        <a class="banner"><img src="/img/tea_finder.png">
-        <h1>나의<br>차를<br>찾다</h1>
-            <button class="myoncha_bt" >티파인더 알아보기</button>
-        </a>
-    </div>
+        <div class="Top_viewContainer">
+            <a class="banner"><img src="/img/tea_finder.png">
+                <h1>나의 차를 찾다</h1>
+                <button class="myoncha_bt" >티파인더 알아보기</button>
+            </a>
+        </div>
+        <div class="tea_finder_button_container">
+            <button class=""><img src="/img/프로덕트칸.png"><p>액상</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>잎차</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>청</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>가루</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>상황별 차 추천</p></button>
+        </div>
 
     <div class="title_container"><h1>가장 많이 마시는 차! Best</h1></div>
 
@@ -176,6 +184,13 @@
             <p>E-mail : oncha.minji@gmail.com</p>
             <p>Copyright 2023 Oncha</p>
         </div>
+    </div>
+    <div id="m_nav_bar_container">
+        <button class="index_bt"><img src="/img/프로덕트칸.png"><p>홈</p></button>
+        <button class="store_bt"><img src="/img/프로덕트칸.png"><p>카테고리</p></button>
+        <button class="teaFinder_bt"><img src="/img/프로덕트칸.png"><p>취향분석</p></button>
+        <button class="subscribe_bt"><img src="/img/프로덕트칸.png"><p>관심목록</p></button>
+        <button class="mypage_bt"><img src="/img/프로덕트칸.png"><p>마이페이지</p></button>
     </div>
 </footer>
 </body>

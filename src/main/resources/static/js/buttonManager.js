@@ -3,12 +3,14 @@
 const MappingButtons = {
     indexBtn: {///index
         logoBtn: ".index_bt",
+        categoryBtn:".category_bt",
         teaFinderBtn: ".teaFinder_bt",
         storeBtn :".store_bt",
         teaHouseBtn:".teaHouse_bt",
         subBtn:"subscribe_bt",
         loginBtn:".login_bt",
-        myonchaBtn:".myoncha_bt"
+        myonchaBtn:".myoncha_bt",
+        mypageBtn:"mypage_bt",
     },///마이온차
     MyOnchaBtn: {
         myPageBtn: ".mypage_bt",

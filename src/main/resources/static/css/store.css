@@ -213,3 +213,18 @@ input[type="checkbox"]:checked + label {
     background-color: #F1F1F1; /* 예시로 파란색 적용 */
     color: white; /* 글자색을 흰색으로 설정 */
 }
+@media all and (max-width: 479px) {
+    .product_inner{
+        width: calc(45%);
+        margin-bottom: 50px;
+    }
+    .inner{
+        height: 300px;
+    }
+    .type{
+        height: 20px;
+    }
+    .store_filter_wrap,.check_product_wrap{
+        display: none;
+    }
+}

@@ -18,9 +18,8 @@ import java.util.List;
 public class MainController {
 
     private final ProductBoardService productBoardService;
-
-    @SetUserInfoInModel
     @GetMapping({"/","index"})
+    @SetUserInfoInModel
     public String Home(Model model,@PageableDefault Pageable pageable){
         List<ProductBoardDTO> productDTOList = productBoardService.findAll(pageable);
         model.addAttribute("product",productDTOList);

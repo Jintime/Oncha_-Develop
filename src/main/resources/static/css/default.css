@@ -17,6 +17,9 @@ button{
 .nav_barContainer button:hover{
     color: #FF6600;
 }
+#m_nav_bar_container {
+    display: none;
+}
 .nav_barContainer a:hover{
     color: #FF6600;
 }
@@ -87,4 +90,45 @@ img{
     margin-top: 20px;
     font-size: 10px;
 
+}
+@media all and (max-width: 479px) {
+    body {
+        width: 100%;
+    }
+    .nav_barContainer {
+        width: 100%;
+    }
+
+    .top_logo {
+        width: 120px;
+        height: 30px;
+    }
+    .left button {
+        display: none;
+    }
+    .search,
+    .login_bt,
+    .user_bt {
+        display: none;
+    }
+    #m_nav_bar_container {
+        display: block;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-top: 5px;
+        background-color: white;
+        justify-content: space-around;
+    }
+    #m_nav_bar_container button {
+        width: 100%;
+        height: 100%;
+    }
+    #m_nav_bar_container p {
+        font-size: 10px;
+    }
+    #m_nav_bar_container img {
+        border-radius: 15px;
+    }
 }
