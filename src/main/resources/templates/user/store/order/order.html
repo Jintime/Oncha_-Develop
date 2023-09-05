@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-  <div class="nav_barContainer">
+  <section class="nav_barContainer">
     <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
       <button class="myoncha_bt">마이온차</button>
       <button class="store_bt">스토어</button>
@@ -31,8 +31,16 @@
                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
             </span>
     </div>
-  </div>
-  </div>
+  </section>
+
+  <section id="m_top_nav_bar">
+    <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a></div>
+    <div class="right">
+      <button class="search_bt"><img src="/img/icons/search.png"></button>
+      <button class="cart_bt"><img src="/img/cart.png"></button>
+    </div>
+  </section>
+
 </header>
 <main>
   <h1>결제하기</h1>
@@ -79,19 +87,21 @@
           <input type="radio" name="delivery_info" id="1" value="default"><label for="1">기본배송지</label>
           <input type="radio" name="delivery_info" id="2" value="default"><label for="2">최근배송지</label>
           <input type="radio" name="delivery_info" id="3" value="default"><label for="3">배송지입력</label><br>
-          <span th:if="${user.addressDTOList==null}">
-          <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
-          <button id= "postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button>
-          <br>
-          <input name="address1" type="text" id="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
-          <input name="address2" type="text" id="address2" style="width:98%; height:50px;" placeholder="상세" />
-          </span>
-          <span th:unless="${user.addressDTOList==null}">
-          <input name="zip" type="text" style="width: 120px; height: 50px" th:value="${user.addressDTOList[0].default_zipcode}">
-          <br>
-            <input name="address1" type="text" style="width: 98%; height: 50px;" readonly th:value="${user.addressDTOList[0].default_address}">
-            <input name="address2" type="text" style="width: 98%; height: 50px" readonly th:value="${user.addressDTOList[0].default_address_detail}">
-          </span>
+
+          <span th:if="${user == null || user.addressDTOList == null}">
+    <input name="zip" type="text" id="zip" style="width:120px; height:50px;" placeholder="우편번호"/>
+    <button id="postcodebutton" type="button" style="width:120px; height:45px;">주소찾기</button>
+    <br>
+    <input name="address1" type="text" id="address1" style="width:98%; height:50px;" readonly placeholder="주소"/><br>
+    <input name="address2" type="text" id="address2" style="width:98%; height:50px;" placeholder="상세" />
+</span>
+
+          <span th:if="${user != null && user.addressDTOList != null}">
+    <input name="zip" th:id="zip" type="text" style="width: 120px; height: 50px" th:value="${user.addressDTOList[0].default_zipcode}">
+    <br>
+    <input name="address1" th:id="address1" type="text" style="width: 98%; height: 50px;" readonly th:value="${user.addressDTOList[0].default_address}">
+    <input name="address2" th:id="address2" type="text" style="width: 98%; height: 50px" readonly th:value="${user.addressDTOList[0].default_address_detail}">
+</span>
           <h4>배송메모</h4>
           <input type="text" style="width: 98%;height: 50px" placeholder="배송메모를 선택해주세요">
         </div>

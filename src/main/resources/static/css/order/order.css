@@ -160,3 +160,12 @@ h3{
 .button_panel button:hover{
     background-color: white;
 }
+@media all and (max-width: 479px) {
+    .main_img,.inner_info{
+        width: 90%;
+        margin: 10px auto;
+    }
+    .order_main_info{
+        flex-direction: column;
+    }
+}

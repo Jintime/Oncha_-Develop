@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-    <div class="nav_barContainer">
+    <section class="nav_barContainer">
         <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a>
             <button class="myoncha_bt">마이온차</button>
             <button class="store_bt">스토어</button>
@@ -23,17 +23,21 @@
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-
             <span class="login" th:unless="${user==null}">
             <button class="cart_bt"><img src="/img/cart.png"></button>
-                <span class="user_bt">
             <a  th:href="@{/mypage/{id}(id =${user.id})}">
                <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
             </span>
-            </span>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section id="m_top_nav_bar">
+        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="img/Logo.png"></a></div>
+        <div class="right">
+            <button class="search_bt"><img src="/img/icons/search.png"></button>
+            <button class="cart_bt"><img src="/img/cart.png"></button>
+        </div>
+    </section>
 </header>
 <main>
     <div class="sub_nav_bar"><div>
@@ -45,11 +49,14 @@
             </a>
         </div>
         <div class="tea_finder_button_container">
+            <button class=""><img src="/img/프로덕트칸.png"><p>상황별 차 추천</p></button>
             <button class=""><img src="/img/프로덕트칸.png"><p>액상</p></button>
             <button class=""><img src="/img/프로덕트칸.png"><p>잎차</p></button>
             <button class=""><img src="/img/프로덕트칸.png"><p>청</p></button>
             <button class=""><img src="/img/프로덕트칸.png"><p>가루</p></button>
-            <button class=""><img src="/img/프로덕트칸.png"><p>상황별 차 추천</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>녹차</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>홍차</p></button>
+            <button class=""><img src="/img/프로덕트칸.png"><p>백차</p></button>
         </div>
 
     <div class="title_container"><h1>가장 많이 마시는 차! Best</h1></div>
@@ -86,7 +93,7 @@
         <img src="/img/MiddleBanner.png">
         <p>온 차 에 서  찾 는  나 의  어 울 리 는  차</p>
     </div>
-    <div class="title_container"><h1>꼭 가야 할 소문난 찻집! Best</h1></div>
+    <div class="title_container"><h1>ONCHA 매거진</h1></div>
     <div class="reserve_contaiter">
         <div class="inner">
            <a href="/darakbang"> <div class="product_inner"><img src="/img/index/상품1-1.png">

@@ -3,9 +3,6 @@ body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.cart_bt img{
-    width: 30px;
-}
 a{
     text-decoration: none;
     color: black;
@@ -17,7 +14,7 @@ button{
 .nav_barContainer button:hover{
     color: #FF6600;
 }
-#m_nav_bar_container {
+#m_nav_bar_container,#m_top_nav_bar {
     display: none;
 }
 .nav_barContainer a:hover{
@@ -96,23 +93,23 @@ img{
         width: 100%;
     }
     .nav_barContainer {
-        width: 100%;
-    }
-
-    .top_logo {
-        width: 120px;
-        height: 30px;
-    }
-    .left button {
         display: none;
     }
-    .search,
-    .login_bt,
-    .user_bt {
-        display: none;
+    .left{
+        margin-top: 10px;
+    }
+    .left p{
+        display: inline-block;
+    }
+    .right{
+        margin-right: 10px;
+    }
+    #m_top_nav_bar{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
     }
     #m_nav_bar_container {
-        display: block;
         display: flex;
         position: fixed;
         bottom: 0;
