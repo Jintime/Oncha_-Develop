@@ -11,8 +11,8 @@ spring:
         - production
         - oauth2
         - aws
-        - mailㅌ
-    active: local
+        - mail
+    active: production
 
   devtools:
     livereload:

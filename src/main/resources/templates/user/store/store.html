@@ -20,12 +20,10 @@
             <button class="store_bt">스토어</button>
             <button class="teaHouse_bt">티하우스</button>
             <button class="subscribe_bt">매거진</button>
-
         </div>
         <div class="right">
             <input class="search" type="text" >
             <button th:if="${user == null}" class="login_bt">로그인</button>
-
             <span class="login" th:unless="${user==null}">
             <button class="cart_bt"><img src="/img/cart.png"></button>
             <a  th:href="@{/mypage/{id}(id =${user.id})}">
@@ -33,15 +31,12 @@
             </span>
         </div>
     </section>
-    <section id="m_top_nav_bar">
-        <div class="left"><a class="index_bt" href="/"><</a>
-        <p th:text="test"></p>
-        </div>
-        <div class="right">
-            <button class="search_bt"><img src="/img/icons/search.png"></button>
-            <button class="cart_bt"><img src="/img/cart.png"></button>
-        </div>
+    <section class="m_topBarContainer">
+        <div><button class="index_bt"><img src="/img/icons/back.png"></button><label th:text="test"></label></div>
+        <div><button class="search_bt"><img src="/img/icons/search.png"></button>
+            <button class="cart_bt"><img src="/img/cart.png"></button></div>
     </section>
+    </div>
 </header>
     <hr>
 <main>
