@@ -4,52 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="/css/test.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Document</title>
 </head>
 <body>
 <img class="login_bg" src="/img/login/loginBG.png">
-<header>
+<div class="box">
     <div class="nav_barContainer">
-        <div class="left"><a class="index_bt" href="/"><img class="top_logo" src="/img/Logo.png"></a>
-            <button class="myoncha_bt">마이온차</button>
-            <button class="store_bt">스토어</button>
-            <button class="teaHouse_bt">티하우스</button>
-            <button class="subscribe_bt">매거진</button>
+        <div class="left"><a class="logo" href="/index.html"><img class="top_logo" src="/img/Logo.png"></a>
+            <button class="finder_bt">마이티</button>
+            <button class="store_bt" onclick="location.href='/store.html'">스토어</button>
+            <button class="reserve_bt" onclick="location.href='/teaHouse.html'">티하우스</button>
+            <button class="sub_bt">커뮤니티</button>
 
         </div>
         <div class="right">
-            <input class="search" type="text" >
-            <button th:if="${user == null}" class="login_bt">로그인</button>
-
-            <span class="login" th:unless="${user==null}">
-            <button class="cart_bt"><img src="/img/cart.png"></button>
-            <a  th:href="@{/mypage/{id}(id =${user.id})}">
-               <!--<img th:src="@{|${user.list.get(0).getUrl()}|}" alt="">-->마이페이지</a>ㅣ<a href=" http://oncha.kr/logout">로그아웃</a>
-            </span>
+            <input type="text" >
+            <button id="login">로그인</button>
+            <button id="register">회원가입</button>
         </div>
     </div>
-    </div>
-</header>
-<main>
+
     <div class="login_wrap">
 
-        <img class="login_logo" src="/img/Logo.png">
-        <h1>로그인</h1>
-        <p>소셜네트워크 서비스로 로그인하기</p>
-        <button class="social_login_bt" onclick="location.href='/oauth2/authorization/google'"><img src="/img/login/logo1.png"></button>
-        <button class="social_login_bt" onclick="location.href='/oauth2/authorization/naver'"><img src="/img/login/logo2.png"></button>
-        <button class="social_login_bt" onclick="location.href='/oauth2/authorization/kakao'"><img src="/img/login/logo3.png"></button>
-        <br>
+        <div class="login_L"><h1>나만의 차를<br> 위한 여행</h1></div>
+        <div class="login_R">
+            <img class="login_logo" src="/img/Logo.png">
+            <h2>로그인</h2>
+            <p>소셜네트워크 서비스로 로그인하기</p>
+            <button class="social_login_bt" onclick="location.href='/oauth2/authorization/google'"><img src="/img/login/logo1.png"></button>
+            <button class="social_login_bt"><img src="/img/login/logo2.png"></button>
+            <button class="social_login_bt"><img src="/img/login/logo3.png"></button>
 
-        <button class="company_register_bt">판매자 회원가입하기</button>
-        <p>세상의 모든 차를 담다 ONCHA</p>
+            <p>세상의 모든 차를 담다 ONCHA</p>
+        </div>
     </div>
-</main>
+
+
+</div>
+
+
+
 </body>
-<script src="/js/buttonManager.js"></script>
 </html>
