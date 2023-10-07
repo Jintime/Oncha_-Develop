@@ -32,7 +32,6 @@ public class MainController {
 
 
     ///옮겨야될코드들
-
     @GetMapping("/rank")
     public String Rank(){return "user/store/ranks";}
     @GetMapping("/teaFinder")
@@ -42,7 +41,6 @@ public class MainController {
 
     @GetMapping("/test1")
     public String frontTest1(){return "user/store/order/testorder";}
-
 
     @GetMapping("/test2")
     public String frontTest2(){return "user/category/myOncha/myPage";}

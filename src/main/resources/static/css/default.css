@@ -113,19 +113,19 @@ img{
         display: flex;
         position: fixed;
         bottom: 0;
+        width: 100%;
+        height: 6%;
         left: 0;
         padding-top: 5px;
         background-color: white;
         justify-content: space-around;
     }
     #m_nav_bar_container button {
-        width: 100%;
+        width: 10%;
         height: 100%;
     }
     #m_nav_bar_container p {
         font-size: 10px;
     }
-    #m_nav_bar_container img {
-        border-radius: 15px;
-    }
+
 }

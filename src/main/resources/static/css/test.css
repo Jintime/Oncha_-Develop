@@ -1,10 +1,7 @@
 @import url(default.css);
 
 .Top_viewContainer {
-    display: flex;
-    width: 99%;
     margin: 20px auto 0px auto;
-    justify-content: space-between;
 }
 .banner button {
     top: 90%;
@@ -32,14 +29,16 @@
     position: absolute;
     color: #ffffff;
 }
-.tea_finder_button_container {
-    display: flex;
-    justify-content: space-around;
+.tea_finder_button_container {display: flex;
     margin: 30px 0 30px 0;
+    width: 1500px;
+    overflow: hidden;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 .tea_finder_button_container button {
     height: 100%;
-    width: 100%;
+    width: 5%;
 }
 .tea_finder_button_container img {
     border-radius: 15px;
@@ -64,22 +63,12 @@
 }
 .Top_viewContainer .banner {
     width: 100%;
-    height: 300px;
 }
 
 .middle_banner_container {
     position: relative;
     margin: 0px auto 70px auto;
     width: 99%;
-}
-.middle_banner_container p {
-    font-weight: bold;
-    letter-spacing: 5px;
-    top: 5%;
-    text-align: center;
-    width: 100%;
-    font-size: 24px;
-    position: absolute;
 }
 /**/
 .product_Container {
@@ -196,6 +185,7 @@
     position: absolute;
     width: 46px;
     height: 46px;
+    z-index: 1;
     text-align: center;
     line-height: 46px;
     border-radius: 50%;
