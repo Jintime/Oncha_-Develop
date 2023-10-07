@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/pay_info.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section id="pay_info_section">
+            <div class="buyer_info_wrap">
+                <button id="buyer_info_bt">주문자</button>
+                <div class="buy_info_innder">
+                 <p>이름</p><input class="buyer_name" placeholder="주문자의 성함을 입력해주세요"><br>
+                 <p>연락처</p><select class="first_phone_number">
+                    <option>010</option>
+                    <option>011</option>
+                    <option>012</option>
+                </select><input class="buyer_phone_number" placeholder="-없이 입렵해주세요">
+                </div>
+            </div>
+            <div class="delivery_address_info_wrap">
+                <button id="dilivery_address_info_bt">배송정보</button>
+                <div class="delivery_address_info_inner">
+                <input id="check_buyer" type="checkbox"><label for="check_buyer" class="check_label">위와 동일하게 채우기</label><br>
+                <p>수령인</p><input class="recipient" placeholder="수령인의 성함을 입력해주요"><br>
+                <p>연락처</p><select class="first_phone_number">
+                    <option>010</option>
+                    <option>011</option>
+                    <option>012</option>
+                </select><input class="recipient_phone_number" placeholder="-없이 입력해주세요"><br>
+                <button class="address_change_button">배송지변경</button><br> 
+                <p class="address">주소</p>
+                <div class="address_input_wrap"><input name="zip" type="text" id="zip" placeholder="우편번호"/>
+                <button id="postcodebutton" type="button">주소찾기</button>
+                <br>
+                <input name="address1" type="text" id="address1" readonly placeholder="주소"/><br>
+                <input name="address2" type="text" id="address2" placeholder="상세주소를 입력해주세요" /><br>
+                <input id="default_adress_check" type="checkbox"><label for="default_adress_check" class="check_label">기본 배송지로 지정</label><br>
+                <select class="delivery_address_option">
+                    <option>배송시 요청사항을 선택해주세요(선택)</option>
+                </select>
+            </div>
+            </div>
+        </div>
+            <div class="product_info_wrap">
+                <button id="product_info_bt">상품정보</button>
+                <div class="product_info_inner">
+                    <div class="product_info_company"><a class="company_bt">기업이름</a><button class="fee">x3,000원</button></div>
+                    <div class="info_inner">
+                        <img src="/img/프로덕트칸.png" alt="">
+                  
+                    <div class="info_wrap">
+                        <h3>차이름</h3>
+                        <p>옵션 300g</p>
+                        <p>수량 2개</p>
+                        <h4>쿠폰사용</h4>
+                        <button class="coupon_select_bt">선택</button>
+                    </div>
+                    <h3>10,000원</h3>
+                </div>
+            </div>
+            </div>
+            <div class="point_info_wrap">
+                <button id="point_info_bt">적립금/장바구니 쿠폰</button>
+             <div class="point_info_inner">
+                <p>적립금</p><input class="point" placeholder="1p 단위로 사용가능합니다">
+                <button>사용</button>
+                <p>사용가능 적립금 : 0원</p>
+                <br>
+                <p>쿠폰</p><input class="coupon" placeholder="쿠폰을 적용하세요"><button class="use_coupon_bt">쿠폰 등록</button><br>
+             </div>
+            </div>
+            <div class="payment_method_wrap">
+                <h2>결제 수단</h2>
+                <div class="payment_method_inner">
+                    <button id="credit_card">카드</button>
+                    <button id="kakao_pay">카카오페이</button>
+                    <button id="naver_pay">네이버페이</button>
+                    <button id="toss_pay">토스페이</button>
+                    <button id="phone_pay">휴대폰</button>
+                </div>
+            </div>
+            <div class="payment_info_wrap">
+                <h2>결제 금액</h2>
+                <div class="payment_info_inner">
+                    <div class="payment_info_inner_left">
+                        <p>총 상품 금액</p>
+                        <p>총 배송비</p>
+                        <p>쿠폰 사용</p>
+                        <p>포인트 사용</p>
+                    </div>
+                    <div class="payment_info_inner_right">
+                        <p>48,000원</p>
+                        <p>6,000원</p>
+                        <p>0원</p>
+                        <p>0원</p>
+                    </div>
+                </div>
+                <div class="total_payment_amount">
+                    <h3>최종 결제 금액</h3>
+                    <div class="payment_amount">
+                        <p class="point_save">+540p적립예정</p>
+                        <p>54,000원</p>
+                    </div>
+                </div>
+            </div>
+            <div class="agree_info_wrap">
+                <input id="all_agree" type="checkbox"><label class="all_agree" for="all_agree">모두 동의합니다.  (필수)</label>
+                <div class="agree_info_inner">
+                    <input id="user_info_collection" type="checkbox"><label for="user_info_collection">개인정보 수집 및 이용 동의(필수)</label><a href="">자세히</a><br>
+                    <input id="user_info_provision" type="checkbox"><label for="user_info_provision">개인정보 제 3자 제공 동의(필수)</label><a href="">자세히</a><br>
+                    <input id="electronic_payment" type="checkbox"><label for="electronic_payment">전자결제대행 이용 동의(필수)</label><a href="">자세히</a><br>
+                    <p>온차는 통신판매중개자로 거래 당사자가 아니므로 판매자가 등록한 상품정보 및 거래 등에 대해 책임을 지지 않습니다. 단, 온차가 판매자로 등록 판매한 상품은 판매자로서 책임을 부담합니다.</p>
+                </div>
+            </div>
+            <div class="pay_wrap">
+            <button onclick="validateForm()">결제하기</button>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+</html>

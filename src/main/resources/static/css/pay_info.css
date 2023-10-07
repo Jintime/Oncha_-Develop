@@ -1,0 +1,205 @@
+@import url(default.css);
+
+body{
+    background-color: #F5F5F5;
+}
+.buyer_info_wrap,.delivery_address_info_wrap,.product_info_wrap
+,.point_info_wrap,.payment_method_wrap,.payment_info_wrap,.agree_info_wrap{
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 20px;
+}
+.info_inner{
+    display: flex;
+}
+.info_inner img{
+    width: 30%;
+}
+.first_phone_number{
+    border-radius: 3px;
+    border: 1px solid #C5C5C5;
+    background: #FFF;
+    width: 64px;
+    height: 33px;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+.buyer_phone_number,.recipient_phone_number,.point{
+    min-width: 200px;
+}
+.buyer_name,.recipient,#address1,#address2{
+    min-width: 280px;
+}
+.delivery_address_option{
+    border-radius: 3px;
+    height: 33px;
+    border: 1px solid #C5C5C5;
+    background: #FFF;
+}
+
+.point_info_inner button,.coupon_select_bt ,#postcodebutton{
+    border-radius: 3px;
+    border: 1px solid #C5C5C5;
+    background: #D9D9D9;
+    margin-left: 30px;
+}
+.check_label{
+    color: #000;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+p{
+    display: inline-block;
+    color: #000;
+    min-width: 50px;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 50px;
+}
+#check_buyer, #default_adress_check{
+    height: unset;
+    border-radius: 3px;
+    border: 1px solid #C5C5C5;
+    background: #FFF;
+}
+.delivery_address_info_inner input,.point_info_inner input
+,.delivery_address_info_inner input,.buy_info_innder input{
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid #F60;
+    background: #FFF;
+}
+.address_input_wrap{
+    display: inline-block;
+}
+.address{
+    vertical-align: top;
+    margin-top: 20px;
+    margin-right: 45px;
+}
+#buyer_info_bt,#product_info_bt,#point_info_bt,h2{
+    color: #000;
+    font-family: NanumSquareOTF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.buy_info_innder,.delivery_address_info_inner,.product_info_inner,
+.point_info_inner,.payment_method_inner,.payment_info_inner,.agree_info_inner
+{
+    border-top: 3px solid #F0F0F0;
+    margin-top: 5px;
+}
+.payment_info_inner,.total_payment_amount{
+    display: flex;
+    justify-content: space-between;
+}
+.payment_info_inner p,.total_payment_amount p{
+    display: block;
+    justify-content: space-between;
+}
+.payment_method_inner button{
+border-radius: 3px;
+border: 1px solid #C5C5C5;
+background: #FFF;
+width: 100px;
+height: 40px;
+margin-top: 5px;
+}
+.pay_wrap button{
+    width: 350px;
+    height: 50px;
+    border-radius: 5px;
+    background: #D9D9D9;
+}
+.info_wrap h3{
+    color: #343434;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.info_wrap h4{
+    color: #000;
+    font-family: NanumSquareOTF;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.info_wrap p{
+    color: #636363;
+    display: block;
+    font-family: NanumSquareOTF;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.pay_wrap{
+    text-align: center;
+}
+.address_change_button{
+    color: #000;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.agree_info_inner label,.agree_info_inner a,.agree_info_inner p{
+    color: #7A7A7A;
+    font-family: NanumSquareOTF;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.agree_info_inner a{
+    text-decoration: underline;
+    margin-left: 10px;
+}
+.all_agree{
+    color: #000;
+    font-family: NanumSquareOTF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.payment_info_inner p{
+    color: #343434;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.point_save{
+    border-radius: 3px;
+    background: #D9D9D9;
+    color: #343434;
+    font-family: NanumSquareOTF;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.total_payment_amount h3{
+    color: #343434;
+    font-family: NanumSquareOTF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
