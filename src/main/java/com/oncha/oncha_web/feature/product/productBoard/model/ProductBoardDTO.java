@@ -88,4 +88,7 @@ public class ProductBoardDTO {
         this.caffeine = productBoard.getCaffeine();
         this.list = productBoard.getProductFiles().stream().map(ProductFileDTO::new).toList();
     }
+
+
+
 }

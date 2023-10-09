@@ -2,7 +2,9 @@
 body{
     font-family: 'Noto Sans KR', sans-serif;
 }
-
+.product_inner image{
+    width: 100%;
+}
 a{
     text-decoration: none;
     color: black;
@@ -24,11 +26,6 @@ body{
     margin: auto;
     width: 1256px;
     padding: 0px 10px;
-}
-img{
-    color: wheat;
-    width: 100%;
-    height: 100%;
 }
 .Like_bt{
     position: absolute;
@@ -88,6 +85,7 @@ img{
     font-size: 10px;
 
 }
+
 @media all and (max-width: 479px) {
     body {
         width: 100%;
@@ -114,18 +112,23 @@ img{
         position: fixed;
         bottom: 0;
         width: 100%;
-        height: 6%;
         left: 0;
         padding-top: 5px;
         background-color: white;
         justify-content: space-around;
     }
+
     #m_nav_bar_container button {
-        width: 10%;
-        height: 100%;
+        width: 18%;
     }
+
     #m_nav_bar_container p {
         font-size: 10px;
     }
-
+    .myoncha_bt{
+        width: 98%;
+    }
+    .middle_banner_container img{
+        width: 100%;
+    }
 }

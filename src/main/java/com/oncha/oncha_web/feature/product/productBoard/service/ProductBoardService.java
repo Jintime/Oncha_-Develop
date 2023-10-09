@@ -14,6 +14,8 @@ import com.oncha.oncha_web.feature.s3.AmazonS3Service;
 import com.oncha.oncha_web.feature.s3.S3FileDto;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -78,4 +80,8 @@ public class ProductBoardService {
     }
 
 
+    @Transactional(readOnly = true)
+    public List<ProductBoardDTO> findByCategory(String category, Pageable pageable) {
+        return productBoardRepository.findByCategory(category,pageable).getContent().stream().map(ProductBoardDTO::new).collect(Collectors.toList());
+    }
 }
